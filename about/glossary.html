@@ -13,6 +13,8 @@
 
   
   
+    <link rel="shortcut icon" href="../_static/dea-favicon.ico"/>
+  
   
   
 
@@ -36,8 +38,8 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="Digital Earth Australia 1.0.0 documentation" href="../index.html"/>
-        <link rel="next" title="Install" href="../connect/install.html"/>
-        <link rel="prev" title="Overview" href="intro.html"/> 
+        <link rel="next" title="Register" href="../connect/account.html"/>
+        <link rel="prev" title="Introduction" href="intro.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -95,14 +97,19 @@
             
               <p class="caption"><span class="caption-text">Overview</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Glossary</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Connect</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../connect/account.html">Register</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connect/install.html">Install</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connect/account.html">NCI Account</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connect/jupyter.html">NCI Usage Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connect/jupyter.html">Jupyter Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connect/nci_basics.html">Running DEA Manually</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html">Data</a></li>
 </ul>
 
             
@@ -166,7 +173,41 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="glossary">
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+/* nice headers on first paragraph of info/warning boxes */
+.admonition .first {
+    margin: -12px;
+    padding: 6px 12px;
+    margin-bottom: 12px;
+    color: #fff;
+    line-height: 1;
+    display: block;
+}
+.admonition.warning .first {
+    background: #f0b37e;
+}
+.admonition.note .first {
+    background: #6ab0de;
+}
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+</style>
+<div class="section" id="glossary">
 <span id="id1"></span><h1>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h1>
 <dl class="glossary docutils">
 <dt id="term-agdc">AGDC</dt>
@@ -229,10 +270,10 @@ definitions in the Data Cube.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../connect/install.html" class="btn btn-neutral float-right" title="Install" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../connect/account.html" class="btn btn-neutral float-right" title="Register" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="intro.html" class="btn btn-neutral" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="intro.html" class="btn btn-neutral" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -273,6 +314,7 @@ definitions in the Data Cube.</p>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

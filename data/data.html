@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Introduction &mdash; Digital Earth Australia 1.0.0 documentation</title>
+  <title>Data &mdash; Digital Earth Australia 1.0.0 documentation</title>
   
 
   
@@ -38,8 +38,7 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="Digital Earth Australia 1.0.0 documentation" href="../index.html"/>
-        <link rel="next" title="Glossary" href="glossary.html"/>
-        <link rel="prev" title="Digital Earth Australia User Guide" href="../index.html"/> 
+        <link rel="prev" title="Running DEA Manually" href="../connect/nci_basics.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -96,14 +95,9 @@
             
             
               <p class="caption"><span class="caption-text">Overview</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#background">Background</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#technology">Technology</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/glossary.html">Glossary</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Connect</span></p>
 <ul>
@@ -113,8 +107,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../connect/nci_basics.html">Running DEA Manually</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Data</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../data/data.html">Data</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#nbar-and-nbar-t">NBAR and NBAR-T</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pixel-quality">Pixel Quality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fractional-cover">Fractional Cover</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -159,13 +158,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Introduction</li>
+      <li>Data</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/about/intro.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/data/data.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -212,32 +211,66 @@
     margin-right: 4px;  /* make room for the exclamation icon */
 }
 </style>
-<div class="section" id="introduction">
-<span id="id1"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>Digital Earth Australia (DEA) is a platform designed to:</p>
-<ul class="simple">
-<li>Catalogue large amounts of Earth Observation data</li>
-<li>Provide a <a class="reference internal" href="glossary.html#term-python"><span class="xref std std-term">Python</span></a> based <a class="reference internal" href="glossary.html#term-api"><span class="xref std std-term">API</span></a> for high performance querying and data access</li>
-<li>Give scientists and other users easy ability to perform Exploratory Data Analysis</li>
-<li>Allow scalable continent scale processing of the stored data</li>
-<li>Track the provenance of all the contained data to allow for quality control and updates</li>
-</ul>
+<div class="section" id="data">
+<h1>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="nbar-and-nbar-t">
+<h2>NBAR and NBAR-T<a class="headerlink" href="#nbar-and-nbar-t" title="Permalink to this headline">¶</a></h2>
+<p>NBAR stands for <strong>Nadir-corrected BRDF Adjusted Reflectance</strong>.  It is the surface reflectance product in</p>
+<p>It has the bands:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>blue</td>
+<td>Blue</td>
+</tr>
+<tr class="row-odd"><td>green</td>
+<td>Green</td>
+</tr>
+<tr class="row-even"><td>red</td>
+<td>Red</td>
+</tr>
+<tr class="row-odd"><td>nir</td>
+<td>Near Infra-red</td>
+</tr>
+<tr class="row-even"><td>swir1</td>
+<td>Short-wave Infra-red 1</td>
+</tr>
+<tr class="row-odd"><td>swir2</td>
+<td>Short-wave Infra-red 2</td>
+</tr>
+</tbody>
+</table>
+<p>Landsat 8 also has:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>coastal_aerosol</td>
+<td>Costal Aerosol</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="section" id="background">
-<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
-<p>DEA will build on the globally recognised innovation, the <a class="reference external" href="http://www.datacube.org.au/">Australian Geoscience Data Cube</a>
-which was the winner of the 2016 Content Platform of the Year at the Geospatial World
-Leadership Awards and was developed as a partnership between <a class="reference external" href="http://www.ga.gov.au/">Geoscience Australia</a> (GA),
-the <a class="reference external" href="https://www.csiro.au/">Commonwealth Scientific and Industrial Research Organisation</a> (CSIRO) and the
-<a class="reference external" href="https://nci.org.au/">National Computational Infrastructure</a> (NCI).</p>
+<div class="section" id="pixel-quality">
+<h2>Pixel Quality<a class="headerlink" href="#pixel-quality" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="technology">
-<h2>Technology<a class="headerlink" href="#technology" title="Permalink to this headline">¶</a></h2>
-<p>Digital Earth Australia is powered by <a class="reference external" href="http://opendatacube.org/">Open Data Cube</a>, an open-source library for
-management, analysis and processing of Earth observation (EO) satellite data.
-The source code can be found at <a class="reference external" href="https://github.com/opendatacube/datacube-core">https://github.com/opendatacube/datacube-core</a> .</p>
+<div class="section" id="fractional-cover">
+<h2>Fractional Cover<a class="headerlink" href="#fractional-cover" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -251,10 +284,8 @@ The source code can be found at <a class="reference external" href="https://gith
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="glossary.html" class="btn btn-neutral float-right" title="Glossary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-      
-        <a href="../index.html" class="btn btn-neutral" title="Digital Earth Australia User Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../connect/nci_basics.html" class="btn btn-neutral" title="Running DEA Manually" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

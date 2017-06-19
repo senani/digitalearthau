@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Introduction &mdash; Digital Earth Australia 1.0.0 documentation</title>
+  <title>Running DEA Manually &mdash; Digital Earth Australia 1.0.0 documentation</title>
   
 
   
@@ -38,8 +38,8 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="Digital Earth Australia 1.0.0 documentation" href="../index.html"/>
-        <link rel="next" title="Glossary" href="glossary.html"/>
-        <link rel="prev" title="Digital Earth Australia User Guide" href="../index.html"/> 
+        <link rel="next" title="Data" href="../data/data.html"/>
+        <link rel="prev" title="Jupyter Notebook" href="jupyter.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -96,21 +96,16 @@
             
             
               <p class="caption"><span class="caption-text">Overview</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#background">Background</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#technology">Technology</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/glossary.html">Glossary</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Connect</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../connect/account.html">Register</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connect/install.html">Install</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connect/jupyter.html">Jupyter Notebook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connect/nci_basics.html">Running DEA Manually</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="account.html">Register</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jupyter.html">Jupyter Notebook</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Running DEA Manually</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Data</span></p>
 <ul>
@@ -159,13 +154,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Introduction</li>
+      <li>Running DEA Manually</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/about/intro.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/connect/nci_basics.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -212,32 +207,56 @@
     margin-right: 4px;  /* make room for the exclamation icon */
 }
 </style>
-<div class="section" id="introduction">
-<span id="id1"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>Digital Earth Australia (DEA) is a platform designed to:</p>
-<ul class="simple">
-<li>Catalogue large amounts of Earth Observation data</li>
-<li>Provide a <a class="reference internal" href="glossary.html#term-python"><span class="xref std std-term">Python</span></a> based <a class="reference internal" href="glossary.html#term-api"><span class="xref std std-term">API</span></a> for high performance querying and data access</li>
-<li>Give scientists and other users easy ability to perform Exploratory Data Analysis</li>
-<li>Allow scalable continent scale processing of the stored data</li>
-<li>Track the provenance of all the contained data to allow for quality control and updates</li>
+<div class="section" id="running-dea-manually">
+<h1>Running DEA Manually<a class="headerlink" href="#running-dea-manually" title="Permalink to this headline">¶</a></h1>
+<p>On <code class="docutils literal"><span class="pre">VDI</span></code>, you can start a terminal window from <strong>Applications</strong> -&gt; <strong>System Tools</strong>.</p>
+<p>To manually use the modules on <code class="docutils literal"><span class="pre">raijin</span></code> or <code class="docutils literal"><span class="pre">VDI</span></code>, add the datacube module path:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> module use /g/data/v10/public/modules/modulefiles/
+</pre></div>
+</div>
+<p>(you can add the above to your <code class="docutils literal"><span class="pre">.bash_profile</span></code> to avoid running it every time)</p>
+<p>You should now have access to the following modules:</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>agdc-py2-prod</strong> - Python 2.7</li>
+<li><strong>agdc-py3-prod</strong> - Python 3.5:</li>
 </ul>
+</div></blockquote>
+<p>You can see a list of available modules by running:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> module avail
+</pre></div>
 </div>
-<div class="section" id="background">
-<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
-<p>DEA will build on the globally recognised innovation, the <a class="reference external" href="http://www.datacube.org.au/">Australian Geoscience Data Cube</a>
-which was the winner of the 2016 Content Platform of the Year at the Geospatial World
-Leadership Awards and was developed as a partnership between <a class="reference external" href="http://www.ga.gov.au/">Geoscience Australia</a> (GA),
-the <a class="reference external" href="https://www.csiro.au/">Commonwealth Scientific and Industrial Research Organisation</a> (CSIRO) and the
-<a class="reference external" href="https://nci.org.au/">National Computational Infrastructure</a> (NCI).</p>
+<p>To load the production module with Python 3 (which is highly recommended over 2), run:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> module load agdc-py3-prod
+</pre></div>
 </div>
-<div class="section" id="technology">
-<h2>Technology<a class="headerlink" href="#technology" title="Permalink to this headline">¶</a></h2>
-<p>Digital Earth Australia is powered by <a class="reference external" href="http://opendatacube.org/">Open Data Cube</a>, an open-source library for
-management, analysis and processing of Earth observation (EO) satellite data.
-The source code can be found at <a class="reference external" href="https://github.com/opendatacube/datacube-core">https://github.com/opendatacube/datacube-core</a> .</p>
+<p>The first time you load the module, it will register your account with the datacube, granting you read-only access.</p>
+<p>It will store your password in the file <cite>~/.pgpass</cite>.</p>
+<p>You can then launch the jupyter notebook by running:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> jupyter notebook
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>VDI and Raijin have separate home directories, so you must copy your pgpass to the other if
+you use both environments.</p>
+<p>You can push the contents of your pgpass file from VDI to Raijin by running on a terminal window in VDI:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">remote-hpc-cmd init</span>
+<span class="go">ssh raijin &quot;cat &gt;&gt; ~/.pgpass&quot; &lt; ~/.pgpass</span>
+<span class="go">ssh raijin &quot;chmod 0600 ~/.pgpass&quot;</span>
+</pre></div>
+</div>
+<p>You will most likely be prompted for your NCI password.</p>
+<p>To pull the contents of your pgpass from Raijin to VDI instead, run</p>
+<div class="last highlight-console"><div class="highlight"><pre><span></span><span class="go">ssh raijin &quot;cat ~/.pgpass&quot; &gt;&gt; ~/.pgpass</span>
+<span class="go">chmod 0600 ~/.pgpass</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">If you have created a <code class="docutils literal"><span class="pre">.datacube.conf</span></code> file in your home folder from early Data Cube betas, you should rename or remove it
+to avoid it conflicting with the settings loaded by the module.</p>
 </div>
 </div>
 
@@ -251,10 +270,10 @@ The source code can be found at <a class="reference external" href="https://gith
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="glossary.html" class="btn btn-neutral float-right" title="Glossary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../data/data.html" class="btn btn-neutral float-right" title="Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../index.html" class="btn btn-neutral" title="Digital Earth Australia User Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="jupyter.html" class="btn btn-neutral" title="Jupyter Notebook" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

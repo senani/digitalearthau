@@ -8,10 +8,12 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>NCI Usage Guide &mdash; Digital Earth Australia 1.0.0 documentation</title>
+  <title>Jupyter Notebook &mdash; Digital Earth Australia 1.0.0 documentation</title>
   
 
   
+  
+    <link rel="shortcut icon" href="../_static/dea-favicon.ico"/>
   
   
   
@@ -36,7 +38,8 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="Digital Earth Australia 1.0.0 documentation" href="../index.html"/>
-        <link rel="prev" title="NCI Account" href="account.html"/> 
+        <link rel="next" title="Running DEA Manually" href="nci_basics.html"/>
+        <link rel="prev" title="Install" href="install.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -94,14 +97,19 @@
             
               <p class="caption"><span class="caption-text">Overview</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../about/intro.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../about/glossary.html">Glossary</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Connect</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="account.html">Register</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
-<li class="toctree-l1"><a class="reference internal" href="account.html">NCI Account</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">NCI Usage Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Jupyter Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nci_basics.html">Running DEA Manually</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html">Data</a></li>
 </ul>
 
             
@@ -146,7 +154,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>NCI Usage Guide</li>
+      <li>Jupyter Notebook</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -165,48 +173,43 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="nci-usage-guide">
-<span id="jupyter"></span><h1>NCI Usage Guide<a class="headerlink" href="#nci-usage-guide" title="Permalink to this headline">¶</a></h1>
-<p>To use the modules on <code class="docutils literal"><span class="pre">raijin</span></code> or <code class="docutils literal"><span class="pre">VDI</span></code>, add the datacube module path:</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> module use /g/data/v10/public/modules/modulefiles/
-</pre></div>
-</div>
-<p>(you can add the above to your <code class="docutils literal"><span class="pre">.bash_profile</span></code> to avoid running it every time)</p>
-<p>You should now have access to the following modules:</p>
-<blockquote>
-<div><ul class="simple">
-<li><strong>agdc-py2-prod</strong> - Python 2.7</li>
-<li><strong>agdc-py3-prod</strong> - Python 3.5</li>
-</ul>
-</div></blockquote>
-<p>To load the production module with Python 3 (which is highly recommended over 2), run:</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> module load agdc-py3-prod
-</pre></div>
-</div>
-<p>The first time you load the module, it will register your account with the datacube, granting you read-only access.</p>
-<p>It will store your password in the file <cite>~/.pgpass</cite>.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>VDI and Raijin have separate home directories, so you must copy your pgpass to the other if
-you use both environments.</p>
-<p>You can push the contents of your pgpass file from VDI to Raijin by running on a terminal window in VDI:</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">remote-hpc-cmd init</span>
-<span class="go">ssh raijin &quot;cat &gt;&gt; ~/.pgpass&quot; &lt; ~/.pgpass</span>
-<span class="go">ssh raijin &quot;chmod 0600 ~/.pgpass&quot;</span>
-</pre></div>
-</div>
-<p>You will most likely be prompted for your NCI password.</p>
-<p>To pull the contents of your pgpass from Raijin to VDI instead, run</p>
-<div class="last highlight-console"><div class="highlight"><pre><span></span><span class="go">ssh raijin &quot;cat ~/.pgpass&quot; &gt;&gt; ~/.pgpass</span>
-<span class="go">chmod 0600 ~/.pgpass</span>
-</pre></div>
-</div>
-</div>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">If you have created a <code class="docutils literal"><span class="pre">.datacube.conf</span></code> file in your home folder from early Data Cube betas, you should rename or remove it
-to avoid it conflicting with the settings loaded by the module.</p>
-</div>
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+/* nice headers on first paragraph of info/warning boxes */
+.admonition .first {
+    margin: -12px;
+    padding: 6px 12px;
+    margin-bottom: 12px;
+    color: #fff;
+    line-height: 1;
+    display: block;
+}
+.admonition.warning .first {
+    background: #f0b37e;
+}
+.admonition.note .first {
+    background: #6ab0de;
+}
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+</style>
+<div class="section" id="jupyter-notebook">
+<span id="jupyter"></span><h1>Jupyter Notebook<a class="headerlink" href="#jupyter-notebook" title="Permalink to this headline">¶</a></h1>
+<p>For details on running Jupyter Notebooks, see <a class="reference external" href="http://jupyter.org/">http://jupyter.org/</a>.</p>
 </div>
 
 
@@ -219,8 +222,10 @@ to avoid it conflicting with the settings loaded by the module.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="nci_basics.html" class="btn btn-neutral float-right" title="Running DEA Manually" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-        <a href="account.html" class="btn btn-neutral" title="NCI Account" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+        <a href="install.html" class="btn btn-neutral" title="Install" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -261,6 +266,7 @@ to avoid it conflicting with the settings loaded by the module.</p>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
