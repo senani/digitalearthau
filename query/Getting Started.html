@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Digital Earth Australia &mdash; Digital Earth Australia 1.0.0 documentation</title>
+  <title>Getting Started &mdash; Digital Earth Australia 1.0.0 documentation</title>
   
 
   
@@ -152,13 +152,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Digital Earth Australia</li>
+      <li>Getting Started</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/resources/Digital Earth Australia.ipynb.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/query/Getting Started.ipynb.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -365,33 +365,64 @@ div.nboutput div.output_area.stderr {
     margin-right: 4px;  /* make room for the exclamation icon */
 }
 </style>
-<div class="figure" id="id1">
-<img alt="Digital Earth Australia Logo" src="http://www.ga.gov.au/__data/assets/image/0007/49534/DEA-Logo-Inline.png" />
-<p class="caption"><span class="caption-text">Digital Earth Australia Logo</span></p>
+<div class="section" id="Getting-Started">
+<h1>Getting Started<a class="headerlink" href="#Getting-Started" title="Permalink to this headline">¶</a></h1>
+<p>First we need to define how we display plots in our notebooks:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [1]:
+</pre></div>
 </div>
-<div class="section" id="Digital-Earth-Australia">
-<h1>Digital Earth Australia<a class="headerlink" href="#Digital-Earth-Australia" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="Introduction-to-Jupyter-Notebooks">
-<h2>Introduction to Jupyter Notebooks<a class="headerlink" href="#Introduction-to-Jupyter-Notebooks" title="Permalink to this headline">¶</a></h2>
-<p>You can view the list of notebooks by selecting <strong>`File -&gt;
-Open… &lt;/&gt;`__</strong> from the menu above.</p>
-<p>To create a new notebook of your own, select <strong>File -&gt; New Notebook -&gt;
-Python 3</strong></p>
-<div class="section" id="Python-cells">
-<h3>Python cells<a class="headerlink" href="#Python-cells" title="Permalink to this headline">¶</a></h3>
-<p>Select a cell by clicking it (so that a border appears around it), or by
-using the arrow keys.</p>
-<p>To run a cell, click the button with the symbol, or press
-<strong>``Shift+Enter``</strong>.</p>
-<p>The cell will be run, and the next cell will be selected.</p>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>%matplotlib inline
+</pre></div>
+</div>
+</div>
+<p>We use <code class="docutils literal"><span class="pre">pandas.DataFrame</span></code> objects to display our tables, so we will
+set some settings to tweak their formatting:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>import pandas
+pandas.set_option(&#39;display.max_colwidth&#39;, 200)
+pandas.set_option(&#39;display.max_rows&#39;, None)
+</pre></div>
+</div>
+</div>
+<p>Now we load the <code class="docutils literal"><span class="pre">datacube</span></code> library:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>import datacube
+</pre></div>
+</div>
+</div>
+<p>Create our <code class="docutils literal"><span class="pre">datacube</span></code> object, with a name to help for logging.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>dc = datacube.Datacube(app=&#39;getting-started&#39;)
+</pre></div>
+</div>
+</div>
+<p>By default, it will connect to the main Digital Earth environment at
+NCI:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>
 <span></span>In [6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3"><div class="highlight"><pre>
-<span></span>x = 3
-x + 10
+<span></span>dc.index
 </pre></div>
 </div>
 </div>
@@ -401,132 +432,43 @@ x + 10
 </pre></div>
 </div>
 <div class="output_area highlight-none"><div class="highlight"><pre>
-<span></span>13
+<span></span>Index&lt;db=PostgresDb&lt;engine=Engine(postgresql://adh547@130.56.244.105:6432/datacube)&gt;&gt;
 </pre></div>
 </div>
 </div>
-<p>The value of the last line of code will be output below the cell when
-you run it, as above.</p>
-<p>You can also use the <strong>``print``</strong> function:</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
-<span></span>In [7]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
-<span></span>print(&#39;The value of x is&#39;, x)
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-The value of x is 3
-</pre></div></div>
-</div>
-</div>
-<div class="section" id="Running-linux-shell-commands">
-<h3>Running linux shell commands<a class="headerlink" href="#Running-linux-shell-commands" title="Permalink to this headline">¶</a></h3>
-<p>We can run shell commands by starting the cell with “<code class="docutils literal"><span class="pre">!</span></code>”.</p>
-<p>To print the current working dircetory, we can run the <code class="docutils literal"><span class="pre">pwd</span></code> command:</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
-<span></span>In [8]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
-<span></span>!pwd
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-/home/547/adh547/notebooks
-</pre></div></div>
-</div>
-</div>
-<div class="section" id="Copy-example-notebooks">
-<h3>Copy example notebooks<a class="headerlink" href="#Copy-example-notebooks" title="Permalink to this headline">¶</a></h3>
-<p>We can copy the library of example notebooks to our home folder, so that
-we can modify them:</p>
-<p>(Note: The following command will not overwrite any changes you have
-made to previously copied notebooks.)</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
-<span></span>In [9]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
-<span></span>!rsync --ignore-existing --recursive /g/data/v10/public/agdcv2_summary/ ~/dea_notebooks/
-</pre></div>
-</div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
-<span></span>In [10]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
-<span></span>!ls -la ~/dea_notebooks/
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-total 1228
-drwxr-xr-x  3 adh547 u46     101 Jun 14 14:52 .
-drwx------ 59 adh547 GA     4096 Jun 14 14:40 ..
--rw-r-xr--  1 adh547 u46 1137865 Jun 14 14:40 Datacube_Summary.ipynb
--rw-r-xr--  1 adh547 u46  102315 Jun 14 14:52 interactive.ipynb
-drwxr-xr-x  2 adh547 u46     109 Jun 14 14:40 .ipynb_checkpoints
--rw-r-xr--  1 adh547 u46    5476 Jun 14 14:40 UUID.ipynb
-</pre></div></div>
-</div>
-</div>
-<div class="section" id="Disk-quota">
-<h3>Disk quota<a class="headerlink" href="#Disk-quota" title="Permalink to this headline">¶</a></h3>
-<p>On VDI, you have a quota on your home directory of 2GB (2048M). If you
-go over your quota, you will not be able to save files, and will be
-unable to start a new VDI session until you remove files described in
-<a class="reference external" href="https://vdi.nci.org.au/help">https://vdi.nci.org.au/help</a></p>
-<p>You can check your usage by running the following command:</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
-<span></span>In [63]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
-<span></span>!quota -s -f /home
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-Disk quotas for user adh547 (uid 10169):
-     Filesystem  blocks   quota   limit   grace   files   quota   limit   grace
-vdi-fs1.z48:/home/
-                  1523M       0   2048M           47450       0    100k
-</pre></div></div>
-</div>
-</div>
-<div class="section" id="Transfering-Files">
-<h3>Transfering Files<a class="headerlink" href="#Transfering-Files" title="Permalink to this headline">¶</a></h3>
-<p>To transfer files to and from your VDI home dircetory, you can use a
-SFTP client like <a class="reference external" href="https://filezilla-project.org/">Filezilla</a> to
-connect to <strong>``vdi-sftp.nci.org.au``</strong>.</p>
-</div>
-</div>
+<p>Now we can query it. The main functions we can call are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="26%" />
+<col width="16%" />
+<col width="46%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Method</th>
+<th class="head">Description</th>
+<th class="head">Example</th>
+<th class="head">API Docs</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">dc.list_products()</span></code></td>
+<td>List the products in the datacube</td>
+<td><a class="reference internal" href="List Products.html"><span class="doc">example</span></a></td>
+<td><a class="reference external" href="http://datacube-core.readthedocs.io/en/stable/dev/generate/datacube.Datacube.list_products.html">api docs</a></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">dc.list_measurements()</span></code></td>
+<td>List the measurement bands for each product</td>
+<td><a class="reference internal" href="List Products.html"><span class="doc">example</span></a></td>
+<td><a class="reference external" href="http://datacube-core.readthedocs.io/en/stable/dev/generate/datacube.Datacube.list_measurements.html">api docs</a></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">dc.load()</span></code></td>
+<td>Retrive the data for a product, for a given area and time range</td>
+<td><a class="reference internal" href="Loading Data.html"><span class="doc">example</span></a></td>
+<td><a class="reference external" href="http://datacube-core.readthedocs.io/en/stable/dev/generate/datacube.Datacube.load.html">api docs</a></td>
+</tr>
+</tbody>
+</table>
 </div>
 
 
