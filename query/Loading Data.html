@@ -104,8 +104,8 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../connect/account.html">Register</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connect/install.html">Install</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connect/jupyter.html">Jupyter Notebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../connect/nci_basics.html">Running DEA Manually</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connect/jupyter.html">Jupyter Notebook</a></li>
 </ul>
 <p class="caption"><span class="caption-text">User Guide</span></p>
 <ul class="current">
@@ -401,10 +401,13 @@ dc = datacube.Datacube(app=&#39;load-data-example&#39;)
 <div class="section" id="Loading-data">
 <h2>Loading data<a class="headerlink" href="#Loading-data" title="Permalink to this headline">¶</a></h2>
 <p>Loading data from the datacube uses the <em>load</em> function.</p>
-<p>The function takes several arguments: * <em>product</em>; A specifc product to
-load * <em>x</em>; Defines the spatial region in the <em>x</em> dimension * <em>y</em>;
-Defines the spatial region in the <em>y</em> dimension * <em>time</em>; Defines the
-temporal extent.</p>
+<p>The function takes several arguments:</p>
+<ul class="simple">
+<li><em>product</em>; A specifc product to load</li>
+<li><em>x</em>; Defines the spatial region in the <em>x</em> dimension</li>
+<li><em>y</em>; Defines the spatial region in the <em>y</em> dimension</li>
+<li><em>time</em>; Defines the temporal extent.</li>
+</ul>
 <p>We’ll load the Landsat 5-TM, <strong>N</strong>adir <strong>B</strong>i-directional
 reflectance ristribution function <strong>A</strong>djusted <strong>R</strong>eflectance, for
 the spatial region covering:</p>
