@@ -117,6 +117,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="new_product.html">Creating New Product</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Git Best Practice</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#initial-setup">Initial Setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#main-principles">Main Principles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#commit-message-format">Commit Message Format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#clean-linear-history">Clean Linear History</a><ul>
@@ -124,7 +125,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#cleanup-before-sharing">Cleanup Before Sharing</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#initial-setup">Initial Setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#bug-fix-workflow">Bug Fix Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#new-feature-workflow">New Feature Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#travis-and-coveralls-integration">Travis and Coveralls Integration</a></li>
@@ -244,6 +244,18 @@ please consider reading up on git online first.</p>
 <li><a class="reference external" href="https://www.atlassian.com/git">https://www.atlassian.com/git</a> good introduction, but dives deep too</li>
 <li><a class="reference external" href="https://help.github.com">https://help.github.com</a> covers a lot of detail and github specifics</li>
 </ul>
+<div class="section" id="initial-setup">
+<h2>Initial Setup<a class="headerlink" href="#initial-setup" title="Permalink to this headline">¶</a></h2>
+<p>When setting up new dev machine make sure that your git identity is properly configured.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>git config --global user.name <span class="s2">&quot;YourFirstName YourLastName&quot;</span>
+git config --global user.email <span class="s2">&quot;your_email@example.com&quot;</span>
+<span class="c1"># configure other useful options</span>
+git config --global pull.rebase <span class="nb">true</span>
+<span class="c1"># review</span>
+git config --list
+</pre></div>
+</div>
+</div>
 <div class="section" id="main-principles">
 <h2>Main Principles<a class="headerlink" href="#main-principles" title="Permalink to this headline">¶</a></h2>
 <p>Below are the main guiding principles, we will expand on that through out the document</p>
@@ -286,16 +298,18 @@ before it if the change is small. Start your summary line with a capital letter,
 don’t put full stop [.] at the end of the summary line.</p>
 <p>Many tools, GitHub including, expect this format and sticking to it makes
 inspecting history more accessible.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>Could be helpful to prescribe how summary line is to be phrased. Which do we
-prefer?</p>
-<ul class="last simple">
-<li>Fixed spelling mistake in the help message</li>
-<li>Fix spelling mistake in the help message</li>
-</ul>
+<p>When writing the summary line prefer to use the <em>“imperative mood”</em> (i.e. “spoken or
+written as if giving a command or instruction”). So use</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">Fix spelling mistake in the help message</span>
+</pre></div>
 </div>
-<p>For a more expanded exploration of the topic see <a class="reference external" href="https://chris.beams.io/posts/git-commit/">https://chris.beams.io/posts/git-commit/</a></p>
+<p>and not:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">Fixed spelling mistake in the help message</span>
+</pre></div>
+</div>
+<p>Write it as if finishing this sentence: “When applied this commit will …”, but
+still start with a capital letter. For a more expanded exploration of the topic
+see <a class="reference external" href="https://chris.beams.io/posts/git-commit/">https://chris.beams.io/posts/git-commit/</a></p>
 </div>
 <div class="section" id="clean-linear-history">
 <h2>Clean Linear History<a class="headerlink" href="#clean-linear-history" title="Permalink to this headline">¶</a></h2>
@@ -328,18 +342,6 @@ some of the tools listed below</p>
 <li><a class="reference external" href="https://www.sourcetreeapp.com">https://www.sourcetreeapp.com</a></li>
 <li>Docs for plain git <a class="reference external" href="https://help.github.com/articles/changing-a-commit-message/">https://help.github.com/articles/changing-a-commit-message/</a></li>
 </ul>
-</div>
-</div>
-<div class="section" id="initial-setup">
-<h2>Initial Setup<a class="headerlink" href="#initial-setup" title="Permalink to this headline">¶</a></h2>
-<p>When setting up new dev machine make sure that your git identity is properly configured.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>git config --global user.name <span class="s2">&quot;YourFirstName YourLastName&quot;</span>
-git config --global user.email <span class="s2">&quot;your_email@example.com&quot;</span>
-<span class="c1"># configure other useful options</span>
-git config --global pull.rebase <span class="nb">true</span>
-<span class="c1"># review</span>
-git config --list
-</pre></div>
 </div>
 </div>
 <div class="section" id="bug-fix-workflow">
