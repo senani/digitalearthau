@@ -304,20 +304,8 @@ mk_dev_config <span class="s2">&quot;</span><span class="si">${</span><span clas
 </div>
 <p>To check this worked run <code class="docutils literal"><span class="pre">datacube</span> <span class="pre">system</span> <span class="pre">check</span></code> at this point system check
 should fail as database is completely empty.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">For now lets assume that exported list of products and metadata is maintained
-in a well-known location and is always up-to-date with data contained in the
-main database. Currently we will use data extracted by Damien (<code class="docutils literal"><span class="pre">dra547</span></code> on
-NCI.)</p>
-</div>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">METADATA_TYPES</span><span class="o">=</span><span class="s2">&quot;/g/data/u46/users/dra547/all_prod_metadata_types.yaml&quot;</span>
-<span class="nv">PRODUCTS</span><span class="o">=</span><span class="s2">&quot;/g/data/u46/users/dra547/all_prod_products.yaml&quot;</span>
-
-<span class="c1"># Create and populate database</span>
-datacube system init --no-default-types
-datacube metadata_type add <span class="s2">&quot;</span><span class="si">${</span><span class="nv">METADATA_TYPES</span><span class="si">}</span><span class="s2">&quot;</span>
-datacube product add <span class="s2">&quot;</span><span class="si">${</span><span class="nv">PRODUCTS</span><span class="si">}</span><span class="s2">&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Create database with DEA configuration</span>
+dea-system init
 </pre></div>
 </div>
 <p>To verify run system check and product list</p>
