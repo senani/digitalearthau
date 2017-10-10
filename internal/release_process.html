@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Glossary &mdash; Digital Earth Australia 1.0.0 documentation</title>
+  <title>Build a version &mdash; Digital Earth Australia 1.0.0 documentation</title>
   
 
   
@@ -38,8 +38,8 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="Digital Earth Australia 1.0.0 documentation" href="../index.html"/>
-        <link rel="next" title="Register" href="../connect/account.html"/>
-        <link rel="prev" title="Introduction" href="intro.html"/> 
+        <link rel="next" title="Git Best Practice" href="git_best_practice.html"/>
+        <link rel="prev" title="Creating New Product" href="new_product.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -96,9 +96,9 @@
             
             
               <p class="caption"><span class="caption-text">Overview</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Glossary</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/glossary.html">Glossary</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Connect</span></p>
 <ul>
@@ -114,15 +114,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../query/Loading Data.html">Loading data from the datacube</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Developer Guide</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../internal/new_product.html">Creating New Product</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/release_process.html">Build a version</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/release_process.html#marking-it-stable">Marking it stable</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/git_best_practice.html">Git Best Practice</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/release.html">Building a Release</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/orchestration.html">DEA Orchestration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/requirements_met.html">DEA Smoke Test</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/requirements_met.html#Data-load-examples">Data load examples</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="new_product.html">Creating New Product</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Build a version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#marking-it-stable">Marking it stable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git_best_practice.html">Git Best Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Building a Release</a></li>
+<li class="toctree-l1"><a class="reference internal" href="orchestration.html">DEA Orchestration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements_met.html">DEA Smoke Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements_met.html#Data-load-examples">Data load examples</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Data</span></p>
 <ul>
@@ -174,13 +174,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Glossary</li>
+      <li>Build a version</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/about/glossary.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/internal/release_process.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -227,57 +227,93 @@
     margin-right: 4px;  /* make room for the exclamation icon */
 }
 </style>
-<div class="section" id="glossary">
-<span id="id1"></span><h1>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h1>
-<dl class="glossary docutils">
-<dt id="term-agdc">AGDC</dt>
-<dd>The Australian Geoscience Data Cube, an Australian implementation of the
-ODC.</dd>
-<dt id="term-api">API</dt>
-<dd>The Data Cube Application Programming Interface gives programmers full
-access to the capabilities of the Cube, allowing query and advanced data
-retrieval.</dd>
-<dt id="term-ceos-seo">CEOS-SEO</dt>
-<dd>Committee on Earth Observation, Systems Engineering Office
-<a class="reference external" href="http://ceos-cube.org/">http://ceos-cube.org/</a></dd>
-<dt id="term-csiro">CSIRO</dt>
-<dd>Commonwealth Scientific and Industrial Research Organisation</dd>
-<dt id="term-dea">DEA</dt>
-<dd>Digital Earth Australia</dd>
-<dt id="term-ga">GA</dt>
-<dd>Geoscience Australia</dd>
-<dt id="term-nbar">NBAR</dt>
-<dd>Nadir-corrected BRDF Adjusted Reflectance</dd>
-<dt id="term-nci">NCI</dt>
-<dd>The Australian National Computational Infrastructure is Australia’s
-national research computing facility. It provides computing facilities for
-use by Australian researchers, industry and government. For more
-information see <a class="reference external" href="http://www.nci.org.au/">http://www.nci.org.au/</a>.</dd>
-<dt id="term-odc">ODC</dt>
-<dd>Open Data Cube, an international open-source project developing the technology
-that powers Digital Earth Australia. For more information see
-<a class="reference external" href="http://opendatacube.org/">http://opendatacube.org/</a> .</dd>
-<dt id="term-postgresql">PostgreSQL</dt>
-<dd>The high performance database engine used as an index of Datasets by the
-Data Cube. It is both a relational and document database, and the Data
-Cube schema makes use of both of these capabilities.</dd>
-<dt id="term-python">Python</dt>
-<dd>The programming language used to develop the Data Cube. It is easy to use
-while still allowing high performance access and processing capabilities.
-See <a class="reference external" href="http://www.python.org/">http://www.python.org/</a> for more.</dd>
-<dt id="term-usgs">USGS</dt>
-<dd>United States Geological Survey</dd>
-<dt id="term-vdi">VDI</dt>
-<dd>Virtual Desktop Infrastructure is a virtual laboratory at NCI that provides a
-linux desktop environment for scientific computing. For more see
-<a class="reference external" href="http://vdi.nci.org.au/help">http://vdi.nci.org.au/help</a>.</dd>
-<dt id="term-yaml">YAML</dt>
-<dd><p class="first">YAML is a human friendly data serialization standard for all programming
-languages. It is used for all on disk metadata files and product
-definitions in the Data Cube.</p>
-<p class="last">For more information on the YAML standard see <a class="reference external" href="http://yaml.org/">http://yaml.org/</a>.</p>
+<div class="section" id="build-a-version">
+<h1>Build a version<a class="headerlink" href="#build-a-version" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic simple">
+<li><dl class="first docutils">
+<dt>Pick a release name for the next version</dt>
+<dd>Releases are versioned using the <code class="docutils literal"><span class="pre">major.minor.bugfix</span></code> numbering system.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Update the release notes on the <span class="xref std std-ref">whats_new</span> page</dt>
+<dd>Check the git log for changes since the last release.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Check that <a class="reference external" href="https://travis-ci.org/opendatacube/datacube-core">Travis</a> and <a class="reference external" href="http://readthedocs.org/projects/datacube-core/builds/">readthedocs</a> are passing for the latest commit</dt>
+<dd>Make sure that the tests have finished running!</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Tag the branch</dt>
+<dd>Use the format of <code class="docutils literal"><span class="pre">datacube-major.minor.bugfix</span></code>.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Draft a new release on the <a class="reference external" href="https://github.com/opendatacube/datacube-core/releases">Datacube</a> GitHub repository</dt>
+<dd>Include the items added to the release notes in step 2.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Install the datacube module on <cite>raijin</cite></dt>
+<dd>Follow the instructions on installing the <strong>Data Cube</strong> module on the <a class="reference external" href="https://github.com/GeoscienceAustralia/digitalearthau/tree/develop/modules">Datacube Environment</a> repository,
+but do not yet make it the default module version.</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="marking-it-stable">
+<h1>Marking it stable<a class="headerlink" href="#marking-it-stable" title="Permalink to this headline">¶</a></h1>
+<p>Once/if a built version has been tested on Raijin, found to be stable, and the team agrees, we make it the new default
+stable version.</p>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>Merge changes leading up to the release into the <cite>stable</cite> branch</dt>
+<dd><p class="first last">This will also update the <cite>stable</cite> docs.</p>
 </dd>
 </dl>
+</li>
+<li><dl class="first docutils">
+<dt>Upload the build to PyPi</dt>
+<dd><p class="first">You might need a <a class="reference external" href="https://pypi.python.org/pypi">PyPI</a> account with appropriate authorization.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>python setup.py sdist bdist_wheel
+twine upload dist/*
+</pre></div>
+</div>
+<p class="last">This should upload the project to <a class="reference external" href="https://pypi.python.org/pypi/datacube/">https://pypi.python.org/pypi/datacube/</a>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Update conda-forge recipe</dt>
+<dd><p class="first">Follow the instrucions under <strong>Updating datacube-feedstock</strong> in the <a class="reference external" href="https://github.com/conda-forge/datacube-feedstock#updating-datacube-feedstock">Datcube Feedstock</a> repository.</p>
+<p>It should involve modifying the version number in the
+<a class="reference external" href="https://github.com/conda-forge/datacube-feedstock/blob/master/recipe/meta.yaml">recipe</a> and updating the SHA hash.
+The hash should be generated from the <code class="docutils literal"><span class="pre">.tar.gz</span></code> mentioned in the <code class="docutils literal"><span class="pre">source</span></code> of the recipe.</p>
+<div class="last highlight-bash"><div class="highlight"><pre><span></span>openssl sha256 &lt;downloaded-datacube-source.tar.gz&gt;
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Update the default version on <cite>raijin</cite></dt>
+<dd><p class="first last">Follow the instructions under <strong>Update default version</strong> in the <a class="reference external" href="https://github.com/GeoscienceAustralia/digitalearthau/tree/develop/modules">Datacube Environment</a> repository.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Notify the community of the release using the Datacube Central mailing list</dt>
+<dd><p class="first">The notifications are sent out using <a class="reference external" href="https://www.mailchimp.com">MailChimp</a>. You might need an invitation from the Geoscience
+Australia account.</p>
+<p class="last">Create a campaign (possibly by replicating one of the existing ones) and change the notes.
+You could send out a test mail to selected accounts before sending it out to the entire DEA
+Beta Users list.</p>
+</dd>
+</dl>
+</li>
+</ol>
 </div>
 
 
@@ -290,10 +326,10 @@ definitions in the Data Cube.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../connect/account.html" class="btn btn-neutral float-right" title="Register" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="git_best_practice.html" class="btn btn-neutral float-right" title="Git Best Practice" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="intro.html" class="btn btn-neutral" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="new_product.html" class="btn btn-neutral" title="Creating New Product" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

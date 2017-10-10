@@ -1,0 +1,433 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Building a Release &mdash; Digital Earth Australia 1.0.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/dea-favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Digital Earth Australia 1.0.0 documentation" href="../index.html"/>
+        <link rel="next" title="DEA Orchestration" href="orchestration.html"/>
+        <link rel="prev" title="Git Best Practice" href="git_best_practice.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/DEA-logo-light.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/glossary.html">Glossary</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Connect</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../connect/account.html">Register</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connect/install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connect/nci_basics.html">Running DEA Manually</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connect/jupyter.html">Jupyter Notebook</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../query/Getting Started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../query/List Products.html">List Products &amp; Measurements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../query/Loading Data.html">Loading data from the datacube</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="new_product.html">Creating New Product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_process.html">Build a version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_process.html#marking-it-stable">Marking it stable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git_best_practice.html">Git Best Practice</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Building a Release</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#update-the-default-version">Update the Default Version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#individual-modules">Individual Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#python-environment-module">Python “Environment” Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creation">Creation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#use">Use</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#data-cube-module">Data Cube Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Creation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Use</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#instance-module">Instance Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#create-custom-instance">Create Custom Instance</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="orchestration.html">DEA Orchestration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements_met.html">DEA Smoke Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements_met.html#Data-load-examples">Data load examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html">Surface Reflectance NBAR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#surface-reflectance-nbar-t">Surface Reflectance NBAR-T</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#pixel-quality">Pixel Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#fractional-cover">Fractional Cover</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Digital Earth Australia</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Building a Release</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/internal/release.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+/* nice headers on first paragraph of info/warning boxes */
+.admonition .first {
+    margin: -12px;
+    padding: 6px 12px;
+    margin-bottom: 12px;
+    color: #fff;
+    line-height: 1;
+    display: block;
+}
+.admonition.warning .first {
+    background: #f0b37e;
+}
+.admonition.note .first {
+    background: #6ab0de;
+}
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+</style>
+<div class="section" id="building-a-release">
+<h1>Building a Release<a class="headerlink" href="#building-a-release" title="Permalink to this headline">¶</a></h1>
+<p>The <code class="docutils literal"><span class="pre">package-release.sh</span></code> script will build all modules for a given datacube version:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">./package-release.sh 1.2.0</span>
+</pre></div>
+</div>
+<p>(Note that it’s currently interactive: each section will ask for confirmation
+of options before starting)</p>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>module load agdc-py3-prod
+datacube system check
+</pre></div>
+</div>
+<p>This will load <code class="docutils literal"><span class="pre">agdc-py3-env/&lt;build_date&gt;</span></code>, <code class="docutils literal"><span class="pre">agdc-py3/&lt;version&gt;</span></code> and
+<code class="docutils literal"><span class="pre">agdc-py3-prod/&lt;version&gt;</span></code> modules</p>
+</div>
+<div class="section" id="update-the-default-version">
+<h2>Update the Default Version<a class="headerlink" href="#update-the-default-version" title="Permalink to this headline">¶</a></h2>
+<p>Once a module has been tested and approved, it can be made the default.</p>
+<p>Edit the <cite>.version</cite> file in the modulefiles directory.</p>
+<p>Eg. For agdc-py2-prod this is: <cite>/g/data/v10/public/modules/modulefiles/agdc-py2-prod/.version</cite></p>
+</div>
+<div class="section" id="individual-modules">
+<h2>Individual Modules<a class="headerlink" href="#individual-modules" title="Permalink to this headline">¶</a></h2>
+<p>You probably don’t have to care about any of the commands below: they are all
+run by the <cite>./package-release.sh</cite> command above.</p>
+<p>But if you want to build modules individually, or know what they are, keep
+reading.</p>
+</div>
+<div class="section" id="python-environment-module">
+<h2>Python “Environment” Module<a class="headerlink" href="#python-environment-module" title="Permalink to this headline">¶</a></h2>
+<p>The Python module contains all Data Cube dependencies and libraries but not the
+Data Cube itself. See [environment.yaml](py-environment/environment.yaml)
+for the list of packages.</p>
+<p>The module version number is the current date in format <code class="docutils literal"><span class="pre">YYYYMMDD</span></code>, as it is a snapshot
+of all of our pip/conda dependencies on that date.</p>
+<div class="section" id="creation">
+<h3>Creation<a class="headerlink" href="#creation" title="Permalink to this headline">¶</a></h3>
+<p>Running this from Raijin is highly recommended as we’ve seen some issues come up when ran from VDI (ghost file locks):</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> modules/py-environment/
+./package-module.sh --help
+./package-module.sh --variant py3 --moduledir /g/data/v10/public/modules
+</pre></div>
+</div>
+<p>This will create a new environment module in <cite>/g/data/v10/public/modules/agdc-py3-env/&lt;date&gt;</cite>.</p>
+</div>
+<div class="section" id="use">
+<h3>Use<a class="headerlink" href="#use" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">module load agdc-py3-env</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="notes">
+<h3>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h3>
+<p>Loading the module might conflict with other python modules you have loaded.</p>
+<p>The module will prevent conflicts with locally installed python packages by changing <code class="docutils literal"><span class="pre">PYTHONUSERBASE</span></code> for each release;
+<code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--user</span> <span class="pre">...</span></code> will store packages under <code class="docutils literal"><span class="pre">~/.digitalearthau</span></code>.</p>
+</div>
+</div>
+<div class="section" id="data-cube-module">
+<h2>Data Cube Module<a class="headerlink" href="#data-cube-module" title="Permalink to this headline">¶</a></h2>
+<p>The data cube module contains the Open Data Cube library. It is built against a
+specific Python envionment module (ie. frozen to specific versions of each of
+our dependencies)</p>
+<div class="section" id="id1">
+<h3>Creation<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> modules/agdc
+./package-module.sh --help
+    Usage: ./package-module.sh --env agdc-py2-env/anaconda2-2.5.0 --moduledir /g/data/v10/public/modules --version <span class="m">1</span>.1.9
+      Options:
+        --env agdc_env_module     Python module to use.
+        --moduledir module_dir    Destination module path.
+        --version version         GitHub tag to use. ie. <span class="s1">&#39;datacube-&lt;version&gt;&#39;</span>. Default is <span class="s1">&#39;&lt;HEAD&gt;&#39;</span>
+
+./package-module.sh --env agdc-py3-env/21121221 --moduledir /g/data/v10/public/modules
+</pre></div>
+</div>
+<p>This will create a new data cube module in
+<code class="docutils literal"><span class="pre">/g/data/v10/public/modules/agdc-py3/&lt;version&gt;</span></code>. Where <code class="docutils literal"><span class="pre">&lt;version&gt;</span></code> is the
+version of the latest code in
+<a class="reference external" href="https://github.com/data-cube/agdc-v2/tree/develop">agdc-v2/develop</a> (e.g.  1.1.6+12.abcdefgh).</p>
+<p>To specify a particular version, use the version number portion of the GitHub tag.
+Specifying <code class="docutils literal"><span class="pre">--version</span> <span class="pre">1.1.9</span></code> will use the <a class="reference external" href="https://github.com/data-cube/agdc-v2/tree/datacube-1.1.9">datacube-1.1.9</a> tag.</p>
+</div>
+<div class="section" id="id2">
+<h3>Use<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">module load agdc-py3</span>
+</pre></div>
+</div>
+<p>This will load <code class="docutils literal"><span class="pre">agdc-py3-env/21121221</span></code> and <code class="docutils literal"><span class="pre">agdc-py3/&lt;version&gt;</span></code> modules</p>
+</div>
+</div>
+<div class="section" id="instance-module">
+<h2>Instance Module<a class="headerlink" href="#instance-module" title="Permalink to this headline">¶</a></h2>
+<p>This module combines a Data Cube module with specific config (prod, test, dev…)</p>
+<p>It includes a config file, which it specifies by setting the
+<code class="docutils literal"><span class="pre">DATACUBE_CONFIG_PATH</span></code> environment variable.</p>
+<p>The version number matches the datacube version.</p>
+<div class="section" id="create-custom-instance">
+<h3>Create Custom Instance<a class="headerlink" href="#create-custom-instance" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> modules/agdc-instances
+./package-instance-module.sh  --help
+</pre></div>
+</div>
+<p>See the example and directions in the above help output.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="orchestration.html" class="btn btn-neutral float-right" title="DEA Orchestration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="git_best_practice.html" class="btn btn-neutral" title="Git Best Practice" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Geoscience Australia.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

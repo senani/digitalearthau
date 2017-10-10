@@ -1,0 +1,2761 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>DEA Smoke Test &mdash; Digital Earth Australia 1.0.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/dea-favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Digital Earth Australia 1.0.0 documentation" href="../index.html"/>
+        <link rel="next" title="Surface Reflectance NBAR" href="../data/data.html"/>
+        <link rel="prev" title="DEA Orchestration" href="orchestration.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/DEA-logo-light.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/glossary.html">Glossary</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Connect</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../connect/account.html">Register</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connect/install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connect/nci_basics.html">Running DEA Manually</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connect/jupyter.html">Jupyter Notebook</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../query/Getting Started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../query/List Products.html">List Products &amp; Measurements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../query/Loading Data.html">Loading data from the datacube</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="new_product.html">Creating New Product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_process.html">Build a version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_process.html#marking-it-stable">Marking it stable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git_best_practice.html">Git Best Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Building a Release</a></li>
+<li class="toctree-l1"><a class="reference internal" href="orchestration.html">DEA Orchestration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">DEA Smoke Test</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Patterns-of-Use:">Patterns of Use:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Remote-Datacube">Remote Datacube</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Test-for-native-projection-query-on-non-standard-rainfall-product">Test for native projection query on non standard rainfall product</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Search-for-dataset-by-location-example">Search for dataset by location example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Plot-WOfS">Plot WOfS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#GQA-based-search">GQA based search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Confirm-Dashboard-Works">Confirm Dashboard Works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Search-with-sources">Search with sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Refine-search-using-sources">Refine search using sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Grid-Cell-count-of-timeslices">Grid Cell count of timeslices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Query-products-by-time-range---return-count">Query products by time range - return count</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Count-for-single-query">Count for single query</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Count-products-through-time">Count products through time</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#Data-load-examples">Data load examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Load-SRTM">Load SRTM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Load-Radiometrics">Load Radiometrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Load-NBAR">Load NBAR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#MODIS-Landsat-time-series">MODIS Landsat time series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Load-rainfall">Load rainfall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#1.-Routine-national-scale-product-generation.-Specifically,-Version-2-will-include-national-collections-of:">1. Routine national scale product generation. Specifically, Version 2 will include national collections of:</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Water-Observations-from-Space.">Water Observations from Space.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Multiband-file-or-subdataset-support-example">Multiband file or subdataset support example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Plot-MODIS-timeseries">Plot MODIS timeseries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Query,-load-and-plot-NBART-example">Query, load and plot NBART example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Query,-load-and-plot-WoFS-example">Query, load and plot WoFS example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Construction-of-the-Burdekin-Dam-completed-in-1987">Construction of the Burdekin Dam completed in 1987</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Landsat-Fractional-Cover.">Landsat Fractional Cover.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Pixel-Quality">Pixel Quality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NDVI">NDVI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#CLI-Dataset-info,-search">CLI Dataset info, search</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#2.-A-user-should-be-able-to-interact-with-these-collections-through-a-web-browser-including:">2. A user should be able to interact with these collections through a web browser including:</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Spatio-temporal-(statistical)-summaries-that-would-allow-users-to-easily-answer-questions-such-as:">Spatio-temporal (statistical) summaries that would allow users to easily answer questions such as:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#3.-Earth-Observation-(EO)-scientists-and-allied-domain-specialists-will-be-able-to-undertake-exploratory-data-analysis.-In-general-this-would-mean-a-user-will-be-able-to-easily-retrieve,-investigate,-visualise,-develop-algorithms,-test,-iterate,-visualise-results-and-interpret-them-in-the-context-of-other-spatio-temporal-datasets.">3. Earth Observation (EO) scientists and allied domain specialists will be able to undertake exploratory data analysis. In general this would mean a user will be able to easily retrieve, investigate, visualise, develop algorithms, test, iterate, visualise results and interpret them in the context of other spatio-temporal datasets.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Input-data">Input data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Output-Products">Output Products</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Technical-Requirements">Technical Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#A-data-retrieval-mechanism-that-provides-the-ability-to:">A data retrieval mechanism that provides the ability to:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Other-Requirements">Other Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#The-Project-Plan-will-be-supported-by:">The Project Plan will be supported by:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Data</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html">Surface Reflectance NBAR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#surface-reflectance-nbar-t">Surface Reflectance NBAR-T</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#pixel-quality">Pixel Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#fractional-cover">Fractional Cover</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Digital Earth Australia</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>DEA Smoke Test</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/internal/requirements_met.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #303F9F;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #D84315;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 8ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #cfcfcf;
+    border-radius: 2px;
+    background: #f7f7f7;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.pngmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-bold { font-weight: bold; }
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+/* nice headers on first paragraph of info/warning boxes */
+.admonition .first {
+    margin: -12px;
+    padding: 6px 12px;
+    margin-bottom: 12px;
+    color: #fff;
+    line-height: 1;
+    display: block;
+}
+.admonition.warning .first {
+    background: #f0b37e;
+}
+.admonition.note .first {
+    background: #6ab0de;
+}
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+</style>
+<div class="section" id="DEA-Smoke-Test">
+<h1>DEA Smoke Test<a class="headerlink" href="#DEA-Smoke-Test" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Summary">
+<h2>Summary<a class="headerlink" href="#Summary" title="Permalink to this headline">¶</a></h2>
+<p>A great deal of work has been done by AGDC partners to outline the key
+requirements and technical approach for the next version of the AGDC
+(Version 2). For example, the previous Technical Working Group held a
+workshop that resulted in a draft Preliminary Design Report that has
+subsequently been translated to the AGDC wiki ( <a class="reference external" href="http://datacube.org.au">http://datacube.org.au</a>
+). Similarly, prototype functionality has been built to test and verify
+key concepts for a range of components including the netCDF-4 based
+Storage Units that are managed under NCIfs NERDIP data management,
+publishing and general access to data protocols; a Generalised Data
+Framework (GDF) to access the multidimensional Storage Units; and the
+AGDC Analytic Engine adding support for interactive Exploratory Data
+Analysis (EDA).</p>
+<p>The following requirements for Version 2 have been mainly based off this
+thinking and documentation. It is important to note that these
+requirements are for the current development effort running through till
+June 30, 2016. They are designed to guide and define the next step in
+the development of the AGDC, not as the final destination.</p>
+<p>Approved Requirements for AGDC Version 2</p>
+<p>These requirements were formally approved by the AGDC Programme Board at
+its meeting on 10 December, 2015.</p>
+</div>
+<div class="section" id="Patterns-of-Use:">
+<h2>Patterns of Use:<a class="headerlink" href="#Patterns-of-Use:" title="Permalink to this headline">¶</a></h2>
+<p>AGDC Version 2 will support the following patterns of use.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>%matplotlib inline
+from matplotlib import pyplot as plt
+import datacube
+from datacube.model import Range
+from datetime import datetime
+from datacube.utils import geometry
+from datacube.storage import masking
+from datacube.storage.masking import mask_invalid_data
+import pandas
+import xarray
+import numpy
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>import folium
+from IPython.display import display
+import geopandas
+from shapely.geometry import mapping
+from shapely.geometry import MultiPolygon
+import rasterio
+import shapely.geometry
+import shapely.ops
+from functools import partial
+import pyproj
+#from datacube.model import datacube.utils.geometry.CRS
+import time
+from dateutil import tz
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>notebook_start_dt = datetime.now()
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>dc = datacube.Datacube(app=&#39;requirements-met&#39;)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>datacube.__version__
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>datacube.__path__
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>!module list
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>!datacube system check
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Remote-Datacube">
+<h2>Remote Datacube<a class="headerlink" href="#Remote-Datacube" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>from datacube import Datacube
+remotedc = Datacube(config=&#39;/home/547/jps547/.aws_datacube.conf&#39;)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>from geopy.geocoders import Nominatim
+geolocator = Nominatim()
+location = geolocator.geocode(&quot;Launceston, Tasmania&quot;)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>location
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>query = {
+    &#39;lat&#39;: (-41.82, -41.81),
+    &#39;lon&#39;: (146.71, 146.72),
+}
+
+wofs = remotedc.load(product=&#39;wofs_modified_albers&#39;, group_by=&#39;solar_day&#39;, **query)
+
+wofs.water.flags_definition
+pandas.DataFrame.from_dict(masking.get_flags_def(wofs), orient=&#39;index&#39;)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span># Throughout this doc we use print() manually rather than returning the object as an output.
+# This is to minimise memory usage: avoid storing a reference to the data array itself in Jupyter&#39;s output history.
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>print(wofs)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>wofs.water.plot(col=&#39;time&#39;, col_wrap=5, robust=True)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>remotedc.list_products()
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>water = masking.make_mask(wofs, result=&#39;clear_wet&#39;)
+
+water.water.plot(col=&#39;time&#39;, col_wrap=5, robust=True, cmap=&#39;gray&#39;)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>water.water.sum(&#39;time&#39;).plot()
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>results = remotedc.index.datasets.search_eager(product=&#39;wofs_modified_albers&#39;)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>len(results)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>results[0].metadata_doc
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>results = None
+water = None
+wofs = None
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Test-for-native-projection-query-on-non-standard-rainfall-product">
+<h2>Test for native projection query on non standard rainfall product<a class="headerlink" href="#Test-for-native-projection-query-on-non-standard-rainfall-product" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>query = {
+    &#39;product&#39;: &#39;bom_rainfall_grids&#39;,
+    &#39;crs&#39;: &#39;EPSG:3577&#39;,
+    &#39;time&#39;: (&#39;1987-10-01&#39;, &#39;1990-10-01&#39;),
+    &#39;x&#39;: (349388.9787330463, 358497.9246628304),
+    &#39;y&#39;: (-2379960.5883129314, -2375926.544118764),
+    &#39;output_crs&#39;: &#39;EPSG:3577&#39;,
+    &#39;resolution&#39;: (-25, 25),
+    &#39;resampling&#39;: &#39;cubic&#39;,
+}
+
+rainfall_projected = dc.load(**query)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>print(rainfall_projected)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>rainfall_projected = None
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Search-for-dataset-by-location-example">
+<h2>Search for dataset by location example<a class="headerlink" href="#Search-for-dataset-by-location-example" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span># Was replaced by stacked file
+# ds_uri = &#39;file:///g/data/rs0/datacube/002/LS5_TM_NBART/-7_-30/LS5_TM_NBART_3577_-7_-30_20030711011529000000_v1488078639.nc&#39;
+
+ds_uri = &#39;file:///g/data/rs0/datacube/002/LS5_TM_NBAR/13_-35/LS5_TM_NBAR_3577_13_-35_2009_v1496827052.nc&#39;
+datasets_in_stack = list(dc.index.datasets.get_datasets_for_location(uri=ds_uri))
+
+# If restacked, there will be a newer file (with higher vXXX version suffix)
+# So this one shouldn&#39;t change:
+assert len(datasets_in_stack) == 74
+assert set(d.type.name for d in datasets_in_stack) == {&#39;ls5_nbar_albers&#39;}
+print(repr(datasets_in_stack[0]))
+
+datasets_in_stack = None
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>def chop_to_globe(geom):
+    to_crs = geometry.CRS(&quot;EPSG:4326&quot;)
+    left_of_dt = geometry.line(
+        [
+            (180 - 1.0e-8, -90),
+            (180 - 1.0e-8, 90)
+        ],
+        crs=to_crs
+    ).to_crs(geom.crs)
+
+    right_of_dt = geometry.line(
+        [
+            (-180 + 1.0e-8, 90),
+            (-180 + 1.0e-8, -90)
+        ],
+        crs=to_crs
+    ).to_crs(geom.crs)
+
+    chopper = geometry.polygon(
+        left_of_dt.points + right_of_dt.points + [left_of_dt.points[0]],
+        crs=geom.crs
+    )
+    return geom.intersection(chopper)
+
+def datasets_union_clip180(dss):
+    thing = geometry.unary_union(ds.extent for ds in dss)
+    return chop_to_globe(thing).to_crs(geometry.CRS(&#39;EPSG:4326&#39;))
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>def datasets_union(dss):
+    thing = geometry.unary_union(ds.extent for ds in dss)
+    print(thing.crs)
+    return thing.to_crs(geometry.CRS(&#39;EPSG:4326&#39;))
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>import random
+def plot_folium(shapes):
+
+    mapa = folium.Map(location=[-30,150], zoom_start=4)
+    colors=[&#39;#00ff00&#39;, &#39;#ff0000&#39;, &#39;#00ffff&#39;, &#39;#ffffff&#39;, &#39;#000000&#39;, &#39;#ff00ff&#39;]
+    for shape in shapes:
+        style_function = lambda x: {&#39;fillColor&#39;: &#39;#000000&#39; if x[&#39;type&#39;] == &#39;Polygon&#39; else &#39;#00ff00&#39;,
+                                    &#39;color&#39; : random.choice(colors)}
+        poly = folium.features.GeoJson(mapping(shape), style_function=style_function)
+        mapa.add_child(poly)
+    display(mapa)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>def plot_rgb(image, fake_saturation):
+    image = mask_invalid_data(image)
+    rgb = image.to_array(dim=&#39;color&#39;)
+    rgb = rgb.transpose(*(rgb.dims[1:] + rgb.dims[:1]))  # make &#39;color&#39; the last dimension
+    rgb = rgb.where((rgb &lt;= fake_saturation).all(dim=&#39;color&#39;))  # mask out pixels where any band is &#39;saturated&#39;
+    rgb /= fake_saturation  # scale to [0, 1] range for imshow
+
+    rgb.plot.imshow(
+        x=image.crs.dimensions[1],
+        y=image.crs.dimensions[0],
+        col=&#39;time&#39;,
+        col_wrap=5,
+        add_colorbar=False
+    )
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Plot-WOfS">
+<h2>Plot WOfS<a class="headerlink" href="#Plot-WOfS" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>plot_folium([
+    datasets_union(
+        remotedc.index.datasets.search_eager(product=&#39;ls7_wofs_pq_scene&#39;, )
+    )
+])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="GQA-based-search">
+<h2>GQA based search<a class="headerlink" href="#GQA-based-search" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span># Get NBAR where source level1 matches a certain quality
+
+source_filter = dict(product=&#39;ls8_level1_scene&#39;, gqa_cep90=(-0.25, 0.25))
+
+query = datacube.api.query.Query(
+    product=&#39;ls8_nbar_albers&#39;,
+    time=(&#39;2015-01-01&#39;, &#39;2015-02-01&#39;),
+    source_filter=source_filter
+)
+data = dc.index.datasets.search_eager(**query.search_terms)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>len(data)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>data[0]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Confirm-Dashboard-Works">
+<h2>Confirm Dashboard Works<a class="headerlink" href="#Confirm-Dashboard-Works" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span># Dashboard view of current production status per product with Spatial, Tabular and Reference views
+#!/g/data/v10/public/run-dash.sh
+#!firefox http://127.0.0.1:8080/
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Search-with-sources">
+<h2>Search with sources<a class="headerlink" href="#Search-with-sources" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>(
+     dc.index.datasets.get(&#39;11228944-42f6-4b9f-a434-73e0c7f9bde2&#39;, include_sources=True)
+).metadata_doc[&#39;lineage&#39;][&#39;source_datasets&#39;][&#39;0&#39;][&#39;lineage&#39;][&#39;source_datasets&#39;][&#39;level1&#39;][&#39;gqa&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Refine-search-using-sources">
+<h2>Refine search using sources<a class="headerlink" href="#Refine-search-using-sources" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>from datacube.model import Range
+results=[]
+for product in [&#39;ls5_level1_scene&#39;]:
+    results.append(dc.index.datasets.search_eager(
+        product=product,
+        sat_path = Range(91,92),
+        sat_row = Range(88,90),
+    ))
+print(len(results))
+print(str(results[0][0].local_path))
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>from datacube.model import Range
+time_range = Range(datetime(2013, 10, 1), datetime(2014, 1, 1))
+results = dc.index.datasets.search_eager(
+    product=&#39;ls8_nbar_albers&#39;,
+    time=time_range,
+    source_filter=dict(
+        product=&#39;ls8_level1_scene&#39;,
+        sat_path = Range(87,116),
+        sat_row = Range(67,91),
+    )
+)
+print(len(results))
+print(results[0])
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>results[0].metadata_doc
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>results = None
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Grid-Cell-count-of-timeslices">
+<h2>Grid Cell count of timeslices<a class="headerlink" href="#Grid-Cell-count-of-timeslices" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>product = &#39;ls8_nbar_albers&#39;
+
+gw = datacube.api.GridWorkflow(dc.index, product=product)
+cells = gw.list_cells(product=product, time=(&#39;2016-01-01&#39;, &#39;2017-01-01&#39;))
+
+for idx, data in cells.items():
+    print(idx, data.shape[0])
+
+cells = None
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Query-products-by-time-range---return-count">
+<h2>Query products by time range - return count<a class="headerlink" href="#Query-products-by-time-range---return-count" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Count-for-single-query">
+<h3>Count for single query<a class="headerlink" href="#Count-for-single-query" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span># Count of single query
+product = &#39;ls7_nbar_scene&#39;
+start_time = time.time()
+count = dc.index.datasets.count(
+    product=product,
+    time=Range(datetime(2000, 1, 1), datetime(2001, 1, 1))
+)
+print(&quot;Single product {} count of {} in {} seconds ---&quot;.format(product, count, time.time() - start_time))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Count-products-through-time">
+<h3>Count products through time<a class="headerlink" href="#Count-products-through-time" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>start_time = time.time()
+
+results = dc.index.datasets.count_by_product_through_time(
+    &#39;1 year&#39;,
+    platform=&#39;LANDSAT_7&#39;,
+    time=Range(
+        datetime(2000, 1, 1),
+        datetime(2003, 1, 1), #, tzinfo=tz.tzutc()),
+    )
+)
+
+start_product_time = time.time()
+for product, series in results:
+    print(&#39;{}: {} seconds&#39;.format(product.name, time.time() - start_product_time))
+    for timerange, count in series:
+        print(&#39;\t{}: {}&#39;.format(timerange[0], count))
+    start_product_time = time.time()
+
+print(&quot;--- %s seconds ---&quot; % (time.time() - start_time))
+
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Data-load-examples">
+<h1>Data load examples<a class="headerlink" href="#Data-load-examples" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>dc.list_measurements()
+</pre></div>
+</div>
+</div>
+<div class="section" id="Load-SRTM">
+<h2>Load SRTM<a class="headerlink" href="#Load-SRTM" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>query = {
+    &#39;lat&#39;: (-20.61, -20.66),
+    &#39;lon&#39;: (147.0, 147.05)
+}
+
+srtm_dem1sv1_0 = dc.load(product=&#39;srtm_dem1sv1_0&#39;, **query)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>srtm_dem1sv1_0.dem.plot()
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>srtm_dem1sv1_0 = None
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Load-Radiometrics">
+<h2>Load Radiometrics<a class="headerlink" href="#Load-Radiometrics" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>query = {
+    &#39;lat&#39;: (-20.61, -20.66),
+    &#39;lon&#39;: (147.0, 147.05),
+    &#39;measurements&#39;:[&#39;rad_k_equiv_conc_filtered&#39;,&#39;rad_th_equiv_conc_filtered&#39;,&#39;rad_u_equiv_conc_filtered&#39;]
+}
+
+# Gamma ray no longer available at indexed location?
+try:
+    radiometrics = dc.load(product=&#39;gamma_ray&#39;, **query)
+
+    # Previously: array(3.2456936836242676)
+    print(radiometrics.rad_u_equiv_conc_filtered.max())
+
+
+    print(radiometrics)
+    plot_rgb(radiometrics, 20)
+
+except Exception as e:
+    print(repr(e))
+
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+
+<span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>radiometrics = None
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Load-NBAR">
+<h2>Load NBAR<a class="headerlink" href="#Load-NBAR" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>nbar = dc.load(
+    product=&#39;ls5_nbart_albers&#39;,
+    y=(-18.7896944682,-18.7896944684),
+    x=(146.073501475,146.073501476)
+)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>print(nbar)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>nbar = None
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="MODIS-Landsat-time-series">
+<h2>MODIS Landsat time series<a class="headerlink" href="#MODIS-Landsat-time-series" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>modis = dc.load(
+    product=&#39;modis_mcd43a4_tile&#39;,
+    longitude=132.1,
+    latitude=-27.5,
+    time=(&#39;2000-1-1&#39;, &#39;2000-5-1&#39;),
+    resolution=(-500,500),
+    # measurements=(&#39;Nadir_Reflectance_Band1&#39;,&#39;Nadir_Reflectance_Band4&#39;,&#39;Nadir_Reflectance_Band3&#39;),
+)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span># Josh archived all of this product.
+#modis.Nadir_Reflectance_Band1.min()
+assert len(modis) == 0
+
+print(modis)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>modis = None
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Load-rainfall">
+<h2>Load rainfall<a class="headerlink" href="#Load-rainfall" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>rain = dc.load(product=&#39;bom_rainfall_grids&#39;, longitude=132.1, latitude=-27.5, time=(&#39;2000-1-1&#39;, &#39;2001-1-1&#39;))
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>rain.rainfall.sel(longitude=132.1, latitude=-27.500001, method=&#39;nearest&#39;).plot()
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>rain = None
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="1.-Routine-national-scale-product-generation.-Specifically,-Version-2-will-include-national-collections-of:">
+<h2>1. Routine national scale product generation. Specifically, Version 2 will include national collections of:<a class="headerlink" href="#1.-Routine-national-scale-product-generation.-Specifically,-Version-2-will-include-national-collections-of:" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Water-Observations-from-Space.">
+<h3>Water Observations from Space.<a class="headerlink" href="#Water-Observations-from-Space." title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>dc.index.datasets.search_eager(product=&#39;srtm_dem1sv1_0&#39;)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>rain_ds = dc.index.datasets.search_eager(product=&#39;bom_rainfall_grids&#39;, time=Range(datetime(2001, 1, 1), datetime(2002, 1, 1)))
+
+datasets_union_clip180(rain_ds).to_crs(geometry.CRS(&#39;EPSG:3577&#39;))
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>rain_ds = None
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>plot_folium([
+    datasets_union_clip180(
+        dc.index.datasets.search_eager(
+            product=&#39;bom_rainfall_grids&#39;,
+            time=Range(datetime(2001, 1, 1), datetime(2002, 1, 1))
+        )
+    )
+])
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>plot_folium([
+    datasets_union(
+        dc.index.datasets.search_eager(
+            product=&#39;srtm_dem1sv1_0&#39;,
+            time=Range(datetime(2001, 1, 1), datetime(2020, 1, 1))
+        )
+    )
+])
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span># Josh archived all of this
+modis_mcd43a4 = dc.load(
+    product=&#39;modis_mcd43a4_tile&#39;,
+    x=(145,145.1),
+    y=(-38.0,-38.1),
+    resolution=(-500,500),
+    time=(&#39;2000-01-01&#39;, &#39;2001-01-01&#39;),
+    measurements=(
+        &#39;Nadir_Reflectance_Band1&#39;,
+        &#39;Nadir_Reflectance_Band4&#39;,
+        &#39;Nadir_Reflectance_Band3&#39;
+    )
+)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>print(modis_mcd43a4)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>modis_mcd43a4 = None
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Multiband-file-or-subdataset-support-example">
+<h3>Multiband file or subdataset support example<a class="headerlink" href="#Multiband-file-or-subdataset-support-example" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>%%script false
+# Modis disabled. Josh archived all of this
+
+modis_mcd43a1 = dc.load(
+    product=&#39;modis_mcd43a1_tile&#39;,
+    x=(145,145.1),
+    y=(-38.0,-38.1),
+    resolution=(-500,500),
+    time=(&#39;2001-01-01&#39;, &#39;2001-01-01&#39;),
+    measurements=(
+        &#39;BRDF_Albedo_Parameters_Band1&#39;,
+        &#39;BRDF_Albedo_Parameters_Band2&#39;,
+        &#39;BRDF_Albedo_Parameters_Band3&#39;
+    )
+)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+
+<span></span># modis_mcd43a1.BRDF_Albedo_Parameters_Band1[0][1]
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span># plot_rgb(modis_mcd43a1, 1000)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Plot-MODIS-timeseries">
+<h3>Plot MODIS timeseries<a class="headerlink" href="#Plot-MODIS-timeseries" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span># plot_rgb(modis_mcd43a4, 3000)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span># plot_folium([datasets_union(dc.index.datasets.search_eager(product=&#39;ls5_nbart_albers&#39;, time=Range(datetime(1986, 1, 1), datetime(1988, 1, 1))))])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Query,-load-and-plot-NBART-example">
+<h3>Query, load and plot NBART example<a class="headerlink" href="#Query,-load-and-plot-NBART-example" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>query = {
+    &#39;time&#39;: (&#39;1987-01-01&#39;, &#39;1988-01-01&#39;),
+    &#39;lat&#39;: (-35.2, -35.4),
+    &#39;lon&#39;: (149.0, 149.2),
+}
+
+nbart = dc.load(
+    product=&#39;ls5_nbart_albers&#39;,
+    measurements=[&#39;swir2&#39;, &#39;nir&#39;, &#39;red&#39;],
+    group_by=&#39;solar_day&#39; ,
+    **query
+)
+
+plot_rgb(nbart, 3500)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>nbart = None
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Query,-load-and-plot-WoFS-example">
+<h3>Query, load and plot WoFS example<a class="headerlink" href="#Query,-load-and-plot-WoFS-example" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="Construction-of-the-Burdekin-Dam-completed-in-1987">
+<h4>Construction of the Burdekin Dam completed in 1987<a class="headerlink" href="#Construction-of-the-Burdekin-Dam-completed-in-1987" title="Permalink to this headline">¶</a></h4>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>%%script false
+# Disabled: WOfS has been removed.
+
+query = {
+    &#39;time&#39;: (&#39;1986-01-01&#39;, &#39;1988-01-01&#39;),
+    &#39;lat&#39;: (-20.61, -20.67),
+    &#39;lon&#39;: (147.0, 147.15),
+}
+
+wofs = dc.load(product=&#39;wofs_albers&#39;, group_by=&#39;solar_day&#39;, **query)
+wofs
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>%%script false
+wofs.water.flags_definition
+pandas.DataFrame.from_dict(masking.get_flags_def(wofs), orient=&#39;index&#39;)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>%%script false
+
+water = masking.make_mask(wofs, result=&#39;clear_wet&#39;)
+water.water.plot(col=&#39;time&#39;, col_wrap=5, robust=True, cmap=&#39;gray&#39;)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>%%script false
+# Number of clear water pixels - no group by solar day to exclude scene overlap
+
+water_sum = water.water.sum(&#39;time&#39;).where(water.water.sum(&#39;time&#39;)!= 0)
+water_sum.plot(cmap=&#39;rainbow&#39;, robust=True)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>wofs = None
+water = None
+water_sum = None
+</pre></div>
+</div>
+</div>
+<p>Intertidal Characterisation.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span># incomplete for v2 - water classification only - confidence metrics continue to be a work in progress
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Landsat-Fractional-Cover.">
+<h3>Landsat Fractional Cover.<a class="headerlink" href="#Landsat-Fractional-Cover." title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>plot_folium([
+    datasets_union(
+        dc.index.datasets.search_eager(
+            product=&#39;ls5_fc_albers&#39;,
+            time=Range(datetime(1987, 1, 1), datetime(1988, 1, 1))
+        )
+    )
+])
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span># Query, load and plot Fractional Cover example
+
+query = {
+    &#39;time&#39;: (&#39;1987-01-01&#39;, &#39;1988-01-01&#39;),
+    &#39;lat&#39;: (-35.2, -35.4),
+    &#39;lon&#39;: (149.0, 149.2),
+}
+
+fractional_cover = dc.load(
+    product=&#39;ls5_fc_albers&#39;,
+    measurements=[&#39;BS&#39;, &#39;PV&#39;, &#39;NPV&#39;],
+    group_by=&#39;solar_day&#39; ,
+    **query
+)
+
+plot_rgb(fractional_cover, 100)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>fractional_cover = None
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Pixel-Quality">
+<h3>Pixel Quality<a class="headerlink" href="#Pixel-Quality" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>plot_folium([
+    datasets_union(
+        dc.index.datasets.search_eager(
+            product=&#39;ls5_pq_albers&#39;,
+            time=Range(datetime(1987, 1, 1), datetime(1988, 1, 1))
+        )
+    )
+])
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>plot_folium([
+    datasets_union(
+        dc.index.datasets.search_eager(
+            product=&#39;ls7_nbar_albers&#39;,
+           time=Range(datetime(2004,2, 1), datetime(2004, 2, 16))
+        )
+    )
+])
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>pq = dc.load(product=&#39;ls5_pq_albers&#39;, group_by=&#39;solar_day&#39;, **query)
+pq.pixelquality.plot(col=&#39;time&#39;, col_wrap=5, robust=True)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span># Number of clear pixels based on ga_good_pixels default - no group by solar day to exclude scene overlap
+clear_pixels = masking.make_mask(pq, ga_good_pixel=True)
+clear_pixels.pixelquality.sum(&#39;time&#39;).plot(cmap=&#39;rainbow&#39;)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>clear_pixels = None
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="NDVI">
+<h3>NDVI<a class="headerlink" href="#NDVI" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>plot_folium([
+    datasets_union(
+        dc.index.datasets.search_eager(
+            product=&#39;ls5_ndvi_albers&#39;,
+            time=Range(datetime(1987,1, 1), datetime(1988, 1, 1))
+        )
+    )
+])
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>#ndvi = dc.load(product=&#39;ls5_ndvi_albers&#39;, group_by=&#39;solar_day&#39;, **query )
+#ndvi = mask_invalid_data(ndvi)
+good_pixels = masking.make_mask(pq, ga_good_pixel=True)
+#ndvi = ndvi.where(good_pixels.pixelquality)
+#ndvi.ndvi.plot(col=&#39;time&#39;, col_wrap=5, robust=True, cmap=&#39;Greens&#39;)
+print(good_pixels)
+</pre></div>
+</div>
+</div>
+<p>Landsat Surface reflectance statistical summaries:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Seasonal</span> <span class="n">medians</span><span class="p">;</span> <span class="ow">and</span>
+</pre></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>#ndvi.ndvi.median(dim=&#39;time&#39;).plot(robust=True, cmap=&#39;YlGn&#39;)
+</pre></div>
+</div>
+</div>
+<p>Most-up-to-date observation.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span># Most recent pixel mosaic function from cloud screen NBAR
+#%run /g/data/v10/public/agdcv2_requirements/latest_pixel/agdc_pixel/pixel_test.py &#39;60/(15,-40)&#39;
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>#my_data
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>#my_data[15, -40].swir1.plot(cmap=&#39;rainbow&#39;, robust=True)
+</pre></div>
+</div>
+</div>
+<p>In some cases, these collections may be virtual, i.e. they are not
+pre-computed but rather computed as they are needed.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>nbar = dc.load(product=&#39;ls5_nbar_albers&#39;, group_by=&#39;solar_day&#39;, **query )
+nbar = nbar.where(good_pixels.pixelquality)
+ndvi_on_the_fly = (nbar.nir-nbar.red)/(nbar.nir+nbar.red)*10000
+ndvi_on_the_fly.median(dim=&#39;time&#39;).plot(robust=True, cmap=&#39;YlGn&#39;)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span># diff = (ndvi_on_the_fly.median(dim=&#39;time&#39;) - ndvi.ndvi.median(dim=&#39;time&#39;))
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span># diff.plot(robust=True) #error at level of noise due to *10000 scaling of floats
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="CLI-Dataset-info,-search">
+<h3>CLI Dataset info, search<a class="headerlink" href="#CLI-Dataset-info,-search" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>! datacube dataset info 92d414d0-3d82-4702-9e24-4af6e49d95b5
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>! datacube dataset info -f csv 92d414d0-3d82-4702-9e24-4af6e49d95b5
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>! datacube dataset search \
+            product=ls8_level1_scene \
+           &quot;time in range (2015-3-2, 2015-3-19)&quot; \
+            sat_path=112 \
+            sat_row=75
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="2.-A-user-should-be-able-to-interact-with-these-collections-through-a-web-browser-including:">
+<h2>2. A user should be able to interact with these collections through a web browser including:<a class="headerlink" href="#2.-A-user-should-be-able-to-interact-with-these-collections-through-a-web-browser-including:" title="Permalink to this headline">¶</a></h2>
+<p> Clicking on a pixel and displaying a time series (i.e., pixel
+drill).</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span># See Steven Ackerley / Andrew Hicks
+# NCML through THREDDS
+#!/g/data/v10/public/agdcv2-pixeldrill/pixeldrill -p ls5_nbart_albers
+
+#Webpage to define it
+!firefox http://dapds00.nci.org.au/thredds/ncss/grid/uc0/rs0_dev/all_the_ncmls/LS5_TM_FC/ncml/LS5_TM_FC_13_-43.ncml/pointDataset.html
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>#CSV URL for a drill
+!firefox http://dapds00.nci.org.au/thredds/ncss/uc0/rs0_dev/all_the_ncmls/LS5_TM_FC/ncml/LS5_TM_FC_13_-43.ncml?var=BS&amp;var=NPV&amp;var=PV&amp;latitude=-38.13&amp;longitude=147.17&amp;time_start=1986-08-21T23%3A18%3A40Z&amp;time_end=2011-11-14T23%3A45%3A07Z&amp;accept=csv
+
+</pre></div>
+</div>
+</div>
+<div class="section" id="Spatio-temporal-(statistical)-summaries-that-would-allow-users-to-easily-answer-questions-such-as:">
+<h3>Spatio-temporal (statistical) summaries that would allow users to easily answer questions such as:<a class="headerlink" href="#Spatio-temporal-(statistical)-summaries-that-would-allow-users-to-easily-answer-questions-such-as:" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">How</span> <span class="n">frequently</span> <span class="n">was</span> <span class="n">water</span> <span class="n">observed</span> <span class="n">over</span> <span class="n">catchment</span> <span class="n">y</span> <span class="n">during</span> <span class="n">time</span> <span class="n">period</span> <span class="n">x</span><span class="p">;</span> <span class="ow">and</span>
+</pre></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span># not this time - you mean wofs right? - see example below for when the data is available
+</pre></div>
+</div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span>What was the surface reflectance for area x at time y?
+</pre></div>
+</div>
+<p>Link to <a class="reference external" href="zonal-stats-pilbara.ipynb">stats within a polygon</a></p>
+</div>
+</div>
+<div class="section" id="3.-Earth-Observation-(EO)-scientists-and-allied-domain-specialists-will-be-able-to-undertake-exploratory-data-analysis.-In-general-this-would-mean-a-user-will-be-able-to-easily-retrieve,-investigate,-visualise,-develop-algorithms,-test,-iterate,-visualise-results-and-interpret-them-in-the-context-of-other-spatio-temporal-datasets.">
+<h2>3. Earth Observation (EO) scientists and allied domain specialists will be able to undertake exploratory data analysis. In general this would mean a user will be able to easily retrieve, investigate, visualise, develop algorithms, test, iterate, visualise results and interpret them in the context of other spatio-temporal datasets.<a class="headerlink" href="#3.-Earth-Observation-(EO)-scientists-and-allied-domain-specialists-will-be-able-to-undertake-exploratory-data-analysis.-In-general-this-would-mean-a-user-will-be-able-to-easily-retrieve,-investigate,-visualise,-develop-algorithms,-test,-iterate,-visualise-results-and-interpret-them-in-the-context-of-other-spatio-temporal-datasets." title="Permalink to this headline">¶</a></h2>
+<p>A key demonstration of this capability will be the availability of
+functions and data structures to enable Landsat/MODIS blending.</p>
+<div class="section" id="Input-data">
+<h3>Input data<a class="headerlink" href="#Input-data" title="Permalink to this headline">¶</a></h3>
+<p>The AGDC will use the following data collections:  Landsat: TM, ETM+
+and OLI/TIRS.  MODIS: Collection 6 MOD09 (granule) and MOD43
+(sinusoidal tiles) that will provide variables necessary for the
+Landsat-MODIS blending algorithm.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>dc.list_products()
+</pre></div>
+</div>
+</div>
+<p>It will also include the SRTM 3 second DSM and 1 and 3 second DEMs.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>dc.list_measurements()
+</pre></div>
+</div>
+</div>
+<p>At a minimum, the Australian implementation of the AGDC will cover all
+of continental Australia plus a one tile buffer and the Great Barrier
+Reef. However, the Boards preference would be for the Version 2 to also
+cover all Commonwealth Marine Reserves.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>plot_folium([
+    datasets_union(
+        dc.index.datasets.search_eager(
+            product=&#39;ls8_nbar_albers&#39;,
+            time=Range(datetime(2014,1, 1), datetime(2015, 1, 1))
+        )
+    )
+])
+</pre></div>
+</div>
+</div>
+<p>All data collections that are included in the Australian implementation
+of the AGDC will:  Have a CC BY Attribution 3.0 or CC BY Attribution
+4.0 license.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>!ncdump -h &#39;/g/data/rs0/datacube/002/LS5_TM_NBAR/14_-40/LS5_TM_NBAR_3577_14_-40_19860821231816000000.nc&#39; | grep license
+</pre></div>
+</div>
+</div>
+<p>The use of a collection with a different licence will require approval
+of the AGDC Programme Board; and  Be in netCDF 4 format and will
+comply with relevant CF conventions;.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>import compliance_checker
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>compliance_checker.__version__
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>from __future__ import print_function
+import argparse
+import sys
+
+import cf_units
+from compliance_checker.runner import ComplianceChecker, CheckSuite
+from compliance_checker import __version__
+
+ds_loc = &#39;/g/data/rs0/datacube/002/LS5_TM_NBAR/14_-40/LS5_TM_NBAR_3577_14_-40_19860821231816000000.nc&#39;
+
+cs = CheckSuite()
+cs.load_all_available_checkers()
+
+was_success, errors = ComplianceChecker.run_checker(
+    ds_loc=ds_loc,
+    checker_names=[&#39;cf&#39;], # &#39;acdd&#39;?
+    verbose=0,
+    criteria=&#39;normal&#39;,
+    output_filename=&#39;-&#39;,
+    # Skipping:
+    # - check_dimension_order:
+    #      Our files don&#39;t contain all the lats/lons as an auxiliary
+    #      cordinate var as it&#39;s unnecessary for any software we&#39;ve
+    #      tried.
+    #      It may be added at some point in the future, and this check
+    #      should be re-enabled.
+    skip_checks=[&#39;check_dimension_order&#39;]
+)
+# missing source attribute: skippable according to Damien
+# assert was_success, &quot;Compliance failed.&quot;
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>help(ComplianceChecker.run_checker)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Output-Products">
+<h2>Output Products<a class="headerlink" href="#Output-Products" title="Permalink to this headline">¶</a></h2>
+<p>By June 30, 2016 the Australian implementation of the AGDC will ensure
+that the products being produced are supported by and hosted on the RDS.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>!ls /g/data/rs0/datacube/002
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>!ls /g/data/fk4/datacube/002
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Technical-Requirements">
+<h2>Technical Requirements<a class="headerlink" href="#Technical-Requirements" title="Permalink to this headline">¶</a></h2>
+<p>In line with the use-case patterns outlined above, Version 2 will
+support:  Data-fusion and analysis across heterogeneous gridded data
+collections from different domains.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>albers_grid = dc.load(
+    product=&#39;ls5_nbart_albers&#39;,
+    group_by=&#39;solar_day&#39;,
+    measurements=[&#39;swir2&#39;, &#39;nir&#39;, &#39;blue&#39;],
+    **query
+)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>sinusoidal_grid = dc.load(
+    product=&#39;ls5_nbar_albers&#39;,
+    group_by=&#39;solar_day&#39;,
+    measurements=[&#39;swir2&#39;, &#39;nir&#39;, &#39;blue&#39;],
+    output_crs=&#39;PROJCS[&quot;unnamed&quot;,GEOGCS[&quot;Unknown datum based upon the custom spheroid&quot;,\
+                DATUM[&quot;Not specified (based on custom spheroid)&quot;,\
+                SPHEROID[&quot;Custom spheroid&quot;,6371007.181,0]],\
+                PRIMEM[&quot;Greenwich&quot;,0],\
+                UNIT[&quot;degree&quot;,0.0174532925199433]],\
+                PROJECTION[&quot;Sinusoidal&quot;],\
+                PARAMETER[&quot;longitude_of_center&quot;,0],\
+                PARAMETER[&quot;false_easting&quot;,0],\
+                PARAMETER[&quot;false_northing&quot;,0],\
+                UNIT[&quot;Meter&quot;,1]]&#39;,
+    resolution=(-250,250),
+    **query
+)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>plot_rgb(albers_grid, 3500)
+albers_grid = None
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>plot_rgb(sinusoidal_grid, 3500)
+sinusoidal_grid = None
+</pre></div>
+</div>
+</div>
+<p>Tuneable configuration, at ingest, of multidimensional files (eg.
+chunking, compression type, dimension depth).</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>!datacube product add --help
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="A-data-retrieval-mechanism-that-provides-the-ability-to:">
+<h2>A data retrieval mechanism that provides the ability to:<a class="headerlink" href="#A-data-retrieval-mechanism-that-provides-the-ability-to:" title="Permalink to this headline">¶</a></h2>
+<p>Obtain seamless subsets of data across storage unit boundaries;</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>seamless_query = {
+    &#39;time&#39;: (&#39;2011-6-1&#39;, &#39;2011-6-30&#39;),
+    &#39;lat&#39;: (-20, -30),
+    &#39;lon&#39;: (132.0, 132.01),
+}
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>seamless_subset = dc.load(
+    product=&#39;ls5_nbar_albers&#39;,
+    measurements=[&#39;swir2&#39;, &#39;nir&#39;, &#39;blue&#39;],
+    group_by=&#39;solar_day&#39;,
+    **seamless_query
+)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>seamless_subset.y.max() - seamless_subset.y.min() #distance in metres
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>seamless_subset.x.max() - seamless_subset.x.min() #distance in metres
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>seamless_subset.extent.points
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>plot_rgb(seamless_subset, 3000)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span># With the Grid Workflow class demonstrate seamless spatial query across tile boundaries
+from datacube.api import GridWorkflow
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>gw = GridWorkflow(dc.index, product=&#39;ls5_nbar_albers&#39;)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span># The query straddles multiple tiles - indexes shown below
+gw.list_cells(
+    product = &#39;ls5_nbar_albers&#39;,
+    **seamless_query
+).keys()
+</pre></div>
+</div>
+</div>
+<p>Filter data based on observation attribute (for example, pixel quality);</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+
+<span></span># Load some NDVI
+nbar = dc.load(product=&#39;ls5_nbar_albers&#39;, group_by=&#39;solar_day&#39;, **query)
+ndvi = (nbar.nir - nbar.red) / (nbar.nir + nbar.red) * 10000
+nbar = None
+
+# Mask the valid data
+ndvi = mask_invalid_data(ndvi)
+# Create a mask for the data with artefacts
+good_pixels = masking.make_mask(pq, ga_good_pixel=True)
+# Apply artefact mask
+ndvi = ndvi.where(good_pixels.pixelquality)
+
+# Plot the result
+ndvi.plot(col=&#39;time&#39;, col_wrap=5, robust=True, cmap=&#39;YlGn&#39;)
+ndvi = None
+
+pandas.DataFrame.from_dict(
+    masking.get_flags_def(pq),
+    orient=&#39;index&#39;
+)
+
+</pre></div>
+</div>
+</div>
+<p>Define the spatio-temporal range of interest independent of data storage
+unit; and define the specific sensor or combination of sensor data to be
+analysed.</p>
+<p>Define the specific sensor or combination of sensor data to be analysed.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>multi_sensor_query = {
+    &#39;time&#39;: (&#39;2013-06-01&#39;, &#39;2014-01-01&#39;),
+    &#39;lat&#39;: (-35.2, -35.4),
+    &#39;lon&#39;: (149.0, 149.2),
+}
+
+products = [&#39;ls7_nbar_albers&#39;, &#39;ls8_nbar_albers&#39;]
+
+# Find similarly named measurements
+measurements = set(dc.index.products.get_by_name(products[0]).measurements.keys())
+for prod in products[1:]:
+    measurements.intersection(dc.index.products.get_by_name(products[0]).measurements.keys())
+
+datasets = []
+for prod in products:
+    ds = dc.load(product=prod, measurements=measurements, **multi_sensor_query)
+    ds[&#39;product&#39;] = (&#39;time&#39;, numpy.repeat(prod, ds.time.size))
+    datasets.append(ds)
+
+combined = xarray.concat(datasets, dim=&#39;time&#39;)
+combined = combined.isel(time=combined.time.argsort())  # sort along time dim
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>combined.swir1.median(dim=&#39;time&#39;).plot(col_wrap=5, robust=True, cmap=&#39;rainbow&#39;)
+</pre></div>
+</div>
+</div>
+<p>The API will provide a simplified conceptual model for data query and
+analysis based on an n-dimensional array abstraction;</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>combined.data_vars
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>combined = None
+</pre></div>
+</div>
+</div>
+<p>During EDA, lazy evaluation of calculations so only those results that
+are in use are computed; and</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span># CSIRO Peter Wang - link to notebook
+</pre></div>
+</div>
+</div>
+<p>Support for calculations on arrays that are larger than core memory.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span># Dask Example
+lazydata = dc.load(
+    product=&#39;ls7_nbart_albers&#39;,
+    longitude=(132.0, 137.0),
+    latitude=(-20, -25),
+    time=(&#39;2011-6-1&#39;, &#39;2011-6-30&#39;),
+    dask_chunks={&#39;x&#39;: 200, &#39;y&#39;: 200, &#39;time&#39;: 5}
+)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>from dask.dot import dot_graph
+
+dot_graph(lazydata)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>print(lazydata)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span># If larger than memory will be chunked and run
+print(lazydata.mean(dim=&#39;time&#39;))
+
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span># Visualise doesn&#39;t seem to exist anymore?
+# lazydata.blue.visualise()
+</pre></div>
+</div>
+</div>
+<p>Continental scale product generation will be based off the continental
+workflows from the current ADGC v1 API, however it will be modified to
+use the version 2 data retrieval mechanism.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span># See stats, wofs and ingestion
+</pre></div>
+</div>
+</div>
+<p>The ability to manage results of calculations as a temporary/private
+data cube for further analysis.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span># See remote cube example above
+</pre></div>
+</div>
+</div>
+<p>Web based delivery of products through WMS, WCS, CS/W, OpenDAP services.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>!firefox http://dapds00.nci.org.au/thredds/catalogs/rs0/catalog.html
+</pre></div>
+</div>
+</div>
+<p>Basic provenance that records information about an analysis
+result/product such as what datasets, software version, ancillary data
+and algorithm was used to produce the product. Wherever possible,
+Version 2 will adopt and adapt existing software, services and
+standards.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>#combined.variables
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span># See sources example above
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Other-Requirements">
+<h2>Other Requirements<a class="headerlink" href="#Other-Requirements" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="The-Project-Plan-will-be-supported-by:">
+<h3>The Project Plan will be supported by:<a class="headerlink" href="#The-Project-Plan-will-be-supported-by:" title="Permalink to this headline">¶</a></h3>
+<p> A transition plan and timetable for moving AGDC production from
+Version 1 to Version 2 of the AGDC (including controlled updates to data
+collections that are already accessible via RDS);</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>!firefox http://dapds00.nci.org.au/thredds/catalogs/rs0/catalog.html
+</pre></div>
+</div>
+</div>
+<p>A software release and management plan;</p>
+<p>Approved by Robert Woodcock, Matt Paget and Simon Oliver 19/01/2016</p>
+<ol class="arabic simple">
+<li>Develop branch - aim is to have this not broken - integration tests
+should enforce expected functionality on this branch</li>
+</ol>
+<ol class="loweralpha simple">
+<li>integration tests are trying to enforce this</li>
+<li>Develop is the main collaboration branch</li>
+<li>To discourage keeping feature branches separate for too long - small
+incremental improvements are better</li>
+</ol>
+<ol class="arabic simple" start="2">
+<li>Master to be replaced with git tagged releases (these should not
+deviate greatly from develop)</li>
+</ol>
+<ol class="loweralpha simple">
+<li>The process to get to release could be :</li>
+<li>Decide when develop is feature complete</li>
+</ol>
+<ol class="lowerroman" start="2">
+<li><p class="first">Branch it to a release candidate</p>
+</li>
+<li><div class="first highlight-default"><div class="highlight"><pre><span></span><span class="n">Test</span> <span class="n">the</span> <span class="n">release</span> <span class="n">candidate</span> <span class="p">(</span><span class="n">manual</span> <span class="o">-</span> <span class="n">apply</span> <span class="n">patches</span> <span class="k">as</span> <span class="n">needed</span> <span class="n">to</span> <span class="n">branch</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Tag release</p>
+</li>
+</ol>
+<ol class="arabic simple" start="3">
+<li>Continuous integration tests are run on every checkin to check core
+functionality- currently includes all of the ingestion code - in the
+process of extending to include storage access.</li>
+</ol>
+<ol class="loweralpha simple">
+<li>To merge in a feature branch it should include any relevant tests.</li>
+</ol>
+<ol class="arabic simple" start="4">
+<li>Persistent demo environment to be set up on Raijin with major changes
+going in - accessible to NCI/CSIRO and GA - only updated when we are
+going to do a release i.e. against the release candidate (as a final
+check)</li>
+</ol>
+<ol class="loweralpha simple">
+<li>Aim to have pushbutton releases to raijin (nightly build)</li>
+</ol>
+<ol class="arabic simple" start="5">
+<li>We should be doing user acceptance tests also and need to agree on
+what this looks like prior to approving a release.</li>
+</ol>
+<p>A plan for improving the data management of the collections in the RDS
+Landsat (rs0) and WOfs (fk4) Projects, such as establishing data layout,
+appropriate access controls (including read/write permissions) and
+alignment to existing organisational data libraries);  Reformatting of
+all data in projects rs0 (Landsat) and fk4 (WOfS) that are currently
+stored in GeoTIFF into netCDF4-CF;</p>
+<p>An AGDC database API which can provide a base for further AGDC
+developments and that can accommodate updates in the internal structure
+of netCDF4-CF;</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span># Looks like a good base? Not sure what update to internal structure in NetCDF actually means...
+</pre></div>
+</div>
+</div>
+<p>Upgrading all documentation (including Data Management Plans, Product
+Specifications, etc.) and ensuring that any Metadata is compliant with
+the requirements of the Australian Government Spatial Data Policies and
+Directives, the Australian National Data Service and data.gov.au; and</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>#
+</pre></div>
+</div>
+</div>
+<p> </p>
+<p>Benchmarks and Quality Assurance tests to validate the quality of the
+access that is required by the agreed use-cases.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>notebook_end_dt = datetime.now()
+&#39;Finished in {}&#39;.format(notebook_end_dt - notebook_start_dt)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../data/data.html" class="btn btn-neutral float-right" title="Surface Reflectance NBAR" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="orchestration.html" class="btn btn-neutral" title="DEA Orchestration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Geoscience Australia.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

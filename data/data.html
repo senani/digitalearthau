@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Data &mdash; Digital Earth Australia 1.0.0 documentation</title>
+  <title>Surface Reflectance NBAR &mdash; Digital Earth Australia 1.0.0 documentation</title>
   
 
   
@@ -38,7 +38,7 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="Digital Earth Australia 1.0.0 documentation" href="../index.html"/>
-        <link rel="prev" title="Git Best Practice" href="../internal/git_best_practice.html"/> 
+        <link rel="prev" title="DEA Smoke Test" href="../internal/requirements_met.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -115,14 +115,36 @@
 <p class="caption"><span class="caption-text">Developer Guide</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../internal/new_product.html">Creating New Product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internal/release_process.html">Build a version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internal/release_process.html#marking-it-stable">Marking it stable</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../internal/git_best_practice.html">Git Best Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internal/release.html">Building a Release</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internal/orchestration.html">DEA Orchestration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internal/requirements_met.html">DEA Smoke Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internal/requirements_met.html#Data-load-examples">Data load examples</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Data</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Data</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#nbar-and-nbar-t">NBAR and NBAR-T</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#pixel-quality">Pixel Quality</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#fractional-cover">Fractional Cover</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Surface Reflectance NBAR</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#features">Features</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#surface-reflectance-nbar-t">Surface Reflectance NBAR-T</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#landsat-archive">Landsat Archive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#surface-reflectance-correction-models">Surface Reflectance Correction Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#pixel-quality">Pixel Quality</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Features</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#fractional-cover">Fractional Cover</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id5">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#potential-applications">Potential Applications</a></li>
 </ul>
 </li>
 </ul>
@@ -169,7 +191,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Data</li>
+      <li>Surface Reflectance NBAR</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -222,66 +244,317 @@
     margin-right: 4px;  /* make room for the exclamation icon */
 }
 </style>
-<div class="section" id="data">
-<h1>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="nbar-and-nbar-t">
-<h2>NBAR and NBAR-T<a class="headerlink" href="#nbar-and-nbar-t" title="Permalink to this headline">¶</a></h2>
-<p>NBAR stands for <strong>Nadir-corrected BRDF Adjusted Reflectance</strong>.  It is the surface reflectance product in</p>
-<p>It has the bands:</p>
+<div class="section" id="surface-reflectance-nbar">
+<span id="surface-reflectance"></span><h1>Surface Reflectance NBAR<a class="headerlink" href="#surface-reflectance-nbar" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p><strong>Surface Reflectance (SR)</strong> is a suite of <strong>Earth Observation (EO)</strong> products from GA.
+The SR product suite provides standardised optical surface reflectance datasets using robust physical models to correct
+for variations in image radiance values due to atmospheric properties, and sun and sensor geometry.
+The resulting stack of surface reflectance grids are consistent over space and time which is instrumental in identifying
+and quantifying environmental change. SR is based on radiance data from the Landsat-5 TM, Landsat-7 ETM+ and Landsat-8 OLI/TIRS sensors.</p>
+<p>NBAR stands for <strong>Nadir-corrected BRDF Adjusted Reflectance</strong>, where BRDF stands for <strong>Bidirectional reflectance distribution function</strong>
+The approach involves atmospheric correction to compute surface-leaving radiance, and bi-directional reflectance modelling to remove the effects of
+topography and angular variation in reflectance.</p>
+</div>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>The standardised SR data products deliver calibrated optical surface reflectance data across land and coastal fringes.
+SR is a medium resolution (~25 m) grid based on the Landsat TM/ETM+/OLI archive and presents surface reflectance data in 25 square metre grid cells.</li>
+<li>Radiance measurements from EO sensors do not directly quantify the surface reflectance of the Earth. Such measurements are modified by variations in atmospheric
+properties, sun position, sensor view angle, surface slope and surface aspect.
+To obtain consistent and comparable measures of Earth surface reflectance from EO,these variations need to be reduced or removed from the radiance measurements (Li et al., 2010).
+This is especially important when comparing imagery acquired in different seasons and geographic regions.</li>
+<li>The SR product is created using a physics-based, coupled BRDF and atmospheric correction model that can be applied to both flat and inclined surfaces (Li et al., 2012).
+The resulting surface reflectance values are comparable both within individual images and between images acquired at different times and/or with different sensors.</li>
+</ul>
+<p id="table">It has the following bands:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="17%" />
-<col width="83%" />
+<col width="14%" />
+<col width="69%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head">Name</th>
+<tr class="row-odd"><th class="head">Bands</th>
+<th class="head">Name</th>
 <th class="head">Description</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>blue</td>
+<tr class="row-even"><td>Band_1</td>
+<td>blue</td>
 <td>Blue</td>
 </tr>
-<tr class="row-odd"><td>green</td>
+<tr class="row-odd"><td>Band_2</td>
+<td>green</td>
 <td>Green</td>
 </tr>
-<tr class="row-even"><td>red</td>
+<tr class="row-even"><td>Band_3</td>
+<td>red</td>
 <td>Red</td>
 </tr>
-<tr class="row-odd"><td>nir</td>
+<tr class="row-odd"><td>Band_4</td>
+<td>nir</td>
 <td>Near Infra-red</td>
 </tr>
-<tr class="row-even"><td>swir1</td>
+<tr class="row-even"><td>Band_5</td>
+<td>swir1</td>
 <td>Short-wave Infra-red 1</td>
 </tr>
-<tr class="row-odd"><td>swir2</td>
+<tr class="row-odd"><td>Band_7</td>
+<td>swir2</td>
 <td>Short-wave Infra-red 2</td>
 </tr>
 </tbody>
 </table>
-<p>Landsat 8 also has:</p>
+</div>
+</div>
+<div class="section" id="surface-reflectance-nbar-t">
+<h1>Surface Reflectance NBAR-T<a class="headerlink" href="#surface-reflectance-nbar-t" title="Permalink to this headline">¶</a></h1>
+<p><strong>Surface reflectance NBAR-T</strong> includes the terrain illumination reflectance correction and has the same features of SR-NBAR and along with some of the features mentioned below.</p>
+<div class="section" id="id1">
+<h2>Features<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>The SR product is created using a physics-based coupled BRDF and atmospheric correction model that can be applied to both flat and inclined surfaces (Li et al., 2012).
+The resulting surface reflectance values are comparable both within individual images and between images acquired at different times and/or with different sensors.</li>
+<li>Terrain affects optical satellite images through both irradiance and bidirectional reflectance distribution function (BRDF) effects.</li>
+<li>Slopes facing the sun receive enhanced solar irradiance and appear brighter compared to those facing away from the sun.</li>
+<li>For anisotropic surfaces, the radiance received at the satellite sensor from a sloping surface is also affected by surface
+BRDF which varies with combinations of surface landcover types, sun, and satellite geometry (sun and sensor view, and their relative
+azimuth angle) as well as topographic geometry (primarily slope and aspect angles).
+Consequently, to obtain comparable surface reflectance from satellite images covering mountainous areas,
+it is necessary to process the images to reduce or remove the topographic effect so that the images can be used for different purposes on the same spectral base.</li>
+<li>A Digital Surface Model (DSM) resolution appropriate to the scale of the resolution of satellite image is needed for the best results. 1 second SRTM DSM is
+used for NBART processing.</li>
+</ul>
+<p>It has the same bands description provided in Surface reflactance NBAR <a class="reference internal" href="#table">table</a>.</p>
+</div>
+<div class="section" id="landsat-archive">
+<h2>Landsat Archive<a class="headerlink" href="#landsat-archive" title="Permalink to this headline">¶</a></h2>
+<p>GA has acquired Landsat imagery over Australia since 1979, including  TM, ETM+ and OLI imagery. While this data has been used extensively for numerous
+land and coastal mapping studies, its utility for accurate monitoring of environmental resources has been limited by the processing methods that have been traditionally
+used to correct for inherent geometric and radiometric distortions in EO imagery.
+To improve access to Australia s archive of Landsat TM/ETM+/OLI data, several collaborative projects have been undertaken in conjunction with industry, government and academic partners.
+These projects have enabled implementation of a more integrated approach to image data correction that incorporates
+normalising models to account for atmospheric effects, BRDF and topographic shading (Li et al., 2012).</p>
+<p>The approach has been applied to Landsat TM/ETM+ and OLI imagery to create the SR products. The advanced supercomputing facilities provided by the National
+Computational Infrastructure (NCI) at the Australian National University (ANU) have been instrumental in handling the considerable data volumes and processing
+complexities involved with production of this product.</p>
+</div>
+<div class="section" id="surface-reflectance-correction-models">
+<h2>Surface Reflectance Correction Models<a class="headerlink" href="#surface-reflectance-correction-models" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Image radiance values recorded by passive EO sensors are a composite of:</p>
+<ul class="simple">
+<li>surface reflectance;</li>
+<li>atmospheric condition;</li>
+<li>interaction between surface land cover, solar radiation and sensor view angle;</li>
+<li>land surface orientation relative to the imaging sensor.</li>
+</ul>
+<p>It has been traditionally assumed that Landsat imagery display negligible variation in sun and sensor view angles, however these can vary significantly both within
+and between scenes, especially in different seasons and geographic regions (Li et al., 2012). The SR product delivers modeled surface reflectance from Landsat TM/ETM+/OLI
+data using physical rather than empirical models. Accordingly, this product will ensure that reflective value differences between imagery acquired at different times by
+different sensors will be primarily due to on-ground changes in biophysical parameters rather than artifacts of the imaging environment.</p>
+</div></blockquote>
+<p>Landsat 8-OLI/TIRS also has following bands:</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col width="15%" />
+<col width="33%" />
+<col width="52%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head">Name</th>
+<tr class="row-odd"><th class="head">Bands</th>
+<th class="head">Name</th>
 <th class="head">Description</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>coastal_aerosol</td>
-<td>Costal Aerosol</td>
+<tr class="row-even"><td>Band_1</td>
+<td>coastal_aerosol</td>
+<td>Coastal Aerosol</td>
+</tr>
+<tr class="row-odd"><td>Band_2</td>
+<td>blue</td>
+<td>Blue</td>
+</tr>
+<tr class="row-even"><td>Band_3</td>
+<td>green</td>
+<td>Green</td>
+</tr>
+<tr class="row-odd"><td>Band_4</td>
+<td>red</td>
+<td>Red</td>
+</tr>
+<tr class="row-even"><td>Band_5</td>
+<td>nir</td>
+<td>Near- Infrared</td>
+</tr>
+<tr class="row-odd"><td>Band_6</td>
+<td>swir1</td>
+<td>Short-wave Infra-red 1</td>
+</tr>
+<tr class="row-even"><td>Band_7</td>
+<td>swir2</td>
+<td>Short-wave Infra-red 2</td>
+</tr>
+<tr class="row-odd"><td>Band_8</td>
+<td>panchromatic</td>
+<td>Panchromatic</td>
+</tr>
+<tr class="row-even"><td>Band_9</td>
+<td>cirrus</td>
+<td>Cirrus</td>
+</tr>
+<tr class="row-odd"><td>Band_10</td>
+<td>tirs1</td>
+<td>Thermal Infrared Sensor1</td>
+</tr>
+<tr class="row-even"><td>Band_11</td>
+<td>tirs2</td>
+<td>Thermal Infrared Sensor2</td>
+</tr>
+</tbody>
+</table>
+<p>Landsat 5 and 7 has the same bands as NBAR <a class="reference internal" href="#table">table</a>.</p>
+</div>
+</div>
+<div class="section" id="pixel-quality">
+<h1>Pixel Quality<a class="headerlink" href="#pixel-quality" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>Summary<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p><strong>Product name : Pixel Quality 25 - (PQ25)</strong></p>
+<p>The PQ25 product is a product which is designed to facilitate interpretation and processing of <a class="reference internal" href="#surface-reflectance">Surface Reflectance</a> NBAR/NBART ,  <a class="reference internal" href="#fractional-cover">Fractional Cover</a>
+and derivative products.</p>
+</div>
+<div class="section" id="id3">
+<h2>Features<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>PQ25 is an assessment of each image pixel to determine if it is an unobscured, unsaturated observation
+of the Earth surface and also whether the pixel is represented in each spectral band. The PQ product allows
+users to produce masks which can be used to exclude pixels which do not meet their quality criteria from analysis .
+The capacity to automatically exclude such pixels is essential for emerging multi-temporal analysis techniques that
+make use of every quality assured pixel within a time series of observations.Users can choose to process only land pixels,
+or only sea pixels depending on their analytical requirements, leading to enhanced computationally efficient.</p>
+<blockquote>
+<div><p>PQ provides  an assessment of the quality of observations at a pixel level and includes information about whether a pixel is affected by:</p>
+<ul class="simple">
+<li>Spectral Contiguity (lack of signal in any band)</li>
+<li>Saturation in any band</li>
+<li>Presence of cloud</li>
+<li>Presence of cloud shadow</li>
+<li>Land or sea</li>
+</ul>
+</div></blockquote>
+<p>As Landsat Imagery becomes more readily available, there has been a rapid increase in the amount of analyses undertaken
+by researchers around the globe.  Most researchers use some form of quality masking schema in order to remove undesirable
+pixels from analysis, whether that be cloud, cloud shadow, observations over the ocean, or  saturated pixels.  In the past,
+researchers would reject partly cloud-affected scenes in favour of cloud-free scenes.  However, Landsat time series analysis
+using all cloud-free pixels has become a valuable technique and has increased the demand for automation of cloud, cloud
+shadow and saturation detection.  Emergency response applications such as flood mapping typically have to contend with
+individual cloud affected scenes and therefore rely on effective cloud and cloud shadow removal techniques.</p>
+<p>The PQ25 product combines established algorithms that detect clouds including the Automated Cloud Cover Assessment
+(ACCA) (Irish et al. 2006) and Function of mask (Fmask) (Zhu and Woodcock 2012) . ACCA is already widely used within the
+remote sensing community; it is fast and relatively accurate.  Fmask on the other hand is newer, but is rapidly becoming
+more established, and can provide a more accurate cloud mask than ACCA in certain cloud environments.</p>
+<p>The different sensor designs of Landsat 5 TM, Landsat 7 ETM+, and Landsat 8 OLI all have
+different sensor saturation characteristics. The PQ25 layer enables users to exclude
+observations from a given band where the pixels are saturated (exceed the dynamic range
+of the sensor). The per-band saturation information in PQ allows users to exclude pixels
+where their specific band of interest is saturated.</p>
+<p>The PQ 25 layer uses two industry standard cloud/cloud shadow detection algorithms to
+flag pixels that potentially contain cloud and allows the user to generate masks based on
+either algorithm or both algorithms.</p>
+</div>
+</div>
+<div class="section" id="fractional-cover">
+<span id="id4"></span><h1>Fractional Cover<a class="headerlink" href="#fractional-cover" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id5">
+<h2>Summary<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p><strong>Product Name - Fractional Cover (FC25)</strong>
+The Fractional Cover product is derived from Geoscience Australias Australian
+Reflectance Grid 25 (ARG25) product and provides a 25m scale fractional cover
+representation of the proportions of :</p>
+<blockquote>
+<div><ul class="simple">
+<li>green or photosynthetic vegetation,</li>
+<li>nonphotosynthetic vegetation, and</li>
+<li>bare surface cover across the Australian continent</li>
+</ul>
+</div></blockquote>
+<p>It is generated using the algorithm developed by the Joint Remote Sensing Research Program (JRSRP)
+and described in Scarth et al. (2010)
+The FC25 product suite is currently available for every scene Landsat Thematic Mapper
+(Landsat 5), Enhanced Thematic Mapper (Landsat 7) and Operational Land Imager
+(Landsat 8) scene acquired since 1987.</p>
+</div>
+<div class="section" id="id6">
+<h2>Features<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>Fractional cover data can be used to identify large scale patterns and trends and inform
+evidence based decision making and policy on topics including wind and water erosion
+risk, soil carbon dynamics, land management practices and rangeland condition. This
+information could enable policy agencies, natural and agricultural land resource
+managers, and scientists to monitor land conditions over large areas over long time
+frames.</p>
+<blockquote>
+<div><ul class="simple">
+<li>The fractional cover unmixing algorthim uses the spectral signature for a picture element
+(pixel) to break it up into three parts or fractions.</li>
+<li>This is based on field work identifying the spectral characteristics of each of the fractions.</li>
+<li>The three fractions are green or photosynthetic vegetation, non-photosynthetic vegetation, and bare soil.</li>
+<li>The green fraction includes leaves and grass, the non-photosynthetic includes branches, dry grass
+and dead leaf litter, and the bare soil fraction includes bare soil or rock.</li>
+</ul>
+</div></blockquote>
+<p>FC25 is limited by the frequency and number of successful observations, which are
+determined by the satellite revisit rate (see table below) and by clouds. In particular,
+short-lived green flush grass growth events may not have been observed. In practice,
+areas of inland Australia have been observed over 600 times, whereas highly-cloud-prone
+coastal and mountainous areas may have no successful observations. FC25
+is also limited by the quality of the sensors, including their spatial resolution, and the
+accuracy of the fractional cover algorithms used.</p>
+<p>Revisit frequency of the Landsat series of satellites as captured by the
+Geoscience Australia ground station network.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="42%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Time range</th>
+<th class="head">Revisit frequency</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1986-2003</td>
+<td>16 days</td>
+</tr>
+<tr class="row-odd"><td>2003-20112</td>
+<td>8 days</td>
+</tr>
+<tr class="row-even"><td>2011-20133</td>
+<td>16 days</td>
+</tr>
+<tr class="row-odd"><td>2013-present</td>
+<td>8 days</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="section" id="pixel-quality">
-<h2>Pixel Quality<a class="headerlink" href="#pixel-quality" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="fractional-cover">
-<h2>Fractional Cover<a class="headerlink" href="#fractional-cover" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="potential-applications">
+<h2>Potential Applications<a class="headerlink" href="#potential-applications" title="Permalink to this headline">¶</a></h2>
+<p>Fractional cover provides valuable information for a range of environemental and
+agricultural applications, including:</p>
+<ul class="simple">
+<li>Soil erosion monitoring</li>
+<li>Land surface process modelling</li>
+<li>Land management practices (e.g. crop rotation, stubble management, rangeland
+management)</li>
+<li>Vegetation studies</li>
+<li>Fuel load estimation</li>
+<li>Ecosystem modelling</li>
+</ul>
 </div>
 </div>
 
@@ -296,7 +569,7 @@
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="../internal/git_best_practice.html" class="btn btn-neutral" title="Git Best Practice" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../internal/requirements_met.html" class="btn btn-neutral" title="DEA Smoke Test" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
