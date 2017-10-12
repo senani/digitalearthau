@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Build a version &mdash; Digital Earth Australia 1.0.0 documentation</title>
+  <title>What&#39;s a Goalkeeper &mdash; Digital Earth Australia 1.0.0 documentation</title>
   
 
   
@@ -38,8 +38,8 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="Digital Earth Australia 1.0.0 documentation" href="../index.html"/>
-        <link rel="next" title="Git Best Practice" href="git_best_practice.html"/>
-        <link rel="prev" title="Creating New Product" href="new_product.html"/> 
+        <link rel="next" title="DEA Smoke Test" href="requirements_met.html"/>
+        <link rel="prev" title="DEA Orchestration" href="orchestration.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -116,13 +116,18 @@
 <p class="caption"><span class="caption-text">Developer Guide</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="new_product.html">Creating New Product</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Build a version</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#marking-it-stable">Marking it stable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_process.html">Build a version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_process.html#marking-it-stable">Marking it stable</a></li>
 <li class="toctree-l1"><a class="reference internal" href="git_best_practice.html">Git Best Practice</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release.html">Building a Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="orchestration.html">DEA Orchestration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="goalkeeper_instructions.html">What's a Goalkeeper</a></li>
-<li class="toctree-l1"><a class="reference internal" href="goalkeeper_instructions.html#goal-keeper-responsibilities">Goal Keeper Responsibilities</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">What's a Goalkeeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#goal-keeper-responsibilities">Goal Keeper Responsibilities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#level-1-support">Level 1 Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#build-manager">Build manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#release-manager">Release manager</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="requirements_met.html">DEA Smoke Test</a></li>
 <li class="toctree-l1"><a class="reference internal" href="requirements_met.html#Data-load-examples">Data load examples</a></li>
 </ul>
@@ -176,13 +181,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Build a version</li>
+      <li>What's a Goalkeeper</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/internal/release_process.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/internal/goalkeeper_instructions.md.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -229,93 +234,58 @@
     margin-right: 4px;  /* make room for the exclamation icon */
 }
 </style>
-<div class="section" id="build-a-version">
-<h1>Build a version<a class="headerlink" href="#build-a-version" title="Permalink to this headline">¶</a></h1>
-<ol class="arabic simple">
-<li><dl class="first docutils">
-<dt>Pick a release name for the next version</dt>
-<dd>Releases are versioned using the <code class="docutils literal"><span class="pre">major.minor.bugfix</span></code> numbering system.</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Update the release notes on the <span class="xref std std-ref">whats_new</span> page</dt>
-<dd>Check the git log for changes since the last release.</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Check that <a class="reference external" href="https://travis-ci.org/opendatacube/datacube-core">Travis</a> and <a class="reference external" href="http://readthedocs.org/projects/datacube-core/builds/">readthedocs</a> are passing for the latest commit</dt>
-<dd>Make sure that the tests have finished running!</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Tag the branch</dt>
-<dd>Use the format of <code class="docutils literal"><span class="pre">datacube-major.minor.bugfix</span></code>.</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Draft a new release on the <a class="reference external" href="https://github.com/opendatacube/datacube-core/releases">Datacube</a> GitHub repository</dt>
-<dd>Include the items added to the release notes in step 2.</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Install the datacube module on <cite>raijin</cite></dt>
-<dd>Follow the instructions on installing the <strong>Data Cube</strong> module on the <a class="reference external" href="https://github.com/GeoscienceAustralia/digitalearthau/tree/develop/modules">Datacube Environment</a> repository,
-but do not yet make it the default module version.</dd>
-</dl>
-</li>
+<div class="section" id="what-s-a-goalkeeper">
+<span id="what-s-a-goalkeeper"></span><h1>What's a Goalkeeper<a class="headerlink" href="#what-s-a-goalkeeper" title="Permalink to this headline">¶</a></h1>
+<p>The <code class="docutils literal"><span class="pre">DEA</span> <span class="pre">Goalkeeper</span></code> is a software engineer who provides frontline support to the community of DEA
+and OpenDatacube developers and users.</p>
+<p>The role of the <code class="docutils literal"><span class="pre">DEA</span> <span class="pre">Goalkeeper</span></code> is periodically rotated (usually weekly)
+amongst the group of DEA developers who work at Geoscience Australia. If you are new to the <code class="docutils literal"><span class="pre">DEA</span> <span class="pre">Goalkeeper</span></code> role, this
+document should help.</p>
+</div>
+<div class="section" id="goal-keeper-responsibilities">
+<span id="goal-keeper-responsibilities"></span><h1>Goal Keeper Responsibilities<a class="headerlink" href="#goal-keeper-responsibilities" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="level-1-support">
+<span id="level-1-support"></span><h2>Level 1 Support<a class="headerlink" href="#level-1-support" title="Permalink to this headline">¶</a></h2>
+<p>This is a key responsibility for the <code class="docutils literal"><span class="pre">DEA</span> <span class="pre">Goalkeeper</span></code>:</p>
+<ul class="simple">
+<li>Support requests on the <code class="docutils literal"><span class="pre">#general</span></code> and <code class="docutils literal"><span class="pre">#develop</span></code> channels on <a class="reference external" href="https://opendatacube.slack.com/messages">opendatacube Slack</a></li>
+<li>GitHub issues sent to <a class="reference external" href="https://github.com/GeoscienceAustralia/digitalearthau/issues">digitalearthau</a>
+or <a class="reference external" href="https://github.com/opendatacube/datacube-core/issues">datacube-core</a></li>
+</ul>
+<p>Each request or issue coming through any of these channels should be triaged as quickly as possible:</p>
+<ol class="simple">
+<li>Determine the nature of the issue and</li>
+<li>who is the best person to address it initially (Consider attending to the issue yourself)</li>
+<li>task the appropriate person</li>
+<li>ensure an initial response is sent back to the requestor ASAP (even if it is simply <code class="docutils literal"><span class="pre">Thankyou</span> <span class="pre">for</span> <span class="pre">raising</span> <span class="pre">this.</span> <span class="pre">We</span> <span class="pre">are</span> <span class="pre">looking</span> <span class="pre">into</span> <span class="pre">it</span> <span class="pre">now</span></code></li>
+<li>Manage the issue until it is resolved</li>
 </ol>
+<p>If the request or issue is still outstanding, summarise it's status in your handover to the next <code class="docutils literal"><span class="pre">DEA</span> <span class="pre">Goalkeeper</span></code></p>
 </div>
-<div class="section" id="marking-it-stable">
-<h1>Marking it stable<a class="headerlink" href="#marking-it-stable" title="Permalink to this headline">¶</a></h1>
-<p>Once/if a built version has been tested on Raijin, found to be stable, and the team agrees, we make it the new default
-stable version.</p>
-<ol class="arabic">
-<li><dl class="first docutils">
-<dt>Merge changes leading up to the release into the <cite>stable</cite> branch</dt>
-<dd><p class="first last">This will also update the <cite>stable</cite> docs.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Upload the build to PyPi</dt>
-<dd><p class="first">You might need a <a class="reference external" href="https://pypi.python.org/pypi">PyPI</a> account with appropriate authorization.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>python setup.py sdist bdist_wheel
-twine upload dist/*
-</pre></div>
+<div class="section" id="build-manager">
+<span id="build-manager"></span><h2>Build manager<a class="headerlink" href="#build-manager" title="Permalink to this headline">¶</a></h2>
+<p>Review the <code class="docutils literal"><span class="pre">Continuous</span> <span class="pre">Integration</span> <span class="pre">Status</span></code> of each of the following projects</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/GeoscienceAustralia/digitalearthau/">digitalearthau</a></li>
+<li><a class="reference external" href="https://github.com/opendatacube/datacube-core">datacube-core</a></li>
+<li><a class="reference external" href="https://github.com/GeoscienceAustralia/dea-orchestration">dea-orchestration</a></li>
+</ul>
+<p>They all should be <code class="docutils literal"><span class="pre">green</span></code>. If the <code class="docutils literal"><span class="pre">CI</span> <span class="pre">Loop</span></code> gets broken:</p>
+<ul class="simple">
+<li>Follow up with whomever broke it</li>
+<li>Or simply fix it yourself</li>
+</ul>
+<p>BTW: The <code class="docutils literal"><span class="pre">Continuous</span> <span class="pre">Integration</span> <span class="pre">Status</span></code> (or <code class="docutils literal"><span class="pre">CI</span> <span class="pre">Loop</span></code>) is the status indication shown as the first line of the
+project <code class="docutils literal"><span class="pre">README</span></code> file when viewed via the <code class="docutils literal"><span class="pre">Github</span></code> website.</p>
 </div>
-<p class="last">This should upload the project to <a class="reference external" href="https://pypi.python.org/pypi/datacube/">https://pypi.python.org/pypi/datacube/</a>.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Update conda-forge recipe</dt>
-<dd><p class="first">Follow the instrucions under <strong>Updating datacube-feedstock</strong> in the <a class="reference external" href="https://github.com/conda-forge/datacube-feedstock#updating-datacube-feedstock">Datcube Feedstock</a> repository.</p>
-<p>It should involve modifying the version number in the
-<a class="reference external" href="https://github.com/conda-forge/datacube-feedstock/blob/master/recipe/meta.yaml">recipe</a> and updating the SHA hash.
-The hash should be generated from the <code class="docutils literal"><span class="pre">.tar.gz</span></code> mentioned in the <code class="docutils literal"><span class="pre">source</span></code> of the recipe.</p>
-<div class="last highlight-bash"><div class="highlight"><pre><span></span>openssl sha256 &lt;downloaded-datacube-source.tar.gz&gt;
-</pre></div>
+<div class="section" id="release-manager">
+<span id="release-manager"></span><h2>Release manager<a class="headerlink" href="#release-manager" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal"><span class="pre">DEA</span> <span class="pre">Goalkeeper</span></code> will manage the release process when a new release is required</p>
+<ul class="simple">
+<li>The DEA build docs are here: http://datacube-core.readthedocs.io/en/stable/about/release_process.html</li>
+<li>The ODC build docs are here: http://geoscienceaustralia.github.io/digitalearthau/internal/release.html</li>
+</ul>
 </div>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Update the default version on <cite>raijin</cite></dt>
-<dd><p class="first last">Follow the instructions under <strong>Update default version</strong> in the <a class="reference external" href="https://github.com/GeoscienceAustralia/digitalearthau/tree/develop/modules">Datacube Environment</a> repository.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Notify the community of the release using the Datacube Central mailing list</dt>
-<dd><p class="first">The notifications are sent out using <a class="reference external" href="https://www.mailchimp.com">MailChimp</a>. You might need an invitation from the Geoscience
-Australia account.</p>
-<p class="last">Create a campaign (possibly by replicating one of the existing ones) and change the notes.
-You could send out a test mail to selected accounts before sending it out to the entire DEA
-Beta Users list.</p>
-</dd>
-</dl>
-</li>
-</ol>
 </div>
 
 
@@ -328,10 +298,10 @@ Beta Users list.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="git_best_practice.html" class="btn btn-neutral float-right" title="Git Best Practice" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="requirements_met.html" class="btn btn-neutral float-right" title="DEA Smoke Test" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="new_product.html" class="btn btn-neutral" title="Creating New Product" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="orchestration.html" class="btn btn-neutral" title="DEA Orchestration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
