@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Introduction &mdash; Digital Earth Australia 1.0.0 documentation</title>
+  <title>Collection Management &mdash; Digital Earth Australia 1.0.0 documentation</title>
   
 
   
@@ -38,8 +38,8 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="Digital Earth Australia 1.0.0 documentation" href="../index.html"/>
-        <link rel="next" title="Glossary" href="glossary.html"/>
-        <link rel="prev" title="Digital Earth Australia User Guide" href="../index.html"/> 
+        <link rel="next" title="What&#39;s a Goalkeeper" href="goalkeeper_instructions.html"/>
+        <link rel="prev" title="DEA Orchestration" href="orchestration.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -96,14 +96,9 @@
             
             
               <p class="caption"><span class="caption-text">Overview</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#background">Background</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#technology">Technology</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/glossary.html">Glossary</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Connect</span></p>
 <ul>
@@ -119,19 +114,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../query/Loading Data.html">Loading data from the datacube</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Developer Guide</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../internal/new_product.html">Creating New Product</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/release_process.html">Build a version</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/release_process.html#marking-it-stable">Marking it stable</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/git_best_practice.html">Git Best Practice</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/release.html">Building a Release</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/orchestration.html">DEA Orchestration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/collection_management.html">Collection Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/collection_management.html#defining-collections">Defining Collections</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/goalkeeper_instructions.html">What's a Goalkeeper</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/goalkeeper_instructions.html#goal-keeper-responsibilities">Goal Keeper Responsibilities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/requirements_met.html">DEA Smoke Test</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/requirements_met.html#Data-load-examples">Data load examples</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="new_product.html">Creating New Product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_process.html">Build a version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_process.html#marking-it-stable">Marking it stable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git_best_practice.html">Git Best Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Building a Release</a></li>
+<li class="toctree-l1"><a class="reference internal" href="orchestration.html">DEA Orchestration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Collection Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#defining-collections">Defining Collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="goalkeeper_instructions.html">What's a Goalkeeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="goalkeeper_instructions.html#goal-keeper-responsibilities">Goal Keeper Responsibilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements_met.html">DEA Smoke Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements_met.html#Data-load-examples">Data load examples</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Data</span></p>
 <ul>
@@ -183,13 +178,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Introduction</li>
+      <li>Collection Management</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/about/intro.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/internal/collection_management.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -236,32 +231,65 @@
     margin-right: 4px;  /* make room for the exclamation icon */
 }
 </style>
-<div class="section" id="introduction">
-<span id="id1"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>Digital Earth Australia (DEA) is a platform designed to:</p>
+<div class="section" id="collection-management">
+<h1>Collection Management<a class="headerlink" href="#collection-management" title="Permalink to this headline">¶</a></h1>
+<p>The DEA repository contains a set of tools for managing the collections on disk at NCI.</p>
+<p>See their help commands for specific information:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Update the index, find problems with datasets.</span>
+dea-sync --help
+dea-coherence --help
+dea-duplicates --help
+
+<span class="c1"># Move datasets between disks safely and incrementally (updating the index).</span>
+dea-move --help
+
+<span class="c1"># Trash archived datasets</span>
+dea-clean --help
+
+<span class="c1"># Submit a sync job to PBS</span>
+dea-submit-sync --help
+</pre></div>
+</div>
+<p>Note that many of these operate on collections, not products. To perform a move or sync on a new product you
+may first need add it as a collection.</p>
+</div>
+<div class="section" id="defining-collections">
+<h1>Defining Collections<a class="headerlink" href="#defining-collections" title="Permalink to this headline">¶</a></h1>
+<p>The Open Data Cube core keeps track of where individual datasets are in a product, but not where datasets as a
+whole should be (such as which filesystems).</p>
+<p>Knowing “where they should be” is currently handled in this DEA repository as the list of collections.</p>
+<p>A collection defines:</p>
 <ul class="simple">
-<li>Catalogue large amounts of Earth Observation data</li>
-<li>Provide a <a class="reference internal" href="glossary.html#term-python"><span class="xref std std-term">Python</span></a> based <a class="reference internal" href="glossary.html#term-api"><span class="xref std std-term">API</span></a> for high performance querying and data access</li>
-<li>Give scientists and other users easy ability to perform Exploratory Data Analysis</li>
-<li>Allow scalable continent scale processing of the stored data</li>
-<li>Track the provenance of all the contained data to allow for quality control and updates</li>
+<li>datacube query arguments and folder patterns that should contain the same set of datasets. The sync tool, for</li>
 </ul>
-</div>
-<div class="section" id="background">
-<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
-<p>DEA will build on the globally recognised innovation, the <a class="reference external" href="http://www.datacube.org.au/">Australian Geoscience Data Cube</a>
-which was the winner of the 2016 Content Platform of the Year at the Geospatial World
-Leadership Awards and was developed as a partnership between <a class="reference external" href="http://www.ga.gov.au/">Geoscience Australia</a> (GA),
-the <a class="reference external" href="https://www.csiro.au/">Commonwealth Scientific and Industrial Research Organisation</a> (CSIRO) and the
-<a class="reference external" href="https://nci.org.au/">National Computational Infrastructure</a> (NCI).</p>
-</div>
-<div class="section" id="technology">
-<h2>Technology<a class="headerlink" href="#technology" title="Permalink to this headline">¶</a></h2>
-<p>Digital Earth Australia is powered by <a class="reference external" href="http://opendatacube.org/">Open Data Cube</a>, an open-source library for
-management, analysis and processing of Earth observation (EO) satellite data.
-The source code can be found at <a class="reference external" href="https://github.com/opendatacube/datacube-core">https://github.com/opendatacube/datacube-core</a> .</p>
+<blockquote>
+<div>example, can then iterate the two to find mismatches in both directions.</div></blockquote>
+<ul class="simple">
+<li>how datasets in the collection should be treated: is an unindexed file found on disk corrupt, or newly arrived?</li>
+</ul>
+<p>The set of NCI DEA collections is currently in <a class="reference external" href="https://github.com/GeoscienceAustralia/digitalearthau/blob/develop/digitalearthau/collections.py">collections.py</a>.</p>
+<p>Examples:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">scene_collection</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;ls8_level1_scene&#39;</span><span class="p">,</span>
+        <span class="n">query</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;product&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ls8_level1_scene&#39;</span><span class="p">,</span> <span class="s1">&#39;ls8_level1_oli_scene&#39;</span><span class="p">]},</span>
+        <span class="n">file_patterns</span><span class="o">=</span><span class="p">[</span>
+            <span class="s1">&#39;/g/data/v10/reprocess/ls8/level1/[0-9][0-9][0-9][0-9]/[0-9][0-9]/LS*/ga-metadata.yaml&#39;</span><span class="p">,</span>
+        <span class="p">],</span>
+    <span class="p">),</span>
+
+<span class="c1"># Telemetry collection</span>
+<span class="n">Collection</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;telemetry&#39;</span><span class="p">,</span>
+        <span class="n">query</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;metadata_type&#39;</span><span class="p">:</span> <span class="s1">&#39;telemetry&#39;</span><span class="p">},</span>
+        <span class="n">file_patterns</span><span class="o">=</span><span class="p">(</span>
+            <span class="s1">&#39;/g/data/v10/repackaged/rawdata/0/[0-9][0-9][0-9][0-9]/[0-9][0-9]/*/ga-metadata.yaml&#39;</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="c1"># If something is archived, how many days before we can delete it? None means never</span>
+        <span class="n">delete_archived_after_days</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+        <span class="c1"># Who do we trust in a sync if there&#39;s a mismatch?</span>
+        <span class="n">trust</span><span class="o">=</span><span class="n">Trust</span><span class="o">.</span><span class="n">disk</span><span class="p">,</span>
+ <span class="p">)</span>
+</pre></div>
 </div>
 </div>
 
@@ -275,10 +303,10 @@ The source code can be found at <a class="reference external" href="https://gith
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="glossary.html" class="btn btn-neutral float-right" title="Glossary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="goalkeeper_instructions.html" class="btn btn-neutral float-right" title="What&#39;s a Goalkeeper" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../index.html" class="btn btn-neutral" title="Digital Earth Australia User Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="orchestration.html" class="btn btn-neutral" title="DEA Orchestration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
