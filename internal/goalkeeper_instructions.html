@@ -123,11 +123,13 @@
 <li class="toctree-l1"><a class="reference internal" href="orchestration.html">DEA Orchestration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="collection_management.html">Collection Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="collection_management.html#defining-collections">Defining Collections</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">What's a Goalkeeper</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#goal-keeper-responsibilities">Goal Keeper Responsibilities</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#level-1-support">Level 1 Support</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#build-manager">Build manager</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#release-manager">Release manager</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">What's a Goalkeeper</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#goal-keeper-responsibilities">Goal Keeper Responsibilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#level-1-support">Level 1 Support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-manager">Build manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#release-manager">Release manager</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="requirements_met.html">DEA Smoke Test</a></li>
@@ -243,11 +245,10 @@ and OpenDatacube developers and users.</p>
 <p>The role of the <code class="docutils literal"><span class="pre">DEA</span> <span class="pre">Goalkeeper</span></code> is periodically rotated (usually weekly)
 amongst the group of DEA developers who work at Geoscience Australia. If you are new to the <code class="docutils literal"><span class="pre">DEA</span> <span class="pre">Goalkeeper</span></code> role, this
 document should help.</p>
-</div>
 <div class="section" id="goal-keeper-responsibilities">
-<span id="goal-keeper-responsibilities"></span><h1>Goal Keeper Responsibilities<a class="headerlink" href="#goal-keeper-responsibilities" title="Permalink to this headline">¶</a></h1>
+<span id="goal-keeper-responsibilities"></span><h2>Goal Keeper Responsibilities<a class="headerlink" href="#goal-keeper-responsibilities" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="level-1-support">
-<span id="level-1-support"></span><h2>Level 1 Support<a class="headerlink" href="#level-1-support" title="Permalink to this headline">¶</a></h2>
+<span id="level-1-support"></span><h3>Level 1 Support<a class="headerlink" href="#level-1-support" title="Permalink to this headline">¶</a></h3>
 <p>This is a key responsibility for the <code class="docutils literal"><span class="pre">DEA</span> <span class="pre">Goalkeeper</span></code>:</p>
 <ul class="simple">
 <li>Support requests on the <code class="docutils literal"><span class="pre">#general</span></code> and <code class="docutils literal"><span class="pre">#develop</span></code> channels on <a class="reference external" href="https://opendatacube.slack.com/messages">opendatacube Slack</a></li>
@@ -265,12 +266,12 @@ or <a class="reference external" href="https://github.com/opendatacube/datacube-
 <p>If the request or issue is still outstanding, summarise it's status in your handover to the next <code class="docutils literal"><span class="pre">DEA</span> <span class="pre">Goalkeeper</span></code></p>
 </div>
 <div class="section" id="build-manager">
-<span id="build-manager"></span><h2>Build manager<a class="headerlink" href="#build-manager" title="Permalink to this headline">¶</a></h2>
+<span id="build-manager"></span><h3>Build manager<a class="headerlink" href="#build-manager" title="Permalink to this headline">¶</a></h3>
 <p>Review the <code class="docutils literal"><span class="pre">Continuous</span> <span class="pre">Integration</span> <span class="pre">Status</span></code> of each of the following projects</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/GeoscienceAustralia/digitalearthau/">digitalearthau</a></li>
-<li><a class="reference external" href="https://github.com/opendatacube/datacube-core">datacube-core</a></li>
-<li><a class="reference external" href="https://github.com/GeoscienceAustralia/dea-orchestration">dea-orchestration</a></li>
+<li><a class="reference external" href="https://github.com/GeoscienceAustralia/digitalearthau/">digitalearthau</a>  <a class="reference external" href="https://travis-ci.org/GeoscienceAustralia/digitalearthau"><img alt="Build Status" src="https://travis-ci.org/GeoscienceAustralia/digitalearthau.svg?branch=Update_rst_docs" /></a></li>
+<li><a class="reference external" href="https://github.com/opendatacube/datacube-core">datacube-core</a>  <a class="reference external" href="https://travis-ci.org/opendatacube/datacube-core"><img alt="Build Status" src="https://travis-ci.org/opendatacube/datacube-core.svg?branch=develop" /></a></li>
+<li><a class="reference external" href="https://github.com/GeoscienceAustralia/dea-orchestration">dea-orchestration</a>  <a class="reference external" href="https://travis-ci.org/GeoscienceAustralia/dea-orchestration"><img alt="Build Status" src="https://travis-ci.org/GeoscienceAustralia/dea-orchestration.svg?branch=develop" /></a></li>
 </ul>
 <p>They all should be <code class="docutils literal"><span class="pre">green</span></code>. If the <code class="docutils literal"><span class="pre">CI</span> <span class="pre">Loop</span></code> gets broken:</p>
 <ul class="simple">
@@ -281,12 +282,13 @@ or <a class="reference external" href="https://github.com/opendatacube/datacube-
 project <code class="docutils literal"><span class="pre">README</span></code> file when viewed via the <code class="docutils literal"><span class="pre">Github</span></code> website.</p>
 </div>
 <div class="section" id="release-manager">
-<span id="release-manager"></span><h2>Release manager<a class="headerlink" href="#release-manager" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal"><span class="pre">DEA</span> <span class="pre">Goalkeeper</span></code> will manage the release process when a new release is required</p>
+<span id="release-manager"></span><h3>Release manager<a class="headerlink" href="#release-manager" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal"><span class="pre">DEA</span> <span class="pre">Goalkeeper</span></code> will manage the release process when a new release is required.</p>
 <ul class="simple">
-<li>The DEA build docs are here: http://datacube-core.readthedocs.io/en/stable/about/release_process.html</li>
-<li>The ODC build docs are here: http://geoscienceaustralia.github.io/digitalearthau/internal/release.html</li>
+<li>The <a class="reference external" href="http://datacube-core.readthedocs.io/en/stable/about/release_process.html">DEA build docs</a></li>
+<li>The <a class="reference external" href="http://geoscienceaustralia.github.io/digitalearthau/internal/release.html">ODC build docs</a></li>
 </ul>
+</div>
 </div>
 </div>
 
