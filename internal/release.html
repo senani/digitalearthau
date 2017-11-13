@@ -117,32 +117,32 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="new_product.html">Creating New Product</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release_process.html">Build a version</a></li>
-<li class="toctree-l1"><a class="reference internal" href="release_process.html#Marking-it-stable">Marking it stable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_process.html#marking-it-stable">Marking it stable</a></li>
 <li class="toctree-l1"><a class="reference internal" href="git_best_practice.html">Git Best Practice</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Building a Release</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#Usage">Usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Update-the-Default-Version">Update the Default Version</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Individual-Modules">Individual Modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Python-&quot;Environment&quot;-Module">Python “Environment” Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#Creation">Creation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Use">Use</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Notes">Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#update-the-default-version">Update the Default Version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#individual-modules">Individual Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#python-environment-module">Python “Environment” Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creation">Creation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#use">Use</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#notes">Notes</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#Data-Cube-Module">Data Cube Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#Creation">Creation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Use">Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-cube-module">Data Cube Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Creation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Use</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#Instance-Module">Instance Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#Create-Custom-Instance">Create Custom Instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#instance-module">Instance Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#create-custom-instance">Create Custom Instance</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="orchestration.html">DEA Orchestration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="collection_management.html">Collection Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collection_management.html#Defining-Collections">Defining Collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collection_management.html#defining-collections">Defining Collections</a></li>
 <li class="toctree-l1"><a class="reference internal" href="goalkeeper_instructions.html">What's a Goalkeeper</a></li>
 <li class="toctree-l1"><a class="reference internal" href="requirements_met.html">DEA Smoke Test</a></li>
 <li class="toctree-l1"><a class="reference internal" href="requirements_met.html#Data-load-examples">Data load examples</a></li>
@@ -150,9 +150,9 @@
 <p class="caption"><span class="caption-text">Data</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../data/data.html">Surface Reflectance NBAR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data/data.html#Surface-Reflectance-NBAR-T">Surface Reflectance NBAR-T</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data/data.html#Pixel-Quality">Pixel Quality</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data/data.html#Fractional-Cover">Fractional Cover</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#surface-reflectance-nbar-t">Surface Reflectance NBAR-T</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#pixel-quality">Pixel Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#fractional-cover">Fractional Cover</a></li>
 </ul>
 
             
@@ -250,16 +250,16 @@
     margin-right: 4px;  /* make room for the exclamation icon */
 }
 </style>
-<div class="section" id="Building-a-Release">
-<h1>Building a Release<a class="headerlink" href="#Building-a-Release" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="building-a-release">
+<h1>Building a Release<a class="headerlink" href="#building-a-release" title="Permalink to this headline">¶</a></h1>
 <p>The <code class="docutils literal"><span class="pre">package-release.sh</span></code> script will build all modules for a given datacube version:</p>
 <div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">./package-release.sh 1.2.0</span>
 </pre></div>
 </div>
 <p>(Note that it’s currently interactive: each section will ask for confirmation
 of options before starting)</p>
-<div class="section" id="Usage">
-<h2>Usage<a class="headerlink" href="#Usage" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>module load agdc-py3-prod
 datacube system check
 </pre></div>
@@ -267,28 +267,28 @@ datacube system check
 <p>This will load <code class="docutils literal"><span class="pre">agdc-py3-env/&lt;build_date&gt;</span></code>, <code class="docutils literal"><span class="pre">agdc-py3/&lt;version&gt;</span></code> and
 <code class="docutils literal"><span class="pre">agdc-py3-prod/&lt;version&gt;</span></code> modules</p>
 </div>
-<div class="section" id="Update-the-Default-Version">
-<h2>Update the Default Version<a class="headerlink" href="#Update-the-Default-Version" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="update-the-default-version">
+<h2>Update the Default Version<a class="headerlink" href="#update-the-default-version" title="Permalink to this headline">¶</a></h2>
 <p>Once a module has been tested and approved, it can be made the default.</p>
 <p>Edit the <cite>.version</cite> file in the modulefiles directory.</p>
 <p>Eg. For agdc-py2-prod this is: <cite>/g/data/v10/public/modules/modulefiles/agdc-py2-prod/.version</cite></p>
 </div>
-<div class="section" id="Individual-Modules">
-<h2>Individual Modules<a class="headerlink" href="#Individual-Modules" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="individual-modules">
+<h2>Individual Modules<a class="headerlink" href="#individual-modules" title="Permalink to this headline">¶</a></h2>
 <p>You probably don’t have to care about any of the commands below: they are all
 run by the <cite>./package-release.sh</cite> command above.</p>
 <p>But if you want to build modules individually, or know what they are, keep
 reading.</p>
 </div>
-<div class="section" id="Python-&quot;Environment&quot;-Module">
-<h2>Python “Environment” Module<a class="headerlink" href="#Python-"Environment"-Module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="python-environment-module">
+<h2>Python “Environment” Module<a class="headerlink" href="#python-environment-module" title="Permalink to this headline">¶</a></h2>
 <p>The Python module contains all Data Cube dependencies and libraries but not the
 Data Cube itself. See [environment.yaml](py-environment/environment.yaml)
 for the list of packages.</p>
 <p>The module version number is the current date in format <code class="docutils literal"><span class="pre">YYYYMMDD</span></code>, as it is a snapshot
 of all of our pip/conda dependencies on that date.</p>
-<div class="section" id="Creation">
-<h3>Creation<a class="headerlink" href="#Creation" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="creation">
+<h3>Creation<a class="headerlink" href="#creation" title="Permalink to this headline">¶</a></h3>
 <p>Running this from Raijin is highly recommended as we’ve seen some issues come up when ran from VDI (ghost file locks):</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> modules/py-environment/
 ./package-module.sh --help
@@ -297,26 +297,26 @@ of all of our pip/conda dependencies on that date.</p>
 </div>
 <p>This will create a new environment module in <cite>/g/data/v10/public/modules/agdc-py3-env/&lt;date&gt;</cite>.</p>
 </div>
-<div class="section" id="Use">
-<h3>Use<a class="headerlink" href="#Use" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="use">
+<h3>Use<a class="headerlink" href="#use" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">module load agdc-py3-env</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="Notes">
-<h3>Notes<a class="headerlink" href="#Notes" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="notes">
+<h3>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h3>
 <p>Loading the module might conflict with other python modules you have loaded.</p>
 <p>The module will prevent conflicts with locally installed python packages by changing <code class="docutils literal"><span class="pre">PYTHONUSERBASE</span></code> for each release;
 <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--user</span> <span class="pre">...</span></code> will store packages under <code class="docutils literal"><span class="pre">~/.digitalearthau</span></code>.</p>
 </div>
 </div>
-<div class="section" id="Data-Cube-Module">
-<h2>Data Cube Module<a class="headerlink" href="#Data-Cube-Module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="data-cube-module">
+<h2>Data Cube Module<a class="headerlink" href="#data-cube-module" title="Permalink to this headline">¶</a></h2>
 <p>The data cube module contains the Open Data Cube library. It is built against a
 specific Python envionment module (ie. frozen to specific versions of each of
 our dependencies)</p>
-<div class="section" id="Creation">
-<h3>Creation<a class="headerlink" href="#Creation" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id1">
+<h3>Creation<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> modules/agdc
 ./package-module.sh --help
     Usage: ./package-module.sh --env agdc-py2-env/anaconda2-2.5.0 --moduledir /g/data/v10/public/modules --version <span class="m">1</span>.1.9
@@ -335,22 +335,22 @@ version of the latest code in
 <p>To specify a particular version, use the version number portion of the GitHub tag.
 Specifying <code class="docutils literal"><span class="pre">--version</span> <span class="pre">1.1.9</span></code> will use the <a class="reference external" href="https://github.com/data-cube/agdc-v2/tree/datacube-1.1.9">datacube-1.1.9</a> tag.</p>
 </div>
-<div class="section" id="Use">
-<h3>Use<a class="headerlink" href="#Use" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id2">
+<h3>Use<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">module load agdc-py3</span>
 </pre></div>
 </div>
 <p>This will load <code class="docutils literal"><span class="pre">agdc-py3-env/21121221</span></code> and <code class="docutils literal"><span class="pre">agdc-py3/&lt;version&gt;</span></code> modules</p>
 </div>
 </div>
-<div class="section" id="Instance-Module">
-<h2>Instance Module<a class="headerlink" href="#Instance-Module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="instance-module">
+<h2>Instance Module<a class="headerlink" href="#instance-module" title="Permalink to this headline">¶</a></h2>
 <p>This module combines a Data Cube module with specific config (prod, test, dev…)</p>
 <p>It includes a config file, which it specifies by setting the
 <code class="docutils literal"><span class="pre">DATACUBE_CONFIG_PATH</span></code> environment variable.</p>
 <p>The version number matches the datacube version.</p>
-<div class="section" id="Create-Custom-Instance">
-<h3>Create Custom Instance<a class="headerlink" href="#Create-Custom-Instance" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="create-custom-instance">
+<h3>Create Custom Instance<a class="headerlink" href="#create-custom-instance" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> modules/agdc-instances
 ./package-instance-module.sh  --help
 </pre></div>

@@ -116,26 +116,26 @@
 <p class="caption"><span class="caption-text">Developer Guide</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Creating New Product</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#Test-Database-Access">Test Database Access</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Preparing-New-Database">Preparing New Database</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Adding-new-product">Adding new product</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Indexing-data">Indexing data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Gotchas">Gotchas</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#Indexing-fails">Indexing fails</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Role-of-Metadata">Role of Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-database-access">Test Database Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#preparing-new-database">Preparing New Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-new-product">Adding new product</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#indexing-data">Indexing data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gotchas">Gotchas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indexing-fails">Indexing fails</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#role-of-metadata">Role of Metadata</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#Reviewing-Results">Reviewing Results</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Appendix">Appendix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reviewing-results">Reviewing Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#appendix">Appendix</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="release_process.html">Build a version</a></li>
-<li class="toctree-l1"><a class="reference internal" href="release_process.html#Marking-it-stable">Marking it stable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_process.html#marking-it-stable">Marking it stable</a></li>
 <li class="toctree-l1"><a class="reference internal" href="git_best_practice.html">Git Best Practice</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release.html">Building a Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="orchestration.html">DEA Orchestration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="collection_management.html">Collection Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collection_management.html#Defining-Collections">Defining Collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collection_management.html#defining-collections">Defining Collections</a></li>
 <li class="toctree-l1"><a class="reference internal" href="goalkeeper_instructions.html">What's a Goalkeeper</a></li>
 <li class="toctree-l1"><a class="reference internal" href="requirements_met.html">DEA Smoke Test</a></li>
 <li class="toctree-l1"><a class="reference internal" href="requirements_met.html#Data-load-examples">Data load examples</a></li>
@@ -143,9 +143,9 @@
 <p class="caption"><span class="caption-text">Data</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../data/data.html">Surface Reflectance NBAR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data/data.html#Surface-Reflectance-NBAR-T">Surface Reflectance NBAR-T</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data/data.html#Pixel-Quality">Pixel Quality</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data/data.html#Fractional-Cover">Fractional Cover</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#surface-reflectance-nbar-t">Surface Reflectance NBAR-T</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#pixel-quality">Pixel Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#fractional-cover">Fractional Cover</a></li>
 </ul>
 
             
@@ -243,15 +243,15 @@
     margin-right: 4px;  /* make room for the exclamation icon */
 }
 </style>
-<div class="section" id="Creating-New-Product">
-<h1>Creating New Product<a class="headerlink" href="#Creating-New-Product" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="creating-new-product">
+<h1>Creating New Product<a class="headerlink" href="#creating-new-product" title="Permalink to this headline">¶</a></h1>
 <p>Notes for adding new products to NCI datacube</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">This is still work in progress</p>
 </div>
-<div class="section" id="Test-Database-Access">
-<h2>Test Database Access<a class="headerlink" href="#Test-Database-Access" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="test-database-access">
+<h2>Test Database Access<a class="headerlink" href="#test-database-access" title="Permalink to this headline">¶</a></h2>
 <p>Make sure you have access to test database server that allows creation of new
 databases. Test database server is <code class="docutils literal"><span class="pre">agdcdev-db.nci.org.au</span></code>. Configure your
 <code class="docutils literal"><span class="pre">~/.pgpass</span></code>, add new line like this one. Typically you should be able to
@@ -263,8 +263,8 @@ re-use the same credentials as your production datacube.</p>
 <code class="docutils literal"><span class="pre">psql</span> <span class="pre">-h</span> <span class="pre">agdcdev-db.nci.org.au</span> <span class="pre">-p</span> <span class="pre">6432</span> <span class="pre">datacube</span> <span class="pre">-l</span></code>,
 you should get a list of databases currently present.</p>
 </div>
-<div class="section" id="Preparing-New-Database">
-<h2>Preparing New Database<a class="headerlink" href="#Preparing-New-Database" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="preparing-new-database">
+<h2>Preparing New Database<a class="headerlink" href="#preparing-new-database" title="Permalink to this headline">¶</a></h2>
 <p>It’s best to create an empty database for testing new product. Test database
 should contain same metadata and products as the main database. Typically new
 product is going to be derived from existing products in the main database and
@@ -326,8 +326,8 @@ datacube product list
 </pre></div>
 </div>
 </div>
-<div class="section" id="Adding-new-product">
-<h2>Adding new product<a class="headerlink" href="#Adding-new-product" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="adding-new-product">
+<h2>Adding new product<a class="headerlink" href="#adding-new-product" title="Permalink to this headline">¶</a></h2>
 <p>Products are described using yaml. Things you need to customize</p>
 <ol class="arabic simple">
 <li>Product name</li>
@@ -391,8 +391,8 @@ datacube product show <span class="s2">&quot;&lt;product_name&gt;&quot;</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="Indexing-data">
-<h2>Indexing data<a class="headerlink" href="#Indexing-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="indexing-data">
+<h2>Indexing data<a class="headerlink" href="#indexing-data" title="Permalink to this headline">¶</a></h2>
 <p>For the purpose of this document we are going to assume that product datasets
 were generated by the datacube tools and so they are</p>
 <ol class="arabic simple">
@@ -416,8 +416,8 @@ find path_to_datasets -name <span class="s2">&quot;*nc&quot;</span> <span class=
 </pre></div>
 </div>
 </div>
-<div class="section" id="Gotchas">
-<h2>Gotchas<a class="headerlink" href="#Gotchas" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="gotchas">
+<h2>Gotchas<a class="headerlink" href="#gotchas" title="Permalink to this headline">¶</a></h2>
 <p>Most likely things won’t go smoothly on the first try. This section addresses
 some of the more common problem you are likely to experience.</p>
 <p>First off these commands will help you debug various problems</p>
@@ -435,8 +435,8 @@ ncks -V -C -v dataset <span class="s2">&quot;&lt;dataset_file.nc&quot;</span>&gt
 datacube system check
 </pre></div>
 </div>
-<div class="section" id="Indexing-fails">
-<h3>Indexing fails<a class="headerlink" href="#Indexing-fails" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="indexing-fails">
+<h3>Indexing fails<a class="headerlink" href="#indexing-fails" title="Permalink to this headline">¶</a></h3>
 <p>Most likely indexing process failed with <code class="docutils literal"><span class="pre">No</span> <span class="pre">matching</span> <span class="pre">Product</span> <span class="pre">found</span> <span class="pre">for</span> <span class="pre">...</span></code>
 error message.</p>
 <ol class="arabic simple">
@@ -446,8 +446,8 @@ embedded in the NetCDF file.</li>
 <li>Make sure you have added product successfully</li>
 </ol>
 </div>
-<div class="section" id="Role-of-Metadata">
-<h3>Role of Metadata<a class="headerlink" href="#Role-of-Metadata" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="role-of-metadata">
+<h3>Role of Metadata<a class="headerlink" href="#role-of-metadata" title="Permalink to this headline">¶</a></h3>
 <p>Each dataset has a metadata document attached to it, for files produced by the
 datacube tools this metadata is automatically generated. See <a class="reference external" href="http://datacube-core.readthedocs.io/en/latest/ops/config.html#dataset-metadata-document">Metadata</a>
 documentation online for a detailed overview.</p>
@@ -466,8 +466,8 @@ combines data from multiple sensors/platforms then you should omit
 platform/instrument from metadata section.</p>
 </div>
 </div>
-<div class="section" id="Reviewing-Results">
-<h2>Reviewing Results<a class="headerlink" href="#Reviewing-Results" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="reviewing-results">
+<h2>Reviewing Results<a class="headerlink" href="#reviewing-results" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li>Create Virtual Raster files</li>
 <li>Create overview files for zoomed out view</li>
@@ -510,8 +510,8 @@ select <code class="docutils literal"><span class="pre">Layer&gt;</span> <span c
 <code class="docutils literal"><span class="pre">/g/data/u46/users/kk7182/public/qgis/</span></code> and select <code class="docutils literal"><span class="pre">au.qlr</span></code>. This will add
 vector layer that makes analysis easier.</p>
 </div>
-<div class="section" id="Appendix">
-<h2>Appendix<a class="headerlink" href="#Appendix" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="appendix">
+<h2>Appendix<a class="headerlink" href="#appendix" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 
 mk_db_sql <span class="o">()</span> <span class="o">{</span>

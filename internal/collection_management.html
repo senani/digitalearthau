@@ -117,12 +117,12 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="new_product.html">Creating New Product</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release_process.html">Build a version</a></li>
-<li class="toctree-l1"><a class="reference internal" href="release_process.html#Marking-it-stable">Marking it stable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_process.html#marking-it-stable">Marking it stable</a></li>
 <li class="toctree-l1"><a class="reference internal" href="git_best_practice.html">Git Best Practice</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release.html">Building a Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="orchestration.html">DEA Orchestration</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Collection Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Defining-Collections">Defining Collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#defining-collections">Defining Collections</a></li>
 <li class="toctree-l1"><a class="reference internal" href="goalkeeper_instructions.html">What's a Goalkeeper</a></li>
 <li class="toctree-l1"><a class="reference internal" href="requirements_met.html">DEA Smoke Test</a></li>
 <li class="toctree-l1"><a class="reference internal" href="requirements_met.html#Data-load-examples">Data load examples</a></li>
@@ -130,9 +130,9 @@
 <p class="caption"><span class="caption-text">Data</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../data/data.html">Surface Reflectance NBAR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data/data.html#Surface-Reflectance-NBAR-T">Surface Reflectance NBAR-T</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data/data.html#Pixel-Quality">Pixel Quality</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data/data.html#Fractional-Cover">Fractional Cover</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#surface-reflectance-nbar-t">Surface Reflectance NBAR-T</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#pixel-quality">Pixel Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#fractional-cover">Fractional Cover</a></li>
 </ul>
 
             
@@ -230,8 +230,8 @@
     margin-right: 4px;  /* make room for the exclamation icon */
 }
 </style>
-<div class="section" id="Collection-Management">
-<h1>Collection Management<a class="headerlink" href="#Collection-Management" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="collection-management">
+<h1>Collection Management<a class="headerlink" href="#collection-management" title="Permalink to this headline">¶</a></h1>
 <p>The DEA repository contains a set of tools for managing the collections on disk at NCI.</p>
 <p>See their help commands for specific information:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Update the index, find problems with datasets.</span>
@@ -252,8 +252,8 @@ dea-submit-sync --help
 <p>Note that many of these operate on collections, not products. To perform a move or sync on a new product you
 may first need add it as a collection.</p>
 </div>
-<div class="section" id="Defining-Collections">
-<h1>Defining Collections<a class="headerlink" href="#Defining-Collections" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="defining-collections">
+<h1>Defining Collections<a class="headerlink" href="#defining-collections" title="Permalink to this headline">¶</a></h1>
 <p>The Open Data Cube core keeps track of where individual datasets are in a product, but not where datasets as a
 whole should be (such as which filesystems).</p>
 <p>Knowing “where they should be” is currently handled in this DEA repository as the list of collections.</p>

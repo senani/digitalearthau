@@ -117,27 +117,27 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="new_product.html">Creating New Product</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release_process.html">Build a version</a></li>
-<li class="toctree-l1"><a class="reference internal" href="release_process.html#Marking-it-stable">Marking it stable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_process.html#marking-it-stable">Marking it stable</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Git Best Practice</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#Initial-Setup">Initial Setup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Main-Principles">Main Principles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Commit-Message-Format">Commit Message Format</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Clean-Linear-History">Clean Linear History</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#Pull-with-Rebase">Pull with Rebase</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Cleanup-Before-Sharing">Cleanup Before Sharing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#initial-setup">Initial Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#main-principles">Main Principles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#commit-message-format">Commit Message Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#clean-linear-history">Clean Linear History</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pull-with-rebase">Pull with Rebase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cleanup-before-sharing">Cleanup Before Sharing</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#Bug-Fix-Workflow">Bug Fix Workflow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#New-Feature-Workflow">New Feature Workflow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Travis-and-Coveralls-Integration">Travis and Coveralls Integration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Pull-Requests">Pull Requests</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Links">Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bug-fix-workflow">Bug Fix Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#new-feature-workflow">New Feature Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#travis-and-coveralls-integration">Travis and Coveralls Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pull-requests">Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#links">Links</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="release.html">Building a Release</a></li>
 <li class="toctree-l1"><a class="reference internal" href="orchestration.html">DEA Orchestration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="collection_management.html">Collection Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collection_management.html#Defining-Collections">Defining Collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collection_management.html#defining-collections">Defining Collections</a></li>
 <li class="toctree-l1"><a class="reference internal" href="goalkeeper_instructions.html">What's a Goalkeeper</a></li>
 <li class="toctree-l1"><a class="reference internal" href="requirements_met.html">DEA Smoke Test</a></li>
 <li class="toctree-l1"><a class="reference internal" href="requirements_met.html#Data-load-examples">Data load examples</a></li>
@@ -145,9 +145,9 @@
 <p class="caption"><span class="caption-text">Data</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../data/data.html">Surface Reflectance NBAR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data/data.html#Surface-Reflectance-NBAR-T">Surface Reflectance NBAR-T</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data/data.html#Pixel-Quality">Pixel Quality</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data/data.html#Fractional-Cover">Fractional Cover</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#surface-reflectance-nbar-t">Surface Reflectance NBAR-T</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#pixel-quality">Pixel Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#fractional-cover">Fractional Cover</a></li>
 </ul>
 
             
@@ -245,8 +245,8 @@
     margin-right: 4px;  /* make room for the exclamation icon */
 }
 </style>
-<div class="section" id="Git-Best-Practice">
-<h1>Git Best Practice<a class="headerlink" href="#Git-Best-Practice" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="git-best-practice">
+<h1>Git Best Practice<a class="headerlink" href="#git-best-practice" title="Permalink to this headline">¶</a></h1>
 <p>We use git for version control management. Repositories are usually hosted on
 GitHub. In this document we assume that you are already familiar with the common
 terminology around version control in git. If terms like <code class="docutils literal"><span class="pre">clone</span></code>,
@@ -256,8 +256,8 @@ please consider reading up on git online first.</p>
 <li><a class="reference external" href="https://www.atlassian.com/git">https://www.atlassian.com/git</a> good introduction, but dives deep too</li>
 <li><a class="reference external" href="https://help.github.com">https://help.github.com</a> covers a lot of detail and github specifics</li>
 </ul>
-<div class="section" id="Initial-Setup">
-<h2>Initial Setup<a class="headerlink" href="#Initial-Setup" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="initial-setup">
+<h2>Initial Setup<a class="headerlink" href="#initial-setup" title="Permalink to this headline">¶</a></h2>
 <p>When setting up new dev machine make sure that your git identity is properly configured.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>git config --global user.name <span class="s2">&quot;YourFirstName YourLastName&quot;</span>
 git config --global user.email <span class="s2">&quot;your_email@example.com&quot;</span>
@@ -268,8 +268,8 @@ git config --list
 </pre></div>
 </div>
 </div>
-<div class="section" id="Main-Principles">
-<h2>Main Principles<a class="headerlink" href="#Main-Principles" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="main-principles">
+<h2>Main Principles<a class="headerlink" href="#main-principles" title="Permalink to this headline">¶</a></h2>
 <p>Below are the main guiding principles, we will expand on that through out the document</p>
 <ul class="simple">
 <li>Treat commit history as a form of documentation</li>
@@ -301,8 +301,8 @@ or <code class="docutils literal"><span class="pre">develop</span></code>, no ma
 are developed in separate feature branches, those then get merged into the main
 branch when ready.</p>
 </div>
-<div class="section" id="Commit-Message-Format">
-<h2>Commit Message Format<a class="headerlink" href="#Commit-Message-Format" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="commit-message-format">
+<h2>Commit Message Format<a class="headerlink" href="#commit-message-format" title="Permalink to this headline">¶</a></h2>
 <p>Good commit messages make collaboration easier. Commit message should consist of
 short summary line, 50 characters of less, followed by a blank line, followed by
 expanded description. It is fine to omit expanded description and the blank line
@@ -323,18 +323,18 @@ written as if giving a command or instruction”). So use</p>
 still start with a capital letter. For a more expanded exploration of the topic
 see <a class="reference external" href="https://chris.beams.io/posts/git-commit/">https://chris.beams.io/posts/git-commit/</a></p>
 </div>
-<div class="section" id="Clean-Linear-History">
-<h2>Clean Linear History<a class="headerlink" href="#Clean-Linear-History" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="Pull-with-Rebase">
-<h3>Pull with Rebase<a class="headerlink" href="#Pull-with-Rebase" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="clean-linear-history">
+<h2>Clean Linear History<a class="headerlink" href="#clean-linear-history" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pull-with-rebase">
+<h3>Pull with Rebase<a class="headerlink" href="#pull-with-rebase" title="Permalink to this headline">¶</a></h3>
 <p>When grabbing changes from remote use <code class="docutils literal"><span class="pre">--rebase</span></code> switch, this keeps history
 linear by replaying your changes on top of remote changes.</p>
 <p>For example <code class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">--rebase</span> <span class="pre">origin</span> <span class="pre">master</span></code>. Alternatively make pull with
 rebase a global default <code class="docutils literal"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">pull.rebase</span> <span class="pre">true</span></code>. Your editor
 probably has this option, certainly PyCharm supports pulling with rebase.</p>
 </div>
-<div class="section" id="Cleanup-Before-Sharing">
-<h3>Cleanup Before Sharing<a class="headerlink" href="#Cleanup-Before-Sharing" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="cleanup-before-sharing">
+<h3>Cleanup Before Sharing<a class="headerlink" href="#cleanup-before-sharing" title="Permalink to this headline">¶</a></h3>
 <p>Just like code can be edited, so can be git history. You don’t need to type out
 perfect code on the first try, you don’t need to delay committing your code
 until it’s “just right”, “work in progress” commits are perfectly fine so long
@@ -356,8 +356,8 @@ some of the tools listed below</p>
 </ul>
 </div>
 </div>
-<div class="section" id="Bug-Fix-Workflow">
-<h2>Bug Fix Workflow<a class="headerlink" href="#Bug-Fix-Workflow" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="bug-fix-workflow">
+<h2>Bug Fix Workflow<a class="headerlink" href="#bug-fix-workflow" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li>Create issue on GitHub, if not created already</li>
 <li>Create new branch with a reasonable name, <code class="docutils literal"><span class="pre">fix-issue-273</span></code> is fine</li>
@@ -368,8 +368,8 @@ some of the tools listed below</p>
 <li>Create pull request</li>
 </ol>
 </div>
-<div class="section" id="New-Feature-Workflow">
-<h2>New Feature Workflow<a class="headerlink" href="#New-Feature-Workflow" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="new-feature-workflow">
+<h2>New Feature Workflow<a class="headerlink" href="#new-feature-workflow" title="Permalink to this headline">¶</a></h2>
 <p>As far as git mechanics go new feature development is similar to <a class="reference internal" href="#bug-fix-workflow">Bug Fix
 Workflow</a>. New features are developed in a feature branch. Since new feature
 development is likely to take longer than a bug fix it becomes important to keep
@@ -393,8 +393,8 @@ you done in detail using GitHub comment interface, you can use markdown for
 formatting. Try to make the reviewers job easier by providing context of the
 change that might be difficult to extract from the code diff alone.</p>
 </div>
-<div class="section" id="Travis-and-Coveralls-Integration">
-<h2>Travis and Coveralls Integration<a class="headerlink" href="#Travis-and-Coveralls-Integration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="travis-and-coveralls-integration">
+<h2>Travis and Coveralls Integration<a class="headerlink" href="#travis-and-coveralls-integration" title="Permalink to this headline">¶</a></h2>
 <p>We use free service Travis CI <a class="reference external" href="https://travis-ci.org">https://travis-ci.org</a> to automatically run
 unit tests when new code is pushed to GitHub. When running unit tests we extract
 “code coverage” statistics for given test run. We use Coveralls
@@ -403,8 +403,8 @@ percentage changes over time. The expectation is that code coverage percentage
 increases over time or at least doesn’t go backwards by a lot for too long. As
 new features are added so are the unit-tests that test new code.</p>
 </div>
-<div class="section" id="Pull-Requests">
-<h2>Pull Requests<a class="headerlink" href="#Pull-Requests" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pull-requests">
+<h2>Pull Requests<a class="headerlink" href="#pull-requests" title="Permalink to this headline">¶</a></h2>
 <p>When accepting pull requests GitHub gives you three different options. The
 default behavior is to create a merge commit <em>“Merge pull request”</em>. Use this
 option for larger requests.</p>
@@ -413,8 +413,8 @@ option for larger requests.</p>
 size, use the <em>“Rebase and merge”</em> option. This will make it look like the
 feature was developed directly in the main branch.</p>
 </div>
-<div class="section" id="Links">
-<h2>Links<a class="headerlink" href="#Links" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="links">
+<h2>Links<a class="headerlink" href="#links" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="https://chris.beams.io/posts/git-commit/">https://chris.beams.io/posts/git-commit/</a></li>
 <li><a class="reference external" href="https://www.jetbrains.com/help/pycharm/2017.2/using-git-integration.html">https://www.jetbrains.com/help/pycharm/2017.2/using-git-integration.html</a></li>
