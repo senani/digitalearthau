@@ -116,6 +116,7 @@
 <p class="caption"><span class="caption-text">Developer Guide</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Creating New Product</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#profile-module-setup">Profile/Module Setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#test-database-access">Test Database Access</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#preparing-new-database">Preparing New Database</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#adding-new-product">Adding new product</a></li>
@@ -249,6 +250,20 @@
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">This is still work in progress</p>
+</div>
+<div class="section" id="profile-module-setup">
+<h2>Profile/Module Setup<a class="headerlink" href="#profile-module-setup" title="Permalink to this headline">¶</a></h2>
+<p>These instructions assume you have access to the <cite>v10</cite> project on the NCI.</p>
+<p>Ensure you have access to both public and private modules, and have loaded
+the <cite>dea-prod</cite> module. It makes sense to include the <cite>module use</cite> commands
+in your <cite>~/.modulerc</cite> or <cite>~/.bashrc</cite> or <cite>~/.bash_profile</cite>, but run the
+<cite>module load</cite> command when required. The <cite>dea-*</cite> module include <cite>DEA</cite>
+customised versions of some of the <cite>ODC</cite> management tools.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>module use /g/data/v10/private/modules/modulefiles/
+module use /g/data/v10/private/modules/modulefiles/
+module load dea-prod
+</pre></div>
+</div>
 </div>
 <div class="section" id="test-database-access">
 <h2>Test Database Access<a class="headerlink" href="#test-database-access" title="Permalink to this headline">¶</a></h2>
