@@ -404,11 +404,11 @@ div.nboutput div.output_area.stderr {
 <p>First we will pull in the modules as described in Getting
 Started.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>%matplotlib inline
 import datacube
 import pandas
@@ -418,44 +418,44 @@ pandas.set_option(&#39;display.max_rows&#39;, None)
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>dc = datacube.Datacube()
 </pre></div>
 </div>
 </div>
 <div class="section" id="List-Products">
 <h2>List Products<a class="headerlink" href="#List-Products" title="Permalink to this headline">¶</a></h2>
-<p>We can get all the products in datacube as a <code class="docutils literal"><span class="pre">pandas</span> <span class="pre">DataFrame</span></code>:</p>
+<p>We can get all the products in datacube as a <code class="docutils literal notranslate"><span class="pre">pandas</span> <span class="pre">DataFrame</span></code>:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>products = dc.list_products()
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>products.columns.tolist()
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>Out[5]:
 </pre></div>
 </div>
-<div class="output_area highlight-none"><div class="highlight"><pre>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
 <span></span>[&#39;name&#39;,
  &#39;description&#39;,
  &#39;gqa_stddev_xy&#39;,
@@ -489,14 +489,14 @@ pandas.set_option(&#39;display.max_rows&#39;, None)
 </div>
 </div>
 <p>We don’t want to see most of these columns, so we will limit the
-<code class="docutils literal"><span class="pre">DataFrame</span></code> to just a few, and show the rows with a <code class="docutils literal"><span class="pre">product_type</span></code>
-of <code class="docutils literal"><span class="pre">nbar</span></code>:</p>
+<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> to just a few, and show the rows with a <code class="docutils literal notranslate"><span class="pre">product_type</span></code>
+of <code class="docutils literal notranslate"><span class="pre">nbar</span></code>:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [16]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>display_columns = [&#39;name&#39;, &#39;description&#39;, &#39;platform&#39;, &#39;instrument&#39;, &#39;crs&#39;, &#39;resolution&#39;]
 nbar_products = products[products[&#39;product_type&#39;] == &#39;nbar&#39;][display_columns].dropna()
 nbar_products
@@ -504,7 +504,7 @@ nbar_products
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>Out[16]:
 </pre></div>
 </div>
@@ -589,31 +589,31 @@ nbar_products
 <div class="section" id="List-Measurements">
 <h2>List Measurements<a class="headerlink" href="#List-Measurements" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [25]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>measurements = dc.list_measurements()
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [26]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>measurements.columns.tolist()
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>Out[26]:
 </pre></div>
 </div>
-<div class="output_area highlight-none"><div class="highlight"><pre>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
 <span></span>[&#39;aliases&#39;,
  &#39;dtype&#39;,
  &#39;flags_definition&#39;,
@@ -625,29 +625,29 @@ nbar_products
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [27]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>display_columns = [&#39;units&#39;, &#39;nodata&#39;, &#39;aliases&#39;]
 </pre></div>
 </div>
 </div>
 <p>We can look at the measurements for just one product, such as
-<code class="docutils literal"><span class="pre">ls5_nbar_albers</span></code>:</p>
+<code class="docutils literal notranslate"><span class="pre">ls5_nbar_albers</span></code>:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [29]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>measurements[display_columns].loc[&#39;ls5_nbar_albers&#39;]
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>Out[29]:
 </pre></div>
 </div>
@@ -724,22 +724,22 @@ nbar_products
 </div>
 <p>Or we can look at a list of them:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [32]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>product_list = nbar_products.name.tolist()
 product_list
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>Out[32]:
 </pre></div>
 </div>
-<div class="output_area highlight-none"><div class="highlight"><pre>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
 <span></span>[&#39;ls5_nbar_albers&#39;,
  &#39;ls7_nbar_albers&#39;,
  &#39;ls8_nbar_albers&#39;,
@@ -748,17 +748,17 @@ product_list
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [33]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>measurements[display_columns].loc[product_list]
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>Out[33]:
 </pre></div>
 </div>

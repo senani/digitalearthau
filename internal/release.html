@@ -253,20 +253,20 @@
 </style>
 <div class="section" id="building-a-release">
 <h1>Building a Release<a class="headerlink" href="#building-a-release" title="Permalink to this headline">¶</a></h1>
-<p>The <code class="docutils literal"><span class="pre">package-release.sh</span></code> script will build all modules for a given datacube version:</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">./package-release.sh 1.2.0</span>
+<p>The <code class="docutils literal notranslate"><span class="pre">package-release.sh</span></code> script will build all modules for a given datacube version:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">./package-release.sh 1.2.0</span>
 </pre></div>
 </div>
 <p>(Note that it’s currently interactive: each section will ask for confirmation
 of options before starting)</p>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>module load agdc-py3-prod
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load agdc-py3-prod
 datacube system check
 </pre></div>
 </div>
-<p>This will load <code class="docutils literal"><span class="pre">agdc-py3-env/&lt;build_date&gt;</span></code>, <code class="docutils literal"><span class="pre">agdc-py3/&lt;version&gt;</span></code> and
-<code class="docutils literal"><span class="pre">agdc-py3-prod/&lt;version&gt;</span></code> modules</p>
+<p>This will load <code class="docutils literal notranslate"><span class="pre">agdc-py3-env/&lt;build_date&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">agdc-py3/&lt;version&gt;</span></code> and
+<code class="docutils literal notranslate"><span class="pre">agdc-py3-prod/&lt;version&gt;</span></code> modules</p>
 </div>
 <div class="section" id="update-the-default-version">
 <h2>Update the Default Version<a class="headerlink" href="#update-the-default-version" title="Permalink to this headline">¶</a></h2>
@@ -286,12 +286,12 @@ reading.</p>
 <p>The Python module contains all Data Cube dependencies and libraries but not the
 Data Cube itself. See [environment.yaml](py-environment/environment.yaml)
 for the list of packages.</p>
-<p>The module version number is the current date in format <code class="docutils literal"><span class="pre">YYYYMMDD</span></code>, as it is a snapshot
+<p>The module version number is the current date in format <code class="docutils literal notranslate"><span class="pre">YYYYMMDD</span></code>, as it is a snapshot
 of all of our pip/conda dependencies on that date.</p>
 <div class="section" id="creation">
 <h3>Creation<a class="headerlink" href="#creation" title="Permalink to this headline">¶</a></h3>
 <p>Running this from Raijin is highly recommended as we’ve seen some issues come up when ran from VDI (ghost file locks):</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> modules/py-environment/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> modules/py-environment/
 ./package-module.sh --help
 ./package-module.sh --variant py3 --moduledir /g/data/v10/public/modules
 </pre></div>
@@ -300,15 +300,15 @@ of all of our pip/conda dependencies on that date.</p>
 </div>
 <div class="section" id="use">
 <h3>Use<a class="headerlink" href="#use" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">module load agdc-py3-env</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">module load agdc-py3-env</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="notes">
 <h3>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h3>
 <p>Loading the module might conflict with other python modules you have loaded.</p>
-<p>The module will prevent conflicts with locally installed python packages by changing <code class="docutils literal"><span class="pre">PYTHONUSERBASE</span></code> for each release;
-<code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--user</span> <span class="pre">...</span></code> will store packages under <code class="docutils literal"><span class="pre">~/.digitalearthau</span></code>.</p>
+<p>The module will prevent conflicts with locally installed python packages by changing <code class="docutils literal notranslate"><span class="pre">PYTHONUSERBASE</span></code> for each release;
+<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--user</span> <span class="pre">...</span></code> will store packages under <code class="docutils literal notranslate"><span class="pre">~/.digitalearthau</span></code>.</p>
 </div>
 </div>
 <div class="section" id="data-cube-module">
@@ -318,7 +318,7 @@ specific Python envionment module (ie. frozen to specific versions of each of
 our dependencies)</p>
 <div class="section" id="id1">
 <h3>Creation<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> modules/agdc
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> modules/agdc
 ./package-module.sh --help
     Usage: ./package-module.sh --env agdc-py2-env/anaconda2-2.5.0 --moduledir /g/data/v10/public/modules --version <span class="m">1</span>.1.9
       Options:
@@ -330,29 +330,29 @@ our dependencies)</p>
 </pre></div>
 </div>
 <p>This will create a new data cube module in
-<code class="docutils literal"><span class="pre">/g/data/v10/public/modules/agdc-py3/&lt;version&gt;</span></code>. Where <code class="docutils literal"><span class="pre">&lt;version&gt;</span></code> is the
+<code class="docutils literal notranslate"><span class="pre">/g/data/v10/public/modules/agdc-py3/&lt;version&gt;</span></code>. Where <code class="docutils literal notranslate"><span class="pre">&lt;version&gt;</span></code> is the
 version of the latest code in
 <a class="reference external" href="https://github.com/data-cube/agdc-v2/tree/develop">agdc-v2/develop</a> (e.g.  1.1.6+12.abcdefgh).</p>
 <p>To specify a particular version, use the version number portion of the GitHub tag.
-Specifying <code class="docutils literal"><span class="pre">--version</span> <span class="pre">1.1.9</span></code> will use the <a class="reference external" href="https://github.com/data-cube/agdc-v2/tree/datacube-1.1.9">datacube-1.1.9</a> tag.</p>
+Specifying <code class="docutils literal notranslate"><span class="pre">--version</span> <span class="pre">1.1.9</span></code> will use the <a class="reference external" href="https://github.com/data-cube/agdc-v2/tree/datacube-1.1.9">datacube-1.1.9</a> tag.</p>
 </div>
 <div class="section" id="id2">
 <h3>Use<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">module load agdc-py3</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">module load agdc-py3</span>
 </pre></div>
 </div>
-<p>This will load <code class="docutils literal"><span class="pre">agdc-py3-env/21121221</span></code> and <code class="docutils literal"><span class="pre">agdc-py3/&lt;version&gt;</span></code> modules</p>
+<p>This will load <code class="docutils literal notranslate"><span class="pre">agdc-py3-env/21121221</span></code> and <code class="docutils literal notranslate"><span class="pre">agdc-py3/&lt;version&gt;</span></code> modules</p>
 </div>
 </div>
 <div class="section" id="instance-module">
 <h2>Instance Module<a class="headerlink" href="#instance-module" title="Permalink to this headline">¶</a></h2>
 <p>This module combines a Data Cube module with specific config (prod, test, dev…)</p>
 <p>It includes a config file, which it specifies by setting the
-<code class="docutils literal"><span class="pre">DATACUBE_CONFIG_PATH</span></code> environment variable.</p>
+<code class="docutils literal notranslate"><span class="pre">DATACUBE_CONFIG_PATH</span></code> environment variable.</p>
 <p>The version number matches the datacube version.</p>
 <div class="section" id="create-custom-instance">
 <h3>Create Custom Instance<a class="headerlink" href="#create-custom-instance" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> modules/agdc-instances
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> modules/agdc-instances
 ./package-instance-module.sh  --help
 </pre></div>
 </div>

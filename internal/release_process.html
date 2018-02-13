@@ -236,7 +236,7 @@
 <ol class="arabic simple">
 <li><dl class="first docutils">
 <dt>Pick a release name for the next version</dt>
-<dd>Releases are versioned using the <code class="docutils literal"><span class="pre">major.minor.bugfix</span></code> numbering system.</dd>
+<dd>Releases are versioned using the <code class="docutils literal notranslate"><span class="pre">major.minor.bugfix</span></code> numbering system.</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
@@ -251,7 +251,7 @@
 </li>
 <li><dl class="first docutils">
 <dt>Tag the branch</dt>
-<dd>Use the format of <code class="docutils literal"><span class="pre">datacube-major.minor.bugfix</span></code>.</dd>
+<dd>Use the format of <code class="docutils literal notranslate"><span class="pre">datacube-major.minor.bugfix</span></code>.</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
@@ -281,7 +281,7 @@ stable version.</p>
 <li><dl class="first docutils">
 <dt>Upload the build to PyPi</dt>
 <dd><p class="first">You might need a <a class="reference external" href="https://pypi.python.org/pypi">PyPI</a> account with appropriate authorization.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>python setup.py sdist bdist_wheel
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python setup.py sdist bdist_wheel
 twine upload dist/*
 </pre></div>
 </div>
@@ -294,8 +294,8 @@ twine upload dist/*
 <dd><p class="first">Follow the instrucions under <strong>Updating datacube-feedstock</strong> in the <a class="reference external" href="https://github.com/conda-forge/datacube-feedstock#updating-datacube-feedstock">Datcube Feedstock</a> repository.</p>
 <p>It should involve modifying the version number in the
 <a class="reference external" href="https://github.com/conda-forge/datacube-feedstock/blob/master/recipe/meta.yaml">recipe</a> and updating the SHA hash.
-The hash should be generated from the <code class="docutils literal"><span class="pre">.tar.gz</span></code> mentioned in the <code class="docutils literal"><span class="pre">source</span></code> of the recipe.</p>
-<div class="last highlight-bash"><div class="highlight"><pre><span></span>openssl sha256 &lt;downloaded-datacube-source.tar.gz&gt;
+The hash should be generated from the <code class="docutils literal notranslate"><span class="pre">.tar.gz</span></code> mentioned in the <code class="docutils literal notranslate"><span class="pre">source</span></code> of the recipe.</p>
+<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span>openssl sha256 &lt;downloaded-datacube-source.tar.gz&gt;
 </pre></div>
 </div>
 </dd>

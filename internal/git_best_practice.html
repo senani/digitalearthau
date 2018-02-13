@@ -250,8 +250,8 @@
 <h1>Git Best Practice<a class="headerlink" href="#git-best-practice" title="Permalink to this headline">¶</a></h1>
 <p>We use git for version control management. Repositories are usually hosted on
 GitHub. In this document we assume that you are already familiar with the common
-terminology around version control in git. If terms like <code class="docutils literal"><span class="pre">clone</span></code>,
-<code class="docutils literal"><span class="pre">checkout</span></code>, <code class="docutils literal"><span class="pre">commit</span></code>, <code class="docutils literal"><span class="pre">pull</span></code>, <code class="docutils literal"><span class="pre">branch</span></code> don’t have a clear meaning for you
+terminology around version control in git. If terms like <code class="docutils literal notranslate"><span class="pre">clone</span></code>,
+<code class="docutils literal notranslate"><span class="pre">checkout</span></code>, <code class="docutils literal notranslate"><span class="pre">commit</span></code>, <code class="docutils literal notranslate"><span class="pre">pull</span></code>, <code class="docutils literal notranslate"><span class="pre">branch</span></code> don’t have a clear meaning for you
 please consider reading up on git online first.</p>
 <ul class="simple">
 <li><a class="reference external" href="https://www.atlassian.com/git">https://www.atlassian.com/git</a> good introduction, but dives deep too</li>
@@ -260,7 +260,7 @@ please consider reading up on git online first.</p>
 <div class="section" id="initial-setup">
 <h2>Initial Setup<a class="headerlink" href="#initial-setup" title="Permalink to this headline">¶</a></h2>
 <p>When setting up new dev machine make sure that your git identity is properly configured.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>git config --global user.name <span class="s2">&quot;YourFirstName YourLastName&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git config --global user.name <span class="s2">&quot;YourFirstName YourLastName&quot;</span>
 git config --global user.email <span class="s2">&quot;your_email@example.com&quot;</span>
 <span class="c1"># configure other useful options</span>
 git config --global pull.rebase <span class="nb">true</span>
@@ -297,8 +297,8 @@ changed. Try to provide context for the change without being overly verbose.</p>
 can be happening in a number of parallel branches, those branches can then be
 <em>merged</em> in any order creating a rather non-linear history which can be hard to
 follow. We adopt a more constrained approach, commonly referred as “Feature
-Branch Workflow”. In short this means that there is one main branch <code class="docutils literal"><span class="pre">master</span></code>
-or <code class="docutils literal"><span class="pre">develop</span></code>, no major work is done in the main branch, instead new features
+Branch Workflow”. In short this means that there is one main branch <code class="docutils literal notranslate"><span class="pre">master</span></code>
+or <code class="docutils literal notranslate"><span class="pre">develop</span></code>, no major work is done in the main branch, instead new features
 are developed in separate feature branches, those then get merged into the main
 branch when ready.</p>
 </div>
@@ -313,11 +313,11 @@ don’t put full stop [.] at the end of the summary line.</p>
 inspecting history more accessible.</p>
 <p>When writing the summary line prefer to use the <em>“imperative mood”</em> (i.e. “spoken or
 written as if giving a command or instruction”). So use</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">Fix spelling mistake in the help message</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Fix spelling mistake in the help message</span>
 </pre></div>
 </div>
 <p>and not:</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">Fixed spelling mistake in the help message</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Fixed spelling mistake in the help message</span>
 </pre></div>
 </div>
 <p>Write it as if finishing this sentence: “When applied this commit will …”, but
@@ -328,10 +328,10 @@ see <a class="reference external" href="https://chris.beams.io/posts/git-commit/
 <h2>Clean Linear History<a class="headerlink" href="#clean-linear-history" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="pull-with-rebase">
 <h3>Pull with Rebase<a class="headerlink" href="#pull-with-rebase" title="Permalink to this headline">¶</a></h3>
-<p>When grabbing changes from remote use <code class="docutils literal"><span class="pre">--rebase</span></code> switch, this keeps history
+<p>When grabbing changes from remote use <code class="docutils literal notranslate"><span class="pre">--rebase</span></code> switch, this keeps history
 linear by replaying your changes on top of remote changes.</p>
-<p>For example <code class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">--rebase</span> <span class="pre">origin</span> <span class="pre">master</span></code>. Alternatively make pull with
-rebase a global default <code class="docutils literal"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">pull.rebase</span> <span class="pre">true</span></code>. Your editor
+<p>For example <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">--rebase</span> <span class="pre">origin</span> <span class="pre">master</span></code>. Alternatively make pull with
+rebase a global default <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">pull.rebase</span> <span class="pre">true</span></code>. Your editor
 probably has this option, certainly PyCharm supports pulling with rebase.</p>
 </div>
 <div class="section" id="cleanup-before-sharing">
@@ -340,13 +340,13 @@ probably has this option, certainly PyCharm supports pulling with rebase.</p>
 perfect code on the first try, you don’t need to delay committing your code
 until it’s “just right”, “work in progress” commits are perfectly fine so long
 as you clean it up before sharing your changes.</p>
-<p>The easiest and most common method is to <em>amend</em> the very last commit <code class="docutils literal"><span class="pre">git</span>
+<p>The easiest and most common method is to <em>amend</em> the very last commit <code class="docutils literal notranslate"><span class="pre">git</span>
 <span class="pre">commit</span> <span class="pre">--amend</span></code>. Maybe you want to correct a typo in the commit message, or you
 forgot to add a new file, you can easily amend last commit. Your editor most
 likely supports that out of the box.</p>
 <p>A more comprehensive method is <em>Interactive Rebase</em>, it allows to re-order
 commits, squash independent commits into one, update commit messages for older
-commits and more. While you can use it with just plain command line <code class="docutils literal"><span class="pre">git</span>
+commits and more. While you can use it with just plain command line <code class="docutils literal notranslate"><span class="pre">git</span>
 <span class="pre">rebase</span> <span class="pre">-i</span> <span class="pre">HEAD~3</span></code>, it’s probably best to use some kind of GUI client for
 complex tasks like that. Maybe your editor/IDE already supports that, if not try
 some of the tools listed below</p>
@@ -361,7 +361,7 @@ some of the tools listed below</p>
 <h2>Bug Fix Workflow<a class="headerlink" href="#bug-fix-workflow" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li>Create issue on GitHub, if not created already</li>
-<li>Create new branch with a reasonable name, <code class="docutils literal"><span class="pre">fix-issue-273</span></code> is fine</li>
+<li>Create new branch with a reasonable name, <code class="docutils literal notranslate"><span class="pre">fix-issue-273</span></code> is fine</li>
 <li>Develop a fix and hopefully unit tests</li>
 <li>Commit your changes to local branch</li>
 <li>Pull changes from main branch into your branch with rebase</li>
@@ -375,14 +375,14 @@ some of the tools listed below</p>
 Workflow</a>. New features are developed in a feature branch. Since new feature
 development is likely to take longer than a bug fix it becomes important to keep
 your branch in sync with the main branch to minimize the pain of one massive
-merge at the end. So make sure to run <code class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">--rebase</span> <span class="pre">origin</span> <span class="pre">develop</span></code> every
+merge at the end. So make sure to run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">--rebase</span> <span class="pre">origin</span> <span class="pre">develop</span></code> every
 so often in your feature branch.</p>
 <p>Again since it takes longer, it’s best to push your branch to GitHub even if you
 are not ready to merge it back into the main. This gives visibility of the work
 to other team members and also serves as an offsite backup of your work. Note
 that it is still OK to “edit history” in your feature branch even if that
 history has been pushed to GitHub, but you will need to <em>force</em> push your
-changes when you do: <code class="docutils literal"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">--force</span></code>. We assume that feature branch is your
+changes when you do: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">--force</span></code>. We assume that feature branch is your
 “private branch”, and so nobody will be impacted by history edits. If that’s not
 the case, i.e. multiple people are working on the same branch, then you should
 not edit history you have shared with others. Don’t worry you can still cleanup

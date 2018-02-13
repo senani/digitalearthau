@@ -235,7 +235,7 @@
 <h1>Collection Management<a class="headerlink" href="#collection-management" title="Permalink to this headline">¶</a></h1>
 <p>The DEA repository contains a set of tools for managing the collections on disk at NCI.</p>
 <p>See their help commands for specific information:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Update the index, find problems with datasets.</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Update the index, find problems with datasets.</span>
 dea-sync --help
 dea-coherence --help
 dea-duplicates --help
@@ -266,7 +266,7 @@ example, can then iterate the two to find mismatches in both directions.</li>
 </ul>
 <p>The set of NCI DEA collections is currently in <a class="reference external" href="https://github.com/GeoscienceAustralia/digitalearthau/blob/develop/digitalearthau/collections.py">collections.py</a>.</p>
 <p>Examples:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">scene_collection</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scene_collection</span><span class="p">(</span>
         <span class="n">name</span><span class="o">=</span><span class="s1">&#39;ls8_level1_scene&#39;</span><span class="p">,</span>
         <span class="n">query</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;product&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ls8_level1_scene&#39;</span><span class="p">,</span> <span class="s1">&#39;ls8_level1_oli_scene&#39;</span><span class="p">]},</span>
         <span class="n">file_patterns</span><span class="o">=</span><span class="p">[</span>

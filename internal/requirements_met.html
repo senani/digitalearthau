@@ -479,11 +479,11 @@ its meeting on 10 December, 2015.</p>
 <h2>Patterns of Use:<a class="headerlink" href="#Patterns-of-Use:" title="Permalink to this headline">¶</a></h2>
 <p>AGDC Version 2 will support the following patterns of use.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>%matplotlib inline
 from matplotlib import pyplot as plt
 import datacube
@@ -499,11 +499,11 @@ import numpy
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>import folium
 from IPython.display import display
 import geopandas
@@ -521,61 +521,61 @@ from dateutil import tz
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>notebook_start_dt = datetime.now()
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>dc = datacube.Datacube(app=&#39;requirements-met&#39;)
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>datacube.__version__
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>datacube.__path__
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>!module list
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>!datacube system check
 </pre></div>
 </div>
@@ -584,22 +584,22 @@ from dateutil import tz
 <div class="section" id="Remote-Datacube">
 <h2>Remote Datacube<a class="headerlink" href="#Remote-Datacube" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>from datacube import Datacube
 remotedc = Datacube(config=&#39;/home/547/jps547/.aws_datacube.conf&#39;)
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>from geopy.geocoders import Nominatim
 geolocator = Nominatim()
 location = geolocator.geocode(&quot;Launceston, Tasmania&quot;)
@@ -607,21 +607,21 @@ location = geolocator.geocode(&quot;Launceston, Tasmania&quot;)
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>location
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>query = {
     &#39;lat&#39;: (-41.82, -41.81),
     &#39;lon&#39;: (146.71, 146.72),
@@ -635,52 +635,52 @@ pandas.DataFrame.from_dict(masking.get_flags_def(wofs), orient=&#39;index&#39;)
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span># Throughout this doc we use print() manually rather than returning the object as an output.
 # This is to minimise memory usage: avoid storing a reference to the data array itself in Jupyter&#39;s output history.
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>print(wofs)
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>wofs.water.plot(col=&#39;time&#39;, col_wrap=5, robust=True)
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>remotedc.list_products()
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>water = masking.make_mask(wofs, result=&#39;clear_wet&#39;)
 
 water.water.plot(col=&#39;time&#39;, col_wrap=5, robust=True, cmap=&#39;gray&#39;)
@@ -688,51 +688,51 @@ water.water.plot(col=&#39;time&#39;, col_wrap=5, robust=True, cmap=&#39;gray&#39
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>water.water.sum(&#39;time&#39;).plot()
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>results = remotedc.index.datasets.search_eager(product=&#39;wofs_modified_albers&#39;)
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>len(results)
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>results[0].metadata_doc
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>results = None
 water = None
 wofs = None
@@ -743,11 +743,11 @@ wofs = None
 <div class="section" id="Test-for-native-projection-query-on-non-standard-rainfall-product">
 <h2>Test for native projection query on non standard rainfall product<a class="headerlink" href="#Test-for-native-projection-query-on-non-standard-rainfall-product" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>query = {
     &#39;product&#39;: &#39;bom_rainfall_grids&#39;,
     &#39;crs&#39;: &#39;EPSG:3577&#39;,
@@ -764,21 +764,21 @@ rainfall_projected = dc.load(**query)
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>print(rainfall_projected)
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>rainfall_projected = None
 </pre></div>
 </div>
@@ -787,11 +787,11 @@ rainfall_projected = dc.load(**query)
 <div class="section" id="Search-for-dataset-by-location-example">
 <h2>Search for dataset by location example<a class="headerlink" href="#Search-for-dataset-by-location-example" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span># Was replaced by stacked file
 # ds_uri = &#39;file:///g/data/rs0/datacube/002/LS5_TM_NBART/-7_-30/LS5_TM_NBART_3577_-7_-30_20030711011529000000_v1488078639.nc&#39;
 
@@ -809,11 +809,11 @@ datasets_in_stack = None
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>def chop_to_globe(geom):
     to_crs = geometry.CRS(&quot;EPSG:4326&quot;)
     left_of_dt = geometry.line(
@@ -845,11 +845,11 @@ def datasets_union_clip180(dss):
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>def datasets_union(dss):
     thing = geometry.unary_union(ds.extent for ds in dss)
     print(thing.crs)
@@ -858,11 +858,11 @@ def datasets_union_clip180(dss):
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>import random
 def plot_folium(shapes):
 
@@ -878,11 +878,11 @@ def plot_folium(shapes):
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>def plot_rgb(image, fake_saturation):
     image = mask_invalid_data(image)
     rgb = image.to_array(dim=&#39;color&#39;)
@@ -904,11 +904,11 @@ def plot_folium(shapes):
 <div class="section" id="Plot-WOfS">
 <h2>Plot WOfS<a class="headerlink" href="#Plot-WOfS" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>plot_folium([
     datasets_union(
         remotedc.index.datasets.search_eager(product=&#39;ls7_wofs_pq_scene&#39;, )
@@ -921,11 +921,11 @@ def plot_folium(shapes):
 <div class="section" id="GQA-based-search">
 <h2>GQA based search<a class="headerlink" href="#GQA-based-search" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span># Get NBAR where source level1 matches a certain quality
 
 source_filter = dict(product=&#39;ls8_level1_scene&#39;, gqa_cep90=(-0.25, 0.25))
@@ -940,21 +940,21 @@ data = dc.index.datasets.search_eager(**query.search_terms)
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>len(data)
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>data[0]
 </pre></div>
 </div>
@@ -963,11 +963,11 @@ data = dc.index.datasets.search_eager(**query.search_terms)
 <div class="section" id="Confirm-Dashboard-Works">
 <h2>Confirm Dashboard Works<a class="headerlink" href="#Confirm-Dashboard-Works" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span># Dashboard view of current production status per product with Spatial, Tabular and Reference views
 #!/g/data/v10/public/run-dash.sh
 #!firefox http://127.0.0.1:8080/
@@ -978,11 +978,11 @@ data = dc.index.datasets.search_eager(**query.search_terms)
 <div class="section" id="Search-with-sources">
 <h2>Search with sources<a class="headerlink" href="#Search-with-sources" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>(
      dc.index.datasets.get(&#39;11228944-42f6-4b9f-a434-73e0c7f9bde2&#39;, include_sources=True)
 ).metadata_doc[&#39;lineage&#39;][&#39;source_datasets&#39;][&#39;0&#39;][&#39;lineage&#39;][&#39;source_datasets&#39;][&#39;level1&#39;][&#39;gqa&#39;]
@@ -993,11 +993,11 @@ data = dc.index.datasets.search_eager(**query.search_terms)
 <div class="section" id="Refine-search-using-sources">
 <h2>Refine search using sources<a class="headerlink" href="#Refine-search-using-sources" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>from datacube.model import Range
 results=[]
 for product in [&#39;ls5_level1_scene&#39;]:
@@ -1012,11 +1012,11 @@ print(str(results[0][0].local_path))
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>from datacube.model import Range
 time_range = Range(datetime(2013, 10, 1), datetime(2014, 1, 1))
 results = dc.index.datasets.search_eager(
@@ -1034,21 +1034,21 @@ print(results[0])
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>results[0].metadata_doc
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>results = None
 </pre></div>
 </div>
@@ -1057,11 +1057,11 @@ print(results[0])
 <div class="section" id="Grid-Cell-count-of-timeslices">
 <h2>Grid Cell count of timeslices<a class="headerlink" href="#Grid-Cell-count-of-timeslices" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>product = &#39;ls8_nbar_albers&#39;
 
 gw = datacube.api.GridWorkflow(dc.index, product=product)
@@ -1080,11 +1080,11 @@ cells = None
 <div class="section" id="Count-for-single-query">
 <h3>Count for single query<a class="headerlink" href="#Count-for-single-query" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span># Count of single query
 product = &#39;ls7_nbar_scene&#39;
 start_time = time.time()
@@ -1100,11 +1100,11 @@ print(&quot;Single product {} count of {} in {} seconds ---&quot;.format(product
 <div class="section" id="Count-products-through-time">
 <h3>Count products through time<a class="headerlink" href="#Count-products-through-time" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>start_time = time.time()
 
 results = dc.index.datasets.count_by_product_through_time(
@@ -1134,11 +1134,11 @@ print(&quot;--- %s seconds ---&quot; % (time.time() - start_time))
 <div class="section" id="Data-load-examples">
 <h1>Data load examples<a class="headerlink" href="#Data-load-examples" title="Permalink to this headline">¶</a></h1>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>dc.list_measurements()
 </pre></div>
 </div>
@@ -1146,11 +1146,11 @@ print(&quot;--- %s seconds ---&quot; % (time.time() - start_time))
 <div class="section" id="Load-SRTM">
 <h2>Load SRTM<a class="headerlink" href="#Load-SRTM" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>query = {
     &#39;lat&#39;: (-20.61, -20.66),
     &#39;lon&#39;: (147.0, 147.05)
@@ -1161,21 +1161,21 @@ srtm_dem1sv1_0 = dc.load(product=&#39;srtm_dem1sv1_0&#39;, **query)
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>srtm_dem1sv1_0.dem.plot()
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>srtm_dem1sv1_0 = None
 </pre></div>
 </div>
@@ -1184,11 +1184,11 @@ srtm_dem1sv1_0 = dc.load(product=&#39;srtm_dem1sv1_0&#39;, **query)
 <div class="section" id="Load-Radiometrics">
 <h2>Load Radiometrics<a class="headerlink" href="#Load-Radiometrics" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>query = {
     &#39;lat&#39;: (-20.61, -20.66),
     &#39;lon&#39;: (147.0, 147.05),
@@ -1213,22 +1213,22 @@ except Exception as e:
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 
 <span></span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>radiometrics = None
 </pre></div>
 </div>
@@ -1237,11 +1237,11 @@ except Exception as e:
 <div class="section" id="Load-NBAR">
 <h2>Load NBAR<a class="headerlink" href="#Load-NBAR" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>nbar = dc.load(
     product=&#39;ls5_nbart_albers&#39;,
     y=(-18.7896944682,-18.7896944684),
@@ -1251,21 +1251,21 @@ except Exception as e:
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>print(nbar)
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>nbar = None
 </pre></div>
 </div>
@@ -1274,11 +1274,11 @@ except Exception as e:
 <div class="section" id="MODIS-Landsat-time-series">
 <h2>MODIS Landsat time series<a class="headerlink" href="#MODIS-Landsat-time-series" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>modis = dc.load(
     product=&#39;modis_mcd43a4_tile&#39;,
     longitude=132.1,
@@ -1291,11 +1291,11 @@ except Exception as e:
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span># Josh archived all of this product.
 #modis.Nadir_Reflectance_Band1.min()
 assert len(modis) == 0
@@ -1305,11 +1305,11 @@ print(modis)
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>modis = None
 </pre></div>
 </div>
@@ -1318,31 +1318,31 @@ print(modis)
 <div class="section" id="Load-rainfall">
 <h2>Load rainfall<a class="headerlink" href="#Load-rainfall" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>rain = dc.load(product=&#39;bom_rainfall_grids&#39;, longitude=132.1, latitude=-27.5, time=(&#39;2000-1-1&#39;, &#39;2001-1-1&#39;))
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>rain.rainfall.sel(longitude=132.1, latitude=-27.500001, method=&#39;nearest&#39;).plot()
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>rain = None
 </pre></div>
 </div>
@@ -1353,21 +1353,21 @@ print(modis)
 <div class="section" id="Water-Observations-from-Space.">
 <h3>Water Observations from Space.<a class="headerlink" href="#Water-Observations-from-Space." title="Permalink to this headline">¶</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>dc.index.datasets.search_eager(product=&#39;srtm_dem1sv1_0&#39;)
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>rain_ds = dc.index.datasets.search_eager(product=&#39;bom_rainfall_grids&#39;, time=Range(datetime(2001, 1, 1), datetime(2002, 1, 1)))
 
 datasets_union_clip180(rain_ds).to_crs(geometry.CRS(&#39;EPSG:3577&#39;))
@@ -1375,21 +1375,21 @@ datasets_union_clip180(rain_ds).to_crs(geometry.CRS(&#39;EPSG:3577&#39;))
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>rain_ds = None
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>plot_folium([
     datasets_union_clip180(
         dc.index.datasets.search_eager(
@@ -1402,11 +1402,11 @@ datasets_union_clip180(rain_ds).to_crs(geometry.CRS(&#39;EPSG:3577&#39;))
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>plot_folium([
     datasets_union(
         dc.index.datasets.search_eager(
@@ -1419,11 +1419,11 @@ datasets_union_clip180(rain_ds).to_crs(geometry.CRS(&#39;EPSG:3577&#39;))
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span># Josh archived all of this
 modis_mcd43a4 = dc.load(
     product=&#39;modis_mcd43a4_tile&#39;,
@@ -1441,21 +1441,21 @@ modis_mcd43a4 = dc.load(
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>print(modis_mcd43a4)
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>modis_mcd43a4 = None
 </pre></div>
 </div>
@@ -1464,11 +1464,11 @@ modis_mcd43a4 = dc.load(
 <div class="section" id="Multiband-file-or-subdataset-support-example">
 <h3>Multiband file or subdataset support example<a class="headerlink" href="#Multiband-file-or-subdataset-support-example" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>%%script false
 # Modis disabled. Josh archived all of this
 
@@ -1488,22 +1488,22 @@ modis_mcd43a1 = dc.load(
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 
 <span></span># modis_mcd43a1.BRDF_Albedo_Parameters_Band1[0][1]
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span># plot_rgb(modis_mcd43a1, 1000)
 </pre></div>
 </div>
@@ -1512,21 +1512,21 @@ modis_mcd43a1 = dc.load(
 <div class="section" id="Plot-MODIS-timeseries">
 <h3>Plot MODIS timeseries<a class="headerlink" href="#Plot-MODIS-timeseries" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span># plot_rgb(modis_mcd43a4, 3000)
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span># plot_folium([datasets_union(dc.index.datasets.search_eager(product=&#39;ls5_nbart_albers&#39;, time=Range(datetime(1986, 1, 1), datetime(1988, 1, 1))))])
 </pre></div>
 </div>
@@ -1535,11 +1535,11 @@ modis_mcd43a1 = dc.load(
 <div class="section" id="Query,-load-and-plot-NBART-example">
 <h3>Query, load and plot NBART example<a class="headerlink" href="#Query,-load-and-plot-NBART-example" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>query = {
     &#39;time&#39;: (&#39;1987-01-01&#39;, &#39;1988-01-01&#39;),
     &#39;lat&#39;: (-35.2, -35.4),
@@ -1558,11 +1558,11 @@ plot_rgb(nbart, 3500)
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>nbart = None
 </pre></div>
 </div>
@@ -1573,11 +1573,11 @@ plot_rgb(nbart, 3500)
 <div class="section" id="Construction-of-the-Burdekin-Dam-completed-in-1987">
 <h4>Construction of the Burdekin Dam completed in 1987<a class="headerlink" href="#Construction-of-the-Burdekin-Dam-completed-in-1987" title="Permalink to this headline">¶</a></h4>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>%%script false
 # Disabled: WOfS has been removed.
 
@@ -1593,11 +1593,11 @@ wofs
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>%%script false
 wofs.water.flags_definition
 pandas.DataFrame.from_dict(masking.get_flags_def(wofs), orient=&#39;index&#39;)
@@ -1605,11 +1605,11 @@ pandas.DataFrame.from_dict(masking.get_flags_def(wofs), orient=&#39;index&#39;)
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>%%script false
 
 water = masking.make_mask(wofs, result=&#39;clear_wet&#39;)
@@ -1618,11 +1618,11 @@ water.water.plot(col=&#39;time&#39;, col_wrap=5, robust=True, cmap=&#39;gray&#39
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>%%script false
 # Number of clear water pixels - no group by solar day to exclude scene overlap
 
@@ -1632,11 +1632,11 @@ water_sum.plot(cmap=&#39;rainbow&#39;, robust=True)
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>wofs = None
 water = None
 water_sum = None
@@ -1645,11 +1645,11 @@ water_sum = None
 </div>
 <p>Intertidal Characterisation.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span># incomplete for v2 - water classification only - confidence metrics continue to be a work in progress
 </pre></div>
 </div>
@@ -1659,11 +1659,11 @@ water_sum = None
 <div class="section" id="Landsat-Fractional-Cover.">
 <h3>Landsat Fractional Cover.<a class="headerlink" href="#Landsat-Fractional-Cover." title="Permalink to this headline">¶</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>plot_folium([
     datasets_union(
         dc.index.datasets.search_eager(
@@ -1676,11 +1676,11 @@ water_sum = None
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span># Query, load and plot Fractional Cover example
 
 query = {
@@ -1701,11 +1701,11 @@ plot_rgb(fractional_cover, 100)
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>fractional_cover = None
 </pre></div>
 </div>
@@ -1714,11 +1714,11 @@ plot_rgb(fractional_cover, 100)
 <div class="section" id="Pixel-Quality">
 <h3>Pixel Quality<a class="headerlink" href="#Pixel-Quality" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>plot_folium([
     datasets_union(
         dc.index.datasets.search_eager(
@@ -1731,11 +1731,11 @@ plot_rgb(fractional_cover, 100)
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>plot_folium([
     datasets_union(
         dc.index.datasets.search_eager(
@@ -1748,22 +1748,22 @@ plot_rgb(fractional_cover, 100)
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>pq = dc.load(product=&#39;ls5_pq_albers&#39;, group_by=&#39;solar_day&#39;, **query)
 pq.pixelquality.plot(col=&#39;time&#39;, col_wrap=5, robust=True)
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span># Number of clear pixels based on ga_good_pixels default - no group by solar day to exclude scene overlap
 clear_pixels = masking.make_mask(pq, ga_good_pixel=True)
 clear_pixels.pixelquality.sum(&#39;time&#39;).plot(cmap=&#39;rainbow&#39;)
@@ -1771,11 +1771,11 @@ clear_pixels.pixelquality.sum(&#39;time&#39;).plot(cmap=&#39;rainbow&#39;)
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>clear_pixels = None
 </pre></div>
 </div>
@@ -1784,11 +1784,11 @@ clear_pixels.pixelquality.sum(&#39;time&#39;).plot(cmap=&#39;rainbow&#39;)
 <div class="section" id="NDVI">
 <h3>NDVI<a class="headerlink" href="#NDVI" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>plot_folium([
     datasets_union(
         dc.index.datasets.search_eager(
@@ -1801,11 +1801,11 @@ clear_pixels.pixelquality.sum(&#39;time&#39;).plot(cmap=&#39;rainbow&#39;)
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>#ndvi = dc.load(product=&#39;ls5_ndvi_albers&#39;, group_by=&#39;solar_day&#39;, **query )
 #ndvi = mask_invalid_data(ndvi)
 good_pixels = masking.make_mask(pq, ga_good_pixel=True)
@@ -1816,47 +1816,47 @@ print(good_pixels)
 </div>
 </div>
 <p>Landsat Surface reflectance statistical summaries:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Seasonal</span> <span class="n">medians</span><span class="p">;</span> <span class="ow">and</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Seasonal</span> <span class="n">medians</span><span class="p">;</span> <span class="ow">and</span>
 </pre></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>#ndvi.ndvi.median(dim=&#39;time&#39;).plot(robust=True, cmap=&#39;YlGn&#39;)
 </pre></div>
 </div>
 </div>
 <p>Most-up-to-date observation.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span># Most recent pixel mosaic function from cloud screen NBAR
 #%run /g/data/v10/public/agdcv2_requirements/latest_pixel/agdc_pixel/pixel_test.py &#39;60/(15,-40)&#39;
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>#my_data
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>#my_data[15, -40].swir1.plot(cmap=&#39;rainbow&#39;, robust=True)
 </pre></div>
 </div>
@@ -1864,11 +1864,11 @@ print(good_pixels)
 <p>In some cases, these collections may be virtual, i.e. they are not
 pre-computed but rather computed as they are needed.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>nbar = dc.load(product=&#39;ls5_nbar_albers&#39;, group_by=&#39;solar_day&#39;, **query )
 nbar = nbar.where(good_pixels.pixelquality)
 ndvi_on_the_fly = (nbar.nir-nbar.red)/(nbar.nir+nbar.red)*10000
@@ -1877,21 +1877,21 @@ ndvi_on_the_fly.median(dim=&#39;time&#39;).plot(robust=True, cmap=&#39;YlGn&#39;
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span># diff = (ndvi_on_the_fly.median(dim=&#39;time&#39;) - ndvi.ndvi.median(dim=&#39;time&#39;))
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span># diff.plot(robust=True) #error at level of noise due to *10000 scaling of floats
 </pre></div>
 </div>
@@ -1900,31 +1900,31 @@ ndvi_on_the_fly.median(dim=&#39;time&#39;).plot(robust=True, cmap=&#39;YlGn&#39;
 <div class="section" id="CLI-Dataset-info,-search">
 <h3>CLI Dataset info, search<a class="headerlink" href="#CLI-Dataset-info,-search" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>! datacube dataset info 92d414d0-3d82-4702-9e24-4af6e49d95b5
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>! datacube dataset info -f csv 92d414d0-3d82-4702-9e24-4af6e49d95b5
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>! datacube dataset search \
             product=ls8_level1_scene \
            &quot;time in range (2015-3-2, 2015-3-19)&quot; \
@@ -1940,11 +1940,11 @@ ndvi_on_the_fly.median(dim=&#39;time&#39;).plot(robust=True, cmap=&#39;YlGn&#39;
 <p> Clicking on a pixel and displaying a time series (i.e., pixel
 drill).</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span># See Steven Ackerley / Andrew Hicks
 # NCML through THREDDS
 #!/g/data/v10/public/agdcv2-pixeldrill/pixeldrill -p ls5_nbart_albers
@@ -1955,11 +1955,11 @@ drill).</p>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>#CSV URL for a drill
 !firefox http://dapds00.nci.org.au/thredds/ncss/uc0/rs0_dev/all_the_ncmls/LS5_TM_FC/ncml/LS5_TM_FC_13_-43.ncml?var=BS&amp;var=NPV&amp;var=PV&amp;latitude=-38.13&amp;longitude=147.17&amp;time_start=1986-08-21T23%3A18%3A40Z&amp;time_end=2011-11-14T23%3A45%3A07Z&amp;accept=csv
 
@@ -1968,20 +1968,20 @@ drill).</p>
 </div>
 <div class="section" id="Spatio-temporal-(statistical)-summaries-that-would-allow-users-to-easily-answer-questions-such-as:">
 <h3>Spatio-temporal (statistical) summaries that would allow users to easily answer questions such as:<a class="headerlink" href="#Spatio-temporal-(statistical)-summaries-that-would-allow-users-to-easily-answer-questions-such-as:" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">How</span> <span class="n">frequently</span> <span class="n">was</span> <span class="n">water</span> <span class="n">observed</span> <span class="n">over</span> <span class="n">catchment</span> <span class="n">y</span> <span class="n">during</span> <span class="n">time</span> <span class="n">period</span> <span class="n">x</span><span class="p">;</span> <span class="ow">and</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">How</span> <span class="n">frequently</span> <span class="n">was</span> <span class="n">water</span> <span class="n">observed</span> <span class="n">over</span> <span class="n">catchment</span> <span class="n">y</span> <span class="n">during</span> <span class="n">time</span> <span class="n">period</span> <span class="n">x</span><span class="p">;</span> <span class="ow">and</span>
 </pre></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span># not this time - you mean wofs right? - see example below for when the data is available
 </pre></div>
 </div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>What was the surface reflectance for area x at time y?
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>What was the surface reflectance for area x at time y?
 </pre></div>
 </div>
 <p>Link to <a class="reference external" href="zonal-stats-pilbara.ipynb">stats within a polygon</a></p>
@@ -1998,22 +1998,22 @@ and OLI/TIRS.  MODIS: Collection 6 MOD09 (granule) and MOD43
 (sinusoidal tiles) that will provide variables necessary for the
 Landsat-MODIS blending algorithm.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>dc.list_products()
 </pre></div>
 </div>
 </div>
 <p>It will also include the SRTM 3 second DSM and 1 and 3 second DEMs.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>dc.list_measurements()
 </pre></div>
 </div>
@@ -2023,11 +2023,11 @@ of continental Australia plus a one tile buffer and the Great Barrier
 Reef. However, the Boards preference would be for the Version 2 to also
 cover all Commonwealth Marine Reserves.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>plot_folium([
     datasets_union(
         dc.index.datasets.search_eager(
@@ -2043,11 +2043,11 @@ cover all Commonwealth Marine Reserves.</p>
 of the AGDC will:  Have a CC BY Attribution 3.0 or CC BY Attribution
 4.0 license.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>!ncdump -h &#39;/g/data/rs0/datacube/002/LS5_TM_NBAR/14_-40/LS5_TM_NBAR_3577_14_-40_19860821231816000000.nc&#39; | grep license
 </pre></div>
 </div>
@@ -2056,31 +2056,31 @@ of the AGDC will:  Have a CC BY Attribution 3.0 or CC BY Attribution
 of the AGDC Programme Board; and  Be in netCDF 4 format and will
 comply with relevant CF conventions;.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>import compliance_checker
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>compliance_checker.__version__
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>from __future__ import print_function
 import argparse
 import sys
@@ -2115,11 +2115,11 @@ was_success, errors = ComplianceChecker.run_checker(
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>help(ComplianceChecker.run_checker)
 </pre></div>
 </div>
@@ -2131,21 +2131,21 @@ was_success, errors = ComplianceChecker.run_checker(
 <p>By June 30, 2016 the Australian implementation of the AGDC will ensure
 that the products being produced are supported by and hosted on the RDS.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>!ls /g/data/rs0/datacube/002
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>!ls /g/data/fk4/datacube/002
 </pre></div>
 </div>
@@ -2157,11 +2157,11 @@ that the products being produced are supported by and hosted on the RDS.</p>
 support:  Data-fusion and analysis across heterogeneous gridded data
 collections from different domains.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>albers_grid = dc.load(
     product=&#39;ls5_nbart_albers&#39;,
     group_by=&#39;solar_day&#39;,
@@ -2172,11 +2172,11 @@ collections from different domains.</p>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>sinusoidal_grid = dc.load(
     product=&#39;ls5_nbar_albers&#39;,
     group_by=&#39;solar_day&#39;,
@@ -2198,22 +2198,22 @@ collections from different domains.</p>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>plot_rgb(albers_grid, 3500)
 albers_grid = None
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>plot_rgb(sinusoidal_grid, 3500)
 sinusoidal_grid = None
 </pre></div>
@@ -2222,11 +2222,11 @@ sinusoidal_grid = None
 <p>Tuneable configuration, at ingest, of multidimensional files (eg.
 chunking, compression type, dimension depth).</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>!datacube product add --help
 </pre></div>
 </div>
@@ -2236,11 +2236,11 @@ chunking, compression type, dimension depth).</p>
 <h2>A data retrieval mechanism that provides the ability to:<a class="headerlink" href="#A-data-retrieval-mechanism-that-provides-the-ability-to:" title="Permalink to this headline">¶</a></h2>
 <p>Obtain seamless subsets of data across storage unit boundaries;</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>seamless_query = {
     &#39;time&#39;: (&#39;2011-6-1&#39;, &#39;2011-6-30&#39;),
     &#39;lat&#39;: (-20, -30),
@@ -2250,11 +2250,11 @@ chunking, compression type, dimension depth).</p>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>seamless_subset = dc.load(
     product=&#39;ls5_nbar_albers&#39;,
     measurements=[&#39;swir2&#39;, &#39;nir&#39;, &#39;blue&#39;],
@@ -2265,72 +2265,72 @@ chunking, compression type, dimension depth).</p>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>seamless_subset.y.max() - seamless_subset.y.min() #distance in metres
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>seamless_subset.x.max() - seamless_subset.x.min() #distance in metres
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>seamless_subset.extent.points
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>plot_rgb(seamless_subset, 3000)
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span># With the Grid Workflow class demonstrate seamless spatial query across tile boundaries
 from datacube.api import GridWorkflow
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>gw = GridWorkflow(dc.index, product=&#39;ls5_nbar_albers&#39;)
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span># The query straddles multiple tiles - indexes shown below
 gw.list_cells(
     product = &#39;ls5_nbar_albers&#39;,
@@ -2341,11 +2341,11 @@ gw.list_cells(
 </div>
 <p>Filter data based on observation attribute (for example, pixel quality);</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 
 <span></span># Load some NDVI
 nbar = dc.load(product=&#39;ls5_nbar_albers&#39;, group_by=&#39;solar_day&#39;, **query)
@@ -2376,11 +2376,11 @@ unit; and define the specific sensor or combination of sensor data to be
 analysed.</p>
 <p>Define the specific sensor or combination of sensor data to be analysed.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>multi_sensor_query = {
     &#39;time&#39;: (&#39;2013-06-01&#39;, &#39;2014-01-01&#39;),
     &#39;lat&#39;: (-35.2, -35.4),
@@ -2406,11 +2406,11 @@ combined = combined.isel(time=combined.time.argsort())  # sort along time dim
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>combined.swir1.median(dim=&#39;time&#39;).plot(col_wrap=5, robust=True, cmap=&#39;rainbow&#39;)
 </pre></div>
 </div>
@@ -2418,21 +2418,21 @@ combined = combined.isel(time=combined.time.argsort())  # sort along time dim
 <p>The API will provide a simplified conceptual model for data query and
 analysis based on an n-dimensional array abstraction;</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>combined.data_vars
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>combined = None
 </pre></div>
 </div>
@@ -2440,22 +2440,22 @@ analysis based on an n-dimensional array abstraction;</p>
 <p>During EDA, lazy evaluation of calculations so only those results that
 are in use are computed; and</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span># CSIRO Peter Wang - link to notebook
 </pre></div>
 </div>
 </div>
 <p>Support for calculations on arrays that are larger than core memory.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span># Dask Example
 lazydata = dc.load(
     product=&#39;ls7_nbart_albers&#39;,
@@ -2468,11 +2468,11 @@ lazydata = dc.load(
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>from dask.dot import dot_graph
 
 dot_graph(lazydata)
@@ -2480,21 +2480,21 @@ dot_graph(lazydata)
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>print(lazydata)
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span># If larger than memory will be chunked and run
 print(lazydata.mean(dim=&#39;time&#39;))
 
@@ -2502,11 +2502,11 @@ print(lazydata.mean(dim=&#39;time&#39;))
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span># Visualise doesn&#39;t seem to exist anymore?
 # lazydata.blue.visualise()
 </pre></div>
@@ -2516,11 +2516,11 @@ print(lazydata.mean(dim=&#39;time&#39;))
 workflows from the current ADGC v1 API, however it will be modified to
 use the version 2 data retrieval mechanism.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span># See stats, wofs and ingestion
 </pre></div>
 </div>
@@ -2528,22 +2528,22 @@ use the version 2 data retrieval mechanism.</p>
 <p>The ability to manage results of calculations as a temporary/private
 data cube for further analysis.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span># See remote cube example above
 </pre></div>
 </div>
 </div>
 <p>Web based delivery of products through WMS, WCS, CS/W, OpenDAP services.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>!firefox http://dapds00.nci.org.au/thredds/catalogs/rs0/catalog.html
 </pre></div>
 </div>
@@ -2554,21 +2554,21 @@ and algorithm was used to produce the product. Wherever possible,
 Version 2 will adopt and adapt existing software, services and
 standards.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>#combined.variables
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span># See sources example above
 </pre></div>
 </div>
@@ -2582,11 +2582,11 @@ standards.</p>
 Version 1 to Version 2 of the AGDC (including controlled updates to data
 collections that are already accessible via RDS);</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>!firefox http://dapds00.nci.org.au/thredds/catalogs/rs0/catalog.html
 </pre></div>
 </div>
@@ -2614,7 +2614,7 @@ deviate greatly from develop)</li>
 <ol class="lowerroman" start="2">
 <li><p class="first">Branch it to a release candidate</p>
 </li>
-<li><div class="first highlight-default"><div class="highlight"><pre><span></span><span class="n">Test</span> <span class="n">the</span> <span class="n">release</span> <span class="n">candidate</span> <span class="p">(</span><span class="n">manual</span> <span class="o">-</span> <span class="n">apply</span> <span class="n">patches</span> <span class="k">as</span> <span class="n">needed</span> <span class="n">to</span> <span class="n">branch</span><span class="p">)</span>
+<li><div class="first highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Test</span> <span class="n">the</span> <span class="n">release</span> <span class="n">candidate</span> <span class="p">(</span><span class="n">manual</span> <span class="o">-</span> <span class="n">apply</span> <span class="n">patches</span> <span class="k">as</span> <span class="n">needed</span> <span class="n">to</span> <span class="n">branch</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
@@ -2652,11 +2652,11 @@ stored in GeoTIFF into netCDF4-CF;</p>
 developments and that can accommodate updates in the internal structure
 of netCDF4-CF;</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span># Looks like a good base? Not sure what update to internal structure in NetCDF actually means...
 </pre></div>
 </div>
@@ -2666,11 +2666,11 @@ Specifications, etc.) and ensuring that any Metadata is compliant with
 the requirements of the Australian Government Spatial Data Policies and
 Directives, the Australian National Data Service and data.gov.au; and</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>#
 </pre></div>
 </div>
@@ -2679,11 +2679,11 @@ Directives, the Australian National Data Service and data.gov.au; and</p>
 <p>Benchmarks and Quality Assurance tests to validate the quality of the
 access that is required by the agreed use-cases.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>notebook_end_dt = datetime.now()
 &#39;Finished in {}&#39;.format(notebook_end_dt - notebook_start_dt)
 </pre></div>

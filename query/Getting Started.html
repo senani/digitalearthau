@@ -399,47 +399,47 @@ div.nboutput div.output_area.stderr {
 <h1>Getting Started<a class="headerlink" href="#Getting-Started" title="Permalink to this headline">¶</a></h1>
 <p>First we need to define how we display plots in our notebooks:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>%matplotlib inline
 </pre></div>
 </div>
 </div>
-<p>We use <code class="docutils literal"><span class="pre">pandas.DataFrame</span></code> objects to display our tables, so we will
+<p>We use <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> objects to display our tables, so we will
 set some settings to tweak their formatting:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>import pandas
 pandas.set_option(&#39;display.max_colwidth&#39;, 200)
 pandas.set_option(&#39;display.max_rows&#39;, None)
 </pre></div>
 </div>
 </div>
-<p>Now we load the <code class="docutils literal"><span class="pre">datacube</span></code> library:</p>
+<p>Now we load the <code class="docutils literal notranslate"><span class="pre">datacube</span></code> library:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>import datacube
 </pre></div>
 </div>
 </div>
-<p>Create our <code class="docutils literal"><span class="pre">datacube</span></code> object, with a name to help for logging.</p>
+<p>Create our <code class="docutils literal notranslate"><span class="pre">datacube</span></code> object, with a name to help for logging.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>dc = datacube.Datacube(app=&#39;getting-started&#39;)
 </pre></div>
 </div>
@@ -447,21 +447,21 @@ pandas.set_option(&#39;display.max_rows&#39;, None)
 <p>By default, it will connect to the main Digital Earth environment at
 NCI:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>dc.index
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>Out[6]:
 </pre></div>
 </div>
-<div class="output_area highlight-none"><div class="highlight"><pre>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
 <span></span>Index&lt;db=PostgresDb&lt;engine=Engine(postgresql://adh547@130.56.244.105:6432/datacube)&gt;&gt;
 </pre></div>
 </div>
@@ -482,17 +482,17 @@ NCI:</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">dc.list_products()</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">dc.list_products()</span></code></td>
 <td>List the products in the datacube</td>
 <td>example</td>
 <td><a class="reference external" href="http://datacube-core.readthedocs.io/en/stable/dev/generate/datacube.Datacube.list_products.html">api docs</a></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">dc.list_measurements()</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">dc.list_measurements()</span></code></td>
 <td>List the measurement bands for each product</td>
 <td>example</td>
 <td><a class="reference external" href="http://datacube-core.readthedocs.io/en/stable/dev/generate/datacube.Datacube.list_measurements.html">api docs</a></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">dc.load()</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">dc.load()</span></code></td>
 <td>Retrive the data for a product, for a given area and time range</td>
 <td>example</td>
 <td><a class="reference external" href="http://datacube-core.readthedocs.io/en/stable/dev/generate/datacube.Datacube.load.html">api docs</a></td>

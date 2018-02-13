@@ -260,7 +260,7 @@ the <cite>dea-prod</cite> module. It makes sense to include the <cite>module use
 in your <cite>~/.modulerc</cite> or <cite>~/.bashrc</cite> or <cite>~/.bash_profile</cite>, but run the
 <cite>module load</cite> command when required. The <cite>dea-*</cite> module include <cite>DEA</cite>
 customised versions of some of the <cite>ODC</cite> management tools.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>module use /g/data/v10/private/modules/modulefiles/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module use /g/data/v10/private/modules/modulefiles/
 module use /g/data/v10/private/modules/modulefiles/
 module load dea-prod
 </pre></div>
@@ -269,14 +269,14 @@ module load dea-prod
 <div class="section" id="test-database-access">
 <h2>Test Database Access<a class="headerlink" href="#test-database-access" title="Permalink to this headline">¶</a></h2>
 <p>Make sure you have access to test database server that allows creation of new
-databases. Test database server is <code class="docutils literal"><span class="pre">agdcdev-db.nci.org.au</span></code>. Configure your
-<code class="docutils literal"><span class="pre">~/.pgpass</span></code>, add new line like this one. Typically you should be able to
+databases. Test database server is <code class="docutils literal notranslate"><span class="pre">agdcdev-db.nci.org.au</span></code>. Configure your
+<code class="docutils literal notranslate"><span class="pre">~/.pgpass</span></code>, add new line like this one. Typically you should be able to
 re-use the same credentials as your production datacube.</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">agdcdev-db.nci.org.au:6432:*:&lt;your user name&gt;:&lt;your random password&gt;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">agdcdev-db.nci.org.au:6432:*:&lt;your user name&gt;:&lt;your random password&gt;</span>
 </pre></div>
 </div>
 <p>Verify that things worked for you
-<code class="docutils literal"><span class="pre">psql</span> <span class="pre">-h</span> <span class="pre">agdcdev-db.nci.org.au</span> <span class="pre">-p</span> <span class="pre">6432</span> <span class="pre">datacube</span> <span class="pre">-l</span></code>,
+<code class="docutils literal notranslate"><span class="pre">psql</span> <span class="pre">-h</span> <span class="pre">agdcdev-db.nci.org.au</span> <span class="pre">-p</span> <span class="pre">6432</span> <span class="pre">datacube</span> <span class="pre">-l</span></code>,
 you should get a list of databases currently present.</p>
 </div>
 <div class="section" id="preparing-new-database">
@@ -287,7 +287,7 @@ product is going to be derived from existing products in the main database and
 since we track dataset lineage we need to have the same products in the test
 database as in the main.</p>
 <p>First create empty database</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>mk_db_sql <span class="o">()</span> <span class="o">{</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mk_db_sql <span class="o">()</span> <span class="o">{</span>
     <span class="nb">local</span> <span class="nv">db_name</span><span class="o">=</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span>
     cat <span class="s">&lt;&lt;EOF</span>
 <span class="s">CREATE DATABASE ${db_name}</span>
@@ -312,7 +312,7 @@ mk_db_sql <span class="s2">&quot;</span><span class="si">${</span><span class="n
 </pre></div>
 </div>
 <p>Create datacube config file that uses new database</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>mk_dev_config <span class="o">()</span> <span class="o">{</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mk_dev_config <span class="o">()</span> <span class="o">{</span>
     <span class="nb">local</span> <span class="nv">db_name</span><span class="o">=</span><span class="nv">$1</span>
     <span class="nb">local</span> <span class="nv">f_name</span><span class="o">=</span><span class="si">${</span><span class="nv">2</span><span class="p">-</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">db_name</span><span class="si">}</span><span class="s2">.conf&quot;</span><span class="si">}</span>
     cat &gt; <span class="s2">&quot;</span><span class="si">${</span><span class="nv">f_name</span><span class="si">}</span><span class="s2">&quot;</span> <span class="s">&lt;&lt;EOF</span>
@@ -327,17 +327,17 @@ mk_dev_config <span class="s2">&quot;</span><span class="si">${</span><span clas
 </pre></div>
 </div>
 <p>Tell datacube to use dev config via environment variable</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">DATACUBE_CONFIG_PATH</span><span class="o">=</span><span class="k">$(</span>readlink -f <span class="si">${</span><span class="nv">DB_NAME</span><span class="si">}</span>.conf<span class="k">)</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">DATACUBE_CONFIG_PATH</span><span class="o">=</span><span class="k">$(</span>readlink -f <span class="si">${</span><span class="nv">DB_NAME</span><span class="si">}</span>.conf<span class="k">)</span>
 </pre></div>
 </div>
-<p>To check this worked run <code class="docutils literal"><span class="pre">datacube</span> <span class="pre">system</span> <span class="pre">check</span></code> at this point system check
+<p>To check this worked run <code class="docutils literal notranslate"><span class="pre">datacube</span> <span class="pre">system</span> <span class="pre">check</span></code> at this point system check
 should fail as database is completely empty.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Create database with DEA configuration</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create database with DEA configuration</span>
 dea-system init
 </pre></div>
 </div>
 <p>To verify run system check and product list</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>datacube system check
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datacube system check
 datacube product list
 </pre></div>
 </div>
@@ -349,14 +349,14 @@ datacube product list
 <li>Product name</li>
 <li>Product description</li>
 <li>Product type</li>
-<li>Metadata type (use <code class="docutils literal"><span class="pre">eo</span></code>) and expected metadata fields</li>
+<li>Metadata type (use <code class="docutils literal notranslate"><span class="pre">eo</span></code>) and expected metadata fields</li>
 <li>Configure Measurements (data variables): names, types, nodata values, units</li>
 </ol>
-<p>Note about <code class="docutils literal"><span class="pre">product_type</span></code> it’s really just a label/tag, an example would be
-<code class="docutils literal"><span class="pre">nbar</span></code> or <code class="docutils literal"><span class="pre">pqa</span></code>, it is important that datasets are labeled with the exact
-same <code class="docutils literal"><span class="pre">product_type</span></code>. For <code class="docutils literal"><span class="pre">metadata_type</span></code> use <code class="docutils literal"><span class="pre">eo</span></code> and a template shown
+<p>Note about <code class="docutils literal notranslate"><span class="pre">product_type</span></code> it’s really just a label/tag, an example would be
+<code class="docutils literal notranslate"><span class="pre">nbar</span></code> or <code class="docutils literal notranslate"><span class="pre">pqa</span></code>, it is important that datasets are labeled with the exact
+same <code class="docutils literal notranslate"><span class="pre">product_type</span></code>. For <code class="docutils literal notranslate"><span class="pre">metadata_type</span></code> use <code class="docutils literal notranslate"><span class="pre">eo</span></code> and a template shown
 below, see <a class="reference internal" href="#gotchas">Gotchas</a> section for more info.</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;product_name&gt;</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;product_name&gt;</span>
 <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;free form description&gt;</span>
 
 <span class="c1"># If unsure use eo</span>
@@ -398,7 +398,7 @@ below, see <a class="reference internal" href="#gotchas">Gotchas</a> section for
   <span class="l l-Scalar l-Scalar-Plain">dimension_order</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="nv">time</span><span class="p p-Indicator">,</span> <span class="nv">y</span><span class="p p-Indicator">,</span> <span class="nv">x</span><span class="p p-Indicator">]</span>
 </pre></div>
 </div>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">NEW_PRODUCT_FILE</span><span class="o">=</span><span class="s2">&quot;&lt;/path/to/product_file.yaml&gt;&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">NEW_PRODUCT_FILE</span><span class="o">=</span><span class="s2">&quot;&lt;/path/to/product_file.yaml&gt;&quot;</span>
 datacube product add <span class="si">${</span><span class="nv">NEW_PRODUCT_FILE</span><span class="si">}</span>
 
 <span class="c1"># Verify it was added</span>
@@ -413,15 +413,15 @@ datacube product show <span class="s2">&quot;&lt;product_name&gt;&quot;</span>
 were generated by the datacube tools and so they are</p>
 <ol class="arabic simple">
 <li>In NetCDF format</li>
-<li>Contain <code class="docutils literal"><span class="pre">dataset</span></code> description yaml document embedded in them</li>
+<li>Contain <code class="docutils literal notranslate"><span class="pre">dataset</span></code> description yaml document embedded in them</li>
 </ol>
-<p>To index datasets into the database just run <code class="docutils literal"><span class="pre">datacube</span> <span class="pre">dataset</span> <span class="pre">add</span> <span class="pre">&lt;files&gt;</span></code></p>
+<p>To index datasets into the database just run <code class="docutils literal notranslate"><span class="pre">datacube</span> <span class="pre">dataset</span> <span class="pre">add</span> <span class="pre">&lt;files&gt;</span></code></p>
 <p>Test it first with a single file without modifying database</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>datacube dataset add --dry-run <span class="s2">&quot;&lt;path_to_file/some_dataset.nc&gt;&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datacube dataset add --dry-run <span class="s2">&quot;&lt;path_to_file/some_dataset.nc&gt;&quot;</span>
 </pre></div>
 </div>
 <p>If this succeeds add all files to index</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1">#flat directory hierarchy</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#flat directory hierarchy</span>
 datacube dataset add path_to_datasets/*nc
 
 <span class="c1"># OR if you have extra layer for tiles</span>
@@ -437,7 +437,7 @@ find path_to_datasets -name <span class="s2">&quot;*nc&quot;</span> <span class=
 <p>Most likely things won’t go smoothly on the first try. This section addresses
 some of the more common problem you are likely to experience.</p>
 <p>First off these commands will help you debug various problems</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># view info about a NetCDF file</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># view info about a NetCDF file</span>
 ncdump -h -s <span class="s2">&quot;&lt;dataset_file.nc&gt;&quot;</span>
 gdalinfo <span class="s2">&quot;&lt;dataset_file.nc&gt;&quot;</span>
 
@@ -453,10 +453,10 @@ datacube system check
 </div>
 <div class="section" id="indexing-fails">
 <h3>Indexing fails<a class="headerlink" href="#indexing-fails" title="Permalink to this headline">¶</a></h3>
-<p>Most likely indexing process failed with <code class="docutils literal"><span class="pre">No</span> <span class="pre">matching</span> <span class="pre">Product</span> <span class="pre">found</span> <span class="pre">for</span> <span class="pre">...</span></code>
+<p>Most likely indexing process failed with <code class="docutils literal notranslate"><span class="pre">No</span> <span class="pre">matching</span> <span class="pre">Product</span> <span class="pre">found</span> <span class="pre">for</span> <span class="pre">...</span></code>
 error message.</p>
 <ol class="arabic simple">
-<li>Make sure <code class="docutils literal"><span class="pre">metadata</span></code> section in the product definition matches metadata
+<li>Make sure <code class="docutils literal notranslate"><span class="pre">metadata</span></code> section in the product definition matches metadata
 embedded in the NetCDF file.</li>
 <li>Make sure you are still using dev database</li>
 <li>Make sure you have added product successfully</li>
@@ -472,12 +472,12 @@ documentation online for a detailed overview.</p>
 <li>To associate dataset to a product</li>
 <li>To populate database search fields (lat/lon, time etc.)</li>
 </ol>
-<p>When creating product description it is important that <code class="docutils literal"><span class="pre">metadata</span></code> section is
+<p>When creating product description it is important that <code class="docutils literal notranslate"><span class="pre">metadata</span></code> section is
 filled in a way consistent with the metadata present in data files. Usually this
-means getting <code class="docutils literal"><span class="pre">product_type</span></code> right. If your new product is based on data from
-one sensor at a time, then you should fill <code class="docutils literal"><span class="pre">metadata.platform</span></code> and
-<code class="docutils literal"><span class="pre">metadata.instrument</span></code>, failing that you won’t be able to create similar
-products for other sensors and still re-use <code class="docutils literal"><span class="pre">product_type</span></code>. If your product
+means getting <code class="docutils literal notranslate"><span class="pre">product_type</span></code> right. If your new product is based on data from
+one sensor at a time, then you should fill <code class="docutils literal notranslate"><span class="pre">metadata.platform</span></code> and
+<code class="docutils literal notranslate"><span class="pre">metadata.instrument</span></code>, failing that you won’t be able to create similar
+products for other sensors and still re-use <code class="docutils literal notranslate"><span class="pre">product_type</span></code>. If your product
 combines data from multiple sensors/platforms then you should omit
 platform/instrument from metadata section.</p>
 </div>
@@ -495,7 +495,7 @@ script for PQ stats. Customise for your needs:</p>
 <li>Field names</li>
 <li>Glob for file names and grouping by time</li>
 </ol>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>nc_ls <span class="o">()</span> <span class="o">{</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nc_ls <span class="o">()</span> <span class="o">{</span>
     <span class="nv">glob</span><span class="o">=</span><span class="nv">$1</span>
     <span class="nv">field</span><span class="o">=</span><span class="nv">$2</span>
     <span class="k">for</span> f in <span class="nv">$glob</span><span class="p">;</span> <span class="k">do</span>
@@ -521,14 +521,14 @@ mk_overviews_ls_pq <span class="o">()</span> <span class="o">{</span>
 mk_overviews_ls_pq /g/data/u46/users/kk7182/PQ/ <span class="m">2014</span>
 </pre></div>
 </div>
-<p>Create empty QGIS project and add generated <code class="docutils literal"><span class="pre">*.vrt</span></code> files to it. In the menu
-select <code class="docutils literal"><span class="pre">Layer&gt;</span> <span class="pre">Add</span> <span class="pre">from</span> <span class="pre">Layer</span> <span class="pre">Definition</span> <span class="pre">File...</span></code> navigate to
-<code class="docutils literal"><span class="pre">/g/data/u46/users/kk7182/public/qgis/</span></code> and select <code class="docutils literal"><span class="pre">au.qlr</span></code>. This will add
+<p>Create empty QGIS project and add generated <code class="docutils literal notranslate"><span class="pre">*.vrt</span></code> files to it. In the menu
+select <code class="docutils literal notranslate"><span class="pre">Layer&gt;</span> <span class="pre">Add</span> <span class="pre">from</span> <span class="pre">Layer</span> <span class="pre">Definition</span> <span class="pre">File...</span></code> navigate to
+<code class="docutils literal notranslate"><span class="pre">/g/data/u46/users/kk7182/public/qgis/</span></code> and select <code class="docutils literal notranslate"><span class="pre">au.qlr</span></code>. This will add
 vector layer that makes analysis easier.</p>
 </div>
 <div class="section" id="appendix">
 <h2>Appendix<a class="headerlink" href="#appendix" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 
 mk_db_sql <span class="o">()</span> <span class="o">{</span>
     <span class="nb">local</span> <span class="nv">db_name</span><span class="o">=</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span>

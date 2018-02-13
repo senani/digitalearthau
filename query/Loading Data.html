@@ -409,11 +409,11 @@ div.nboutput div.output_area.stderr {
 <p>To start with, we’ll import the datacube module and load an instance of
 the datacube and call our application name <em>load-data-example</em>.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>import datacube
 dc = datacube.Datacube(app=&#39;load-data-example&#39;)
 </pre></div>
@@ -442,11 +442,11 @@ the spatial region covering:</p>
 <li>2008-01-01 -&gt; 2009-01-01</li>
 </ul>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>data = dc.load(product=&#39;ls5_nbar_albers&#39;,
                x=(149.25, 149.5), y=(-36.25, -36.5),
                time=(&#39;2008-01-01&#39;, &#39;2009-01-01&#39;))
@@ -454,21 +454,21 @@ the spatial region covering:</p>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>data
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>Out[7]:
 </pre></div>
 </div>
-<div class="output_area highlight-none"><div class="highlight"><pre>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
 <span></span>&lt;xarray.Dataset&gt;
 Dimensions:  (time: 7, x: 1041, y: 1221)
 Coordinates:
@@ -496,11 +496,11 @@ the same as within Google Earth.</p>
 <p>The user can also query via the native co-ordinate system that the
 product is stored in, and supply the <em>crs</em> argument.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [16]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>data = dc.load(product=&#39;ls5_nbar_albers&#39;,
                x=(1543137.5, 1569137.5), y=(-4065537.5, -4096037.5), crs=&#39;EPSG:3577&#39;,
                time=(&#39;2008-01-01&#39;, &#39;2009-01-01&#39;))
@@ -508,21 +508,21 @@ product is stored in, and supply the <em>crs</em> argument.</p>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [17]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>data
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>Out[17]:
 </pre></div>
 </div>
-<div class="output_area highlight-none"><div class="highlight"><pre>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
 <span></span>&lt;xarray.Dataset&gt;
 Dimensions:  (time: 7, x: 1041, y: 1221)
 Coordinates:
@@ -557,11 +557,11 @@ measurements:</p>
 </ul>
 <p>In this next example we’ll only load the <em>red</em> and <em>nir</em> measurements.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [18]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>data = dc.load(product=&#39;ls5_nbar_albers&#39;,
                x=(149.25, 149.5), y=(-36.25, -36.5),
                time=(&#39;2008-01-01&#39;, &#39;2009-01-01&#39;),
@@ -570,21 +570,21 @@ measurements:</p>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [19]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>data
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>Out[19]:
 </pre></div>
 </div>
-<div class="output_area highlight-none"><div class="highlight"><pre>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
 <span></span>&lt;xarray.Dataset&gt;
 Dimensions:  (time: 7, x: 1041, y: 1221)
 Coordinates:

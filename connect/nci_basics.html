@@ -233,12 +233,12 @@
 </style>
 <div class="section" id="running-dea-manually">
 <h1>Running DEA Manually<a class="headerlink" href="#running-dea-manually" title="Permalink to this headline">¶</a></h1>
-<p>On <code class="docutils literal"><span class="pre">VDI</span></code>, you can start a terminal window from <strong>Applications</strong> -&gt; <strong>System Tools</strong>.</p>
-<p>To manually use the modules on <code class="docutils literal"><span class="pre">raijin</span></code> or <code class="docutils literal"><span class="pre">VDI</span></code>, add the datacube module path:</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> module use /g/data/v10/public/modules/modulefiles/
+<p>On <code class="docutils literal notranslate"><span class="pre">VDI</span></code>, you can start a terminal window from <strong>Applications</strong> -&gt; <strong>System Tools</strong>.</p>
+<p>To manually use the modules on <code class="docutils literal notranslate"><span class="pre">raijin</span></code> or <code class="docutils literal notranslate"><span class="pre">VDI</span></code>, add the datacube module path:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> module use /g/data/v10/public/modules/modulefiles/
 </pre></div>
 </div>
-<p>(you can add the above to your <code class="docutils literal"><span class="pre">.bashrc</span></code> to avoid running it every time)</p>
+<p>(you can add the above to your <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> to avoid running it every time)</p>
 <p>You should now have access to the following modules:</p>
 <blockquote>
 <div><ul class="simple">
@@ -247,17 +247,17 @@
 </ul>
 </div></blockquote>
 <p>You can see a list of available modules by running:</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> module avail
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> module avail
 </pre></div>
 </div>
 <p>To load the production module with Python 3 (which is highly recommended over 2), run:</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> module load agdc-py3-prod
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> module load agdc-py3-prod
 </pre></div>
 </div>
 <p>The first time you load the module, it will register your account with the datacube, granting you read-only access.</p>
 <p>It will store your password in the file <cite>~/.pgpass</cite>.</p>
 <p>You can then launch the jupyter notebook by running:</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> jupyter notebook
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> jupyter notebook
 </pre></div>
 </div>
 <div class="admonition note">
@@ -265,21 +265,21 @@
 <p>VDI and Raijin have separate home directories, so you must copy your pgpass to the other if
 you use both environments.</p>
 <p>You can push the contents of your pgpass file from VDI to Raijin by running on a terminal window in VDI:</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">remote-hpc-cmd init</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">remote-hpc-cmd init</span>
 <span class="go">ssh raijin &quot;cat &gt;&gt; ~/.pgpass&quot; &lt; ~/.pgpass</span>
 <span class="go">ssh raijin &quot;chmod 0600 ~/.pgpass&quot;</span>
 </pre></div>
 </div>
 <p>You will most likely be prompted for your NCI password.</p>
 <p>To pull the contents of your pgpass from Raijin to VDI instead, run</p>
-<div class="last highlight-console"><div class="highlight"><pre><span></span><span class="go">ssh raijin &quot;cat ~/.pgpass&quot; &gt;&gt; ~/.pgpass</span>
+<div class="last highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ssh raijin &quot;cat ~/.pgpass&quot; &gt;&gt; ~/.pgpass</span>
 <span class="go">chmod 0600 ~/.pgpass</span>
 </pre></div>
 </div>
 </div>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">If you have created a <code class="docutils literal"><span class="pre">.datacube.conf</span></code> file in your home folder from early Data Cube betas, you should rename or remove it
+<p class="last">If you have created a <code class="docutils literal notranslate"><span class="pre">.datacube.conf</span></code> file in your home folder from early Data Cube betas, you should rename or remove it
 to avoid it conflicting with the settings loaded by the module.</p>
 </div>
 </div>
