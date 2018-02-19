@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -248,12 +249,11 @@ triggered within the raijin environment.</p>
 <p>To create a new lambda function create a class that inherits from one of the <a class="reference external" href="https://github.com/GeoscienceAustralia/dea-orchestration/blob/master/lambda_modules/dea_raijin/dea_raijin/lambda_commands.py">command classes</a> in the
 lambda_modules directory.</p>
 <p><strong>To Create a new Lambda Function</strong></p>
-<ul>
-<li><p class="first">A file must be created called <em>{{script_name}}.py</em>, and a correspond <em>{{script_name}}</em> directory.</p>
-</li>
+<ul class="simple">
+<li>A file must be created called <em>{{script_name}}.py</em>, and a correspond <em>{{script_name}}</em> directory.</li>
 <li><dl class="first docutils">
 <dt>Inside the directory create the following files:</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>requirements.txt (with the python dependencies)</li>
 <li>If internal modules are required base them from the lambda_modules directory (e.g. ./../dea_raijin</li>
 <li>an <em>env_vars.yaml</em> file which documents the environment variables required by the lambda.</li>
@@ -261,42 +261,36 @@ lambda_modules directory.</p>
 </dd>
 </dl>
 </li>
-<li><p class="first">The “command” method needs to be overwritten by the subclass and is invoked to run the command.</p>
-</li>
-<li><p class="first">The <em>{{script_name}}.py</em> file must include a handler method that accepts the event and context variables
-from AWS and instantiates the user defined command class and calls run.</p>
-</li>
-<li><p class="first">The command must have a class variable “COMMAND_NAME” which is used to identify the command when logging.</p>
-</li>
-<li><p class="first">To create a new function use <em>./scripts/package_lambda {{script_name}} {{zipfile_name}}</em> to create a packaged
+<li>The “command” method needs to be overwritten by the subclass and is invoked to run the command.</li>
+<li>The <em>{{script_name}}.py</em> file must include a handler method that accepts the event and context variables
+from AWS and instantiates the user defined command class and calls run.</li>
+<li>The command must have a class variable “COMMAND_NAME” which is used to identify the command when logging.</li>
+<li>To create a new function use <em>./scripts/package_lambda {{script_name}} {{zipfile_name}}</em> to create a packaged
 zipfile; this will need to be uploaded into AWS Lambda with the corresponding IAM roles and access to
-ec2 parameter store</p>
-<blockquote>
-<div><ul>
-<li><p class="first">Make sure the private keys are stored in
-<a class="reference external" href="http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-walk.html">aws ssm</a></p>
-</li>
-<li><p class="first">By default the user credentials will be retrieved from the ssm parameters:</p>
-<blockquote>
-<div><ul class="simple">
-<li>User: orchestrator.raijin.users.default.user</li>
-<li>Host: orchestrator.raijin.users.default.host</li>
-<li>Private Key: orchestrator.raijin.users.default.pkey</li>
-<li>The prefix orchestrator.raijin.users.default can be overwritten with
-the <code class="docutils literal notranslate"><span class="pre">DEA_RAIJIN_USER_PATH</span></code> environment variable.</li>
+ec2 parameter store.</li>
+<li>Make sure the private keys are stored in
+<a class="reference external" href="http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-walk.html">aws ssm</a></li>
+<li>By default the user credentials will be retrieved from the ssm parameters:</li>
 </ul>
-</div></blockquote>
-</li>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">User:</th><td class="field-body">orchestrator.raijin.users.default.user</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Host:</th><td class="field-body">orchestrator.raijin.users.default.host</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Private Key:</th><td class="field-body">orchestrator.raijin.users.default.pkey</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
 <li><dl class="first docutils">
 <dt>When the lambda is configured it will need an associated role with policy permissions to access</dt>
-<dd><p class="first last">the ssm to retrieve parameters and the
+<dd>the ssm to retrieve parameters and the
 <a class="reference external" href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html">kms</a> decryption key.
-Installs the requirements of a script into the current python env; useful to install internal modules.</p>
-</dd>
+Installs the requirements of a script into the current python env; useful to install internal modules.</dd>
 </dl>
-</li>
-</ul>
-</div></blockquote>
 </li>
 </ul>
 <p>An <a class="reference external" href="https://github.com/GeoscienceAustralia/dea-orchestration/blob/master/lambda_functions/example/example.py">example lambda class</a>
@@ -480,7 +474,23 @@ script to update the repository from the current production branch</li>
           SphinxRtdTheme.StickyNav.enable();
       });
   </script>
-   
+  
+
+
+<!-- Theme Analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-113800428-1"></script>
+<script>
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('js', new Date());
+ 
+ gtag('config', 'UA-113800428-1');
+</script>
+
+    
+  
+
 
 </body>
 </html>
