@@ -1,0 +1,474 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Notebook Gallery Instructions &mdash; Digital Earth Australia 1.0.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/dea-favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Digital Earth Australia 1.0.0 documentation" href="../index.html"/>
+        <link rel="up" title="Notebook Gallery" href="index.html"/>
+        <link rel="next" title="Tagging Notebooks" href="tags.html"/>
+        <link rel="prev" title="Workflows" href="workflows/README.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/DEA-logo-light.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/glossary.html">Glossary</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Connect</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../connect/account.html">Register</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connect/account.html#getting-help">Getting help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connect/install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connect/nci_basics.html">Running DEA Manually</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connect/jupyter.html">Jupyter Notebook</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../query/Getting Started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../query/List Products.html">List Products &amp; Measurements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../query/Loading Data.html">Loading data from the datacube</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook Gallery</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Notebook Gallery</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="products/README.html">Products</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithms/README.html">Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="case_studies/README.html">Case Studies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workflows/README.html">Workflows</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Notebook Gallery Instructions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#getting-started">Getting Started</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#to-clone-the-repo-onto-the-vdi">To clone the repo (onto the VDI):</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-up-your-own-version-of-the-repo">Setting up your own version of the repo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#committing-and-pushing-your-changes-back-to-the-main-repository">Committing and pushing your changes back to the main repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#publishing-finished-notebooks">Publishing finished notebooks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#metadata-requirements-for-publishing">Metadata requirements for publishing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tagging">Tagging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pushing-files-to-the-master-branch-for-publishing">Pushing files to the master branch for publishing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#updating-the-rst-file-to-point-to-your-new-files">Updating the .rst file to point to your new files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#back-to-the-push-workflow">Back to the push workflow…</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#approving-pull-requests">Approving pull requests</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cleaning-up-your-own-repo">Cleaning up your own repo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tags.html">Tagging Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../genindex.html">Tags Index</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Data Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html">Surface Reflectance NBAR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#surface-reflectance-nbar-t">Surface Reflectance NBAR-T</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#pixel-quality">Pixel Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html#fractional-cover">Fractional Cover</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../internal/new_product.html">Creating New Product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internal/release_process.html">Build a version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internal/release_process.html#marking-it-stable">Marking it stable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internal/git_best_practice.html">Git Best Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internal/release.html">Building a Release</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internal/orchestration.html">DEA Orchestration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internal/collection_management.html">Collection Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internal/collection_management.html#defining-collections">Defining Collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internal/goalkeeper_instructions.html">What’s a Goalkeeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internal/requirements_met.html">DEA Smoke Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internal/requirements_met.html#Data-load-examples">Data load examples</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">Tags Index</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Digital Earth Australia</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Notebook Gallery</a> &raquo;</li>
+        
+      <li>Notebook Gallery Instructions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/notebooks/README.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+/* nice headers on first paragraph of info/warning boxes */
+.admonition .first {
+    margin: -12px;
+    padding: 6px 12px;
+    margin-bottom: 12px;
+    color: #fff;
+    line-height: 1;
+    display: block;
+}
+.admonition.warning .first {
+    background: #f0b37e;
+}
+.admonition.note .first {
+    background: #6ab0de;
+}
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+</style>
+<div class="section" id="notebook-gallery-instructions">
+<h1>Notebook Gallery Instructions<a class="headerlink" href="#notebook-gallery-instructions" title="Permalink to this headline">¶</a></h1>
+<p>Repository for Digital Earth Australia Jupyter Notebooks.</p>
+<p>The basic structure of this repository is designed to keep ‘all’ of the DEA Jupyter Notebooks in one place. The repository uses branches to manage individuals’ notebooks, and to allow easy publishing of notebooks ready to be shared.</p>
+<p>The structure of the repository is fairly simple:</p>
+<ul class="simple">
+<li>master branch - where notebooks are put that are ready to be shared. Notebooks added to this branch will be published on the DEA documentation page in a notebook gallery.</li>
+<li>working branches - these are named using the owner’s name as the branch name (e.g. <code class="docutils literal notranslate"><span class="pre">ClaireK</span></code>, <code class="docutils literal notranslate"><span class="pre">BexDunn</span></code>). These are the working spaces for people and essentially your own place to play around with. The notebooks here do not need to be pretty or even finished. It’s just a place to keep everything together. It also means that if you want to collaborate on a working version of a notebook, you can easily find and share notebooks.</li>
+</ul>
+<p><strong>Note</strong>: The master branch is protected, and will require a pull request for changes to be made to this branch. This is simply to avoid mistakes when pushing to this branch, and to allow a quick check of code before publishing. The check is basically just looking for the existence of required metadata, and that the file name has been added to the .rst index so it can be published on the DEA documentation website.</p>
+<div class="section" id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>To get started, clone this repository to a suitable location. This will most likely be a location you can  access on the VDI, so you can easily work with your notebooks. Note that this repo is likely to become quite large, so make sure you have enough space in the location you clone the repository to (i.e. probably not your home directory, but your directory on /g/data should be perfect).</p>
+<div class="section" id="to-clone-the-repo-onto-the-vdi">
+<h3>To clone the repo (onto the VDI):<a class="headerlink" href="#to-clone-the-repo-onto-the-vdi" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Navigate to the location you want the repository to sit using a Terminal window</li>
+<li>Type <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">git&#64;github.com:GeoscienceAustralia/dea-notebooks.git</span></code></li>
+<li>A new folder called <code class="docutils literal notranslate"><span class="pre">dea-notebooks</span></code> will be created, which is a copy of the code repo</li>
+<li><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">dea-notebooks</span></code></li>
+<li>Use the command <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> (at any time) to check which branch you are on and any changes you have made. You should see that you are automatically on the <code class="docutils literal notranslate"><span class="pre">master</span></code> branch. This is the published branched of the repository.</li>
+<li>To create your own branch, type <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span> <span class="pre">&lt;yourname&gt;</span></code> (where &lt;yourname&gt; will be the name of the new branch).</li>
+<li>You will automatically be changed to your new branch (you can use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> to check this). Any changes you make here will not affect the other branches of the repository.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="setting-up-your-own-version-of-the-repo">
+<h2>Setting up your own version of the repo<a class="headerlink" href="#setting-up-your-own-version-of-the-repo" title="Permalink to this headline">¶</a></h2>
+<p>You will notice that your branch of the repo contains a copy of everything in the master branch. This probably isn’t what you actually want. You can feel free to delete everything that is automatically put in your own branch, and start from scratch with your own directory structures.</p>
+<p><strong>Note</strong>: Make sure you are on your own branch <em>before</em> deleting everything. You can check this with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code>. If you happen to delete everything from the master branch, it can be restored (that’s the wonder of version control), but try to avoid this in the first place.</p>
+<p>To delete folders (or files) in a git managed repository, use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rm</span> <span class="pre">&lt;file&gt;</span></code>. This tells git you are deleting a file from the tracked repository, which makes things a lot cleaner when you go to commit those changes later on. If you would like to delete a whole directory, you need to add the <cite>-r</cite> (recursive) flag to the command; <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rm</span> <span class="pre">-r</span> <span class="pre">algorithms</span></code>.</p>
+</div>
+<div class="section" id="committing-and-pushing-your-changes-back-to-the-main-repository">
+<h2>Committing and pushing your changes back to the main repository<a class="headerlink" href="#committing-and-pushing-your-changes-back-to-the-main-repository" title="Permalink to this headline">¶</a></h2>
+<p>The new branch you have created exists in your local version of the repository, but you wont yet see it on the git website because you haven’t told it about your new branch yet. To do this, you will need to commit and then push your changes. If you now type <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> you will see two groups of files; those git is tracking and has noticed have changed since the last commit, and those git is not tracking.
+To add the new files and folders you have created to the git tracked repo, type <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">&lt;file/folder&gt;</span></code>. Go through all the folders you would like git to track and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> them. Once you are ready to commit your changes, type <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-m</span> <span class="pre">&quot;this</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">short</span> <span class="pre">description</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">changes</span> <span class="pre">you</span> <span class="pre">have</span> <span class="pre">made&quot;</span></code>.</p>
+<p>As there will be multiple people all working off the same repository, you should type <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> prior to pushing your commit. This will make sure you have the latest version of the repository, and will hopefully avoid any potential merge conflicts when you go to push.</p>
+<p>Assuming the pull request didn’t throw up any errors, you can now push your commit. To do this, type <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">-u</span> <span class="pre">origin</span> <span class="pre">&lt;your</span> <span class="pre">branch</span> <span class="pre">name&gt;</span></code>. Git will now connect to the remote repository and add your commit to the GitHub repo. You should now be able to see your new branch on the online dea-notebooks repo. The <code class="docutils literal notranslate"><span class="pre">-u</span></code> switch will set up your branch to properly track the remote branch of the same name. If you do a <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> and get a message that says <code class="docutils literal notranslate"><span class="pre">you</span> <span class="pre">have</span> <span class="pre">not</span> <span class="pre">told</span> <span class="pre">me</span> <span class="pre">which</span> <span class="pre">branch</span> <span class="pre">to</span> <span class="pre">merge</span> <span class="pre">with</span></code>, this is because the local and remote repos were not set up to talk to each other properly. Easy fix! Type <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">--set-upstream</span> <span class="pre">&lt;branch&gt;</span> <span class="pre">origin/&lt;branch&gt;</span></code>. Git should now be happy.</p>
+</div>
+<div class="section" id="publishing-finished-notebooks">
+<h2>Publishing finished notebooks<a class="headerlink" href="#publishing-finished-notebooks" title="Permalink to this headline">¶</a></h2>
+<p>The master branch of dea-notebooks is where notebooks go that you are ready to share and publish. Note that even once the notebooks are published, you can still edit and update them - this does not close them off to you for further work.</p>
+<p>To publish a notebook to the master branch, you will need to complete a <code class="docutils literal notranslate"><span class="pre">pull</span></code> request (see below).</p>
+<div class="section" id="metadata-requirements-for-publishing">
+<h3>Metadata requirements for publishing<a class="headerlink" href="#metadata-requirements-for-publishing" title="Permalink to this headline">¶</a></h3>
+<p>The notebook name should be descriptive and contain no spaces.</p>
+<p>The ensure that the published notebooks are actually searchable and useable, the first cell of the notebook must have the following metadata
+as a minumum:</p>
+<ul class="simple">
+<li><strong>What does this notebook do?</strong> Include a fairly detailled description of what the notebook does. This will allow someone looking for an example of a particular functionality to decide whether this notebook is likely to help them.</li>
+<li><strong>Date</strong> That the notebook was finalised. This is just to give an indication of the currency of the notebook, and when it was last working.</li>
+<li><strong>Author</strong> Who wrote it?</li>
+</ul>
+<p>You can of course provide additional information if you choose, e.g. background, purpose etc.</p>
+<p>As an example…</p>
+<p># Getting started with Sentinel 2 data</p>
+<p><strong>Background</strong> As of mid-February 2018, Sentinel 2 data is available to access within the a development environment on AWS. There are a number of things that need to be done prior to gaining access to the Sentinel 2 archive. For the purpose of this notebook, we will assume you have successfully gained access to the AWS environment where Sentinel 2 data is currently housed.</p>
+<p><strong>What does this notebook do?</strong> This notebook steps you through how to load in and plot up data from Sentinel 2. It explores the data that are available from the Sentinel 2 satellite, and briefly describes the Sentinel satellite bands. It then loads in the <code class="docutils literal notranslate"><span class="pre">s2a_ard_granule</span></code> product and plots it up in true and false colour. It uses the provided pixel quality data to filters the example scene based on <code class="docutils literal notranslate"><span class="pre">clear</span></code> pixels.</p>
+<p><strong>Date</strong>: February 2018.</p>
+<p><strong>Author</strong>: Claire Krause</p>
+</div>
+<div class="section" id="tagging">
+<h3>Tagging<a class="headerlink" href="#tagging" title="Permalink to this headline">¶</a></h3>
+<p>See the <a class="reference internal" href="tags.html"><span class="doc">Tagging Notebooks</span></a> page.</p>
+</div>
+<div class="section" id="pushing-files-to-the-master-branch-for-publishing">
+<h3>Pushing files to the master branch for publishing<a class="headerlink" href="#pushing-files-to-the-master-branch-for-publishing" title="Permalink to this headline">¶</a></h3>
+<p>Protection measures put in place within the <code class="docutils literal notranslate"><span class="pre">dea-notebooks</span></code> repo mean that you can not simply <code class="docutils literal notranslate"><span class="pre">push</span></code> to the master branch. All code that you would like to publish on the <code class="docutils literal notranslate"><span class="pre">master</span></code> branch needs to go through a review process, which is done using a <code class="docutils literal notranslate"><span class="pre">pull</span></code> request.</p>
+<p>The process for completing a <code class="docutils literal notranslate"><span class="pre">pull</span></code> request may seem complicated, but is quite simple if you follow the following directions. If you are unsure, feel free to grab someone to walk you through it the first time. You will need to commit all the changes you have made to your local branch before following these steps.</p>
+<ul class="simple">
+<li>Open a terminal window, and navigate to the <code class="docutils literal notranslate"><span class="pre">dea-notebooks</span></code> folder</li>
+<li><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">master</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> (this will avoid merge conflicts later on by getting the latest version of the master branch)</li>
+<li>Create a new temporary branch where the files you want to publish will be placed</li>
+<li><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span> <span class="pre">&lt;tempbranchname&gt;</span></code> - you can name the temp branch anything, but please include your name somewhere</li>
+<li>Now you need to move the files you want to publish from your branch to this new branch</li>
+<li><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">&lt;yourbranchname&gt;</span> <span class="pre">--</span> <span class="pre">&lt;fileyouwanttopublish&gt;</span></code> This command will grab the file from your branch, and move it to this temp branch</li>
+<li>Repeat this for all the files you want to publish. You may need to move files around so that they sit in the four folders designated in the master branch. You can just use the file browser to do this, or use <code class="docutils literal notranslate"><span class="pre">mv</span> <span class="pre">&lt;oldlocation&gt;</span> <span class="pre">&lt;newlocation&gt;</span></code> from the command line</li>
+<li><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code>. You should see that you are on the temp branch, and the files you have moved across are listed in red as untracked. Double check that these files are in one of the four directories, and not in a folder of your own naming.</li>
+</ul>
+</div>
+<div class="section" id="updating-the-rst-file-to-point-to-your-new-files">
+<h3>Updating the .rst file to point to your new files<a class="headerlink" href="#updating-the-rst-file-to-point-to-your-new-files" title="Permalink to this headline">¶</a></h3>
+<p>Along with the code files in the repository, each folder has a <code class="docutils literal notranslate"><span class="pre">README.rst</span></code> file. This is the file that the DEA website uses to generate the webpage that these notebooks are being pulled in to. In order for the website to know that you have updated the repository, you need to also update the <code class="docutils literal notranslate"><span class="pre">.rst</span></code> file. This is super easy and can be done in any text editor. Open the <code class="docutils literal notranslate"><span class="pre">README.rst</span></code> file for each directory where you have added a new file. Add your new file name to the bottom of the list of files in the folder. Save and close.</p>
+</div>
+<div class="section" id="back-to-the-push-workflow">
+<h3>Back to the push workflow…<a class="headerlink" href="#back-to-the-push-workflow" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">&lt;file&gt;</span></code>. Repeat this for every file that you want to publish. Make sure to add the <code class="docutils literal notranslate"><span class="pre">README.rst</span></code> files you have updated as well!</li>
+<li><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code>. You should now see the list of files in green, ready to be committed.</li>
+<li><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-m</span> <span class="pre">&quot;Short</span> <span class="pre">explanation</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">files</span> <span class="pre">being</span> <span class="pre">added&quot;</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">origin</span> <span class="pre">&lt;tempbranchname&gt;</span></code>. This will push the new branch, with the files to be published, to the remote repo. You can jump on the website and see your latest push show up on the repo in a light yellow banner below the solid red line.</li>
+<li>Click on <code class="docutils literal notranslate"><span class="pre">compare</span> <span class="pre">&amp;</span> <span class="pre">pull</span> <span class="pre">request</span></code> to set up your pull request</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">a</span> <span class="pre">pull</span> <span class="pre">request</span></code> page will show the <code class="docutils literal notranslate"><span class="pre">base</span></code> as <code class="docutils literal notranslate"><span class="pre">master</span></code> and the <code class="docutils literal notranslate"><span class="pre">compare</span></code> as your temp branch. If you did a pull request right up at step three, this should mean that there are no conflicts, and you can automatically merge (hopefully).</li>
+<li>Add a comment to the pull request, and click <code class="docutils literal notranslate"><span class="pre">create</span> <span class="pre">pull</span> <span class="pre">request</span></code></li>
+</ul>
+</div>
+</div>
+<div class="section" id="approving-pull-requests">
+<h2>Approving pull requests<a class="headerlink" href="#approving-pull-requests" title="Permalink to this headline">¶</a></h2>
+<p>Anyone with admin access to the <code class="docutils literal notranslate"><span class="pre">dea-notebooks</span></code> repo can approve pull requests. You can see a list of the pull requests ready for review on the <code class="docutils literal notranslate"><span class="pre">pull</span> <span class="pre">requests</span></code> tab at the top of the repo. Click this tab, then click on the open pull request. You will need to review the code before you can approve the request. You can view the changes proposed and make sure that they meet the minimum metadata requirements. You do not need to check the actual code, this review process is just to check for code documentation. If the documentation looks good, click the green <code class="docutils literal notranslate"><span class="pre">review</span></code> button and check <code class="docutils literal notranslate"><span class="pre">approve</span></code>. You can also request changes here if you think some key info is missing.</p>
+<p>Once the code has been approved, you can merge it into the <code class="docutils literal notranslate"><span class="pre">master</span></code> branch. Select the <code class="docutils literal notranslate"><span class="pre">squash</span> <span class="pre">and</span> <span class="pre">merge</span></code> option (you may need to find this in the drop down menu to the right of the green merge button. The squash and merge will squash all the commits on the temp branch into a single commit, and just make things neater. Once you have merged the new branch in, you need to <strong>delete the branch</strong>. There is a button on the push page that asks you if you would like to delete the now merged branch. Yes. Delete it. The changes from this branch have now been merged in, so there is no risk of losing someone’s work. This will stop lots and lots of staging/temp branches from building up in the repo.</p>
+<p>You are now done!</p>
+<div class="section" id="cleaning-up-your-own-repo">
+<h3>Cleaning up your own repo<a class="headerlink" href="#cleaning-up-your-own-repo" title="Permalink to this headline">¶</a></h3>
+<p>You will receive an email to the address your github account is registered with to let you know when your pull request has been approved, and then merged. Although the temp branch was deleted from the github website (the remote repo), you will still have a local copy of this branch that you will want to remove.</p>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span></code> will show you all the branches your local repo is tracking. If there are staging branches you would like to clean up, use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">-d</span> <span class="pre">&lt;branchtobedeleted&gt;</span></code>. This will stop you accumulating useless branches in your local git repo.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tags.html" class="btn btn-neutral float-right" title="Tagging Notebooks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="workflows/README.html" class="btn btn-neutral" title="Workflows" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Geoscience Australia.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+
+
+<!-- Theme Analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-113800428-1"></script>
+<script>
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('js', new Date());
+ 
+ gtag('config', 'UA-113800428-1');
+</script>
+
+    
+  
+
+
+</body>
+</html>
