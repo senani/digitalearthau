@@ -422,8 +422,8 @@ the datacube and call our application name <em>load-data-example</em>.</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>import datacube
-dc = datacube.Datacube(app=&#39;load-data-example&#39;)
+<span></span><span class="kn">import</span> <span class="nn">datacube</span>
+<span class="n">dc</span> <span class="o">=</span> <span class="n">datacube</span><span class="o">.</span><span class="n">Datacube</span><span class="p">(</span><span class="n">app</span><span class="o">=</span><span class="s1">&#39;load-data-example&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -455,9 +455,9 @@ the spatial region covering:</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>data = dc.load(product=&#39;ls5_nbar_albers&#39;,
-               x=(149.25, 149.5), y=(-36.25, -36.5),
-               time=(&#39;2008-01-01&#39;, &#39;2009-01-01&#39;))
+<span></span><span class="n">data</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">product</span><span class="o">=</span><span class="s1">&#39;ls5_nbar_albers&#39;</span><span class="p">,</span>
+               <span class="n">x</span><span class="o">=</span><span class="p">(</span><span class="mf">149.25</span><span class="p">,</span> <span class="mf">149.5</span><span class="p">),</span> <span class="n">y</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">36.25</span><span class="p">,</span> <span class="o">-</span><span class="mf">36.5</span><span class="p">),</span>
+               <span class="n">time</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;2008-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2009-01-01&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -467,7 +467,7 @@ the spatial region covering:</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>data
+<span></span><span class="n">data</span>
 </pre></div>
 </div>
 </div>
@@ -509,9 +509,9 @@ product is stored in, and supply the <em>crs</em> argument.</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>data = dc.load(product=&#39;ls5_nbar_albers&#39;,
-               x=(1543137.5, 1569137.5), y=(-4065537.5, -4096037.5), crs=&#39;EPSG:3577&#39;,
-               time=(&#39;2008-01-01&#39;, &#39;2009-01-01&#39;))
+<span></span><span class="n">data</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">product</span><span class="o">=</span><span class="s1">&#39;ls5_nbar_albers&#39;</span><span class="p">,</span>
+               <span class="n">x</span><span class="o">=</span><span class="p">(</span><span class="mf">1543137.5</span><span class="p">,</span> <span class="mf">1569137.5</span><span class="p">),</span> <span class="n">y</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">4065537.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">4096037.5</span><span class="p">),</span> <span class="n">crs</span><span class="o">=</span><span class="s1">&#39;EPSG:3577&#39;</span><span class="p">,</span>
+               <span class="n">time</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;2008-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2009-01-01&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -521,7 +521,7 @@ product is stored in, and supply the <em>crs</em> argument.</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>data
+<span></span><span class="n">data</span>
 </pre></div>
 </div>
 </div>
@@ -570,10 +570,10 @@ measurements:</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>data = dc.load(product=&#39;ls5_nbar_albers&#39;,
-               x=(149.25, 149.5), y=(-36.25, -36.5),
-               time=(&#39;2008-01-01&#39;, &#39;2009-01-01&#39;),
-               measurements=[&#39;red&#39;, &#39;nir&#39;])
+<span></span><span class="n">data</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">product</span><span class="o">=</span><span class="s1">&#39;ls5_nbar_albers&#39;</span><span class="p">,</span>
+               <span class="n">x</span><span class="o">=</span><span class="p">(</span><span class="mf">149.25</span><span class="p">,</span> <span class="mf">149.5</span><span class="p">),</span> <span class="n">y</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">36.25</span><span class="p">,</span> <span class="o">-</span><span class="mf">36.5</span><span class="p">),</span>
+               <span class="n">time</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;2008-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2009-01-01&#39;</span><span class="p">),</span>
+               <span class="n">measurements</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;nir&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -583,7 +583,7 @@ measurements:</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>data
+<span></span><span class="n">data</span>
 </pre></div>
 </div>
 </div>

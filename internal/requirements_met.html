@@ -491,17 +491,17 @@ its meeting on 10 December, 2015.</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>%matplotlib inline
-from matplotlib import pyplot as plt
-import datacube
-from datacube.model import Range
-from datetime import datetime
-from datacube.utils import geometry
-from datacube.storage import masking
-from datacube.storage.masking import mask_invalid_data
-import pandas
-import xarray
-import numpy
+<span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">datacube</span>
+<span class="kn">from</span> <span class="nn">datacube.model</span> <span class="k">import</span> <span class="n">Range</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">datacube.utils</span> <span class="k">import</span> <span class="n">geometry</span>
+<span class="kn">from</span> <span class="nn">datacube.storage</span> <span class="k">import</span> <span class="n">masking</span>
+<span class="kn">from</span> <span class="nn">datacube.storage.masking</span> <span class="k">import</span> <span class="n">mask_invalid_data</span>
+<span class="kn">import</span> <span class="nn">pandas</span>
+<span class="kn">import</span> <span class="nn">xarray</span>
+<span class="kn">import</span> <span class="nn">numpy</span>
 </pre></div>
 </div>
 </div>
@@ -511,19 +511,19 @@ import numpy
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>import folium
-from IPython.display import display
-import geopandas
-from shapely.geometry import mapping
-from shapely.geometry import MultiPolygon
-import rasterio
-import shapely.geometry
-import shapely.ops
-from functools import partial
-import pyproj
-#from datacube.model import datacube.utils.geometry.CRS
-import time
-from dateutil import tz
+<span></span><span class="kn">import</span> <span class="nn">folium</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">display</span>
+<span class="kn">import</span> <span class="nn">geopandas</span>
+<span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="k">import</span> <span class="n">mapping</span>
+<span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="k">import</span> <span class="n">MultiPolygon</span>
+<span class="kn">import</span> <span class="nn">rasterio</span>
+<span class="kn">import</span> <span class="nn">shapely.geometry</span>
+<span class="kn">import</span> <span class="nn">shapely.ops</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="k">import</span> <span class="n">partial</span>
+<span class="kn">import</span> <span class="nn">pyproj</span>
+<span class="c1">#from datacube.model import datacube.utils.geometry.CRS</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">dateutil</span> <span class="k">import</span> <span class="n">tz</span>
 </pre></div>
 </div>
 </div>
@@ -533,7 +533,7 @@ from dateutil import tz
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>notebook_start_dt = datetime.now()
+<span></span><span class="n">notebook_start_dt</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -543,7 +543,7 @@ from dateutil import tz
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>dc = datacube.Datacube(app=&#39;requirements-met&#39;)
+<span></span><span class="n">dc</span> <span class="o">=</span> <span class="n">datacube</span><span class="o">.</span><span class="n">Datacube</span><span class="p">(</span><span class="n">app</span><span class="o">=</span><span class="s1">&#39;requirements-met&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -553,7 +553,7 @@ from dateutil import tz
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>datacube.__version__
+<span></span><span class="n">datacube</span><span class="o">.</span><span class="n">__version__</span>
 </pre></div>
 </div>
 </div>
@@ -563,7 +563,7 @@ from dateutil import tz
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>datacube.__path__
+<span></span><span class="n">datacube</span><span class="o">.</span><span class="n">__path__</span>
 </pre></div>
 </div>
 </div>
@@ -573,7 +573,7 @@ from dateutil import tz
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>!module list
+<span></span><span class="o">!</span>module list
 </pre></div>
 </div>
 </div>
@@ -583,7 +583,7 @@ from dateutil import tz
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>!datacube system check
+<span></span><span class="o">!</span>datacube system check
 </pre></div>
 </div>
 </div>
@@ -596,8 +596,8 @@ from dateutil import tz
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>from datacube import Datacube
-remotedc = Datacube(config=&#39;/home/547/jps547/.aws_datacube.conf&#39;)
+<span></span><span class="kn">from</span> <span class="nn">datacube</span> <span class="k">import</span> <span class="n">Datacube</span>
+<span class="n">remotedc</span> <span class="o">=</span> <span class="n">Datacube</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="s1">&#39;/home/547/jps547/.aws_datacube.conf&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -607,9 +607,9 @@ remotedc = Datacube(config=&#39;/home/547/jps547/.aws_datacube.conf&#39;)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>from geopy.geocoders import Nominatim
-geolocator = Nominatim()
-location = geolocator.geocode(&quot;Launceston, Tasmania&quot;)
+<span></span><span class="kn">from</span> <span class="nn">geopy.geocoders</span> <span class="k">import</span> <span class="n">Nominatim</span>
+<span class="n">geolocator</span> <span class="o">=</span> <span class="n">Nominatim</span><span class="p">()</span>
+<span class="n">location</span> <span class="o">=</span> <span class="n">geolocator</span><span class="o">.</span><span class="n">geocode</span><span class="p">(</span><span class="s2">&quot;Launceston, Tasmania&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -619,7 +619,7 @@ location = geolocator.geocode(&quot;Launceston, Tasmania&quot;)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>location
+<span></span><span class="n">location</span>
 </pre></div>
 </div>
 </div>
@@ -629,15 +629,15 @@ location = geolocator.geocode(&quot;Launceston, Tasmania&quot;)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>query = {
-    &#39;lat&#39;: (-41.82, -41.81),
-    &#39;lon&#39;: (146.71, 146.72),
-}
+<span></span><span class="n">query</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;lat&#39;</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="mf">41.82</span><span class="p">,</span> <span class="o">-</span><span class="mf">41.81</span><span class="p">),</span>
+    <span class="s1">&#39;lon&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">146.71</span><span class="p">,</span> <span class="mf">146.72</span><span class="p">),</span>
+<span class="p">}</span>
 
-wofs = remotedc.load(product=&#39;wofs_modified_albers&#39;, group_by=&#39;solar_day&#39;, **query)
+<span class="n">wofs</span> <span class="o">=</span> <span class="n">remotedc</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">product</span><span class="o">=</span><span class="s1">&#39;wofs_modified_albers&#39;</span><span class="p">,</span> <span class="n">group_by</span><span class="o">=</span><span class="s1">&#39;solar_day&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">query</span><span class="p">)</span>
 
-wofs.water.flags_definition
-pandas.DataFrame.from_dict(masking.get_flags_def(wofs), orient=&#39;index&#39;)
+<span class="n">wofs</span><span class="o">.</span><span class="n">water</span><span class="o">.</span><span class="n">flags_definition</span>
+<span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">masking</span><span class="o">.</span><span class="n">get_flags_def</span><span class="p">(</span><span class="n">wofs</span><span class="p">),</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -647,8 +647,8 @@ pandas.DataFrame.from_dict(masking.get_flags_def(wofs), orient=&#39;index&#39;)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span># Throughout this doc we use print() manually rather than returning the object as an output.
-# This is to minimise memory usage: avoid storing a reference to the data array itself in Jupyter&#39;s output history.
+<span></span><span class="c1"># Throughout this doc we use print() manually rather than returning the object as an output.</span>
+<span class="c1"># This is to minimise memory usage: avoid storing a reference to the data array itself in Jupyter&#39;s output history.</span>
 </pre></div>
 </div>
 </div>
@@ -658,7 +658,7 @@ pandas.DataFrame.from_dict(masking.get_flags_def(wofs), orient=&#39;index&#39;)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>print(wofs)
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">wofs</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -668,7 +668,7 @@ pandas.DataFrame.from_dict(masking.get_flags_def(wofs), orient=&#39;index&#39;)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>wofs.water.plot(col=&#39;time&#39;, col_wrap=5, robust=True)
+<span></span><span class="n">wofs</span><span class="o">.</span><span class="n">water</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">col_wrap</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">robust</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -678,7 +678,7 @@ pandas.DataFrame.from_dict(masking.get_flags_def(wofs), orient=&#39;index&#39;)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>remotedc.list_products()
+<span></span><span class="n">remotedc</span><span class="o">.</span><span class="n">list_products</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -688,9 +688,9 @@ pandas.DataFrame.from_dict(masking.get_flags_def(wofs), orient=&#39;index&#39;)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>water = masking.make_mask(wofs, result=&#39;clear_wet&#39;)
+<span></span><span class="n">water</span> <span class="o">=</span> <span class="n">masking</span><span class="o">.</span><span class="n">make_mask</span><span class="p">(</span><span class="n">wofs</span><span class="p">,</span> <span class="n">result</span><span class="o">=</span><span class="s1">&#39;clear_wet&#39;</span><span class="p">)</span>
 
-water.water.plot(col=&#39;time&#39;, col_wrap=5, robust=True, cmap=&#39;gray&#39;)
+<span class="n">water</span><span class="o">.</span><span class="n">water</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">col_wrap</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">robust</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -700,7 +700,7 @@ water.water.plot(col=&#39;time&#39;, col_wrap=5, robust=True, cmap=&#39;gray&#39
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>water.water.sum(&#39;time&#39;).plot()
+<span></span><span class="n">water</span><span class="o">.</span><span class="n">water</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -710,7 +710,7 @@ water.water.plot(col=&#39;time&#39;, col_wrap=5, robust=True, cmap=&#39;gray&#39
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>results = remotedc.index.datasets.search_eager(product=&#39;wofs_modified_albers&#39;)
+<span></span><span class="n">results</span> <span class="o">=</span> <span class="n">remotedc</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">search_eager</span><span class="p">(</span><span class="n">product</span><span class="o">=</span><span class="s1">&#39;wofs_modified_albers&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -720,7 +720,7 @@ water.water.plot(col=&#39;time&#39;, col_wrap=5, robust=True, cmap=&#39;gray&#39
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>len(results)
+<span></span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -730,7 +730,7 @@ water.water.plot(col=&#39;time&#39;, col_wrap=5, robust=True, cmap=&#39;gray&#39
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>results[0].metadata_doc
+<span></span><span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">metadata_doc</span>
 </pre></div>
 </div>
 </div>
@@ -740,9 +740,9 @@ water.water.plot(col=&#39;time&#39;, col_wrap=5, robust=True, cmap=&#39;gray&#39
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>results = None
-water = None
-wofs = None
+<span></span><span class="n">results</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">water</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">wofs</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 </div>
 </div>
@@ -755,18 +755,18 @@ wofs = None
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>query = {
-    &#39;product&#39;: &#39;bom_rainfall_grids&#39;,
-    &#39;crs&#39;: &#39;EPSG:3577&#39;,
-    &#39;time&#39;: (&#39;1987-10-01&#39;, &#39;1990-10-01&#39;),
-    &#39;x&#39;: (349388.9787330463, 358497.9246628304),
-    &#39;y&#39;: (-2379960.5883129314, -2375926.544118764),
-    &#39;output_crs&#39;: &#39;EPSG:3577&#39;,
-    &#39;resolution&#39;: (-25, 25),
-    &#39;resampling&#39;: &#39;cubic&#39;,
-}
+<span></span><span class="n">query</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;product&#39;</span><span class="p">:</span> <span class="s1">&#39;bom_rainfall_grids&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;crs&#39;</span><span class="p">:</span> <span class="s1">&#39;EPSG:3577&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;1987-10-01&#39;</span><span class="p">,</span> <span class="s1">&#39;1990-10-01&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">349388.9787330463</span><span class="p">,</span> <span class="mf">358497.9246628304</span><span class="p">),</span>
+    <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="mf">2379960.5883129314</span><span class="p">,</span> <span class="o">-</span><span class="mf">2375926.544118764</span><span class="p">),</span>
+    <span class="s1">&#39;output_crs&#39;</span><span class="p">:</span> <span class="s1">&#39;EPSG:3577&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;resolution&#39;</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span>
+    <span class="s1">&#39;resampling&#39;</span><span class="p">:</span> <span class="s1">&#39;cubic&#39;</span><span class="p">,</span>
+<span class="p">}</span>
 
-rainfall_projected = dc.load(**query)
+<span class="n">rainfall_projected</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="o">**</span><span class="n">query</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -776,7 +776,7 @@ rainfall_projected = dc.load(**query)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>print(rainfall_projected)
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">rainfall_projected</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -786,7 +786,7 @@ rainfall_projected = dc.load(**query)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>rainfall_projected = None
+<span></span><span class="n">rainfall_projected</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 </div>
 </div>
@@ -799,19 +799,19 @@ rainfall_projected = dc.load(**query)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span># Was replaced by stacked file
-# ds_uri = &#39;file:///g/data/rs0/datacube/002/LS5_TM_NBART/-7_-30/LS5_TM_NBART_3577_-7_-30_20030711011529000000_v1488078639.nc&#39;
+<span></span><span class="c1"># Was replaced by stacked file</span>
+<span class="c1"># ds_uri = &#39;file:///g/data/rs0/datacube/002/LS5_TM_NBART/-7_-30/LS5_TM_NBART_3577_-7_-30_20030711011529000000_v1488078639.nc&#39;</span>
 
-ds_uri = &#39;file:///g/data/rs0/datacube/002/LS5_TM_NBAR/13_-35/LS5_TM_NBAR_3577_13_-35_2009_v1496827052.nc&#39;
-datasets_in_stack = list(dc.index.datasets.get_datasets_for_location(uri=ds_uri))
+<span class="n">ds_uri</span> <span class="o">=</span> <span class="s1">&#39;file:///g/data/rs0/datacube/002/LS5_TM_NBAR/13_-35/LS5_TM_NBAR_3577_13_-35_2009_v1496827052.nc&#39;</span>
+<span class="n">datasets_in_stack</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">dc</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">get_datasets_for_location</span><span class="p">(</span><span class="n">uri</span><span class="o">=</span><span class="n">ds_uri</span><span class="p">))</span>
 
-# If restacked, there will be a newer file (with higher vXXX version suffix)
-# So this one shouldn&#39;t change:
-assert len(datasets_in_stack) == 74
-assert set(d.type.name for d in datasets_in_stack) == {&#39;ls5_nbar_albers&#39;}
-print(repr(datasets_in_stack[0]))
+<span class="c1"># If restacked, there will be a newer file (with higher vXXX version suffix)</span>
+<span class="c1"># So this one shouldn&#39;t change:</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">datasets_in_stack</span><span class="p">)</span> <span class="o">==</span> <span class="mi">74</span>
+<span class="k">assert</span> <span class="nb">set</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">datasets_in_stack</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;ls5_nbar_albers&#39;</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">datasets_in_stack</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
 
-datasets_in_stack = None
+<span class="n">datasets_in_stack</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 </div>
 </div>
@@ -821,33 +821,33 @@ datasets_in_stack = None
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>def chop_to_globe(geom):
-    to_crs = geometry.CRS(&quot;EPSG:4326&quot;)
-    left_of_dt = geometry.line(
-        [
-            (180 - 1.0e-8, -90),
-            (180 - 1.0e-8, 90)
-        ],
-        crs=to_crs
-    ).to_crs(geom.crs)
+<span></span><span class="k">def</span> <span class="nf">chop_to_globe</span><span class="p">(</span><span class="n">geom</span><span class="p">):</span>
+    <span class="n">to_crs</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">CRS</span><span class="p">(</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
+    <span class="n">left_of_dt</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">line</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="p">(</span><span class="mi">180</span> <span class="o">-</span> <span class="mf">1.0e-8</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">),</span>
+            <span class="p">(</span><span class="mi">180</span> <span class="o">-</span> <span class="mf">1.0e-8</span><span class="p">,</span> <span class="mi">90</span><span class="p">)</span>
+        <span class="p">],</span>
+        <span class="n">crs</span><span class="o">=</span><span class="n">to_crs</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
 
-    right_of_dt = geometry.line(
-        [
-            (-180 + 1.0e-8, 90),
-            (-180 + 1.0e-8, -90)
-        ],
-        crs=to_crs
-    ).to_crs(geom.crs)
+    <span class="n">right_of_dt</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">line</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="p">(</span><span class="o">-</span><span class="mi">180</span> <span class="o">+</span> <span class="mf">1.0e-8</span><span class="p">,</span> <span class="mi">90</span><span class="p">),</span>
+            <span class="p">(</span><span class="o">-</span><span class="mi">180</span> <span class="o">+</span> <span class="mf">1.0e-8</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">)</span>
+        <span class="p">],</span>
+        <span class="n">crs</span><span class="o">=</span><span class="n">to_crs</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
 
-    chopper = geometry.polygon(
-        left_of_dt.points + right_of_dt.points + [left_of_dt.points[0]],
-        crs=geom.crs
-    )
-    return geom.intersection(chopper)
+    <span class="n">chopper</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">polygon</span><span class="p">(</span>
+        <span class="n">left_of_dt</span><span class="o">.</span><span class="n">points</span> <span class="o">+</span> <span class="n">right_of_dt</span><span class="o">.</span><span class="n">points</span> <span class="o">+</span> <span class="p">[</span><span class="n">left_of_dt</span><span class="o">.</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
+        <span class="n">crs</span><span class="o">=</span><span class="n">geom</span><span class="o">.</span><span class="n">crs</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">geom</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">chopper</span><span class="p">)</span>
 
-def datasets_union_clip180(dss):
-    thing = geometry.unary_union(ds.extent for ds in dss)
-    return chop_to_globe(thing).to_crs(geometry.CRS(&#39;EPSG:4326&#39;))
+<span class="k">def</span> <span class="nf">datasets_union_clip180</span><span class="p">(</span><span class="n">dss</span><span class="p">):</span>
+    <span class="n">thing</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">unary_union</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">extent</span> <span class="k">for</span> <span class="n">ds</span> <span class="ow">in</span> <span class="n">dss</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">chop_to_globe</span><span class="p">(</span><span class="n">thing</span><span class="p">)</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">geometry</span><span class="o">.</span><span class="n">CRS</span><span class="p">(</span><span class="s1">&#39;EPSG:4326&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -857,10 +857,10 @@ def datasets_union_clip180(dss):
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>def datasets_union(dss):
-    thing = geometry.unary_union(ds.extent for ds in dss)
-    print(thing.crs)
-    return thing.to_crs(geometry.CRS(&#39;EPSG:4326&#39;))
+<span></span><span class="k">def</span> <span class="nf">datasets_union</span><span class="p">(</span><span class="n">dss</span><span class="p">):</span>
+    <span class="n">thing</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">unary_union</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">extent</span> <span class="k">for</span> <span class="n">ds</span> <span class="ow">in</span> <span class="n">dss</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">thing</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">thing</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">geometry</span><span class="o">.</span><span class="n">CRS</span><span class="p">(</span><span class="s1">&#39;EPSG:4326&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -870,17 +870,17 @@ def datasets_union_clip180(dss):
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>import random
-def plot_folium(shapes):
+<span></span><span class="kn">import</span> <span class="nn">random</span>
+<span class="k">def</span> <span class="nf">plot_folium</span><span class="p">(</span><span class="n">shapes</span><span class="p">):</span>
 
-    mapa = folium.Map(location=[-30,150], zoom_start=4)
-    colors=[&#39;#00ff00&#39;, &#39;#ff0000&#39;, &#39;#00ffff&#39;, &#39;#ffffff&#39;, &#39;#000000&#39;, &#39;#ff00ff&#39;]
-    for shape in shapes:
-        style_function = lambda x: {&#39;fillColor&#39;: &#39;#000000&#39; if x[&#39;type&#39;] == &#39;Polygon&#39; else &#39;#00ff00&#39;,
-                                    &#39;color&#39; : random.choice(colors)}
-        poly = folium.features.GeoJson(mapping(shape), style_function=style_function)
-        mapa.add_child(poly)
-    display(mapa)
+    <span class="n">mapa</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">30</span><span class="p">,</span><span class="mi">150</span><span class="p">],</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;#00ff00&#39;</span><span class="p">,</span> <span class="s1">&#39;#ff0000&#39;</span><span class="p">,</span> <span class="s1">&#39;#00ffff&#39;</span><span class="p">,</span> <span class="s1">&#39;#ffffff&#39;</span><span class="p">,</span> <span class="s1">&#39;#000000&#39;</span><span class="p">,</span> <span class="s1">&#39;#ff00ff&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">shape</span> <span class="ow">in</span> <span class="n">shapes</span><span class="p">:</span>
+        <span class="n">style_function</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;fillColor&#39;</span><span class="p">:</span> <span class="s1">&#39;#000000&#39;</span> <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Polygon&#39;</span> <span class="k">else</span> <span class="s1">&#39;#00ff00&#39;</span><span class="p">,</span>
+                                    <span class="s1">&#39;color&#39;</span> <span class="p">:</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">colors</span><span class="p">)}</span>
+        <span class="n">poly</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">features</span><span class="o">.</span><span class="n">GeoJson</span><span class="p">(</span><span class="n">mapping</span><span class="p">(</span><span class="n">shape</span><span class="p">),</span> <span class="n">style_function</span><span class="o">=</span><span class="n">style_function</span><span class="p">)</span>
+        <span class="n">mapa</span><span class="o">.</span><span class="n">add_child</span><span class="p">(</span><span class="n">poly</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">mapa</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -890,20 +890,20 @@ def plot_folium(shapes):
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>def plot_rgb(image, fake_saturation):
-    image = mask_invalid_data(image)
-    rgb = image.to_array(dim=&#39;color&#39;)
-    rgb = rgb.transpose(*(rgb.dims[1:] + rgb.dims[:1]))  # make &#39;color&#39; the last dimension
-    rgb = rgb.where((rgb &lt;= fake_saturation).all(dim=&#39;color&#39;))  # mask out pixels where any band is &#39;saturated&#39;
-    rgb /= fake_saturation  # scale to [0, 1] range for imshow
+<span></span><span class="k">def</span> <span class="nf">plot_rgb</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">fake_saturation</span><span class="p">):</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">mask_invalid_data</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+    <span class="n">rgb</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">to_array</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;color&#39;</span><span class="p">)</span>
+    <span class="n">rgb</span> <span class="o">=</span> <span class="n">rgb</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">rgb</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">rgb</span><span class="o">.</span><span class="n">dims</span><span class="p">[:</span><span class="mi">1</span><span class="p">]))</span>  <span class="c1"># make &#39;color&#39; the last dimension</span>
+    <span class="n">rgb</span> <span class="o">=</span> <span class="n">rgb</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">rgb</span> <span class="o">&lt;=</span> <span class="n">fake_saturation</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;color&#39;</span><span class="p">))</span>  <span class="c1"># mask out pixels where any band is &#39;saturated&#39;</span>
+    <span class="n">rgb</span> <span class="o">/=</span> <span class="n">fake_saturation</span>  <span class="c1"># scale to [0, 1] range for imshow</span>
 
-    rgb.plot.imshow(
-        x=image.crs.dimensions[1],
-        y=image.crs.dimensions[0],
-        col=&#39;time&#39;,
-        col_wrap=5,
-        add_colorbar=False
-    )
+    <span class="n">rgb</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">crs</span><span class="o">.</span><span class="n">dimensions</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+        <span class="n">y</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">crs</span><span class="o">.</span><span class="n">dimensions</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+        <span class="n">col</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span>
+        <span class="n">col_wrap</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+        <span class="n">add_colorbar</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -916,11 +916,11 @@ def plot_folium(shapes):
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>plot_folium([
-    datasets_union(
-        remotedc.index.datasets.search_eager(product=&#39;ls7_wofs_pq_scene&#39;, )
-    )
-])
+<span></span><span class="n">plot_folium</span><span class="p">([</span>
+    <span class="n">datasets_union</span><span class="p">(</span>
+        <span class="n">remotedc</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">search_eager</span><span class="p">(</span><span class="n">product</span><span class="o">=</span><span class="s1">&#39;ls7_wofs_pq_scene&#39;</span><span class="p">,</span> <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -933,16 +933,16 @@ def plot_folium(shapes):
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span># Get NBAR where source level1 matches a certain quality
+<span></span><span class="c1"># Get NBAR where source level1 matches a certain quality</span>
 
-source_filter = dict(product=&#39;ls8_level1_scene&#39;, gqa_cep90=(-0.25, 0.25))
+<span class="n">source_filter</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">product</span><span class="o">=</span><span class="s1">&#39;ls8_level1_scene&#39;</span><span class="p">,</span> <span class="n">gqa_cep90</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">))</span>
 
-query = datacube.api.query.Query(
-    product=&#39;ls8_nbar_albers&#39;,
-    time=(&#39;2015-01-01&#39;, &#39;2015-02-01&#39;),
-    source_filter=source_filter
-)
-data = dc.index.datasets.search_eager(**query.search_terms)
+<span class="n">query</span> <span class="o">=</span> <span class="n">datacube</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">Query</span><span class="p">(</span>
+    <span class="n">product</span><span class="o">=</span><span class="s1">&#39;ls8_nbar_albers&#39;</span><span class="p">,</span>
+    <span class="n">time</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;2015-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2015-02-01&#39;</span><span class="p">),</span>
+    <span class="n">source_filter</span><span class="o">=</span><span class="n">source_filter</span>
+<span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">search_eager</span><span class="p">(</span><span class="o">**</span><span class="n">query</span><span class="o">.</span><span class="n">search_terms</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -952,7 +952,7 @@ data = dc.index.datasets.search_eager(**query.search_terms)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>len(data)
+<span></span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -962,7 +962,7 @@ data = dc.index.datasets.search_eager(**query.search_terms)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>data[0]
+<span></span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -975,9 +975,9 @@ data = dc.index.datasets.search_eager(**query.search_terms)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span># Dashboard view of current production status per product with Spatial, Tabular and Reference views
-#!/g/data/v10/public/run-dash.sh
-#!firefox http://127.0.0.1:8080/
+<span></span><span class="c1"># Dashboard view of current production status per product with Spatial, Tabular and Reference views</span>
+<span class="c1">#!/g/data/v10/public/run-dash.sh</span>
+<span class="c1">#!firefox http://127.0.0.1:8080/</span>
 </pre></div>
 </div>
 </div>
@@ -990,9 +990,9 @@ data = dc.index.datasets.search_eager(**query.search_terms)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>(
-     dc.index.datasets.get(&#39;11228944-42f6-4b9f-a434-73e0c7f9bde2&#39;, include_sources=True)
-).metadata_doc[&#39;lineage&#39;][&#39;source_datasets&#39;][&#39;0&#39;][&#39;lineage&#39;][&#39;source_datasets&#39;][&#39;level1&#39;][&#39;gqa&#39;]
+<span></span><span class="p">(</span>
+     <span class="n">dc</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;11228944-42f6-4b9f-a434-73e0c7f9bde2&#39;</span><span class="p">,</span> <span class="n">include_sources</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">metadata_doc</span><span class="p">[</span><span class="s1">&#39;lineage&#39;</span><span class="p">][</span><span class="s1">&#39;source_datasets&#39;</span><span class="p">][</span><span class="s1">&#39;0&#39;</span><span class="p">][</span><span class="s1">&#39;lineage&#39;</span><span class="p">][</span><span class="s1">&#39;source_datasets&#39;</span><span class="p">][</span><span class="s1">&#39;level1&#39;</span><span class="p">][</span><span class="s1">&#39;gqa&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1005,16 +1005,16 @@ data = dc.index.datasets.search_eager(**query.search_terms)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>from datacube.model import Range
-results=[]
-for product in [&#39;ls5_level1_scene&#39;]:
-    results.append(dc.index.datasets.search_eager(
-        product=product,
-        sat_path = Range(91,92),
-        sat_row = Range(88,90),
-    ))
-print(len(results))
-print(str(results[0][0].local_path))
+<span></span><span class="kn">from</span> <span class="nn">datacube.model</span> <span class="k">import</span> <span class="n">Range</span>
+<span class="n">results</span><span class="o">=</span><span class="p">[]</span>
+<span class="k">for</span> <span class="n">product</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;ls5_level1_scene&#39;</span><span class="p">]:</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dc</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">search_eager</span><span class="p">(</span>
+        <span class="n">product</span><span class="o">=</span><span class="n">product</span><span class="p">,</span>
+        <span class="n">sat_path</span> <span class="o">=</span> <span class="n">Range</span><span class="p">(</span><span class="mi">91</span><span class="p">,</span><span class="mi">92</span><span class="p">),</span>
+        <span class="n">sat_row</span> <span class="o">=</span> <span class="n">Range</span><span class="p">(</span><span class="mi">88</span><span class="p">,</span><span class="mi">90</span><span class="p">),</span>
+    <span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">local_path</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1024,19 +1024,19 @@ print(str(results[0][0].local_path))
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>from datacube.model import Range
-time_range = Range(datetime(2013, 10, 1), datetime(2014, 1, 1))
-results = dc.index.datasets.search_eager(
-    product=&#39;ls8_nbar_albers&#39;,
-    time=time_range,
-    source_filter=dict(
-        product=&#39;ls8_level1_scene&#39;,
-        sat_path = Range(87,116),
-        sat_row = Range(67,91),
-    )
-)
-print(len(results))
-print(results[0])
+<span></span><span class="kn">from</span> <span class="nn">datacube.model</span> <span class="k">import</span> <span class="n">Range</span>
+<span class="n">time_range</span> <span class="o">=</span> <span class="n">Range</span><span class="p">(</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2013</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2014</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">search_eager</span><span class="p">(</span>
+    <span class="n">product</span><span class="o">=</span><span class="s1">&#39;ls8_nbar_albers&#39;</span><span class="p">,</span>
+    <span class="n">time</span><span class="o">=</span><span class="n">time_range</span><span class="p">,</span>
+    <span class="n">source_filter</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">product</span><span class="o">=</span><span class="s1">&#39;ls8_level1_scene&#39;</span><span class="p">,</span>
+        <span class="n">sat_path</span> <span class="o">=</span> <span class="n">Range</span><span class="p">(</span><span class="mi">87</span><span class="p">,</span><span class="mi">116</span><span class="p">),</span>
+        <span class="n">sat_row</span> <span class="o">=</span> <span class="n">Range</span><span class="p">(</span><span class="mi">67</span><span class="p">,</span><span class="mi">91</span><span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1046,7 +1046,7 @@ print(results[0])
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>results[0].metadata_doc
+<span></span><span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">metadata_doc</span>
 </pre></div>
 </div>
 </div>
@@ -1056,7 +1056,7 @@ print(results[0])
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>results = None
+<span></span><span class="n">results</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 </div>
 </div>
@@ -1069,15 +1069,15 @@ print(results[0])
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>product = &#39;ls8_nbar_albers&#39;
+<span></span><span class="n">product</span> <span class="o">=</span> <span class="s1">&#39;ls8_nbar_albers&#39;</span>
 
-gw = datacube.api.GridWorkflow(dc.index, product=product)
-cells = gw.list_cells(product=product, time=(&#39;2016-01-01&#39;, &#39;2017-01-01&#39;))
+<span class="n">gw</span> <span class="o">=</span> <span class="n">datacube</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">GridWorkflow</span><span class="p">(</span><span class="n">dc</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">product</span><span class="o">=</span><span class="n">product</span><span class="p">)</span>
+<span class="n">cells</span> <span class="o">=</span> <span class="n">gw</span><span class="o">.</span><span class="n">list_cells</span><span class="p">(</span><span class="n">product</span><span class="o">=</span><span class="n">product</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;2016-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2017-01-01&#39;</span><span class="p">))</span>
 
-for idx, data in cells.items():
-    print(idx, data.shape[0])
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">cells</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
-cells = None
+<span class="n">cells</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 </div>
 </div>
@@ -1092,14 +1092,14 @@ cells = None
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span># Count of single query
-product = &#39;ls7_nbar_scene&#39;
-start_time = time.time()
-count = dc.index.datasets.count(
-    product=product,
-    time=Range(datetime(2000, 1, 1), datetime(2001, 1, 1))
-)
-print(&quot;Single product {} count of {} in {} seconds ---&quot;.format(product, count, time.time() - start_time))
+<span></span><span class="c1"># Count of single query</span>
+<span class="n">product</span> <span class="o">=</span> <span class="s1">&#39;ls7_nbar_scene&#39;</span>
+<span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">count</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">count</span><span class="p">(</span>
+    <span class="n">product</span><span class="o">=</span><span class="n">product</span><span class="p">,</span>
+    <span class="n">time</span><span class="o">=</span><span class="n">Range</span><span class="p">(</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2001</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Single product </span><span class="si">{}</span><span class="s2"> count of </span><span class="si">{}</span><span class="s2"> in </span><span class="si">{}</span><span class="s2"> seconds ---&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">product</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1112,25 +1112,25 @@ print(&quot;Single product {} count of {} in {} seconds ---&quot;.format(product
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>start_time = time.time()
+<span></span><span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 
-results = dc.index.datasets.count_by_product_through_time(
-    &#39;1 year&#39;,
-    platform=&#39;LANDSAT_7&#39;,
-    time=Range(
-        datetime(2000, 1, 1),
-        datetime(2003, 1, 1), #, tzinfo=tz.tzutc()),
-    )
-)
+<span class="n">results</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">count_by_product_through_time</span><span class="p">(</span>
+    <span class="s1">&#39;1 year&#39;</span><span class="p">,</span>
+    <span class="n">platform</span><span class="o">=</span><span class="s1">&#39;LANDSAT_7&#39;</span><span class="p">,</span>
+    <span class="n">time</span><span class="o">=</span><span class="n">Range</span><span class="p">(</span>
+        <span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+        <span class="n">datetime</span><span class="p">(</span><span class="mi">2003</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="c1">#, tzinfo=tz.tzutc()),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
 
-start_product_time = time.time()
-for product, series in results:
-    print(&#39;{}: {} seconds&#39;.format(product.name, time.time() - start_product_time))
-    for timerange, count in series:
-        print(&#39;\t{}: {}&#39;.format(timerange[0], count))
-    start_product_time = time.time()
+<span class="n">start_product_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">product</span><span class="p">,</span> <span class="n">series</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">: </span><span class="si">{}</span><span class="s1"> seconds&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">product</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_product_time</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">timerange</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">series</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="si">{}</span><span class="s1">: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">timerange</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">count</span><span class="p">))</span>
+    <span class="n">start_product_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 
-print(&quot;--- %s seconds ---&quot; % (time.time() - start_time))
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- </span><span class="si">%s</span><span class="s2"> seconds ---&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">))</span>
 
 </pre></div>
 </div>
@@ -1146,7 +1146,7 @@ print(&quot;--- %s seconds ---&quot; % (time.time() - start_time))
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>dc.list_measurements()
+<span></span><span class="n">dc</span><span class="o">.</span><span class="n">list_measurements</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1158,12 +1158,12 @@ print(&quot;--- %s seconds ---&quot; % (time.time() - start_time))
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>query = {
-    &#39;lat&#39;: (-20.61, -20.66),
-    &#39;lon&#39;: (147.0, 147.05)
-}
+<span></span><span class="n">query</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;lat&#39;</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="mf">20.61</span><span class="p">,</span> <span class="o">-</span><span class="mf">20.66</span><span class="p">),</span>
+    <span class="s1">&#39;lon&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">147.0</span><span class="p">,</span> <span class="mf">147.05</span><span class="p">)</span>
+<span class="p">}</span>
 
-srtm_dem1sv1_0 = dc.load(product=&#39;srtm_dem1sv1_0&#39;, **query)
+<span class="n">srtm_dem1sv1_0</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">product</span><span class="o">=</span><span class="s1">&#39;srtm_dem1sv1_0&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">query</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1173,7 +1173,7 @@ srtm_dem1sv1_0 = dc.load(product=&#39;srtm_dem1sv1_0&#39;, **query)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>srtm_dem1sv1_0.dem.plot()
+<span></span><span class="n">srtm_dem1sv1_0</span><span class="o">.</span><span class="n">dem</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1183,7 +1183,7 @@ srtm_dem1sv1_0 = dc.load(product=&#39;srtm_dem1sv1_0&#39;, **query)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>srtm_dem1sv1_0 = None
+<span></span><span class="n">srtm_dem1sv1_0</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 </div>
 </div>
@@ -1196,25 +1196,25 @@ srtm_dem1sv1_0 = dc.load(product=&#39;srtm_dem1sv1_0&#39;, **query)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>query = {
-    &#39;lat&#39;: (-20.61, -20.66),
-    &#39;lon&#39;: (147.0, 147.05),
-    &#39;measurements&#39;:[&#39;rad_k_equiv_conc_filtered&#39;,&#39;rad_th_equiv_conc_filtered&#39;,&#39;rad_u_equiv_conc_filtered&#39;]
-}
+<span></span><span class="n">query</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;lat&#39;</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="mf">20.61</span><span class="p">,</span> <span class="o">-</span><span class="mf">20.66</span><span class="p">),</span>
+    <span class="s1">&#39;lon&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">147.0</span><span class="p">,</span> <span class="mf">147.05</span><span class="p">),</span>
+    <span class="s1">&#39;measurements&#39;</span><span class="p">:[</span><span class="s1">&#39;rad_k_equiv_conc_filtered&#39;</span><span class="p">,</span><span class="s1">&#39;rad_th_equiv_conc_filtered&#39;</span><span class="p">,</span><span class="s1">&#39;rad_u_equiv_conc_filtered&#39;</span><span class="p">]</span>
+<span class="p">}</span>
 
-# Gamma ray no longer available at indexed location?
-try:
-    radiometrics = dc.load(product=&#39;gamma_ray&#39;, **query)
+<span class="c1"># Gamma ray no longer available at indexed location?</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">radiometrics</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">product</span><span class="o">=</span><span class="s1">&#39;gamma_ray&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">query</span><span class="p">)</span>
 
-    # Previously: array(3.2456936836242676)
-    print(radiometrics.rad_u_equiv_conc_filtered.max())
+    <span class="c1"># Previously: array(3.2456936836242676)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">radiometrics</span><span class="o">.</span><span class="n">rad_u_equiv_conc_filtered</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
 
 
-    print(radiometrics)
-    plot_rgb(radiometrics, 20)
+    <span class="nb">print</span><span class="p">(</span><span class="n">radiometrics</span><span class="p">)</span>
+    <span class="n">plot_rgb</span><span class="p">(</span><span class="n">radiometrics</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 
-except Exception as e:
-    print(repr(e))
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
 
 </pre></div>
 </div>
@@ -1236,7 +1236,7 @@ except Exception as e:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>radiometrics = None
+<span></span><span class="n">radiometrics</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 </div>
 </div>
@@ -1249,11 +1249,11 @@ except Exception as e:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>nbar = dc.load(
-    product=&#39;ls5_nbart_albers&#39;,
-    y=(-18.7896944682,-18.7896944684),
-    x=(146.073501475,146.073501476)
-)
+<span></span><span class="n">nbar</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
+    <span class="n">product</span><span class="o">=</span><span class="s1">&#39;ls5_nbart_albers&#39;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">18.7896944682</span><span class="p">,</span><span class="o">-</span><span class="mf">18.7896944684</span><span class="p">),</span>
+    <span class="n">x</span><span class="o">=</span><span class="p">(</span><span class="mf">146.073501475</span><span class="p">,</span><span class="mf">146.073501476</span><span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1263,7 +1263,7 @@ except Exception as e:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>print(nbar)
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">nbar</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1273,7 +1273,7 @@ except Exception as e:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>nbar = None
+<span></span><span class="n">nbar</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 </div>
 </div>
@@ -1286,14 +1286,14 @@ except Exception as e:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>modis = dc.load(
-    product=&#39;modis_mcd43a4_tile&#39;,
-    longitude=132.1,
-    latitude=-27.5,
-    time=(&#39;2000-1-1&#39;, &#39;2000-5-1&#39;),
-    resolution=(-500,500),
-    # measurements=(&#39;Nadir_Reflectance_Band1&#39;,&#39;Nadir_Reflectance_Band4&#39;,&#39;Nadir_Reflectance_Band3&#39;),
-)
+<span></span><span class="n">modis</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
+    <span class="n">product</span><span class="o">=</span><span class="s1">&#39;modis_mcd43a4_tile&#39;</span><span class="p">,</span>
+    <span class="n">longitude</span><span class="o">=</span><span class="mf">132.1</span><span class="p">,</span>
+    <span class="n">latitude</span><span class="o">=-</span><span class="mf">27.5</span><span class="p">,</span>
+    <span class="n">time</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;2000-1-1&#39;</span><span class="p">,</span> <span class="s1">&#39;2000-5-1&#39;</span><span class="p">),</span>
+    <span class="n">resolution</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">500</span><span class="p">,</span><span class="mi">500</span><span class="p">),</span>
+    <span class="c1"># measurements=(&#39;Nadir_Reflectance_Band1&#39;,&#39;Nadir_Reflectance_Band4&#39;,&#39;Nadir_Reflectance_Band3&#39;),</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1303,11 +1303,11 @@ except Exception as e:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span># Josh archived all of this product.
-#modis.Nadir_Reflectance_Band1.min()
-assert len(modis) == 0
+<span></span><span class="c1"># Josh archived all of this product.</span>
+<span class="c1">#modis.Nadir_Reflectance_Band1.min()</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">modis</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
 
-print(modis)
+<span class="nb">print</span><span class="p">(</span><span class="n">modis</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1317,7 +1317,7 @@ print(modis)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>modis = None
+<span></span><span class="n">modis</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 </div>
 </div>
@@ -1330,7 +1330,7 @@ print(modis)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>rain = dc.load(product=&#39;bom_rainfall_grids&#39;, longitude=132.1, latitude=-27.5, time=(&#39;2000-1-1&#39;, &#39;2001-1-1&#39;))
+<span></span><span class="n">rain</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">product</span><span class="o">=</span><span class="s1">&#39;bom_rainfall_grids&#39;</span><span class="p">,</span> <span class="n">longitude</span><span class="o">=</span><span class="mf">132.1</span><span class="p">,</span> <span class="n">latitude</span><span class="o">=-</span><span class="mf">27.5</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;2000-1-1&#39;</span><span class="p">,</span> <span class="s1">&#39;2001-1-1&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1340,7 +1340,7 @@ print(modis)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>rain.rainfall.sel(longitude=132.1, latitude=-27.500001, method=&#39;nearest&#39;).plot()
+<span></span><span class="n">rain</span><span class="o">.</span><span class="n">rainfall</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">longitude</span><span class="o">=</span><span class="mf">132.1</span><span class="p">,</span> <span class="n">latitude</span><span class="o">=-</span><span class="mf">27.500001</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1350,7 +1350,7 @@ print(modis)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>rain = None
+<span></span><span class="n">rain</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 </div>
 </div>
@@ -1365,7 +1365,7 @@ print(modis)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>dc.index.datasets.search_eager(product=&#39;srtm_dem1sv1_0&#39;)
+<span></span><span class="n">dc</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">search_eager</span><span class="p">(</span><span class="n">product</span><span class="o">=</span><span class="s1">&#39;srtm_dem1sv1_0&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1375,9 +1375,9 @@ print(modis)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>rain_ds = dc.index.datasets.search_eager(product=&#39;bom_rainfall_grids&#39;, time=Range(datetime(2001, 1, 1), datetime(2002, 1, 1)))
+<span></span><span class="n">rain_ds</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">search_eager</span><span class="p">(</span><span class="n">product</span><span class="o">=</span><span class="s1">&#39;bom_rainfall_grids&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="n">Range</span><span class="p">(</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2001</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2002</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
 
-datasets_union_clip180(rain_ds).to_crs(geometry.CRS(&#39;EPSG:3577&#39;))
+<span class="n">datasets_union_clip180</span><span class="p">(</span><span class="n">rain_ds</span><span class="p">)</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">geometry</span><span class="o">.</span><span class="n">CRS</span><span class="p">(</span><span class="s1">&#39;EPSG:3577&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1387,7 +1387,7 @@ datasets_union_clip180(rain_ds).to_crs(geometry.CRS(&#39;EPSG:3577&#39;))
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>rain_ds = None
+<span></span><span class="n">rain_ds</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 </div>
 </div>
@@ -1397,14 +1397,14 @@ datasets_union_clip180(rain_ds).to_crs(geometry.CRS(&#39;EPSG:3577&#39;))
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>plot_folium([
-    datasets_union_clip180(
-        dc.index.datasets.search_eager(
-            product=&#39;bom_rainfall_grids&#39;,
-            time=Range(datetime(2001, 1, 1), datetime(2002, 1, 1))
-        )
-    )
-])
+<span></span><span class="n">plot_folium</span><span class="p">([</span>
+    <span class="n">datasets_union_clip180</span><span class="p">(</span>
+        <span class="n">dc</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">search_eager</span><span class="p">(</span>
+            <span class="n">product</span><span class="o">=</span><span class="s1">&#39;bom_rainfall_grids&#39;</span><span class="p">,</span>
+            <span class="n">time</span><span class="o">=</span><span class="n">Range</span><span class="p">(</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2001</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2002</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1414,14 +1414,14 @@ datasets_union_clip180(rain_ds).to_crs(geometry.CRS(&#39;EPSG:3577&#39;))
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>plot_folium([
-    datasets_union(
-        dc.index.datasets.search_eager(
-            product=&#39;srtm_dem1sv1_0&#39;,
-            time=Range(datetime(2001, 1, 1), datetime(2020, 1, 1))
-        )
-    )
-])
+<span></span><span class="n">plot_folium</span><span class="p">([</span>
+    <span class="n">datasets_union</span><span class="p">(</span>
+        <span class="n">dc</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">search_eager</span><span class="p">(</span>
+            <span class="n">product</span><span class="o">=</span><span class="s1">&#39;srtm_dem1sv1_0&#39;</span><span class="p">,</span>
+            <span class="n">time</span><span class="o">=</span><span class="n">Range</span><span class="p">(</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2001</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1431,19 +1431,19 @@ datasets_union_clip180(rain_ds).to_crs(geometry.CRS(&#39;EPSG:3577&#39;))
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span># Josh archived all of this
-modis_mcd43a4 = dc.load(
-    product=&#39;modis_mcd43a4_tile&#39;,
-    x=(145,145.1),
-    y=(-38.0,-38.1),
-    resolution=(-500,500),
-    time=(&#39;2000-01-01&#39;, &#39;2001-01-01&#39;),
-    measurements=(
-        &#39;Nadir_Reflectance_Band1&#39;,
-        &#39;Nadir_Reflectance_Band4&#39;,
-        &#39;Nadir_Reflectance_Band3&#39;
-    )
-)
+<span></span><span class="c1"># Josh archived all of this</span>
+<span class="n">modis_mcd43a4</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
+    <span class="n">product</span><span class="o">=</span><span class="s1">&#39;modis_mcd43a4_tile&#39;</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="p">(</span><span class="mi">145</span><span class="p">,</span><span class="mf">145.1</span><span class="p">),</span>
+    <span class="n">y</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">38.0</span><span class="p">,</span><span class="o">-</span><span class="mf">38.1</span><span class="p">),</span>
+    <span class="n">resolution</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">500</span><span class="p">,</span><span class="mi">500</span><span class="p">),</span>
+    <span class="n">time</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;2000-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2001-01-01&#39;</span><span class="p">),</span>
+    <span class="n">measurements</span><span class="o">=</span><span class="p">(</span>
+        <span class="s1">&#39;Nadir_Reflectance_Band1&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Nadir_Reflectance_Band4&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Nadir_Reflectance_Band3&#39;</span>
+    <span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1453,7 +1453,7 @@ modis_mcd43a4 = dc.load(
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>print(modis_mcd43a4)
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">modis_mcd43a4</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1463,7 +1463,7 @@ modis_mcd43a4 = dc.load(
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>modis_mcd43a4 = None
+<span></span><span class="n">modis_mcd43a4</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 </div>
 </div>
@@ -1476,7 +1476,7 @@ modis_mcd43a4 = dc.load(
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>%%script false
+<span></span><span class="o">%%</span><span class="k">script</span> false
 # Modis disabled. Josh archived all of this
 
 modis_mcd43a1 = dc.load(
@@ -1501,7 +1501,7 @@ modis_mcd43a1 = dc.load(
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 
-<span></span># modis_mcd43a1.BRDF_Albedo_Parameters_Band1[0][1]
+<span></span><span class="c1"># modis_mcd43a1.BRDF_Albedo_Parameters_Band1[0][1]</span>
 </pre></div>
 </div>
 </div>
@@ -1511,7 +1511,7 @@ modis_mcd43a1 = dc.load(
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span># plot_rgb(modis_mcd43a1, 1000)
+<span></span><span class="c1"># plot_rgb(modis_mcd43a1, 1000)</span>
 </pre></div>
 </div>
 </div>
@@ -1524,7 +1524,7 @@ modis_mcd43a1 = dc.load(
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span># plot_rgb(modis_mcd43a4, 3000)
+<span></span><span class="c1"># plot_rgb(modis_mcd43a4, 3000)</span>
 </pre></div>
 </div>
 </div>
@@ -1534,7 +1534,7 @@ modis_mcd43a1 = dc.load(
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span># plot_folium([datasets_union(dc.index.datasets.search_eager(product=&#39;ls5_nbart_albers&#39;, time=Range(datetime(1986, 1, 1), datetime(1988, 1, 1))))])
+<span></span><span class="c1"># plot_folium([datasets_union(dc.index.datasets.search_eager(product=&#39;ls5_nbart_albers&#39;, time=Range(datetime(1986, 1, 1), datetime(1988, 1, 1))))])</span>
 </pre></div>
 </div>
 </div>
@@ -1547,20 +1547,20 @@ modis_mcd43a1 = dc.load(
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>query = {
-    &#39;time&#39;: (&#39;1987-01-01&#39;, &#39;1988-01-01&#39;),
-    &#39;lat&#39;: (-35.2, -35.4),
-    &#39;lon&#39;: (149.0, 149.2),
-}
+<span></span><span class="n">query</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;1987-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;1988-01-01&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;lat&#39;</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="mf">35.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">35.4</span><span class="p">),</span>
+    <span class="s1">&#39;lon&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">149.0</span><span class="p">,</span> <span class="mf">149.2</span><span class="p">),</span>
+<span class="p">}</span>
 
-nbart = dc.load(
-    product=&#39;ls5_nbart_albers&#39;,
-    measurements=[&#39;swir2&#39;, &#39;nir&#39;, &#39;red&#39;],
-    group_by=&#39;solar_day&#39; ,
-    **query
-)
+<span class="n">nbart</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
+    <span class="n">product</span><span class="o">=</span><span class="s1">&#39;ls5_nbart_albers&#39;</span><span class="p">,</span>
+    <span class="n">measurements</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;swir2&#39;</span><span class="p">,</span> <span class="s1">&#39;nir&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">],</span>
+    <span class="n">group_by</span><span class="o">=</span><span class="s1">&#39;solar_day&#39;</span> <span class="p">,</span>
+    <span class="o">**</span><span class="n">query</span>
+<span class="p">)</span>
 
-plot_rgb(nbart, 3500)
+<span class="n">plot_rgb</span><span class="p">(</span><span class="n">nbart</span><span class="p">,</span> <span class="mi">3500</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1570,7 +1570,7 @@ plot_rgb(nbart, 3500)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>nbart = None
+<span></span><span class="n">nbart</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 </div>
 </div>
@@ -1585,7 +1585,7 @@ plot_rgb(nbart, 3500)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>%%script false
+<span></span><span class="o">%%</span><span class="k">script</span> false
 # Disabled: WOfS has been removed.
 
 query = {
@@ -1605,7 +1605,7 @@ wofs
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>%%script false
+<span></span><span class="o">%%</span><span class="k">script</span> false
 wofs.water.flags_definition
 pandas.DataFrame.from_dict(masking.get_flags_def(wofs), orient=&#39;index&#39;)
 </pre></div>
@@ -1617,7 +1617,7 @@ pandas.DataFrame.from_dict(masking.get_flags_def(wofs), orient=&#39;index&#39;)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>%%script false
+<span></span><span class="o">%%</span><span class="k">script</span> false
 
 water = masking.make_mask(wofs, result=&#39;clear_wet&#39;)
 water.water.plot(col=&#39;time&#39;, col_wrap=5, robust=True, cmap=&#39;gray&#39;)
@@ -1630,7 +1630,7 @@ water.water.plot(col=&#39;time&#39;, col_wrap=5, robust=True, cmap=&#39;gray&#39
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>%%script false
+<span></span><span class="o">%%</span><span class="k">script</span> false
 # Number of clear water pixels - no group by solar day to exclude scene overlap
 
 water_sum = water.water.sum(&#39;time&#39;).where(water.water.sum(&#39;time&#39;)!= 0)
@@ -1644,9 +1644,9 @@ water_sum.plot(cmap=&#39;rainbow&#39;, robust=True)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>wofs = None
-water = None
-water_sum = None
+<span></span><span class="n">wofs</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">water</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">water_sum</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 </div>
 </div>
@@ -1657,7 +1657,7 @@ water_sum = None
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span># incomplete for v2 - water classification only - confidence metrics continue to be a work in progress
+<span></span><span class="c1"># incomplete for v2 - water classification only - confidence metrics continue to be a work in progress</span>
 </pre></div>
 </div>
 </div>
@@ -1671,14 +1671,14 @@ water_sum = None
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>plot_folium([
-    datasets_union(
-        dc.index.datasets.search_eager(
-            product=&#39;ls5_fc_albers&#39;,
-            time=Range(datetime(1987, 1, 1), datetime(1988, 1, 1))
-        )
-    )
-])
+<span></span><span class="n">plot_folium</span><span class="p">([</span>
+    <span class="n">datasets_union</span><span class="p">(</span>
+        <span class="n">dc</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">search_eager</span><span class="p">(</span>
+            <span class="n">product</span><span class="o">=</span><span class="s1">&#39;ls5_fc_albers&#39;</span><span class="p">,</span>
+            <span class="n">time</span><span class="o">=</span><span class="n">Range</span><span class="p">(</span><span class="n">datetime</span><span class="p">(</span><span class="mi">1987</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">1988</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1688,22 +1688,22 @@ water_sum = None
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span># Query, load and plot Fractional Cover example
+<span></span><span class="c1"># Query, load and plot Fractional Cover example</span>
 
-query = {
-    &#39;time&#39;: (&#39;1987-01-01&#39;, &#39;1988-01-01&#39;),
-    &#39;lat&#39;: (-35.2, -35.4),
-    &#39;lon&#39;: (149.0, 149.2),
-}
+<span class="n">query</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;1987-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;1988-01-01&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;lat&#39;</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="mf">35.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">35.4</span><span class="p">),</span>
+    <span class="s1">&#39;lon&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">149.0</span><span class="p">,</span> <span class="mf">149.2</span><span class="p">),</span>
+<span class="p">}</span>
 
-fractional_cover = dc.load(
-    product=&#39;ls5_fc_albers&#39;,
-    measurements=[&#39;BS&#39;, &#39;PV&#39;, &#39;NPV&#39;],
-    group_by=&#39;solar_day&#39; ,
-    **query
-)
+<span class="n">fractional_cover</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
+    <span class="n">product</span><span class="o">=</span><span class="s1">&#39;ls5_fc_albers&#39;</span><span class="p">,</span>
+    <span class="n">measurements</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;BS&#39;</span><span class="p">,</span> <span class="s1">&#39;PV&#39;</span><span class="p">,</span> <span class="s1">&#39;NPV&#39;</span><span class="p">],</span>
+    <span class="n">group_by</span><span class="o">=</span><span class="s1">&#39;solar_day&#39;</span> <span class="p">,</span>
+    <span class="o">**</span><span class="n">query</span>
+<span class="p">)</span>
 
-plot_rgb(fractional_cover, 100)
+<span class="n">plot_rgb</span><span class="p">(</span><span class="n">fractional_cover</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1713,7 +1713,7 @@ plot_rgb(fractional_cover, 100)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>fractional_cover = None
+<span></span><span class="n">fractional_cover</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 </div>
 </div>
@@ -1726,14 +1726,14 @@ plot_rgb(fractional_cover, 100)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>plot_folium([
-    datasets_union(
-        dc.index.datasets.search_eager(
-            product=&#39;ls5_pq_albers&#39;,
-            time=Range(datetime(1987, 1, 1), datetime(1988, 1, 1))
-        )
-    )
-])
+<span></span><span class="n">plot_folium</span><span class="p">([</span>
+    <span class="n">datasets_union</span><span class="p">(</span>
+        <span class="n">dc</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">search_eager</span><span class="p">(</span>
+            <span class="n">product</span><span class="o">=</span><span class="s1">&#39;ls5_pq_albers&#39;</span><span class="p">,</span>
+            <span class="n">time</span><span class="o">=</span><span class="n">Range</span><span class="p">(</span><span class="n">datetime</span><span class="p">(</span><span class="mi">1987</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">1988</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1743,14 +1743,14 @@ plot_rgb(fractional_cover, 100)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>plot_folium([
-    datasets_union(
-        dc.index.datasets.search_eager(
-            product=&#39;ls7_nbar_albers&#39;,
-           time=Range(datetime(2004,2, 1), datetime(2004, 2, 16))
-        )
-    )
-])
+<span></span><span class="n">plot_folium</span><span class="p">([</span>
+    <span class="n">datasets_union</span><span class="p">(</span>
+        <span class="n">dc</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">search_eager</span><span class="p">(</span>
+            <span class="n">product</span><span class="o">=</span><span class="s1">&#39;ls7_nbar_albers&#39;</span><span class="p">,</span>
+           <span class="n">time</span><span class="o">=</span><span class="n">Range</span><span class="p">(</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2004</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2004</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">16</span><span class="p">))</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1760,8 +1760,8 @@ plot_rgb(fractional_cover, 100)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>pq = dc.load(product=&#39;ls5_pq_albers&#39;, group_by=&#39;solar_day&#39;, **query)
-pq.pixelquality.plot(col=&#39;time&#39;, col_wrap=5, robust=True)
+<span></span><span class="n">pq</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">product</span><span class="o">=</span><span class="s1">&#39;ls5_pq_albers&#39;</span><span class="p">,</span> <span class="n">group_by</span><span class="o">=</span><span class="s1">&#39;solar_day&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">query</span><span class="p">)</span>
+<span class="n">pq</span><span class="o">.</span><span class="n">pixelquality</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">col_wrap</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">robust</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1771,9 +1771,9 @@ pq.pixelquality.plot(col=&#39;time&#39;, col_wrap=5, robust=True)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span># Number of clear pixels based on ga_good_pixels default - no group by solar day to exclude scene overlap
-clear_pixels = masking.make_mask(pq, ga_good_pixel=True)
-clear_pixels.pixelquality.sum(&#39;time&#39;).plot(cmap=&#39;rainbow&#39;)
+<span></span><span class="c1"># Number of clear pixels based on ga_good_pixels default - no group by solar day to exclude scene overlap</span>
+<span class="n">clear_pixels</span> <span class="o">=</span> <span class="n">masking</span><span class="o">.</span><span class="n">make_mask</span><span class="p">(</span><span class="n">pq</span><span class="p">,</span> <span class="n">ga_good_pixel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">clear_pixels</span><span class="o">.</span><span class="n">pixelquality</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;rainbow&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1783,7 +1783,7 @@ clear_pixels.pixelquality.sum(&#39;time&#39;).plot(cmap=&#39;rainbow&#39;)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>clear_pixels = None
+<span></span><span class="n">clear_pixels</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 </div>
 </div>
@@ -1796,14 +1796,14 @@ clear_pixels.pixelquality.sum(&#39;time&#39;).plot(cmap=&#39;rainbow&#39;)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>plot_folium([
-    datasets_union(
-        dc.index.datasets.search_eager(
-            product=&#39;ls5_ndvi_albers&#39;,
-            time=Range(datetime(1987,1, 1), datetime(1988, 1, 1))
-        )
-    )
-])
+<span></span><span class="n">plot_folium</span><span class="p">([</span>
+    <span class="n">datasets_union</span><span class="p">(</span>
+        <span class="n">dc</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">search_eager</span><span class="p">(</span>
+            <span class="n">product</span><span class="o">=</span><span class="s1">&#39;ls5_ndvi_albers&#39;</span><span class="p">,</span>
+            <span class="n">time</span><span class="o">=</span><span class="n">Range</span><span class="p">(</span><span class="n">datetime</span><span class="p">(</span><span class="mi">1987</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">1988</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1813,12 +1813,12 @@ clear_pixels.pixelquality.sum(&#39;time&#39;).plot(cmap=&#39;rainbow&#39;)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>#ndvi = dc.load(product=&#39;ls5_ndvi_albers&#39;, group_by=&#39;solar_day&#39;, **query )
-#ndvi = mask_invalid_data(ndvi)
-good_pixels = masking.make_mask(pq, ga_good_pixel=True)
-#ndvi = ndvi.where(good_pixels.pixelquality)
-#ndvi.ndvi.plot(col=&#39;time&#39;, col_wrap=5, robust=True, cmap=&#39;Greens&#39;)
-print(good_pixels)
+<span></span><span class="c1">#ndvi = dc.load(product=&#39;ls5_ndvi_albers&#39;, group_by=&#39;solar_day&#39;, **query )</span>
+<span class="c1">#ndvi = mask_invalid_data(ndvi)</span>
+<span class="n">good_pixels</span> <span class="o">=</span> <span class="n">masking</span><span class="o">.</span><span class="n">make_mask</span><span class="p">(</span><span class="n">pq</span><span class="p">,</span> <span class="n">ga_good_pixel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1">#ndvi = ndvi.where(good_pixels.pixelquality)</span>
+<span class="c1">#ndvi.ndvi.plot(col=&#39;time&#39;, col_wrap=5, robust=True, cmap=&#39;Greens&#39;)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">good_pixels</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1832,7 +1832,7 @@ print(good_pixels)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>#ndvi.ndvi.median(dim=&#39;time&#39;).plot(robust=True, cmap=&#39;YlGn&#39;)
+<span></span><span class="c1">#ndvi.ndvi.median(dim=&#39;time&#39;).plot(robust=True, cmap=&#39;YlGn&#39;)</span>
 </pre></div>
 </div>
 </div>
@@ -1843,8 +1843,8 @@ print(good_pixels)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span># Most recent pixel mosaic function from cloud screen NBAR
-#%run /g/data/v10/public/agdcv2_requirements/latest_pixel/agdc_pixel/pixel_test.py &#39;60/(15,-40)&#39;
+<span></span><span class="c1"># Most recent pixel mosaic function from cloud screen NBAR</span>
+<span class="c1">#%run /g/data/v10/public/agdcv2_requirements/latest_pixel/agdc_pixel/pixel_test.py &#39;60/(15,-40)&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -1854,7 +1854,7 @@ print(good_pixels)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>#my_data
+<span></span><span class="c1">#my_data</span>
 </pre></div>
 </div>
 </div>
@@ -1864,7 +1864,7 @@ print(good_pixels)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>#my_data[15, -40].swir1.plot(cmap=&#39;rainbow&#39;, robust=True)
+<span></span><span class="c1">#my_data[15, -40].swir1.plot(cmap=&#39;rainbow&#39;, robust=True)</span>
 </pre></div>
 </div>
 </div>
@@ -1876,10 +1876,10 @@ pre-computed but rather computed as they are needed.</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>nbar = dc.load(product=&#39;ls5_nbar_albers&#39;, group_by=&#39;solar_day&#39;, **query )
-nbar = nbar.where(good_pixels.pixelquality)
-ndvi_on_the_fly = (nbar.nir-nbar.red)/(nbar.nir+nbar.red)*10000
-ndvi_on_the_fly.median(dim=&#39;time&#39;).plot(robust=True, cmap=&#39;YlGn&#39;)
+<span></span><span class="n">nbar</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">product</span><span class="o">=</span><span class="s1">&#39;ls5_nbar_albers&#39;</span><span class="p">,</span> <span class="n">group_by</span><span class="o">=</span><span class="s1">&#39;solar_day&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">query</span> <span class="p">)</span>
+<span class="n">nbar</span> <span class="o">=</span> <span class="n">nbar</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">good_pixels</span><span class="o">.</span><span class="n">pixelquality</span><span class="p">)</span>
+<span class="n">ndvi_on_the_fly</span> <span class="o">=</span> <span class="p">(</span><span class="n">nbar</span><span class="o">.</span><span class="n">nir</span><span class="o">-</span><span class="n">nbar</span><span class="o">.</span><span class="n">red</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">nbar</span><span class="o">.</span><span class="n">nir</span><span class="o">+</span><span class="n">nbar</span><span class="o">.</span><span class="n">red</span><span class="p">)</span><span class="o">*</span><span class="mi">10000</span>
+<span class="n">ndvi_on_the_fly</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">robust</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;YlGn&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1889,7 +1889,7 @@ ndvi_on_the_fly.median(dim=&#39;time&#39;).plot(robust=True, cmap=&#39;YlGn&#39;
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span># diff = (ndvi_on_the_fly.median(dim=&#39;time&#39;) - ndvi.ndvi.median(dim=&#39;time&#39;))
+<span></span><span class="c1"># diff = (ndvi_on_the_fly.median(dim=&#39;time&#39;) - ndvi.ndvi.median(dim=&#39;time&#39;))</span>
 </pre></div>
 </div>
 </div>
@@ -1899,7 +1899,7 @@ ndvi_on_the_fly.median(dim=&#39;time&#39;).plot(robust=True, cmap=&#39;YlGn&#39;
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span># diff.plot(robust=True) #error at level of noise due to *10000 scaling of floats
+<span></span><span class="c1"># diff.plot(robust=True) #error at level of noise due to *10000 scaling of floats</span>
 </pre></div>
 </div>
 </div>
@@ -1912,7 +1912,7 @@ ndvi_on_the_fly.median(dim=&#39;time&#39;).plot(robust=True, cmap=&#39;YlGn&#39;
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>! datacube dataset info 92d414d0-3d82-4702-9e24-4af6e49d95b5
+<span></span><span class="o">!</span> datacube dataset info 92d414d0-3d82-4702-9e24-4af6e49d95b5
 </pre></div>
 </div>
 </div>
@@ -1922,7 +1922,7 @@ ndvi_on_the_fly.median(dim=&#39;time&#39;).plot(robust=True, cmap=&#39;YlGn&#39;
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>! datacube dataset info -f csv 92d414d0-3d82-4702-9e24-4af6e49d95b5
+<span></span><span class="o">!</span> datacube dataset info -f csv 92d414d0-3d82-4702-9e24-4af6e49d95b5
 </pre></div>
 </div>
 </div>
@@ -1952,12 +1952,12 @@ drill).</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span># See Steven Ackerley / Andrew Hicks
-# NCML through THREDDS
-#!/g/data/v10/public/agdcv2-pixeldrill/pixeldrill -p ls5_nbart_albers
+<span></span><span class="c1"># See Steven Ackerley / Andrew Hicks</span>
+<span class="c1"># NCML through THREDDS</span>
+<span class="c1">#!/g/data/v10/public/agdcv2-pixeldrill/pixeldrill -p ls5_nbart_albers</span>
 
-#Webpage to define it
-!firefox http://dapds00.nci.org.au/thredds/ncss/grid/uc0/rs0_dev/all_the_ncmls/LS5_TM_FC/ncml/LS5_TM_FC_13_-43.ncml/pointDataset.html
+<span class="c1">#Webpage to define it</span>
+<span class="o">!</span>firefox http://dapds00.nci.org.au/thredds/ncss/grid/uc0/rs0_dev/all_the_ncmls/LS5_TM_FC/ncml/LS5_TM_FC_13_-43.ncml/pointDataset.html
 </pre></div>
 </div>
 </div>
@@ -1967,8 +1967,8 @@ drill).</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>#CSV URL for a drill
-!firefox http://dapds00.nci.org.au/thredds/ncss/uc0/rs0_dev/all_the_ncmls/LS5_TM_FC/ncml/LS5_TM_FC_13_-43.ncml?var=BS&amp;var=NPV&amp;var=PV&amp;latitude=-38.13&amp;longitude=147.17&amp;time_start=1986-08-21T23%3A18%3A40Z&amp;time_end=2011-11-14T23%3A45%3A07Z&amp;accept=csv
+<span></span><span class="c1">#CSV URL for a drill</span>
+<span class="o">!</span>firefox http://dapds00.nci.org.au/thredds/ncss/uc0/rs0_dev/all_the_ncmls/LS5_TM_FC/ncml/LS5_TM_FC_13_-43.ncml?var<span class="o">=</span>BS<span class="p">&amp;</span><span class="nv">var</span><span class="o">=</span>NPV<span class="p">&amp;</span><span class="nv">var</span><span class="o">=</span>PV<span class="p">&amp;</span><span class="nv">latitude</span><span class="o">=</span>-38.13<span class="p">&amp;</span><span class="nv">longitude</span><span class="o">=</span><span class="m">147</span>.17<span class="p">&amp;</span><span class="nv">time_start</span><span class="o">=</span><span class="m">1986</span>-08-21T23%3A18%3A40Z<span class="p">&amp;</span><span class="nv">time_end</span><span class="o">=</span><span class="m">2011</span>-11-14T23%3A45%3A07Z<span class="p">&amp;</span><span class="nv">accept</span><span class="o">=</span>csv
 
 </pre></div>
 </div>
@@ -1984,7 +1984,7 @@ drill).</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span># not this time - you mean wofs right? - see example below for when the data is available
+<span></span><span class="c1"># not this time - you mean wofs right? - see example below for when the data is available</span>
 </pre></div>
 </div>
 </div>
@@ -2010,7 +2010,7 @@ Landsat-MODIS blending algorithm.</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>dc.list_products()
+<span></span><span class="n">dc</span><span class="o">.</span><span class="n">list_products</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2021,7 +2021,7 @@ Landsat-MODIS blending algorithm.</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>dc.list_measurements()
+<span></span><span class="n">dc</span><span class="o">.</span><span class="n">list_measurements</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2035,14 +2035,14 @@ cover all Commonwealth Marine Reserves.</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>plot_folium([
-    datasets_union(
-        dc.index.datasets.search_eager(
-            product=&#39;ls8_nbar_albers&#39;,
-            time=Range(datetime(2014,1, 1), datetime(2015, 1, 1))
-        )
-    )
-])
+<span></span><span class="n">plot_folium</span><span class="p">([</span>
+    <span class="n">datasets_union</span><span class="p">(</span>
+        <span class="n">dc</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">search_eager</span><span class="p">(</span>
+            <span class="n">product</span><span class="o">=</span><span class="s1">&#39;ls8_nbar_albers&#39;</span><span class="p">,</span>
+            <span class="n">time</span><span class="o">=</span><span class="n">Range</span><span class="p">(</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2014</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -2055,7 +2055,7 @@ of the AGDC will:  Have a CC BY Attribution 3.0 or CC BY Attribution
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>!ncdump -h &#39;/g/data/rs0/datacube/002/LS5_TM_NBAR/14_-40/LS5_TM_NBAR_3577_14_-40_19860821231816000000.nc&#39; | grep license
+<span></span><span class="o">!</span>ncdump -h <span class="s1">&#39;/g/data/rs0/datacube/002/LS5_TM_NBAR/14_-40/LS5_TM_NBAR_3577_14_-40_19860821231816000000.nc&#39;</span> <span class="p">|</span> grep license
 </pre></div>
 </div>
 </div>
@@ -2068,7 +2068,7 @@ comply with relevant CF conventions;.</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>import compliance_checker
+<span></span><span class="kn">import</span> <span class="nn">compliance_checker</span>
 </pre></div>
 </div>
 </div>
@@ -2078,7 +2078,7 @@ comply with relevant CF conventions;.</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>compliance_checker.__version__
+<span></span><span class="n">compliance_checker</span><span class="o">.</span><span class="n">__version__</span>
 </pre></div>
 </div>
 </div>
@@ -2088,36 +2088,36 @@ comply with relevant CF conventions;.</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>from __future__ import print_function
-import argparse
-import sys
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">import</span> <span class="nn">sys</span>
 
-import cf_units
-from compliance_checker.runner import ComplianceChecker, CheckSuite
-from compliance_checker import __version__
+<span class="kn">import</span> <span class="nn">cf_units</span>
+<span class="kn">from</span> <span class="nn">compliance_checker.runner</span> <span class="k">import</span> <span class="n">ComplianceChecker</span><span class="p">,</span> <span class="n">CheckSuite</span>
+<span class="kn">from</span> <span class="nn">compliance_checker</span> <span class="k">import</span> <span class="n">__version__</span>
 
-ds_loc = &#39;/g/data/rs0/datacube/002/LS5_TM_NBAR/14_-40/LS5_TM_NBAR_3577_14_-40_19860821231816000000.nc&#39;
+<span class="n">ds_loc</span> <span class="o">=</span> <span class="s1">&#39;/g/data/rs0/datacube/002/LS5_TM_NBAR/14_-40/LS5_TM_NBAR_3577_14_-40_19860821231816000000.nc&#39;</span>
 
-cs = CheckSuite()
-cs.load_all_available_checkers()
+<span class="n">cs</span> <span class="o">=</span> <span class="n">CheckSuite</span><span class="p">()</span>
+<span class="n">cs</span><span class="o">.</span><span class="n">load_all_available_checkers</span><span class="p">()</span>
 
-was_success, errors = ComplianceChecker.run_checker(
-    ds_loc=ds_loc,
-    checker_names=[&#39;cf&#39;], # &#39;acdd&#39;?
-    verbose=0,
-    criteria=&#39;normal&#39;,
-    output_filename=&#39;-&#39;,
-    # Skipping:
-    # - check_dimension_order:
-    #      Our files don&#39;t contain all the lats/lons as an auxiliary
-    #      cordinate var as it&#39;s unnecessary for any software we&#39;ve
-    #      tried.
-    #      It may be added at some point in the future, and this check
-    #      should be re-enabled.
-    skip_checks=[&#39;check_dimension_order&#39;]
-)
-# missing source attribute: skippable according to Damien
-# assert was_success, &quot;Compliance failed.&quot;
+<span class="n">was_success</span><span class="p">,</span> <span class="n">errors</span> <span class="o">=</span> <span class="n">ComplianceChecker</span><span class="o">.</span><span class="n">run_checker</span><span class="p">(</span>
+    <span class="n">ds_loc</span><span class="o">=</span><span class="n">ds_loc</span><span class="p">,</span>
+    <span class="n">checker_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;cf&#39;</span><span class="p">],</span> <span class="c1"># &#39;acdd&#39;?</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">criteria</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span>
+    <span class="n">output_filename</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span>
+    <span class="c1"># Skipping:</span>
+    <span class="c1"># - check_dimension_order:</span>
+    <span class="c1">#      Our files don&#39;t contain all the lats/lons as an auxiliary</span>
+    <span class="c1">#      cordinate var as it&#39;s unnecessary for any software we&#39;ve</span>
+    <span class="c1">#      tried.</span>
+    <span class="c1">#      It may be added at some point in the future, and this check</span>
+    <span class="c1">#      should be re-enabled.</span>
+    <span class="n">skip_checks</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;check_dimension_order&#39;</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="c1"># missing source attribute: skippable according to Damien</span>
+<span class="c1"># assert was_success, &quot;Compliance failed.&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -2127,7 +2127,7 @@ was_success, errors = ComplianceChecker.run_checker(
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>help(ComplianceChecker.run_checker)
+<span></span><span class="n">help</span><span class="p">(</span><span class="n">ComplianceChecker</span><span class="o">.</span><span class="n">run_checker</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2143,7 +2143,7 @@ that the products being produced are supported by and hosted on the RDS.</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>!ls /g/data/rs0/datacube/002
+<span></span><span class="o">!</span>ls /g/data/rs0/datacube/002
 </pre></div>
 </div>
 </div>
@@ -2153,7 +2153,7 @@ that the products being produced are supported by and hosted on the RDS.</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>!ls /g/data/fk4/datacube/002
+<span></span><span class="o">!</span>ls /g/data/fk4/datacube/002
 </pre></div>
 </div>
 </div>
@@ -2169,12 +2169,12 @@ collections from different domains.</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>albers_grid = dc.load(
-    product=&#39;ls5_nbart_albers&#39;,
-    group_by=&#39;solar_day&#39;,
-    measurements=[&#39;swir2&#39;, &#39;nir&#39;, &#39;blue&#39;],
-    **query
-)
+<span></span><span class="n">albers_grid</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
+    <span class="n">product</span><span class="o">=</span><span class="s1">&#39;ls5_nbart_albers&#39;</span><span class="p">,</span>
+    <span class="n">group_by</span><span class="o">=</span><span class="s1">&#39;solar_day&#39;</span><span class="p">,</span>
+    <span class="n">measurements</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;swir2&#39;</span><span class="p">,</span> <span class="s1">&#39;nir&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">],</span>
+    <span class="o">**</span><span class="n">query</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2184,23 +2184,23 @@ collections from different domains.</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>sinusoidal_grid = dc.load(
-    product=&#39;ls5_nbar_albers&#39;,
-    group_by=&#39;solar_day&#39;,
-    measurements=[&#39;swir2&#39;, &#39;nir&#39;, &#39;blue&#39;],
-    output_crs=&#39;PROJCS[&quot;unnamed&quot;,GEOGCS[&quot;Unknown datum based upon the custom spheroid&quot;,\
-                DATUM[&quot;Not specified (based on custom spheroid)&quot;,\
-                SPHEROID[&quot;Custom spheroid&quot;,6371007.181,0]],\
-                PRIMEM[&quot;Greenwich&quot;,0],\
-                UNIT[&quot;degree&quot;,0.0174532925199433]],\
-                PROJECTION[&quot;Sinusoidal&quot;],\
-                PARAMETER[&quot;longitude_of_center&quot;,0],\
-                PARAMETER[&quot;false_easting&quot;,0],\
-                PARAMETER[&quot;false_northing&quot;,0],\
-                UNIT[&quot;Meter&quot;,1]]&#39;,
-    resolution=(-250,250),
-    **query
-)
+<span></span><span class="n">sinusoidal_grid</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
+    <span class="n">product</span><span class="o">=</span><span class="s1">&#39;ls5_nbar_albers&#39;</span><span class="p">,</span>
+    <span class="n">group_by</span><span class="o">=</span><span class="s1">&#39;solar_day&#39;</span><span class="p">,</span>
+    <span class="n">measurements</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;swir2&#39;</span><span class="p">,</span> <span class="s1">&#39;nir&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">],</span>
+    <span class="n">output_crs</span><span class="o">=</span><span class="s1">&#39;PROJCS[&quot;unnamed&quot;,GEOGCS[&quot;Unknown datum based upon the custom spheroid&quot;,</span><span class="se">\</span>
+<span class="s1">                DATUM[&quot;Not specified (based on custom spheroid)&quot;,</span><span class="se">\</span>
+<span class="s1">                SPHEROID[&quot;Custom spheroid&quot;,6371007.181,0]],</span><span class="se">\</span>
+<span class="s1">                PRIMEM[&quot;Greenwich&quot;,0],</span><span class="se">\</span>
+<span class="s1">                UNIT[&quot;degree&quot;,0.0174532925199433]],</span><span class="se">\</span>
+<span class="s1">                PROJECTION[&quot;Sinusoidal&quot;],</span><span class="se">\</span>
+<span class="s1">                PARAMETER[&quot;longitude_of_center&quot;,0],</span><span class="se">\</span>
+<span class="s1">                PARAMETER[&quot;false_easting&quot;,0],</span><span class="se">\</span>
+<span class="s1">                PARAMETER[&quot;false_northing&quot;,0],</span><span class="se">\</span>
+<span class="s1">                UNIT[&quot;Meter&quot;,1]]&#39;</span><span class="p">,</span>
+    <span class="n">resolution</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">250</span><span class="p">,</span><span class="mi">250</span><span class="p">),</span>
+    <span class="o">**</span><span class="n">query</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2210,8 +2210,8 @@ collections from different domains.</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>plot_rgb(albers_grid, 3500)
-albers_grid = None
+<span></span><span class="n">plot_rgb</span><span class="p">(</span><span class="n">albers_grid</span><span class="p">,</span> <span class="mi">3500</span><span class="p">)</span>
+<span class="n">albers_grid</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 </div>
 </div>
@@ -2221,8 +2221,8 @@ albers_grid = None
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>plot_rgb(sinusoidal_grid, 3500)
-sinusoidal_grid = None
+<span></span><span class="n">plot_rgb</span><span class="p">(</span><span class="n">sinusoidal_grid</span><span class="p">,</span> <span class="mi">3500</span><span class="p">)</span>
+<span class="n">sinusoidal_grid</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 </div>
 </div>
@@ -2234,7 +2234,7 @@ chunking, compression type, dimension depth).</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>!datacube product add --help
+<span></span><span class="o">!</span>datacube product add --help
 </pre></div>
 </div>
 </div>
@@ -2248,11 +2248,11 @@ chunking, compression type, dimension depth).</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>seamless_query = {
-    &#39;time&#39;: (&#39;2011-6-1&#39;, &#39;2011-6-30&#39;),
-    &#39;lat&#39;: (-20, -30),
-    &#39;lon&#39;: (132.0, 132.01),
-}
+<span></span><span class="n">seamless_query</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;2011-6-1&#39;</span><span class="p">,</span> <span class="s1">&#39;2011-6-30&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;lat&#39;</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">),</span>
+    <span class="s1">&#39;lon&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">132.0</span><span class="p">,</span> <span class="mf">132.01</span><span class="p">),</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -2262,12 +2262,12 @@ chunking, compression type, dimension depth).</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>seamless_subset = dc.load(
-    product=&#39;ls5_nbar_albers&#39;,
-    measurements=[&#39;swir2&#39;, &#39;nir&#39;, &#39;blue&#39;],
-    group_by=&#39;solar_day&#39;,
-    **seamless_query
-)
+<span></span><span class="n">seamless_subset</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
+    <span class="n">product</span><span class="o">=</span><span class="s1">&#39;ls5_nbar_albers&#39;</span><span class="p">,</span>
+    <span class="n">measurements</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;swir2&#39;</span><span class="p">,</span> <span class="s1">&#39;nir&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">],</span>
+    <span class="n">group_by</span><span class="o">=</span><span class="s1">&#39;solar_day&#39;</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">seamless_query</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2277,7 +2277,7 @@ chunking, compression type, dimension depth).</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>seamless_subset.y.max() - seamless_subset.y.min() #distance in metres
+<span></span><span class="n">seamless_subset</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">seamless_subset</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="c1">#distance in metres</span>
 </pre></div>
 </div>
 </div>
@@ -2287,7 +2287,7 @@ chunking, compression type, dimension depth).</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>seamless_subset.x.max() - seamless_subset.x.min() #distance in metres
+<span></span><span class="n">seamless_subset</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">seamless_subset</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="c1">#distance in metres</span>
 </pre></div>
 </div>
 </div>
@@ -2297,7 +2297,7 @@ chunking, compression type, dimension depth).</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>seamless_subset.extent.points
+<span></span><span class="n">seamless_subset</span><span class="o">.</span><span class="n">extent</span><span class="o">.</span><span class="n">points</span>
 </pre></div>
 </div>
 </div>
@@ -2307,7 +2307,7 @@ chunking, compression type, dimension depth).</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>plot_rgb(seamless_subset, 3000)
+<span></span><span class="n">plot_rgb</span><span class="p">(</span><span class="n">seamless_subset</span><span class="p">,</span> <span class="mi">3000</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2317,8 +2317,8 @@ chunking, compression type, dimension depth).</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span># With the Grid Workflow class demonstrate seamless spatial query across tile boundaries
-from datacube.api import GridWorkflow
+<span></span><span class="c1"># With the Grid Workflow class demonstrate seamless spatial query across tile boundaries</span>
+<span class="kn">from</span> <span class="nn">datacube.api</span> <span class="k">import</span> <span class="n">GridWorkflow</span>
 </pre></div>
 </div>
 </div>
@@ -2328,7 +2328,7 @@ from datacube.api import GridWorkflow
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>gw = GridWorkflow(dc.index, product=&#39;ls5_nbar_albers&#39;)
+<span></span><span class="n">gw</span> <span class="o">=</span> <span class="n">GridWorkflow</span><span class="p">(</span><span class="n">dc</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">product</span><span class="o">=</span><span class="s1">&#39;ls5_nbar_albers&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2338,11 +2338,11 @@ from datacube.api import GridWorkflow
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span># The query straddles multiple tiles - indexes shown below
-gw.list_cells(
-    product = &#39;ls5_nbar_albers&#39;,
-    **seamless_query
-).keys()
+<span></span><span class="c1"># The query straddles multiple tiles - indexes shown below</span>
+<span class="n">gw</span><span class="o">.</span><span class="n">list_cells</span><span class="p">(</span>
+    <span class="n">product</span> <span class="o">=</span> <span class="s1">&#39;ls5_nbar_albers&#39;</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">seamless_query</span>
+<span class="p">)</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2354,26 +2354,26 @@ gw.list_cells(
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 
-<span></span># Load some NDVI
-nbar = dc.load(product=&#39;ls5_nbar_albers&#39;, group_by=&#39;solar_day&#39;, **query)
-ndvi = (nbar.nir - nbar.red) / (nbar.nir + nbar.red) * 10000
-nbar = None
+<span></span><span class="c1"># Load some NDVI</span>
+<span class="n">nbar</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">product</span><span class="o">=</span><span class="s1">&#39;ls5_nbar_albers&#39;</span><span class="p">,</span> <span class="n">group_by</span><span class="o">=</span><span class="s1">&#39;solar_day&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">query</span><span class="p">)</span>
+<span class="n">ndvi</span> <span class="o">=</span> <span class="p">(</span><span class="n">nbar</span><span class="o">.</span><span class="n">nir</span> <span class="o">-</span> <span class="n">nbar</span><span class="o">.</span><span class="n">red</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">nbar</span><span class="o">.</span><span class="n">nir</span> <span class="o">+</span> <span class="n">nbar</span><span class="o">.</span><span class="n">red</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10000</span>
+<span class="n">nbar</span> <span class="o">=</span> <span class="kc">None</span>
 
-# Mask the valid data
-ndvi = mask_invalid_data(ndvi)
-# Create a mask for the data with artefacts
-good_pixels = masking.make_mask(pq, ga_good_pixel=True)
-# Apply artefact mask
-ndvi = ndvi.where(good_pixels.pixelquality)
+<span class="c1"># Mask the valid data</span>
+<span class="n">ndvi</span> <span class="o">=</span> <span class="n">mask_invalid_data</span><span class="p">(</span><span class="n">ndvi</span><span class="p">)</span>
+<span class="c1"># Create a mask for the data with artefacts</span>
+<span class="n">good_pixels</span> <span class="o">=</span> <span class="n">masking</span><span class="o">.</span><span class="n">make_mask</span><span class="p">(</span><span class="n">pq</span><span class="p">,</span> <span class="n">ga_good_pixel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># Apply artefact mask</span>
+<span class="n">ndvi</span> <span class="o">=</span> <span class="n">ndvi</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">good_pixels</span><span class="o">.</span><span class="n">pixelquality</span><span class="p">)</span>
 
-# Plot the result
-ndvi.plot(col=&#39;time&#39;, col_wrap=5, robust=True, cmap=&#39;YlGn&#39;)
-ndvi = None
+<span class="c1"># Plot the result</span>
+<span class="n">ndvi</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">col_wrap</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">robust</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;YlGn&#39;</span><span class="p">)</span>
+<span class="n">ndvi</span> <span class="o">=</span> <span class="kc">None</span>
 
-pandas.DataFrame.from_dict(
-    masking.get_flags_def(pq),
-    orient=&#39;index&#39;
-)
+<span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span>
+    <span class="n">masking</span><span class="o">.</span><span class="n">get_flags_def</span><span class="p">(</span><span class="n">pq</span><span class="p">),</span>
+    <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;index&#39;</span>
+<span class="p">)</span>
 
 </pre></div>
 </div>
@@ -2388,27 +2388,27 @@ analysed.</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>multi_sensor_query = {
-    &#39;time&#39;: (&#39;2013-06-01&#39;, &#39;2014-01-01&#39;),
-    &#39;lat&#39;: (-35.2, -35.4),
-    &#39;lon&#39;: (149.0, 149.2),
-}
+<span></span><span class="n">multi_sensor_query</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;2013-06-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2014-01-01&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;lat&#39;</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="mf">35.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">35.4</span><span class="p">),</span>
+    <span class="s1">&#39;lon&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">149.0</span><span class="p">,</span> <span class="mf">149.2</span><span class="p">),</span>
+<span class="p">}</span>
 
-products = [&#39;ls7_nbar_albers&#39;, &#39;ls8_nbar_albers&#39;]
+<span class="n">products</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ls7_nbar_albers&#39;</span><span class="p">,</span> <span class="s1">&#39;ls8_nbar_albers&#39;</span><span class="p">]</span>
 
-# Find similarly named measurements
-measurements = set(dc.index.products.get_by_name(products[0]).measurements.keys())
-for prod in products[1:]:
-    measurements.intersection(dc.index.products.get_by_name(products[0]).measurements.keys())
+<span class="c1"># Find similarly named measurements</span>
+<span class="n">measurements</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">dc</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">products</span><span class="o">.</span><span class="n">get_by_name</span><span class="p">(</span><span class="n">products</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">measurements</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="k">for</span> <span class="n">prod</span> <span class="ow">in</span> <span class="n">products</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+    <span class="n">measurements</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">dc</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">products</span><span class="o">.</span><span class="n">get_by_name</span><span class="p">(</span><span class="n">products</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">measurements</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 
-datasets = []
-for prod in products:
-    ds = dc.load(product=prod, measurements=measurements, **multi_sensor_query)
-    ds[&#39;product&#39;] = (&#39;time&#39;, numpy.repeat(prod, ds.time.size))
-    datasets.append(ds)
+<span class="n">datasets</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">prod</span> <span class="ow">in</span> <span class="n">products</span><span class="p">:</span>
+    <span class="n">ds</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">product</span><span class="o">=</span><span class="n">prod</span><span class="p">,</span> <span class="n">measurements</span><span class="o">=</span><span class="n">measurements</span><span class="p">,</span> <span class="o">**</span><span class="n">multi_sensor_query</span><span class="p">)</span>
+    <span class="n">ds</span><span class="p">[</span><span class="s1">&#39;product&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">prod</span><span class="p">,</span> <span class="n">ds</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
+    <span class="n">datasets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
 
-combined = xarray.concat(datasets, dim=&#39;time&#39;)
-combined = combined.isel(time=combined.time.argsort())  # sort along time dim
+<span class="n">combined</span> <span class="o">=</span> <span class="n">xarray</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">datasets</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">combined</span> <span class="o">=</span> <span class="n">combined</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">combined</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">argsort</span><span class="p">())</span>  <span class="c1"># sort along time dim</span>
 </pre></div>
 </div>
 </div>
@@ -2418,7 +2418,7 @@ combined = combined.isel(time=combined.time.argsort())  # sort along time dim
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>combined.swir1.median(dim=&#39;time&#39;).plot(col_wrap=5, robust=True, cmap=&#39;rainbow&#39;)
+<span></span><span class="n">combined</span><span class="o">.</span><span class="n">swir1</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">col_wrap</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">robust</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;rainbow&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2430,7 +2430,7 @@ analysis based on an n-dimensional array abstraction;</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>combined.data_vars
+<span></span><span class="n">combined</span><span class="o">.</span><span class="n">data_vars</span>
 </pre></div>
 </div>
 </div>
@@ -2440,7 +2440,7 @@ analysis based on an n-dimensional array abstraction;</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>combined = None
+<span></span><span class="n">combined</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 </div>
 </div>
@@ -2452,7 +2452,7 @@ are in use are computed; and</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span># CSIRO Peter Wang - link to notebook
+<span></span><span class="c1"># CSIRO Peter Wang - link to notebook</span>
 </pre></div>
 </div>
 </div>
@@ -2463,14 +2463,14 @@ are in use are computed; and</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span># Dask Example
-lazydata = dc.load(
-    product=&#39;ls7_nbart_albers&#39;,
-    longitude=(132.0, 137.0),
-    latitude=(-20, -25),
-    time=(&#39;2011-6-1&#39;, &#39;2011-6-30&#39;),
-    dask_chunks={&#39;x&#39;: 200, &#39;y&#39;: 200, &#39;time&#39;: 5}
-)
+<span></span><span class="c1"># Dask Example</span>
+<span class="n">lazydata</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
+    <span class="n">product</span><span class="o">=</span><span class="s1">&#39;ls7_nbart_albers&#39;</span><span class="p">,</span>
+    <span class="n">longitude</span><span class="o">=</span><span class="p">(</span><span class="mf">132.0</span><span class="p">,</span> <span class="mf">137.0</span><span class="p">),</span>
+    <span class="n">latitude</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">25</span><span class="p">),</span>
+    <span class="n">time</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;2011-6-1&#39;</span><span class="p">,</span> <span class="s1">&#39;2011-6-30&#39;</span><span class="p">),</span>
+    <span class="n">dask_chunks</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2480,9 +2480,9 @@ lazydata = dc.load(
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>from dask.dot import dot_graph
+<span></span><span class="kn">from</span> <span class="nn">dask.dot</span> <span class="k">import</span> <span class="n">dot_graph</span>
 
-dot_graph(lazydata)
+<span class="n">dot_graph</span><span class="p">(</span><span class="n">lazydata</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2492,7 +2492,7 @@ dot_graph(lazydata)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>print(lazydata)
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">lazydata</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2502,8 +2502,8 @@ dot_graph(lazydata)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span># If larger than memory will be chunked and run
-print(lazydata.mean(dim=&#39;time&#39;))
+<span></span><span class="c1"># If larger than memory will be chunked and run</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lazydata</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">))</span>
 
 </pre></div>
 </div>
@@ -2514,8 +2514,8 @@ print(lazydata.mean(dim=&#39;time&#39;))
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span># Visualise doesn&#39;t seem to exist anymore?
-# lazydata.blue.visualise()
+<span></span><span class="c1"># Visualise doesn&#39;t seem to exist anymore?</span>
+<span class="c1"># lazydata.blue.visualise()</span>
 </pre></div>
 </div>
 </div>
@@ -2528,7 +2528,7 @@ use the version 2 data retrieval mechanism.</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span># See stats, wofs and ingestion
+<span></span><span class="c1"># See stats, wofs and ingestion</span>
 </pre></div>
 </div>
 </div>
@@ -2540,7 +2540,7 @@ data cube for further analysis.</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span># See remote cube example above
+<span></span><span class="c1"># See remote cube example above</span>
 </pre></div>
 </div>
 </div>
@@ -2551,7 +2551,7 @@ data cube for further analysis.</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>!firefox http://dapds00.nci.org.au/thredds/catalogs/rs0/catalog.html
+<span></span><span class="o">!</span>firefox http://dapds00.nci.org.au/thredds/catalogs/rs0/catalog.html
 </pre></div>
 </div>
 </div>
@@ -2566,7 +2566,7 @@ standards.</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>#combined.variables
+<span></span><span class="c1">#combined.variables</span>
 </pre></div>
 </div>
 </div>
@@ -2576,7 +2576,7 @@ standards.</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span># See sources example above
+<span></span><span class="c1"># See sources example above</span>
 </pre></div>
 </div>
 </div>
@@ -2594,7 +2594,7 @@ collections that are already accessible via RDS);</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>!firefox http://dapds00.nci.org.au/thredds/catalogs/rs0/catalog.html
+<span></span><span class="o">!</span>firefox http://dapds00.nci.org.au/thredds/catalogs/rs0/catalog.html
 </pre></div>
 </div>
 </div>
@@ -2664,7 +2664,7 @@ of netCDF4-CF;</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span># Looks like a good base? Not sure what update to internal structure in NetCDF actually means...
+<span></span><span class="c1"># Looks like a good base? Not sure what update to internal structure in NetCDF actually means...</span>
 </pre></div>
 </div>
 </div>
@@ -2678,7 +2678,7 @@ Directives, the Australian National Data Service and data.gov.au; and</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>#
+<span></span><span class="c1">#</span>
 </pre></div>
 </div>
 </div>
@@ -2691,8 +2691,8 @@ access that is required by the agreed use-cases.</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>notebook_end_dt = datetime.now()
-&#39;Finished in {}&#39;.format(notebook_end_dt - notebook_start_dt)
+<span></span><span class="n">notebook_end_dt</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="s1">&#39;Finished in </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">notebook_end_dt</span> <span class="o">-</span> <span class="n">notebook_start_dt</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

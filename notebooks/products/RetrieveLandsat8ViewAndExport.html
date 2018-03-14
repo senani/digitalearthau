@@ -454,40 +454,40 @@ line.</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>%pylab notebook
+<span></span><span class="o">%</span><span class="k">pylab</span> notebook
 
-import datacube
-from datacube.storage import masking
-#from datacube.storage.masking import mask_to_dict
-from datacube.storage.storage import write_dataset_to_netcdf
-from datacube.helpers import ga_pq_fuser
+<span class="kn">import</span> <span class="nn">datacube</span>
+<span class="kn">from</span> <span class="nn">datacube.storage</span> <span class="k">import</span> <span class="n">masking</span>
+<span class="c1">#from datacube.storage.masking import mask_to_dict</span>
+<span class="kn">from</span> <span class="nn">datacube.storage.storage</span> <span class="k">import</span> <span class="n">write_dataset_to_netcdf</span>
+<span class="kn">from</span> <span class="nn">datacube.helpers</span> <span class="k">import</span> <span class="n">ga_pq_fuser</span>
 
-#import pandas as pd
-import xarray as xr
-import numpy as np
-#import csv
-import os
-import sys
-#import datetime
+<span class="c1">#import pandas as pd</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="c1">#import csv</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="c1">#import datetime</span>
 
-#get the DEA version of the plotting functions
-sys.path.append(os.path.abspath(&#39;/g/data/r78/cek156/dea-notebooks/algorithms&#39;))
-import DEAPlotting
-import DEADataHandling
+<span class="c1">#get the DEA version of the plotting functions</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;/g/data/r78/cek156/dea-notebooks/algorithms&#39;</span><span class="p">))</span>
+<span class="kn">import</span> <span class="nn">DEAPlotting</span>
+<span class="kn">import</span> <span class="nn">DEADataHandling</span>
 
-#from matplotlib.backends.backend_pdf import PdfPages
-from matplotlib import pyplot as plt
-#import matplotlib.dates
-#from IPython.display import display
-#import ipywidgets as widgets
+<span class="c1">#from matplotlib.backends.backend_pdf import PdfPages</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="c1">#import matplotlib.dates</span>
+<span class="c1">#from IPython.display import display</span>
+<span class="c1">#import ipywidgets as widgets</span>
 
-import rasterio
-#import urllib
-#from pyproj import Proj, transform
-#from dateutil import tz
-#from_zone = tz.tzutc()
-#to_zone = tz.tzlocal()
-dc = datacube.Datacube(app=&#39;dc-plot landsat  FalseColour&#39;)
+<span class="kn">import</span> <span class="nn">rasterio</span>
+<span class="c1">#import urllib</span>
+<span class="c1">#from pyproj import Proj, transform</span>
+<span class="c1">#from dateutil import tz</span>
+<span class="c1">#from_zone = tz.tzutc()</span>
+<span class="c1">#to_zone = tz.tzlocal()</span>
+<span class="n">dc</span> <span class="o">=</span> <span class="n">datacube</span><span class="o">.</span><span class="n">Datacube</span><span class="p">(</span><span class="n">app</span><span class="o">=</span><span class="s1">&#39;dc-plot landsat  FalseColour&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -508,24 +508,24 @@ Populating the interactive namespace from numpy and matplotlib
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>def write_your_netcdf(data, dataset_name, filename, crs):
-    &#39;&#39;&#39;this function turns an xarray dataarray into a dataset so we can write it to netcdf. It adds on a crs definition
-    from the original array. data = your xarray dataset, dataset_name is a string describing your variable. Bex March 2018&#39;&#39;&#39;
-    #turn array into dataset so we can write the netcdf
-    if isinstance(data,xr.DataArray):
-        dataset= data.to_dataset(name=dataset_name)
-    elif isinstance(data,xr.Dataset):
-        dataset = data
-    else:
-        print(&#39;your data might be the wrong type, it is: &#39;+type(data))
-    #grab our crs attributes to write a spatially-referenced netcdf
-    dataset.attrs[&#39;crs&#39;] = crs
-    dataset.attrs[&#39;affine&#39;] =affine
-    #dataset.dataset_name.attrs[&#39;crs&#39;] = crs
-    try:
-        write_dataset_to_netcdf(dataset, filename)
-    except RuntimeError as err:
-        print(&quot;RuntimeError: {0}&quot;.format(err))
+<span></span><span class="k">def</span> <span class="nf">write_your_netcdf</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">crs</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;this function turns an xarray dataarray into a dataset so we can write it to netcdf. It adds on a crs definition</span>
+<span class="sd">    from the original array. data = your xarray dataset, dataset_name is a string describing your variable. Bex March 2018&#39;&#39;&#39;</span>
+    <span class="c1">#turn array into dataset so we can write the netcdf</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">):</span>
+        <span class="n">dataset</span><span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">to_dataset</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">dataset_name</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">):</span>
+        <span class="n">dataset</span> <span class="o">=</span> <span class="n">data</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;your data might be the wrong type, it is: &#39;</span><span class="o">+</span><span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+    <span class="c1">#grab our crs attributes to write a spatially-referenced netcdf</span>
+    <span class="n">dataset</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;crs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">crs</span>
+    <span class="n">dataset</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;affine&#39;</span><span class="p">]</span> <span class="o">=</span><span class="n">affine</span>
+    <span class="c1">#dataset.dataset_name.attrs[&#39;crs&#39;] = crs</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">write_dataset_to_netcdf</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">RuntimeError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RuntimeError: </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -540,28 +540,28 @@ Populating the interactive namespace from numpy and matplotlib
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>#Temporal range is defined
-start_of_epoch = &#39;2016-12-01&#39;
-end_of_epoch =  &#39;2017-01-30&#39;
+<span></span><span class="c1">#Temporal range is defined</span>
+<span class="n">start_of_epoch</span> <span class="o">=</span> <span class="s1">&#39;2016-12-01&#39;</span>
+<span class="n">end_of_epoch</span> <span class="o">=</span>  <span class="s1">&#39;2017-01-30&#39;</span>
 
-#Wavelengths/bands of interest are defined
-bands_of_interest = [&#39;green&#39;,
-                     &#39;nir&#39;,
-                     &#39;swir1&#39;]
+<span class="c1">#Wavelengths/bands of interest are defined</span>
+<span class="n">bands_of_interest</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;green&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;nir&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;swir1&#39;</span><span class="p">]</span>
 
-#Sensors of interest are defined
-sensors = [&#39;ls8&#39;]
+<span class="c1">#Sensors of interest are defined</span>
+<span class="n">sensors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ls8&#39;</span><span class="p">]</span>
 
-#Create bounding box
-lat_max = -19.79
-lat_min = -19.85
-lon_max = 145.34
-lon_min = 145.27
+<span class="c1">#Create bounding box</span>
+<span class="n">lat_max</span> <span class="o">=</span> <span class="o">-</span><span class="mf">19.79</span>
+<span class="n">lat_min</span> <span class="o">=</span> <span class="o">-</span><span class="mf">19.85</span>
+<span class="n">lon_max</span> <span class="o">=</span> <span class="mf">145.34</span>
+<span class="n">lon_min</span> <span class="o">=</span> <span class="mf">145.27</span>
 
-#Create query
-query = {&#39;time&#39;: (start_of_epoch, end_of_epoch)}
-query[&#39;x&#39;] = (lon_min, lon_max)
-query[&#39;y&#39;] = (lat_max, lat_min)
+<span class="c1">#Create query</span>
+<span class="n">query</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">start_of_epoch</span><span class="p">,</span> <span class="n">end_of_epoch</span><span class="p">)}</span>
+<span class="n">query</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">lon_min</span><span class="p">,</span> <span class="n">lon_max</span><span class="p">)</span>
+<span class="n">query</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">lat_max</span><span class="p">,</span> <span class="n">lat_min</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -571,7 +571,7 @@ query[&#39;y&#39;] = (lat_max, lat_min)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>print(query)
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -593,7 +593,7 @@ query[&#39;y&#39;] = (lat_max, lat_min)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>data, crs, affine = DEADataHandling.load_nbarx(&#39;ls8&#39;, query, bands_of_interest, product=&#39;nbar&#39;)
+<span></span><span class="n">data</span><span class="p">,</span> <span class="n">crs</span><span class="p">,</span> <span class="n">affine</span> <span class="o">=</span> <span class="n">DEADataHandling</span><span class="o">.</span><span class="n">load_nbarx</span><span class="p">(</span><span class="s1">&#39;ls8&#39;</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">bands_of_interest</span><span class="p">,</span> <span class="n">product</span><span class="o">=</span><span class="s1">&#39;nbar&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -616,9 +616,9 @@ masked ls8_nbar_albers with ls8_pq_albers and filtered terrain
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>product_time = data[&#39;time&#39;].to_dataframe()
-product_time.index = product_time.index.map(lambda t: t.strftime(&#39;%Y-%m-%d&#39;)) #Remove Hours/Minutes Seconds by formatting into a string
-print(product_time.index)
+<span></span><span class="n">product_time</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
+<span class="n">product_time</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">product_time</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">))</span> <span class="c1">#Remove Hours/Minutes Seconds by formatting into a string</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">product_time</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -640,11 +640,11 @@ Index([&#39;2016-12-10&#39;, &#39;2016-12-26&#39;, &#39;2017-01-11&#39;, &#39;20
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>#loops through the data, plots false color images and saves them as individual PNG images
-for i in range(0,data.time.size):
-    DEAPlotting.three_band_image(data, bands=[&#39;swir1&#39;, &#39;nir&#39;, &#39;green&#39;],time =i)
-    plt.savefig(&#39;./test_image_{}.png&#39;.format(product_time.index[i]))
-    plt.show()
+<span></span><span class="c1">#loops through the data, plots false color images and saves them as individual PNG images</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">data</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
+    <span class="n">DEAPlotting</span><span class="o">.</span><span class="n">three_band_image</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">bands</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;swir1&#39;</span><span class="p">,</span> <span class="s1">&#39;nir&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">],</span><span class="n">time</span> <span class="o">=</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./test_image_</span><span class="si">{}</span><span class="s1">.png&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">product_time</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -3798,7 +3798,7 @@ if (IPython.notebook.kernel != null) {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>outfile = &#39;./test_netcdf.nc&#39;
+<span></span><span class="n">outfile</span> <span class="o">=</span> <span class="s1">&#39;./test_netcdf.nc&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -3808,7 +3808,7 @@ if (IPython.notebook.kernel != null) {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>write_your_netcdf(data.isel(time=0), &#39;nbar&#39;,outfile, crs=crs)
+<span></span><span class="n">write_your_netcdf</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;nbar&#39;</span><span class="p">,</span><span class="n">outfile</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">crs</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3828,7 +3828,7 @@ RuntimeError: Storage Unit already exists: test_netcdf.nc
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>DEAPlotting.write_to_geotiff(&#39;./test_geotiff.tif&#39;, data.isel(time=0))
+<span></span><span class="n">DEAPlotting</span><span class="o">.</span><span class="n">write_to_geotiff</span><span class="p">(</span><span class="s1">&#39;./test_geotiff.tif&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>

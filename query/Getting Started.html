@@ -412,7 +412,7 @@ div.nboutput div.output_area.stderr {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>%matplotlib inline
+<span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 </div>
 </div>
@@ -424,9 +424,9 @@ set some settings to tweak their formatting:</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>import pandas
-pandas.set_option(&#39;display.max_colwidth&#39;, 200)
-pandas.set_option(&#39;display.max_rows&#39;, None)
+<span></span><span class="kn">import</span> <span class="nn">pandas</span>
+<span class="n">pandas</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_colwidth&#39;</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">pandas</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -437,7 +437,7 @@ pandas.set_option(&#39;display.max_rows&#39;, None)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>import datacube
+<span></span><span class="kn">import</span> <span class="nn">datacube</span>
 </pre></div>
 </div>
 </div>
@@ -448,7 +448,7 @@ pandas.set_option(&#39;display.max_rows&#39;, None)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>dc = datacube.Datacube(app=&#39;getting-started&#39;)
+<span></span><span class="n">dc</span> <span class="o">=</span> <span class="n">datacube</span><span class="o">.</span><span class="n">Datacube</span><span class="p">(</span><span class="n">app</span><span class="o">=</span><span class="s1">&#39;getting-started&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -460,7 +460,7 @@ NCI:</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>dc.index
+<span></span><span class="n">dc</span><span class="o">.</span><span class="n">index</span>
 </pre></div>
 </div>
 </div>

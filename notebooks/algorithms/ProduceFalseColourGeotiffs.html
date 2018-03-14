@@ -458,19 +458,19 @@ both sitting in the <code class="docutils literal notranslate"><span class="pre"
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>% pylab notebook
+<span></span><span class="o">%</span> <span class="n">pylab</span> <span class="n">notebook</span>
 
-import sys
-import os
-sys.path.append(os.path.abspath(&#39;/g/data/r78/cek156/dea-notebooks/algorithms&#39;))
-import DEAPlotting
-import DEADataHandling
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;/g/data/r78/cek156/dea-notebooks/algorithms&#39;</span><span class="p">))</span>
+<span class="kn">import</span> <span class="nn">DEAPlotting</span>
+<span class="kn">import</span> <span class="nn">DEADataHandling</span>
 
-# Now just some regular module imports
-from datacube import Datacube
-from datetime import datetime
+<span class="c1"># Now just some regular module imports</span>
+<span class="kn">from</span> <span class="nn">datacube</span> <span class="k">import</span> <span class="n">Datacube</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
 
-dc = Datacube(app = &#39;test&#39;)
+<span class="n">dc</span> <span class="o">=</span> <span class="n">Datacube</span><span class="p">(</span><span class="n">app</span> <span class="o">=</span> <span class="s1">&#39;test&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -491,13 +491,13 @@ Populating the interactive namespace from numpy and matplotlib
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>query = {
-        &#39;lat&#39;: (-11.85, -11.98),
-        &#39;lon&#39;: (133.79, 133.93),
-        #&#39;time&#39;:(&#39;2003-08-01&#39;, &#39;2003-08-31&#39;)
-        #&#39;time&#39;:(&#39;2005-09-01&#39;, &#39;2005-09-15&#39;)
-        &#39;time&#39;:(&#39;2006-09-01&#39;, &#39;2006-09-15&#39;)
-        }
+<span></span><span class="n">query</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;lat&#39;</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="mf">11.85</span><span class="p">,</span> <span class="o">-</span><span class="mf">11.98</span><span class="p">),</span>
+        <span class="s1">&#39;lon&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">133.79</span><span class="p">,</span> <span class="mf">133.93</span><span class="p">),</span>
+        <span class="c1">#&#39;time&#39;:(&#39;2003-08-01&#39;, &#39;2003-08-31&#39;)</span>
+        <span class="c1">#&#39;time&#39;:(&#39;2005-09-01&#39;, &#39;2005-09-15&#39;)</span>
+        <span class="s1">&#39;time&#39;</span><span class="p">:(</span><span class="s1">&#39;2006-09-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2006-09-15&#39;</span><span class="p">)</span>
+        <span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -507,7 +507,7 @@ Populating the interactive namespace from numpy and matplotlib
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>data, crs, affine = DEADataHandling.load_nbarx(&#39;ls5&#39;, query, [&#39;swir1&#39;,&#39;nir&#39;,&#39;green&#39;])
+<span></span><span class="n">data</span><span class="p">,</span> <span class="n">crs</span><span class="p">,</span> <span class="n">affine</span> <span class="o">=</span> <span class="n">DEADataHandling</span><span class="o">.</span><span class="n">load_nbarx</span><span class="p">(</span><span class="s1">&#39;ls5&#39;</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;swir1&#39;</span><span class="p">,</span><span class="s1">&#39;nir&#39;</span><span class="p">,</span><span class="s1">&#39;green&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -528,7 +528,7 @@ masked ls5_nbart_albers with ls5_pq_albers and filtered terrain
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>data
+<span></span><span class="n">data</span>
 </pre></div>
 </div>
 </div>
@@ -563,7 +563,7 @@ Attributes:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>DEAPlotting.three_band_image(data, [&#39;swir1&#39;,&#39;nir&#39;,&#39;green&#39;])
+<span></span><span class="n">DEAPlotting</span><span class="o">.</span><span class="n">three_band_image</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;swir1&#39;</span><span class="p">,</span><span class="s1">&#39;nir&#39;</span><span class="p">,</span><span class="s1">&#39;green&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1361,7 +1361,7 @@ if (IPython.notebook.kernel != null) {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>DEAPlotting.write_to_geotiff(&#39;JunctionBay_2006-09-09.tif&#39;, data.squeeze())
+<span></span><span class="n">DEAPlotting</span><span class="o">.</span><span class="n">write_to_geotiff</span><span class="p">(</span><span class="s1">&#39;JunctionBay_2006-09-09.tif&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">squeeze</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>

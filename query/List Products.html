@@ -417,11 +417,11 @@ Started.</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>%matplotlib inline
-import datacube
-import pandas
-pandas.set_option(&#39;display.max_colwidth&#39;, 200)
-pandas.set_option(&#39;display.max_rows&#39;, None)
+<span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">datacube</span>
+<span class="kn">import</span> <span class="nn">pandas</span>
+<span class="n">pandas</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_colwidth&#39;</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">pandas</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -431,7 +431,7 @@ pandas.set_option(&#39;display.max_rows&#39;, None)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>dc = datacube.Datacube()
+<span></span><span class="n">dc</span> <span class="o">=</span> <span class="n">datacube</span><span class="o">.</span><span class="n">Datacube</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -444,7 +444,7 @@ pandas.set_option(&#39;display.max_rows&#39;, None)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>products = dc.list_products()
+<span></span><span class="n">products</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">list_products</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -454,7 +454,7 @@ pandas.set_option(&#39;display.max_rows&#39;, None)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>products.columns.tolist()
+<span></span><span class="n">products</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -505,9 +505,9 @@ of <code class="docutils literal notranslate"><span class="pre">nbar</span></cod
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>display_columns = [&#39;name&#39;, &#39;description&#39;, &#39;platform&#39;, &#39;instrument&#39;, &#39;crs&#39;, &#39;resolution&#39;]
-nbar_products = products[products[&#39;product_type&#39;] == &#39;nbar&#39;][display_columns].dropna()
-nbar_products
+<span></span><span class="n">display_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="s1">&#39;platform&#39;</span><span class="p">,</span> <span class="s1">&#39;instrument&#39;</span><span class="p">,</span> <span class="s1">&#39;crs&#39;</span><span class="p">,</span> <span class="s1">&#39;resolution&#39;</span><span class="p">]</span>
+<span class="n">nbar_products</span> <span class="o">=</span> <span class="n">products</span><span class="p">[</span><span class="n">products</span><span class="p">[</span><span class="s1">&#39;product_type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;nbar&#39;</span><span class="p">][</span><span class="n">display_columns</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">nbar_products</span>
 </pre></div>
 </div>
 </div>
@@ -602,7 +602,7 @@ nbar_products
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>measurements = dc.list_measurements()
+<span></span><span class="n">measurements</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">list_measurements</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -612,7 +612,7 @@ nbar_products
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>measurements.columns.tolist()
+<span></span><span class="n">measurements</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -638,7 +638,7 @@ nbar_products
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>display_columns = [&#39;units&#39;, &#39;nodata&#39;, &#39;aliases&#39;]
+<span></span><span class="n">display_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">,</span> <span class="s1">&#39;nodata&#39;</span><span class="p">,</span> <span class="s1">&#39;aliases&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -650,7 +650,7 @@ nbar_products
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>measurements[display_columns].loc[&#39;ls5_nbar_albers&#39;]
+<span></span><span class="n">measurements</span><span class="p">[</span><span class="n">display_columns</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;ls5_nbar_albers&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -737,8 +737,8 @@ nbar_products
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>product_list = nbar_products.name.tolist()
-product_list
+<span></span><span class="n">product_list</span> <span class="o">=</span> <span class="n">nbar_products</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">product_list</span>
 </pre></div>
 </div>
 </div>
@@ -761,7 +761,7 @@ product_list
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>measurements[display_columns].loc[product_list]
+<span></span><span class="n">measurements</span><span class="p">[</span><span class="n">display_columns</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">product_list</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
