@@ -126,17 +126,15 @@
 <li class="toctree-l3"><a class="reference internal" href="ProduceFalseColourGeotiffs.html#Extract-some-data-using-our-imported-function">Extract some data using our imported function</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ProduceFalseColourGeotiffs.html#Draw-a-false-colour-image-using-our-imported-function">Draw a false colour image using our imported function</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ProduceFalseColourGeotiffs.html#Export-the-three-bands-to-Geotiff-using-our-imported-function">Export the three bands to Geotiff using our imported function</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Random forest classification</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#Set-up-analysis">Set up analysis</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#Import-modules-and-define-functions">Import modules and define functions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#Functions-used-to-import-training-and-analysis-data">Functions used to import training and analysis data</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#Import-training-data-and-fit-model">Import training data and fit model</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#Import-analysis-data-and-classify">Import analysis data and classify</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#Feature/band/variable-importance">Feature/band/variable importance</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#Plot-performance-of-model-by-parameter-values">Plot performance of model by parameter values</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#Export-tree-diagrams">Export tree diagrams</a></li>
-</ul>
-</li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Random forest classification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Set-up-analysis">Set up analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Import-modules">Import modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Functions-used-to-import-training-and-analysis-data">Functions used to import training and analysis data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Import-training-data-and-fit-model">Import training data and fit model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Import-analysis-data-and-classify">Import analysis data and classify</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Feature/band/variable-importance">Feature/band/variable importance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Plot-performance-of-model-by-parameter-values">Plot performance of model by parameter values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Export-tree-diagrams">Export tree diagrams</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../case_studies/README.html">Case Studies</a></li>
@@ -441,7 +439,7 @@ div.nboutput div.output_area.stderr {
 data using a random forest classifier model. Key features include being
 able to efficiently import training data from a set of point, line or
 polygon shapefiles (i.e. data is extracted from each shapefile
-separately to avoid slow ‘dc.load’ on large areas), and allow flexible
+separately to avoid slow <code class="docutils literal notranslate"><span class="pre">dc.load</span></code> on large areas), and allow flexible
 and consistent selection of training and analysis data using import
 functions (i.e. ensuring training data is consistent with analysis
 data). The notebook exports geotiff classification outputs and a series
@@ -449,14 +447,15 @@ of evaluation figures to help fine-tune the classifier.</p>
 <p><strong>Date:</strong> March 2018</p>
 <p><strong>Author:</strong> Robbi Bishop-Taylor</p>
 <p><strong>Tags:</strong></p>
+</div>
 <div class="section" id="Set-up-analysis">
-<h2>Set up analysis<a class="headerlink" href="#Set-up-analysis" title="Permalink to this headline">¶</a></h2>
-<p>Defines parameters used for analysis. Note: ‘data_func’ and
-‘data_func_params’ need to be set at step 5 if changing remote sensing
+<h1>Set up analysis<a class="headerlink" href="#Set-up-analysis" title="Permalink to this headline">¶</a></h1>
+<p>Defines parameters used for analysis. Note: <code class="docutils literal notranslate"><span class="pre">data_func</span></code> and
+<code class="docutils literal notranslate"><span class="pre">data_func_params</span></code> need to be set at step 5 if changing remote sensing
 data source used for training and classification</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [ ]:
+<span></span>In [3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -471,7 +470,7 @@ data source used for training and classification</p>
 <span class="n">train_shps</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;raw_data/train/training_data_mangrove.shp&quot;</span><span class="p">,</span>
               <span class="s2">&quot;raw_data/train/training_data_mangrove1.shp&quot;</span><span class="p">,</span>
               <span class="s2">&quot;raw_data/train/training_data_mangrove2.shp&quot;</span><span class="p">,</span>
-              <span class="s2">&quot;raw_data/train/training_data_mangrove3.shp&quot;</span><span class="p">]</span>
+              <span class="s2">&quot;raw_data/train/training_data_mangrove3.shp&quot;</span><span class="p">,]</span>
 
 <span class="c1"># Output path for classified geotiff</span>
 <span class="n">classification_output</span> <span class="o">=</span> <span class="s2">&quot;output_data/classification_dc_mangrove.tif&quot;</span>
@@ -490,7 +489,7 @@ data source used for training and classification</p>
 </div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [82]:
+<span></span>In [ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -518,11 +517,11 @@ data source used for training and classification</p>
 </div>
 </div>
 </div>
-<div class="section" id="Import-modules-and-define-functions">
-<h2>Import modules and define functions<a class="headerlink" href="#Import-modules-and-define-functions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Import-modules">
+<h1>Import modules<a class="headerlink" href="#Import-modules" title="Permalink to this headline">¶</a></h1>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [64]:
+<span></span>In [4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -533,6 +532,7 @@ data source used for training and classification</p>
 <span class="kn">import</span> <span class="nn">itertools</span>
 <span class="kn">import</span> <span class="nn">matplotlib</span>
 <span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">rasterio</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -555,6 +555,14 @@ data source used for training and classification</p>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="k">import</span> <span class="n">scale</span>
 <span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="k">import</span> <span class="n">export_graphviz</span>
 <span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="k">import</span> <span class="n">_tree</span>
+
+<span class="c1"># Import DEA Notebooks scripts</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;/g/data/r78/rt1527/dea-notebooks/algorithms&#39;</span><span class="p">))</span>
+<span class="kn">from</span> <span class="nn">ShapefileTools</span> <span class="k">import</span> <span class="n">layer_extent</span>
+<span class="kn">from</span> <span class="nn">ShapefileTools</span> <span class="k">import</span> <span class="n">rasterize_vector</span>
+<span class="kn">from</span> <span class="nn">ClassificationTools</span> <span class="k">import</span> <span class="n">randomforest_train</span>
+<span class="kn">from</span> <span class="nn">ClassificationTools</span> <span class="k">import</span> <span class="n">randomforest_classify</span>
+<span class="kn">from</span> <span class="nn">ClassificationTools</span> <span class="k">import</span> <span class="n">randomforest_eval</span>
 
 <span class="c1"># For nicer notebook plotting, hide warnings (comment out for real analysis)</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
@@ -637,88 +645,13 @@ data source used for training and classification</p>
         <span class="k">return</span> <span class="kc">None</span>
 
 
-<span class="k">def</span> <span class="nf">rasterize_vector</span><span class="p">(</span><span class="n">input_data</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">geo_transform</span><span class="p">,</span>
-                     <span class="n">projection</span><span class="p">,</span> <span class="n">field</span><span class="p">):</span>
-
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Rasterize a vector file and return numpy array</span>
-
-<span class="sd">    :attr input_data: input shapefile path or preloaded GDAL/OGR layer</span>
-<span class="sd">    :attr cols: width of output array in columns</span>
-<span class="sd">    :attr rows: height of output array in rows</span>
-<span class="sd">    :attr geo_transform: geotransform for rasterization</span>
-<span class="sd">    :attr projection: projection for rasterization</span>
-<span class="sd">    :attr field: shapefile field to take values from</span>
-
-<span class="sd">    :returns: a &#39;row x col&#39; array containg values from vector</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="c1"># If input data is a string, import as shapefile layer</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_data</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-
-        <span class="c1"># Open vector with gdal</span>
-        <span class="n">data_source</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">OpenEx</span><span class="p">(</span><span class="n">vector_data_path</span><span class="p">,</span> <span class="n">gdal</span><span class="o">.</span><span class="n">OF_VECTOR</span><span class="p">)</span>
-        <span class="n">input_data</span> <span class="o">=</span> <span class="n">data_source</span><span class="o">.</span><span class="n">GetLayer</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-    <span class="c1"># Set up output raster</span>
-    <span class="n">driver</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">GetDriverByName</span><span class="p">(</span><span class="s1">&#39;GTiff&#39;</span><span class="p">)</span>  <span class="c1">#&#39;MEM&#39;)  # In memory dataset</span>
-    <span class="n">target_ds</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="s1">&#39;test.tif&#39;</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">gdal</span><span class="o">.</span><span class="n">GDT_UInt16</span><span class="p">)</span>
-    <span class="n">target_ds</span><span class="o">.</span><span class="n">SetGeoTransform</span><span class="p">(</span><span class="n">geo_transform</span><span class="p">)</span>
-    <span class="n">target_ds</span><span class="o">.</span><span class="n">SetProjection</span><span class="p">(</span><span class="n">projection</span><span class="p">)</span>
-
-    <span class="c1"># Rasterize shapefile and extract array</span>
-    <span class="n">gdal</span><span class="o">.</span><span class="n">RasterizeLayer</span><span class="p">(</span><span class="n">target_ds</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">input_data</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ATTRIBUTE=&quot;</span> <span class="o">+</span> <span class="n">field</span><span class="p">])</span>
-    <span class="n">band</span> <span class="o">=</span> <span class="n">target_ds</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">out_array</span> <span class="o">=</span> <span class="n">band</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()</span>
-    <span class="n">target_ds</span> <span class="o">=</span> <span class="kc">None</span>
-
-    <span class="k">return</span> <span class="n">out_array</span>
-
-
-<span class="k">def</span> <span class="nf">write_geotiff</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">geo_transform</span><span class="p">,</span> <span class="n">projection</span><span class="p">,</span>
-                  <span class="n">nodata_val</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">GDT_Float32</span><span class="p">):</span>
-
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Create a single band GeoTIFF file with data from array.</span>
-
-<span class="sd">    :attr fname: output file path</span>
-<span class="sd">    :attr data: input array</span>
-<span class="sd">    :attr geo_transform: geotransform for output raster</span>
-<span class="sd">    :attr projection: projection for output raster</span>
-<span class="sd">    :attr nodata_val: value to convert to nodata in output raster; default 0</span>
-<span class="sd">    :attr dtype: value to convert to nodata in output raster; default gdal.GDT_Float32</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="c1"># Set up driver</span>
-    <span class="n">driver</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">GetDriverByName</span><span class="p">(</span><span class="s1">&#39;GTiff&#39;</span><span class="p">)</span>
-
-    <span class="c1"># Create raster of given size and projection</span>
-    <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span>
-    <span class="n">dataset</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span>
-    <span class="n">dataset</span><span class="o">.</span><span class="n">SetGeoTransform</span><span class="p">(</span><span class="n">geo_transform</span><span class="p">)</span>
-    <span class="n">dataset</span><span class="o">.</span><span class="n">SetProjection</span><span class="p">(</span><span class="n">projection</span><span class="p">)</span>
-
-    <span class="c1"># Write data to array and set nodata values</span>
-    <span class="n">band</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">band</span><span class="o">.</span><span class="n">WriteArray</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-    <span class="n">band</span><span class="o">.</span><span class="n">SetNoDataValue</span><span class="p">(</span><span class="n">nodata_val</span><span class="p">)</span>
-
-    <span class="c1"># Close file</span>
-    <span class="n">dataset</span> <span class="o">=</span> <span class="kc">None</span>
-
-
 <span class="k">def</span> <span class="nf">tasseled_cap</span><span class="p">(</span><span class="n">sensor_data</span><span class="p">,</span> <span class="n">sensor</span><span class="p">,</span> <span class="n">tc_bands</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;greenness&#39;</span><span class="p">,</span> <span class="s1">&#39;brightness&#39;</span><span class="p">,</span> <span class="s1">&#39;wetness&#39;</span><span class="p">],</span>
                  <span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Computes tasseled cap wetness, greenness and brightness bands from a six</span>
 <span class="sd">    band xarray dataset, and returns a new xarray dataset with old bands</span>
-<span class="sd">    optionally dropped.</span>
-
-<span class="sd">    Coefficients for demonstration purposes only; sourced from:</span>
-<span class="sd">    Landsat 5: https://doi.org/10.1016/0034-4257(85)90102-6</span>
-<span class="sd">    Landsat 7: https://doi.org/10.1080/01431160110106113</span>
-<span class="sd">    Landsat 8: https://doi.org/10.1080/2150704X.2014.915434</span>
+<span class="sd">    optionally dropped</span>
 
 <span class="sd">    :attr sensor_data: input xarray dataset with six Landsat bands</span>
 <span class="sd">    :attr tc_bands: list of tasseled cap bands to compute</span>
@@ -736,24 +669,24 @@ data source used for training and classification</p>
     <span class="c1"># Coefficients for each tasseled cap band</span>
     <span class="n">wetness_coeff</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ls5&#39;</span><span class="p">:{</span><span class="s1">&#39;blue&#39;</span><span class="p">:</span><span class="mf">0.0315</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">:</span><span class="mf">0.2021</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">:</span><span class="mf">0.3102</span><span class="p">,</span>
                             <span class="s1">&#39;nir&#39;</span><span class="p">:</span><span class="mf">0.1594</span><span class="p">,</span> <span class="s1">&#39;swir1&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.6806</span><span class="p">,</span> <span class="s1">&#39;swir2&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.6109</span><span class="p">},</span>
-                     <span class="s1">&#39;ls7&#39;</span><span class="p">:{</span><span class="s1">&#39;blue&#39;</span><span class="p">:</span><span class="mf">0.2626</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">:</span><span class="mf">0.2141</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">:</span><span class="mf">0.0926</span><span class="p">,</span>
-                            <span class="s1">&#39;nir&#39;</span><span class="p">:</span><span class="mf">0.0656</span><span class="p">,</span> <span class="s1">&#39;swir1&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.7629</span><span class="p">,</span> <span class="s1">&#39;swir2&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.5388</span><span class="p">},</span>
-                     <span class="s1">&#39;ls8&#39;</span><span class="p">:{</span><span class="s1">&#39;blue&#39;</span><span class="p">:</span><span class="mf">0.1511</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">:</span><span class="mf">0.1973</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">:</span><span class="mf">0.3283</span><span class="p">,</span>
-                            <span class="s1">&#39;nir&#39;</span><span class="p">:</span><span class="mf">0.3407</span><span class="p">,</span> <span class="s1">&#39;swir1&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.7117</span><span class="p">,</span> <span class="s1">&#39;swir2&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.4559</span><span class="p">}}</span>
+                     <span class="s1">&#39;ls7&#39;</span><span class="p">:{</span><span class="s1">&#39;blue&#39;</span><span class="p">:</span><span class="mf">0.0315</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">:</span><span class="mf">0.2021</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">:</span><span class="mf">0.3102</span><span class="p">,</span>
+                            <span class="s1">&#39;nir&#39;</span><span class="p">:</span><span class="mf">0.1594</span><span class="p">,</span> <span class="s1">&#39;swir1&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.6806</span><span class="p">,</span> <span class="s1">&#39;swir2&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.6109</span><span class="p">},</span>
+                     <span class="s1">&#39;ls8&#39;</span><span class="p">:{</span><span class="s1">&#39;blue&#39;</span><span class="p">:</span><span class="mf">0.0315</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">:</span><span class="mf">0.2021</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">:</span><span class="mf">0.3102</span><span class="p">,</span>
+                            <span class="s1">&#39;nir&#39;</span><span class="p">:</span><span class="mf">0.1594</span><span class="p">,</span> <span class="s1">&#39;swir1&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.6806</span><span class="p">,</span> <span class="s1">&#39;swir2&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.6109</span><span class="p">}}</span>
 
     <span class="n">greenness_coeff</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ls5&#39;</span><span class="p">:{</span><span class="s1">&#39;blue&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.1603</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.2819</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.4934</span><span class="p">,</span>
                               <span class="s1">&#39;nir&#39;</span><span class="p">:</span><span class="mf">0.7940</span><span class="p">,</span> <span class="s1">&#39;swir1&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.0002</span><span class="p">,</span> <span class="s1">&#39;swir2&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.1446</span><span class="p">},</span>
-                       <span class="s1">&#39;ls7&#39;</span><span class="p">:{</span><span class="s1">&#39;blue&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.3344</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.3544</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.4556</span><span class="p">,</span>
-                              <span class="s1">&#39;nir&#39;</span><span class="p">:</span><span class="mf">0.6966</span><span class="p">,</span> <span class="s1">&#39;swir1&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.0242</span><span class="p">,</span> <span class="s1">&#39;swir2&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.2630</span><span class="p">},</span>
-                       <span class="s1">&#39;ls8&#39;</span><span class="p">:{</span><span class="s1">&#39;blue&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.2941</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.2430</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.5424</span><span class="p">,</span>
-                              <span class="s1">&#39;nir&#39;</span><span class="p">:</span><span class="mf">0.7276</span><span class="p">,</span> <span class="s1">&#39;swir1&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.0713</span><span class="p">,</span> <span class="s1">&#39;swir2&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.1608</span><span class="p">}}</span>
+                       <span class="s1">&#39;ls7&#39;</span><span class="p">:{</span><span class="s1">&#39;blue&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.1603</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.2819</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.4934</span><span class="p">,</span>
+                              <span class="s1">&#39;nir&#39;</span><span class="p">:</span><span class="mf">0.7940</span><span class="p">,</span> <span class="s1">&#39;swir1&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.0002</span><span class="p">,</span> <span class="s1">&#39;swir2&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.1446</span><span class="p">},</span>
+                       <span class="s1">&#39;ls8&#39;</span><span class="p">:{</span><span class="s1">&#39;blue&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.1603</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.2819</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.4934</span><span class="p">,</span>
+                              <span class="s1">&#39;nir&#39;</span><span class="p">:</span><span class="mf">0.7940</span><span class="p">,</span> <span class="s1">&#39;swir1&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.0002</span><span class="p">,</span> <span class="s1">&#39;swir2&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.1446</span><span class="p">}}</span>
 
     <span class="n">brightness_coeff</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ls5&#39;</span><span class="p">:{</span><span class="s1">&#39;blue&#39;</span><span class="p">:</span><span class="mf">0.2043</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">:</span><span class="mf">0.4158</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">:</span><span class="mf">0.5524</span><span class="p">,</span>
                                <span class="s1">&#39;nir&#39;</span><span class="p">:</span><span class="mf">0.5741</span><span class="p">,</span> <span class="s1">&#39;swir1&#39;</span><span class="p">:</span><span class="mf">0.3124</span><span class="p">,</span> <span class="s1">&#39;swir2&#39;</span><span class="p">:</span><span class="mf">0.2303</span><span class="p">},</span>
-                        <span class="s1">&#39;ls7&#39;</span><span class="p">:{</span><span class="s1">&#39;blue&#39;</span><span class="p">:</span><span class="mf">0.3561</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">:</span><span class="mf">0.3972</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">:</span><span class="mf">0.3904</span><span class="p">,</span>
-                               <span class="s1">&#39;nir&#39;</span><span class="p">:</span><span class="mf">0.6966</span><span class="p">,</span> <span class="s1">&#39;swir1&#39;</span><span class="p">:</span><span class="mf">0.2286</span><span class="p">,</span> <span class="s1">&#39;swir2&#39;</span><span class="p">:</span><span class="mf">0.1596</span><span class="p">},</span>
-                        <span class="s1">&#39;ls8&#39;</span><span class="p">:{</span><span class="s1">&#39;blue&#39;</span><span class="p">:</span><span class="mf">0.3029</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">:</span><span class="mf">0.2786</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">:</span><span class="mf">0.4733</span><span class="p">,</span>
-                               <span class="s1">&#39;nir&#39;</span><span class="p">:</span><span class="mf">0.5599</span><span class="p">,</span> <span class="s1">&#39;swir1&#39;</span><span class="p">:</span><span class="mf">0.508</span><span class="p">,</span> <span class="s1">&#39;swir2&#39;</span><span class="p">:</span><span class="mf">0.1872</span><span class="p">}}</span>
+                        <span class="s1">&#39;ls7&#39;</span><span class="p">:{</span><span class="s1">&#39;blue&#39;</span><span class="p">:</span><span class="mf">0.2043</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">:</span><span class="mf">0.4158</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">:</span><span class="mf">0.5524</span><span class="p">,</span>
+                               <span class="s1">&#39;nir&#39;</span><span class="p">:</span><span class="mf">0.5741</span><span class="p">,</span> <span class="s1">&#39;swir1&#39;</span><span class="p">:</span><span class="mf">0.3124</span><span class="p">,</span> <span class="s1">&#39;swir2&#39;</span><span class="p">:</span><span class="mf">0.2303</span><span class="p">},</span>
+                        <span class="s1">&#39;ls8&#39;</span><span class="p">:{</span><span class="s1">&#39;blue&#39;</span><span class="p">:</span><span class="mf">0.2043</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">:</span><span class="mf">0.4158</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">:</span><span class="mf">0.5524</span><span class="p">,</span>
+                               <span class="s1">&#39;nir&#39;</span><span class="p">:</span><span class="mf">0.5741</span><span class="p">,</span> <span class="s1">&#39;swir1&#39;</span><span class="p">:</span><span class="mf">0.3124</span><span class="p">,</span> <span class="s1">&#39;swir2&#39;</span><span class="p">:</span><span class="mf">0.2303</span><span class="p">}}</span>
 
     <span class="c1"># Dict to use correct coefficients for each tasseled cap band</span>
     <span class="n">analysis_coefficient</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;wetness&#39;</span><span class="p">:</span> <span class="n">wetness_coeff</span><span class="p">,</span>
@@ -780,268 +713,20 @@ data source used for training and classification</p>
 
     <span class="k">return</span><span class="p">(</span><span class="n">output_array</span><span class="p">)</span>
 
-
-<span class="k">def</span> <span class="nf">layer_extent</span><span class="p">(</span><span class="n">layer</span><span class="p">):</span>
-
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Computes min and max extents for GDAL layer features. Compared to</span>
-<span class="sd">    built-in &quot;.GetExtent&quot; that always returns unfiltered extents, this</span>
-<span class="sd">    allows you to compute extents of features within filtered layers</span>
-<span class="sd">    (e.g. layers filtered with &#39;SetAttributeFilter&#39;). Works for point,</span>
-<span class="sd">    line and polygon features, returning the extent of feature centroids</span>
-<span class="sd">    for lines and polygon datasets.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="c1"># Extract tuples of x, y, z coordinates for each point feature</span>
-    <span class="n">point_coords</span> <span class="o">=</span> <span class="p">[</span><span class="n">feature</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span><span class="o">.</span><span class="n">Centroid</span><span class="p">()</span><span class="o">.</span><span class="n">GetPoint</span><span class="p">()</span> <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">layer</span><span class="p">]</span>
-
-    <span class="c1"># Compute mins and maxes across points for each tuple element</span>
-    <span class="n">max_x</span><span class="p">,</span> <span class="n">max_y</span><span class="p">,</span> <span class="n">max_z</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">min</span><span class="p">,</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">point_coords</span><span class="p">))</span>
-    <span class="n">min_x</span><span class="p">,</span> <span class="n">min_y</span><span class="p">,</span> <span class="n">min_z</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">max</span><span class="p">,</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">point_coords</span><span class="p">))</span>
-
-    <span class="k">return</span>  <span class="n">min_x</span><span class="p">,</span> <span class="n">max_x</span><span class="p">,</span> <span class="n">min_y</span><span class="p">,</span> <span class="n">max_y</span>
-
-
-<span class="k">def</span> <span class="nf">randomforest_train</span><span class="p">(</span><span class="n">train_shps</span><span class="p">,</span> <span class="n">train_field</span><span class="p">,</span> <span class="n">data_func</span><span class="p">,</span> <span class="n">data_func_params</span> <span class="o">=</span> <span class="p">{},</span>
-                       <span class="n">classifier_params</span> <span class="o">=</span> <span class="p">{},</span> <span class="n">train_reclass</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-
-    <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Extracts training data from xarray dataset for multiple training shapefiles.</span>
-<span class="sd">    Loops through each each training shapefile, using shapefile extent for spatial</span>
-<span class="sd">    query. Outputs a trained classifier object and training label and data arrays.</span>
-
-<span class="sd">    :attr train_shps: list of training shapefile paths to import. Each file</span>
-<span class="sd">    should cover a small enough spatial area so as to not slow dc.load function</span>
-<span class="sd">    excessively (e.g. 100 x 100km max)</span>
-<span class="sd">    :attr train_field: shapefile field containing classification class</span>
-<span class="sd">    :attr data_func: function to import xarray data for each shapefile. Should return</span>
-<span class="sd">    an xarray dataset with &#39;geo_transform&#39; and &#39;proj&#39; attributes</span>
-<span class="sd">    :attr data_func_params: optional dict of dc.load query inputs. Useful for defining</span>
-<span class="sd">    time query for temporal datasets (spatial queries are set automatically from shapefiles)</span>
-<span class="sd">    :attr classifier_params: optional dict of parameters for training random forest</span>
-<span class="sd">    :attr train_reclass: optional dict of from:to pairs to re-map shapefile field classes.</span>
-<span class="sd">    Useful for simplifying multiple classes into a simpler set of classes</span>
-
-<span class="sd">    :returns: trained classifier</span>
-<span class="sd">    :returns: array of training labels</span>
-<span class="sd">    :returns: array of training data</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-
-    <span class="c1"># Output training label and pixel arrays</span>
-    <span class="n">training_labels_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
-    <span class="n">training_samples_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
-
-    <span class="c1"># For each shapefile, extract datacube data using extent of points</span>
-    <span class="c1"># and add resulting spectral data and labels to list of arrays</span>
-    <span class="k">for</span> <span class="n">train_shp</span> <span class="ow">in</span> <span class="n">train_shps</span><span class="p">:</span>
-
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Importing training data from </span><span class="si">{}</span><span class="s2">:&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">train_shp</span><span class="p">))</span>
-
-        <span class="k">try</span><span class="p">:</span>
-
-            <span class="c1"># Open vector of training points with gdal</span>
-            <span class="n">data_source</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">OpenEx</span><span class="p">(</span><span class="n">train_shp</span><span class="p">,</span> <span class="n">gdal</span><span class="o">.</span><span class="n">OF_VECTOR</span><span class="p">)</span>
-            <span class="n">layer</span> <span class="o">=</span> <span class="n">data_source</span><span class="o">.</span><span class="n">GetLayer</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-            <span class="c1"># Compute extents and generate spatial query</span>
-            <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="n">layer_extent</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
-            <span class="n">query_train</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">xmin</span> <span class="o">+</span> <span class="mi">2000</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">-</span> <span class="mi">2000</span><span class="p">),</span>
-                           <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">ymin</span> <span class="o">+</span> <span class="mi">2000</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">-</span> <span class="mi">2000</span><span class="p">),</span>
-                           <span class="s1">&#39;crs&#39;</span><span class="p">:</span> <span class="s1">&#39;EPSG:3577&#39;</span><span class="p">,</span>
-                           <span class="o">**</span><span class="n">data_func_params</span><span class="p">}</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">query_train</span><span class="p">)</span>
-
-            <span class="c1"># Import data  as xarray and extract projection/transform data</span>
-            <span class="n">training_xarray</span> <span class="o">=</span> <span class="n">data_func</span><span class="p">(</span><span class="n">query_train</span><span class="p">)</span>
-            <span class="n">geo_transform_train</span> <span class="o">=</span> <span class="n">training_xarray</span><span class="o">.</span><span class="n">geo_transform</span>
-            <span class="n">proj_train</span> <span class="o">=</span> <span class="n">training_xarray</span><span class="o">.</span><span class="n">proj</span>
-
-            <span class="c1"># Covert to array and rearrange dimension order</span>
-            <span class="n">bands_array_train</span> <span class="o">=</span> <span class="n">training_xarray</span><span class="o">.</span><span class="n">to_array</span><span class="p">()</span><span class="o">.</span><span class="n">values</span>
-            <span class="n">bands_array_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">&#39;bxy-&gt;xyb&#39;</span><span class="p">,</span> <span class="n">bands_array_train</span><span class="p">)</span>
-            <span class="n">rows_train</span><span class="p">,</span> <span class="n">cols_train</span><span class="p">,</span> <span class="n">bands_n_train</span> <span class="o">=</span> <span class="n">bands_array_train</span><span class="o">.</span><span class="n">shape</span>
-
-            <span class="c1"># Import training data shapefiles and convert to matching raster pixels</span>
-            <span class="n">training_shapefile</span> <span class="o">=</span> <span class="n">train_shp</span>
-            <span class="n">training_pixels</span> <span class="o">=</span> <span class="n">rasterize_vector</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">cols_train</span><span class="p">,</span> <span class="n">rows_train</span><span class="p">,</span>
-                                               <span class="n">geo_transform_train</span><span class="p">,</span> <span class="n">proj_train</span><span class="p">,</span>
-                                               <span class="n">field</span> <span class="o">=</span> <span class="n">train_field</span><span class="p">)</span>
-
-            <span class="c1"># Extract matching image sample data for each labelled pixel location</span>
-            <span class="n">is_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">training_pixels</span><span class="p">)</span>
-            <span class="n">training_labels</span> <span class="o">=</span> <span class="n">training_pixels</span><span class="p">[</span><span class="n">is_train</span><span class="p">]</span>
-            <span class="n">training_samples</span> <span class="o">=</span> <span class="n">bands_array_train</span><span class="p">[</span><span class="n">is_train</span><span class="p">]</span>
-
-            <span class="c1"># Remove nans from training samples</span>
-            <span class="n">training_labels</span> <span class="o">=</span> <span class="n">training_labels</span><span class="p">[</span><span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">training_samples</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>
-            <span class="n">training_samples</span> <span class="o">=</span> <span class="n">training_samples</span><span class="p">[</span><span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">training_samples</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>
-
-            <span class="c1"># Append outputs</span>
-            <span class="n">training_labels_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">training_labels</span><span class="p">)</span>
-            <span class="n">training_samples_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">training_samples</span><span class="p">)</span>
-
-        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
-
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  Skipping training data from </span><span class="si">{}</span><span class="s2">; check file path&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">train_shp</span><span class="p">))</span>
-
-    <span class="c1"># Combine polygon training data</span>
-    <span class="n">training_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">training_labels_list</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">training_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">training_samples_list</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-
-    <span class="c1"># Optionally re-map classes prior to classification training</span>
-    <span class="k">if</span> <span class="n">train_reclass</span><span class="p">:</span>
-
-        <span class="c1"># For each class in training labels, re-map to new values using train_reclass</span>
-        <span class="n">training_labels</span><span class="p">[:]</span> <span class="o">=</span> <span class="p">[</span><span class="n">train_reclass</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">training_labels</span><span class="p">]</span>
-
-    <span class="c1"># Set up classifier and train on training sample data and labels</span>
-    <span class="c1"># Options for tuning: https://www.analyticsvidhya.com/blog/2015/06/tuning-random-forest-model/</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Training random forest classifier...&quot;</span><span class="p">)</span>
-    <span class="n">classifier</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="o">**</span><span class="n">classifier_params</span><span class="p">)</span>
-    <span class="n">classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">training_samples</span><span class="p">,</span> <span class="n">training_labels</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Model trained on </span><span class="si">{0}</span><span class="s2"> bands and &quot;</span>
-          <span class="s2">&quot;</span><span class="si">{1}</span><span class="s2"> training samples&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">training_samples</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-                                        <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">training_samples</span><span class="p">))))</span>
-
-    <span class="k">return</span> <span class="n">classifier</span><span class="p">,</span> <span class="n">training_labels</span><span class="p">,</span> <span class="n">training_samples</span>
-
-
-<span class="k">def</span> <span class="nf">randomforest_classify</span><span class="p">(</span><span class="n">classifier</span><span class="p">,</span> <span class="n">analysis_data</span><span class="p">,</span> <span class="n">classification_output</span><span class="p">,</span> <span class="n">class_prob</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
-
-    <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Performs classification of xarray dataset using pre-trained random forest classifier,</span>
-<span class="sd">    and export classified output to a geotiff. Optionally, also export a predicted class</span>
-<span class="sd">    probability raster (i.e. indicating fraction of samples of the predicted class in a leaf)</span>
-
-<span class="sd">    :attr classifier: random forest classifier generated using randomforest_train</span>
-<span class="sd">    :attr analysis_data: xarray dataset with &#39;geo_transform&#39; and &#39;proj&#39; attributes</span>
-<span class="sd">    and the same number of bands as data used to train classifier</span>
-<span class="sd">    :attr classification_output: file path to output geotiff classification</span>
-<span class="sd">    :attr class_prob: if True, compute predicted class probability and export to</span>
-<span class="sd">    geotiff suffixed with &quot;_prob.tif&quot;</span>
-
-<span class="sd">    :returns: classified array and (optional) classification probability array</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-
-    <span class="n">geo_transform</span> <span class="o">=</span> <span class="n">analysis_data</span><span class="o">.</span><span class="n">geo_transform</span>
-    <span class="n">proj</span> <span class="o">=</span> <span class="n">analysis_data</span><span class="o">.</span><span class="n">proj</span>
-
-    <span class="c1"># Covert to array and rearrange dimension order</span>
-    <span class="n">analysis_array</span> <span class="o">=</span> <span class="n">analysis_data</span><span class="o">.</span><span class="n">to_array</span><span class="p">()</span><span class="o">.</span><span class="n">values</span>
-    <span class="n">analysis_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">&#39;bxy-&gt;xyb&#39;</span><span class="p">,</span> <span class="n">analysis_array</span><span class="p">)</span>
-    <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">bands_n</span> <span class="o">=</span> <span class="n">analysis_array</span><span class="o">.</span><span class="n">shape</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data to classify:</span><span class="se">\n</span><span class="s2">  Rows: </span><span class="si">{0}</span><span class="se">\n</span><span class="s2">  Columns: </span><span class="si">{1}</span><span class="se">\n</span><span class="s2">  Bands: </span><span class="si">{2}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">bands_n</span><span class="p">))</span>
-
-    <span class="c1"># Remove nodata and return flattened &#39;pixel x bands&#39; array</span>
-    <span class="n">input_nodata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">analysis_array</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="n">flat_pixels</span> <span class="o">=</span> <span class="n">analysis_array</span><span class="p">[</span><span class="o">~</span><span class="n">input_nodata</span><span class="p">]</span>
-
-    <span class="c1"># Run classification</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Classification processing...&quot;</span><span class="p">)</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">flat_pixels</span><span class="p">)</span>
-
-    <span class="c1"># Restore 2D array by assigning flattened output to empty array</span>
-    <span class="n">classification</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">))</span>
-    <span class="n">classification</span><span class="p">[</span><span class="o">~</span><span class="n">input_nodata</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span>
-
-    <span class="c1"># Nodata removed</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  </span><span class="si">{}</span><span class="s2"> nodata cells removed&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">classification</span> <span class="o">==</span> <span class="mi">0</span><span class="p">))))</span>
-
-    <span class="c1"># Export to file</span>
-    <span class="n">write_geotiff</span><span class="p">(</span><span class="n">classification_output</span><span class="p">,</span>
-                  <span class="n">data</span> <span class="o">=</span> <span class="n">classification</span><span class="p">,</span>
-                  <span class="n">geo_transform</span> <span class="o">=</span> <span class="n">geo_transform</span><span class="p">,</span>
-                  <span class="n">projection</span> <span class="o">=</span> <span class="n">proj</span><span class="p">,</span>
-                  <span class="n">nodata_val</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-                  <span class="n">dtype</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">GDT_Byte</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  Classification exported&quot;</span><span class="p">)</span>
-
-    <span class="c1"># If requested, export classification probability:</span>
-    <span class="k">if</span> <span class="n">class_prob</span><span class="p">:</span>
-
-        <span class="c1"># Compute predicted class probability (fraction of samples of same class in a leaf)</span>
-        <span class="c1"># Use max to return only highest probability (the one that determined output class)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Class probability processing...&quot;</span><span class="p">)</span>
-        <span class="n">result_prob</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">((</span><span class="n">flat_pixels</span><span class="p">))</span>
-        <span class="n">result_prob</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">result_prob</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mf">100.0</span>
-
-        <span class="c1"># Restore 2D array by assigning flattened output to empty array</span>
-        <span class="n">classification_prob</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">))</span>
-        <span class="n">classification_prob</span><span class="p">[</span><span class="o">~</span><span class="n">input_nodata</span><span class="p">]</span> <span class="o">=</span> <span class="n">result_prob</span>
-
-        <span class="c1"># Export to file</span>
-        <span class="n">write_geotiff</span><span class="p">(</span><span class="n">splitext</span><span class="p">(</span><span class="n">classification_output</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;_prob.tif&quot;</span><span class="p">,</span>
-                      <span class="n">data</span> <span class="o">=</span> <span class="n">classification_prob</span><span class="p">,</span>
-                      <span class="n">geo_transform</span> <span class="o">=</span> <span class="n">geo_transform</span><span class="p">,</span>
-                      <span class="n">projection</span> <span class="o">=</span> <span class="n">proj</span><span class="p">,</span>
-                      <span class="n">nodata_val</span> <span class="o">=</span> <span class="o">-</span><span class="mi">999</span><span class="p">,</span>
-                      <span class="n">dtype</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">GDT_Byte</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  Class probability exported&quot;</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="n">classification</span><span class="p">,</span> <span class="n">classification_prob</span>
-
-    <span class="k">else</span><span class="p">:</span>
-
-        <span class="k">return</span> <span class="n">classification</span><span class="p">,</span> <span class="kc">None</span>
-
-
-<span class="k">def</span> <span class="nf">randomforest_eval</span><span class="p">(</span><span class="n">training_labels</span><span class="p">,</span> <span class="n">training_samples</span><span class="p">,</span> <span class="n">classifier_scenario</span><span class="p">,</span>
-                      <span class="n">output_path</span><span class="p">,</span> <span class="n">max_estimators</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
-
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Takes a set of training labels and training samples, and plots OOB error against</span>
-<span class="sd">    a range of classifier parameters to explore how parameters affect classification.</span>
-
-<span class="sd">    :attr training_labels: an (X, ) array of training labels</span>
-<span class="sd">    :attr training_samples: an (X, B) array of training sample data</span>
-<span class="sd">    :attr classifier_scenario: dict of classifier scenarios to plot</span>
-<span class="sd">    :attr output_path: output path for plot of OOB error by scenario</span>
-<span class="sd">    :attr max_estimators: max number of estimators to plot on x-axis (default = 100)</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="c1"># Map a classifier name to a list of (&lt;n_estimators&gt;, &lt;error rate&gt;) pairs.</span>
-    <span class="n">error_rate</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">((</span><span class="n">label</span><span class="p">,</span> <span class="p">[])</span> <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">classifier_scenario</span><span class="p">)</span>
-
-    <span class="c1"># Range of `n_estimators` values to explore.</span>
-    <span class="n">min_estimators</span> <span class="o">=</span> <span class="mi">1</span>
-
-    <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">clf</span> <span class="ow">in</span> <span class="n">classifier_scenario</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">min_estimators</span><span class="p">,</span> <span class="n">max_estimators</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-            <span class="n">clf</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">n_estimators</span> <span class="o">=</span> <span class="n">i</span><span class="p">)</span>
-            <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_samp</span><span class="p">,</span> <span class="n">train_lab</span><span class="p">)</span>
-
-            <span class="c1"># Record the OOB error for each `n_estimators=i` setting.</span>
-            <span class="n">oob_error</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">clf</span><span class="o">.</span><span class="n">oob_score_</span>
-            <span class="n">error_rate</span><span class="p">[</span><span class="n">label</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">oob_error</span><span class="p">))</span>
-
-    <span class="c1"># Generate the &quot;OOB error rate&quot; vs. &quot;n_estimators&quot; plot.</span>
-    <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">clf_err</span> <span class="ow">in</span> <span class="n">error_rate</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">clf_err</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="n">label</span><span class="p">)</span>
-
-    <span class="c1"># Plot and save output as figure</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">min_estimators</span><span class="p">,</span> <span class="n">max_estimators</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;n_estimators&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;OOB error rate&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="n">bbox_inches</span> <span class="o">=</span> <span class="s1">&#39;tight&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="Functions-used-to-import-training-and-analysis-data">
-<h2>Functions used to import training and analysis data<a class="headerlink" href="#Functions-used-to-import-training-and-analysis-data" title="Permalink to this headline">¶</a></h2>
+<h1>Functions used to import training and analysis data<a class="headerlink" href="#Functions-used-to-import-training-and-analysis-data" title="Permalink to this headline">¶</a></h1>
 <p>Both of these functions import datacube data using a query, and return
-an xarray dataset with multiple bands/variables and ‘geo_transform’ and
-‘proj’ attributes. This format is required as an input to both
-‘randomforest_train’ and ‘randomforest_classify’ to ensure that both
+an xarray dataset with multiple bands/variables and <code class="docutils literal notranslate"><span class="pre">geo_transform</span></code>
+and <code class="docutils literal notranslate"><span class="pre">proj</span></code> attributes. This format is required as an input to both
+<code class="docutils literal notranslate"><span class="pre">randomforest_train</span></code> and <code class="docutils literal notranslate"><span class="pre">randomforest_classify</span></code> to ensure that both
 training and analysis data are consistent.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [65]:
+<span></span>In [5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1100,13 +785,13 @@ training and analysis data are consistent.</p>
 </div>
 </div>
 <div class="section" id="Import-training-data-and-fit-model">
-<h2>Import training data and fit model<a class="headerlink" href="#Import-training-data-and-fit-model" title="Permalink to this headline">¶</a></h2>
-<p>Uses ‘randomforest_train’ to extract training data from potentially
+<h1>Import training data and fit model<a class="headerlink" href="#Import-training-data-and-fit-model" title="Permalink to this headline">¶</a></h1>
+<p>Uses <code class="docutils literal notranslate"><span class="pre">randomforest_train</span></code> to extract training data from potentially
 multiple training shapefiles, and returns a trained classifier (and
 optionally, training label and training sample arrays)</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [66]:
+<span></span>In [6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1141,14 +826,14 @@ optionally, training label and training sample arrays)</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
+Importing training data from raw_data/train/training_data_mangrove3.shp:
+{&#39;x&#39;: (-699112.9082409441, -724416.739027992), &#39;y&#39;: (-1612261.936734104, -1634952.3249203684), &#39;crs&#39;: &#39;EPSG:3577&#39;}
 Importing training data from raw_data/train/training_data_mangrove.shp:
 {&#39;x&#39;: (-96195.37617727809, -159027.5762163046), &#39;y&#39;: (-1293746.4245350992, -1349139.5474466463), &#39;crs&#39;: &#39;EPSG:3577&#39;}
 Importing training data from raw_data/train/training_data_mangrove1.shp:
 {&#39;x&#39;: (-248822.2628674942, -269215.4139100249), &#39;y&#39;: (-1570514.9681683218, -1590991.9822624666), &#39;crs&#39;: &#39;EPSG:3577&#39;}
 Importing training data from raw_data/train/training_data_mangrove2.shp:
 {&#39;x&#39;: (-216770.8137106544, -237605.05985552695), &#39;y&#39;: (-1630468.8744477245, -1646265.5913745423), &#39;crs&#39;: &#39;EPSG:3577&#39;}
-Importing training data from raw_data/train/training_data_mangrove3.shp:
-{&#39;x&#39;: (-699112.9082409441, -724416.739027992), &#39;y&#39;: (-1612261.936734104, -1634952.3249203684), &#39;crs&#39;: &#39;EPSG:3577&#39;}
 
 Training random forest classifier...
 Model trained on 12 bands and 352 training samples
@@ -1156,23 +841,23 @@ Model trained on 12 bands and 352 training samples
 </div>
 </div>
 <div class="section" id="Import-analysis-data-and-classify">
-<h2>Import analysis data and classify<a class="headerlink" href="#Import-analysis-data-and-classify" title="Permalink to this headline">¶</a></h2>
+<h1>Import analysis data and classify<a class="headerlink" href="#Import-analysis-data-and-classify" title="Permalink to this headline">¶</a></h1>
 <p>Classifies and exports an analysis dataset using a previously trained
 random forest classifier, provided this dataset has the same number of
 bands/variables as the data used to train the classifier. Using the same
-data function used to train the classifier (e.g. ‘data_func’ previously
-defined as either ‘tc_import’ or ‘hltc_import’) will ensure this is
-the case. By setting ‘class_prob = True’, can optionally export a
-geotiff of predicted class probabilities in addition to the
-classification output.</p>
+data function used to train the classifier (e.g. <code class="docutils literal notranslate"><span class="pre">data_func</span></code>
+previously defined as either <code class="docutils literal notranslate"><span class="pre">tc_import</span></code> or <code class="docutils literal notranslate"><span class="pre">hltc_import</span></code>) will
+ensure this is the case. By setting <code class="docutils literal notranslate"><span class="pre">class_prob</span> <span class="pre">=</span> <span class="pre">True</span></code>, can
+optionally export a geotiff of predicted class probabilities in addition
+to the classification output.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [109]:
+<span></span>In [10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># Set up analysis data query</span>
-<span class="n">lat_point</span><span class="p">,</span> <span class="n">lon_point</span><span class="p">,</span> <span class="n">buffer</span> <span class="o">=</span> <span class="o">-</span><span class="mf">12.5798399926</span><span class="p">,</span> <span class="mf">130.782907919</span><span class="p">,</span> <span class="mi">50000</span>
+<span class="n">lat_point</span><span class="p">,</span> <span class="n">lon_point</span><span class="p">,</span> <span class="n">buffer</span> <span class="o">=</span> <span class="o">-</span><span class="mf">12.5798399926</span><span class="p">,</span> <span class="mf">130.782907919</span><span class="p">,</span> <span class="mi">30000</span>
 <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">point</span><span class="p">(</span><span class="n">lon_point</span><span class="p">,</span> <span class="n">lat_point</span><span class="p">,</span> <span class="n">CRS</span><span class="p">(</span><span class="s1">&#39;WGS84&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">CRS</span><span class="p">(</span><span class="s1">&#39;EPSG:3577&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">query</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">buffer</span><span class="p">),</span>
          <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">buffer</span><span class="p">),</span>
@@ -1215,8 +900,8 @@ classification output.</p>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Data to classify:
-  Rows: 4001
-  Columns: 4001
+  Rows: 2401
+  Columns: 2401
   Bands: 12
 
 Classification processing...
@@ -1229,11 +914,11 @@ Class probability processing...
 </div>
 <div class="nboutput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[109]:
+<span></span>Out[10]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.collections.QuadMesh at 0x7fd995266a58&gt;
+<span></span>&lt;matplotlib.collections.QuadMesh at 0x7f94ba464b00&gt;
 </pre></div>
 </div>
 </div>
@@ -1253,14 +938,14 @@ Class probability processing...
 </div>
 </div>
 <div class="section" id="Feature/band/variable-importance">
-<h2>Feature/band/variable importance<a class="headerlink" href="#Feature/band/variable-importance" title="Permalink to this headline">¶</a></h2>
+<h1>Feature/band/variable importance<a class="headerlink" href="#Feature/band/variable-importance" title="Permalink to this headline">¶</a></h1>
 <p>Extract classifier estimates of the relative importance of each
 band/variable for training the classifier. Useful for potentially
 selecting a subset of input bands/variables for model
 training/classification (i.e. optimising feature space)</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [79]:
+<span></span>In [8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1307,51 +992,51 @@ training/classification (i.e. optimising feature space)</p>
   <tbody>
     <tr>
       <th>lt_blue</th>
-      <td>0.078837</td>
+      <td>0.079259</td>
     </tr>
     <tr>
       <th>lt_green</th>
-      <td>0.047461</td>
+      <td>0.059194</td>
     </tr>
     <tr>
       <th>lt_red</th>
-      <td>0.041073</td>
+      <td>0.045157</td>
     </tr>
     <tr>
       <th>lt_nir</th>
-      <td>0.070420</td>
+      <td>0.060546</td>
     </tr>
     <tr>
       <th>lt_swir1</th>
-      <td>0.065832</td>
+      <td>0.071981</td>
     </tr>
     <tr>
       <th>lt_swir2</th>
-      <td>0.124902</td>
+      <td>0.123812</td>
     </tr>
     <tr>
       <th>ht_blue</th>
-      <td>0.065044</td>
+      <td>0.051885</td>
     </tr>
     <tr>
       <th>ht_green</th>
-      <td>0.058947</td>
+      <td>0.055157</td>
     </tr>
     <tr>
       <th>ht_red</th>
-      <td>0.038579</td>
+      <td>0.042315</td>
     </tr>
     <tr>
       <th>ht_nir</th>
-      <td>0.083995</td>
+      <td>0.077109</td>
     </tr>
     <tr>
       <th>ht_swir1</th>
-      <td>0.137795</td>
+      <td>0.141558</td>
     </tr>
     <tr>
       <th>ht_swir2</th>
-      <td>0.187116</td>
+      <td>0.192025</td>
     </tr>
   </tbody>
 </table>
@@ -1366,7 +1051,7 @@ training/classification (i.e. optimising feature space)</p>
 </div>
 </div>
 <div class="section" id="Plot-performance-of-model-by-parameter-values">
-<h2>Plot performance of model by parameter values<a class="headerlink" href="#Plot-performance-of-model-by-parameter-values" title="Permalink to this headline">¶</a></h2>
+<h1>Plot performance of model by parameter values<a class="headerlink" href="#Plot-performance-of-model-by-parameter-values" title="Permalink to this headline">¶</a></h1>
 <p>Random forest classifiers contain many modifiable parameters that can
 strongly affect the performance of the model. This section evaluates the
 effect of these parameters by plotting out-of-bag (OOB) error for a set
@@ -1374,15 +1059,11 @@ of classifier parameter scenarios, and exports the resulting plots to
 file.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [80]:
+<span></span>In [9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># NOTE: Setting the `warm_start` construction parameter to `True` disables</span>
-<span class="c1"># support for parallelized ensembles but is necessary for tracking the OOB</span>
-<span class="c1"># error trajectory during training.</span>
-
-<span class="c1"># Test effect of max features</span>
+<span></span><span class="c1"># Test effect of max features</span>
 <span class="n">classifier_scenario1</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;max_features = &#39;sqrt&#39;&quot;</span><span class="p">,</span>
                         <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">warm_start</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
                                                <span class="n">oob_score</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
@@ -1532,13 +1213,13 @@ file.</p>
 </div>
 </div>
 <div class="section" id="Export-tree-diagrams">
-<h2>Export tree diagrams<a class="headerlink" href="#Export-tree-diagrams" title="Permalink to this headline">¶</a></h2>
+<h1>Export tree diagrams<a class="headerlink" href="#Export-tree-diagrams" title="Permalink to this headline">¶</a></h1>
 <p>Export .png plots of each decision tree in the random forest ensemble.
 Useful for inspecting the splits used by the classifier to classify the
 data.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [6]:
+<span></span>In [ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1558,7 +1239,6 @@ data.</p>
               <span class="s1">&#39;figures/tree_graphs/tree&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.png&#39;</span><span class="p">)</span>
 
 </pre></div>
-</div>
 </div>
 </div>
 </div>
