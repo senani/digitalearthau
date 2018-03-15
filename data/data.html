@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Surface Reflectance NBAR &mdash; Digital Earth Australia 1.0.0 documentation</title>
+  <title>Surface Reflectance &mdash; Digital Earth Australia 1.0.0 documentation</title>
   
 
   
@@ -39,7 +39,7 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="Digital Earth Australia 1.0.0 documentation" href="../index.html"/>
-        <link rel="next" title="Creating New Product" href="../internal/new_product.html"/>
+        <link rel="next" title="Creating a New Product" href="../internal/new_product.html"/>
         <link rel="prev" title="Tags Index" href="../genindex.html"/> 
 
   
@@ -100,14 +100,14 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../about/intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../about/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/changelog.html">DEA NCI Environment Changelog</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Connect</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../connect/account.html">Register</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connect/account.html#getting-help">Getting help</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connect/install.html">Install</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connect/nci_basics.html">Running DEA Manually</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connect/jupyter.html">Jupyter Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connect/account.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connect/install.html">Installation and Software Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connect/nci_basics.html">Command Line Usage (Advanced)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connect/jupyter.html">Jupyter Notebooks Introduction</a></li>
 </ul>
 <p class="caption"><span class="caption-text">User Guide</span></p>
 <ul>
@@ -121,42 +121,44 @@
 </ul>
 <p class="caption"><span class="caption-text">Data Guide</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Surface Reflectance NBAR</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#features">Features</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Surface Reflectance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#nbar">NBAR</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#features">Features</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#surface-reflectance-nbar-t">Surface Reflectance NBAR-T</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">Features</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#landsat-archive">Landsat Archive</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#surface-reflectance-correction-models">Surface Reflectance Correction Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nbar-t">NBAR-T</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#landsat-archive">Landsat Archive</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#surface-reflectance-correction-models">Surface Reflectance Correction Models</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#pixel-quality">Pixel Quality</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id2">Summary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pixel-quality">Pixel Quality</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Features</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#fractional-cover">Fractional Cover</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id5">Summary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">Features</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#potential-applications">Potential Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fractional-cover">Fractional Cover</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potential-applications">Potential Applications</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <p class="caption"><span class="caption-text">Developer Guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../internal/new_product.html">Creating New Product</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/release_process.html">Build a version</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/release_process.html#marking-it-stable">Marking it stable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internal/new_product.html">Creating a New Product</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../internal/git_best_practice.html">Git Best Practice</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/release.html">Building a Release</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internal/release.html">DEA Release Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internal/modules.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internal/modules.html#user-instructions">User instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internal/modules.html#maintainer-instructions">Maintainer Instructions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../internal/orchestration.html">DEA Orchestration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../internal/collection_management.html">Collection Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/collection_management.html#defining-collections">Defining Collections</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../internal/goalkeeper_instructions.html">What’s a Goalkeeper</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/requirements_met.html">DEA Smoke Test</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/requirements_met.html#Data-load-examples">Data load examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internal/requirements_met.html">DEA Code Functionality Examples</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../genindex.html">Tags Index</a></li>
@@ -204,7 +206,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Surface Reflectance NBAR</li>
+      <li>Surface Reflectance</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -257,10 +259,12 @@
     margin-right: 4px;  /* make room for the exclamation icon */
 }
 </style>
-<div class="section" id="surface-reflectance-nbar">
-<span id="surface-reflectance"></span><h1>Surface Reflectance NBAR<a class="headerlink" href="#surface-reflectance-nbar" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="surface-reflectance">
+<span id="id1"></span><h1>Surface Reflectance<a class="headerlink" href="#surface-reflectance" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="nbar">
+<h2>NBAR<a class="headerlink" href="#nbar" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<h3>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h3>
 <p><strong>Surface Reflectance (SR)</strong> is a suite of <strong>Earth Observation (EO)</strong> products from GA.
 The SR product suite provides standardised optical surface reflectance datasets using robust physical models to correct
 for variations in image radiance values due to atmospheric properties, and sun and sensor geometry.
@@ -271,7 +275,7 @@ The approach involves atmospheric correction to compute surface-leaving radiance
 topography and angular variation in reflectance.</p>
 </div>
 <div class="section" id="features">
-<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<h3>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>The standardised SR data products deliver calibrated optical surface reflectance data across land and coastal fringes.
 SR is a medium resolution (~25 m) grid based on the Landsat TM/ETM+/OLI archive and presents surface reflectance data in 25 square metre grid cells.</li>
@@ -324,11 +328,11 @@ The resulting surface reflectance values are comparable both within individual i
 </table>
 </div>
 </div>
-<div class="section" id="surface-reflectance-nbar-t">
-<h1>Surface Reflectance NBAR-T<a class="headerlink" href="#surface-reflectance-nbar-t" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="nbar-t">
+<h2>NBAR-T<a class="headerlink" href="#nbar-t" title="Permalink to this headline">¶</a></h2>
 <p><strong>Surface reflectance NBAR-T</strong> includes the terrain illumination reflectance correction and has the same features of SR-NBAR and along with some of the features mentioned below.</p>
-<div class="section" id="id1">
-<h2>Features<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h3>Features<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>The SR product is created using a physics-based coupled BRDF and atmospheric correction model that can be applied to both flat and inclined surfaces (Li et al., 2012).
 The resulting surface reflectance values are comparable both within individual images and between images acquired at different times and/or with different sensors.</li>
@@ -345,7 +349,7 @@ used for NBART processing.</li>
 <p>It has the same bands description provided in Surface reflactance NBAR <a class="reference internal" href="#table">table</a>.</p>
 </div>
 <div class="section" id="landsat-archive">
-<h2>Landsat Archive<a class="headerlink" href="#landsat-archive" title="Permalink to this headline">¶</a></h2>
+<h3>Landsat Archive<a class="headerlink" href="#landsat-archive" title="Permalink to this headline">¶</a></h3>
 <p>GA has acquired Landsat imagery over Australia since 1979, including  TM, ETM+ and OLI imagery. While this data has been used extensively for numerous
 land and coastal mapping studies, its utility for accurate monitoring of environmental resources has been limited by the processing methods that have been traditionally
 used to correct for inherent geometric and radiometric distortions in EO imagery.
@@ -357,7 +361,7 @@ Computational Infrastructure (NCI) at the Australian National University (ANU) h
 complexities involved with production of this product.</p>
 </div>
 <div class="section" id="surface-reflectance-correction-models">
-<h2>Surface Reflectance Correction Models<a class="headerlink" href="#surface-reflectance-correction-models" title="Permalink to this headline">¶</a></h2>
+<h3>Surface Reflectance Correction Models<a class="headerlink" href="#surface-reflectance-correction-models" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>Image radiance values recorded by passive EO sensors are a composite of:</p>
 <ul class="simple">
@@ -431,19 +435,19 @@ different sensors will be primarily due to on-ground changes in biophysical para
 </tr>
 </tbody>
 </table>
-<p>Landsat 5 and 7 has the same bands as NBAR <a class="reference internal" href="#table">table</a>.</p>
+<p>Landsat 5 and 7 have the same bands as NBAR <a class="reference internal" href="#table">table</a>.</p>
 </div>
 </div>
 <div class="section" id="pixel-quality">
-<h1>Pixel Quality<a class="headerlink" href="#pixel-quality" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="id2">
-<h2>Summary<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>Pixel Quality<a class="headerlink" href="#pixel-quality" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>Summary<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p><strong>Product name : Pixel Quality 25 - (PQ25)</strong></p>
 <p>The PQ25 product is a product which is designed to facilitate interpretation and processing of <a class="reference internal" href="#surface-reflectance">Surface Reflectance</a> NBAR/NBART ,  <a class="reference internal" href="#fractional-cover">Fractional Cover</a>
 and derivative products.</p>
 </div>
-<div class="section" id="id3">
-<h2>Features<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h3>Features<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>PQ25 is an assessment of each image pixel to determine if it is an unobscured, unsaturated observation
 of the Earth surface and also whether the pixel is represented in each spectral band. The PQ product allows
 users to produce masks which can be used to exclude pixels which do not meet their quality criteria from analysis .
@@ -482,9 +486,9 @@ either algorithm or both algorithms.</p>
 </div>
 </div>
 <div class="section" id="fractional-cover">
-<span id="id4"></span><h1>Fractional Cover<a class="headerlink" href="#fractional-cover" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="id5">
-<h2>Summary<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<span id="id5"></span><h2>Fractional Cover<a class="headerlink" href="#fractional-cover" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h3>Summary<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p><strong>Product Name - Fractional Cover (FC25)</strong>
 The Fractional Cover product is derived from Geoscience Australias Australian
 Reflectance Grid 25 (ARG25) product and provides a 25m scale fractional cover
@@ -502,8 +506,8 @@ The FC25 product suite is currently available for every scene Landsat Thematic M
 (Landsat 5), Enhanced Thematic Mapper (Landsat 7) and Operational Land Imager
 (Landsat 8) scene acquired since 1987.</p>
 </div>
-<div class="section" id="id6">
-<h2>Features<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h3>Features<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p>Fractional cover data can be used to identify large scale patterns and trends and inform
 evidence based decision making and policy on topics including wind and water erosion
 risk, soil carbon dynamics, land management practices and rangeland condition. This
@@ -556,7 +560,7 @@ Geoscience Australia ground station network.</p>
 </table>
 </div>
 <div class="section" id="potential-applications">
-<h2>Potential Applications<a class="headerlink" href="#potential-applications" title="Permalink to this headline">¶</a></h2>
+<h3>Potential Applications<a class="headerlink" href="#potential-applications" title="Permalink to this headline">¶</a></h3>
 <p>Fractional cover provides valuable information for a range of environemental and
 agricultural applications, including:</p>
 <ul class="simple">
@@ -570,6 +574,7 @@ management)</li>
 </ul>
 </div>
 </div>
+</div>
 
 
            </div>
@@ -581,7 +586,7 @@ management)</li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../internal/new_product.html" class="btn btn-neutral float-right" title="Creating New Product" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../internal/new_product.html" class="btn btn-neutral float-right" title="Creating a New Product" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../genindex.html" class="btn btn-neutral" title="Tags Index" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

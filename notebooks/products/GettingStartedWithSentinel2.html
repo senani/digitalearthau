@@ -101,14 +101,14 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../about/intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../about/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about/changelog.html">DEA NCI Environment Changelog</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Connect</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../connect/account.html">Register</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../connect/account.html#getting-help">Getting help</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../connect/install.html">Install</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../connect/nci_basics.html">Running DEA Manually</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../connect/jupyter.html">Jupyter Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../connect/account.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../connect/install.html">Installation and Software Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../connect/nci_basics.html">Command Line Usage (Advanced)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../connect/jupyter.html">Jupyter Notebooks Introduction</a></li>
 </ul>
 <p class="caption"><span class="caption-text">User Guide</span></p>
 <ul>
@@ -145,24 +145,20 @@
 </ul>
 <p class="caption"><span class="caption-text">Data Guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../data/data.html">Surface Reflectance NBAR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../data/data.html#surface-reflectance-nbar-t">Surface Reflectance NBAR-T</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../data/data.html#pixel-quality">Pixel Quality</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../data/data.html#fractional-cover">Fractional Cover</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../data/data.html">Surface Reflectance</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Developer Guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../internal/new_product.html">Creating New Product</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../internal/release_process.html">Build a version</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../internal/release_process.html#marking-it-stable">Marking it stable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../internal/new_product.html">Creating a New Product</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../internal/git_best_practice.html">Git Best Practice</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../internal/release.html">Building a Release</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../internal/release.html">DEA Release Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../internal/modules.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../internal/modules.html#user-instructions">User instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../internal/modules.html#maintainer-instructions">Maintainer Instructions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../internal/orchestration.html">DEA Orchestration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../internal/collection_management.html">Collection Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../internal/collection_management.html#defining-collections">Defining Collections</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../internal/goalkeeper_instructions.html">What’s a Goalkeeper</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../internal/requirements_met.html">DEA Smoke Test</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../internal/requirements_met.html#Data-load-examples">Data load examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../internal/requirements_met.html">DEA Code Functionality Examples</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../genindex.html">Tags Index</a></li>
@@ -443,11 +439,11 @@ load in and plot up data from Sentinel 2. It explores the data that are
 available from the Sentinel 2 satellite, and briefly describes the
 Sentinel satellite bands. It then loads in the <code class="docutils literal notranslate"><span class="pre">s2a_ard_granule</span></code>
 product and plots it up in true and false colour. It uses the provided
-pixel quality data to filters the example scene based on <code class="docutils literal notranslate"><span class="pre">clear</span></code>
-pixels.</p>
+pixel quality data to filters the example scene based on <code class="docutils literal notranslate"><span class="pre">cloud</span></code> and
+<code class="docutils literal notranslate"><span class="pre">cloud</span> <span class="pre">shadow</span></code>-free pixels.</p>
 <p><strong>Date</strong>: March 2018.</p>
 <p><strong>Author</strong>: Claire Krause</p>
-<p>Tags: <span class="target" id="index-0"></span>Sentinel2, <span class="target" id="index-1"></span>products, :index:’DEAPlotting`, <span class="target" id="index-2"></span>three_band_image, <span class="target" id="index-3"></span>three_band_image_subplots, <span class="target" id="index-4"></span>dc.list_products, <span class="target" id="index-5"></span>dc.load, <span class="target" id="index-6"></span>query, <span class="target" id="index-7"></span>beginner, <span class="target" id="index-8"></span>plot, <span class="target" id="index-9"></span>image, <span class="target" id="index-10"></span>pixelquality</p>
+<p>Tags: <span class="target" id="index-0"></span>Sentinel2, <span class="target" id="index-1"></span>products, <span class="target" id="index-2"></span>DEAPlotting, <span class="target" id="index-3"></span>three_band_image, <span class="target" id="index-4"></span>three_band_image_subplots, <span class="target" id="index-5"></span>dc.list_products, <span class="target" id="index-6"></span>dc.load, <span class="target" id="index-7"></span>query, <span class="target" id="index-8"></span>beginner, <span class="target" id="index-9"></span>plot, <span class="target" id="index-10"></span>image, <span class="target" id="index-11"></span>pixelquality</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [1]:
@@ -459,6 +455,7 @@ pixels.</p>
 <span class="kn">from</span> <span class="nn">datacube</span> <span class="k">import</span> <span class="n">Datacube</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
 <span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">exposure</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">os</span>
@@ -1003,7 +1000,7 @@ quality mask. We can use this to filter a cloudy image.</p>
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.collections.QuadMesh at 0x7f5a764cc908&gt;
+<span></span>&lt;matplotlib.collections.QuadMesh at 0x7fc86a3e5668&gt;
 </pre></div>
 </div>
 </div>
@@ -1017,13 +1014,15 @@ quality mask. We can use this to filter a cloudy image.</p>
 </div>
 <div class="section" id="Now-use-the-pixel-quality-information-to-create-a-mask,-and-apply-it-to-the-spectral-data">
 <h3>Now use the pixel quality information to create a mask, and apply it to the spectral data<a class="headerlink" href="#Now-use-the-pixel-quality-information-to-create-a-mask,-and-apply-it-to-the-spectral-data" title="Permalink to this headline">¶</a></h3>
+<p>We want to filter out cloud and cloud shadow, so we will use the
+<code class="docutils literal notranslate"><span class="pre">pixelquality</span></code> values <code class="docutils literal notranslate"><span class="pre">2</span></code> and <code class="docutils literal notranslate"><span class="pre">3</span></code> for our filter.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">clear_pixels</span> <span class="o">=</span> <span class="n">Canberra</span><span class="o">.</span><span class="n">pixel_quality</span> <span class="o">==</span> <span class="mi">1</span>
+<span></span><span class="n">clear_pixels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">Canberra</span><span class="o">.</span><span class="n">pixel_quality</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">Canberra</span><span class="o">.</span><span class="n">pixel_quality</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">)</span>
 <span class="n">Clear_Canberra</span> <span class="o">=</span> <span class="n">Canberra</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">clear_pixels</span><span class="p">)</span>
 </pre></div>
 </div>

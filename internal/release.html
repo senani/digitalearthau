@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Building a Release &mdash; Digital Earth Australia 1.0.0 documentation</title>
+  <title>DEA Release Process &mdash; Digital Earth Australia 1.0.0 documentation</title>
   
 
   
@@ -39,7 +39,7 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="Digital Earth Australia 1.0.0 documentation" href="../index.html"/>
-        <link rel="next" title="DEA Orchestration" href="orchestration.html"/>
+        <link rel="next" title="Introduction" href="modules.html"/>
         <link rel="prev" title="Git Best Practice" href="git_best_practice.html"/> 
 
   
@@ -100,14 +100,14 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../about/intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../about/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/changelog.html">DEA NCI Environment Changelog</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Connect</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../connect/account.html">Register</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connect/account.html#getting-help">Getting help</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connect/install.html">Install</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connect/nci_basics.html">Running DEA Manually</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connect/jupyter.html">Jupyter Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connect/account.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connect/install.html">Installation and Software Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connect/nci_basics.html">Command Line Usage (Advanced)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connect/jupyter.html">Jupyter Notebooks Introduction</a></li>
 </ul>
 <p class="caption"><span class="caption-text">User Guide</span></p>
 <ul>
@@ -121,44 +121,32 @@
 </ul>
 <p class="caption"><span class="caption-text">Data Guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../data/data.html">Surface Reflectance NBAR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data/data.html#surface-reflectance-nbar-t">Surface Reflectance NBAR-T</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data/data.html#pixel-quality">Pixel Quality</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data/data.html#fractional-cover">Fractional Cover</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html">Surface Reflectance</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Developer Guide</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="new_product.html">Creating New Product</a></li>
-<li class="toctree-l1"><a class="reference internal" href="release_process.html">Build a version</a></li>
-<li class="toctree-l1"><a class="reference internal" href="release_process.html#marking-it-stable">Marking it stable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="new_product.html">Creating a New Product</a></li>
 <li class="toctree-l1"><a class="reference internal" href="git_best_practice.html">Git Best Practice</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Building a Release</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#update-the-default-version">Update the Default Version</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#individual-modules">Individual Modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#python-environment-module">Python “Environment” Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#creation">Creation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#use">Use</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#notes">Notes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">DEA Release Process</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#reasons-for-doing-a-new-release">Reasons for doing a new release</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#updating-the-default-version">Updating the Default Version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#notifying-the-community">Notifying the community</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#data-cube-module">Data Cube Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">Creation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">Use</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#instance-module">Instance Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#create-custom-instance">Create Custom Instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#individual-modules">Individual Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#python-environment-module">Python “Environment” Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dea-module">DEA Module</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#user-instructions">User instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#maintainer-instructions">Maintainer Instructions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="orchestration.html">DEA Orchestration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="collection_management.html">Collection Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collection_management.html#defining-collections">Defining Collections</a></li>
 <li class="toctree-l1"><a class="reference internal" href="goalkeeper_instructions.html">What’s a Goalkeeper</a></li>
-<li class="toctree-l1"><a class="reference internal" href="requirements_met.html">DEA Smoke Test</a></li>
-<li class="toctree-l1"><a class="reference internal" href="requirements_met.html#Data-load-examples">Data load examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements_met.html">DEA Code Functionality Examples</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../genindex.html">Tags Index</a></li>
@@ -206,7 +194,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Building a Release</li>
+      <li>DEA Release Process</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -259,112 +247,54 @@
     margin-right: 4px;  /* make room for the exclamation icon */
 }
 </style>
-<div class="section" id="building-a-release">
-<h1>Building a Release<a class="headerlink" href="#building-a-release" title="Permalink to this headline">¶</a></h1>
-<p>The <code class="docutils literal notranslate"><span class="pre">package-release.sh</span></code> script will build all modules for a given datacube version:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">./package-release.sh 1.2.0</span>
-</pre></div>
-</div>
-<p>(Note that it’s currently interactive: each section will ask for confirmation
-of options before starting)</p>
-<div class="section" id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load agdc-py3-prod
-datacube system check
-</pre></div>
-</div>
-<p>This will load <code class="docutils literal notranslate"><span class="pre">agdc-py3-env/&lt;build_date&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">agdc-py3/&lt;version&gt;</span></code> and
-<code class="docutils literal notranslate"><span class="pre">agdc-py3-prod/&lt;version&gt;</span></code> modules</p>
-</div>
-<div class="section" id="update-the-default-version">
-<h2>Update the Default Version<a class="headerlink" href="#update-the-default-version" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="dea-release-process">
+<h1>DEA Release Process<a class="headerlink" href="#dea-release-process" title="Permalink to this headline">¶</a></h1>
+<p>This document describes how to make a new release of Digital Earth Australia
+onto the NCI computing environment.</p>
+<div class="section" id="reasons-for-doing-a-new-release">
+<h2>Reasons for doing a new release<a class="headerlink" href="#reasons-for-doing-a-new-release" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>New or updated libraries</li>
+<li>New Open Data Cube release</li>
+<li>Configuration changes need to be deployed</li>
+<li>Utilities in <code class="docutils literal notranslate"><span class="pre">digitalearthau</span></code> have been updated</li>
+</ul>
+<div class="section" id="updating-the-default-version">
+<h3>Updating the Default Version<a class="headerlink" href="#updating-the-default-version" title="Permalink to this headline">¶</a></h3>
 <p>Once a module has been tested and approved, it can be made the default.</p>
 <p>Edit the <cite>.version</cite> file in the modulefiles directory.</p>
-<p>Eg. For agdc-py2-prod this is: <cite>/g/data/v10/public/modules/modulefiles/agdc-py2-prod/.version</cite></p>
+<p>Eg. For <cite>dea-env</cite> this is: <code class="file docutils literal notranslate"><span class="pre">/g/data/v10/public/modules/modulefiles/dea-env/.version</span></code></p>
+</div>
+<div class="section" id="notifying-the-community">
+<h3>Notifying the community<a class="headerlink" href="#notifying-the-community" title="Permalink to this headline">¶</a></h3>
+<p>Notify the community of the release using the Datacube Central mailing list
+The notifications are sent out using <a class="reference external" href="https://www.mailchimp.com">MailChimp</a>. You might need an invitation from the Geoscience
+Australia account.</p>
+<p>Create a campaign (possibly by replicating one of the existing ones) and change the notes.
+You can send out a test mail to selected accounts before sending it out to the entire DEA
+Beta Users list.</p>
+</div>
 </div>
 <div class="section" id="individual-modules">
 <h2>Individual Modules<a class="headerlink" href="#individual-modules" title="Permalink to this headline">¶</a></h2>
-<p>You probably don’t have to care about any of the commands below: they are all
-run by the <cite>./package-release.sh</cite> command above.</p>
-<p>But if you want to build modules individually, or know what they are, keep
-reading.</p>
-</div>
 <div class="section" id="python-environment-module">
-<h2>Python “Environment” Module<a class="headerlink" href="#python-environment-module" title="Permalink to this headline">¶</a></h2>
+<h3>Python “Environment” Module<a class="headerlink" href="#python-environment-module" title="Permalink to this headline">¶</a></h3>
 <p>The Python module contains all Data Cube dependencies and libraries but not the
 Data Cube itself. See [environment.yaml](py-environment/environment.yaml)
 for the list of packages.</p>
 <p>The module version number is the current date in format <code class="docutils literal notranslate"><span class="pre">YYYYMMDD</span></code>, as it is a snapshot
 of all of our pip/conda dependencies on that date.</p>
-<div class="section" id="creation">
-<h3>Creation<a class="headerlink" href="#creation" title="Permalink to this headline">¶</a></h3>
-<p>Running this from Raijin is highly recommended as we’ve seen some issues come up when ran from VDI (ghost file locks):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> modules/py-environment/
-./package-module.sh --help
-./package-module.sh --variant py3 --moduledir /g/data/v10/public/modules
-</pre></div>
-</div>
-<p>This will create a new environment module in <cite>/g/data/v10/public/modules/agdc-py3-env/&lt;date&gt;</cite>.</p>
-</div>
-<div class="section" id="use">
-<h3>Use<a class="headerlink" href="#use" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">module load agdc-py3-env</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="notes">
-<h3>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
 <p>Loading the module might conflict with other python modules you have loaded.</p>
-<p>The module will prevent conflicts with locally installed python packages by changing <code class="docutils literal notranslate"><span class="pre">PYTHONUSERBASE</span></code> for each release;
+<p class="last">The module will prevent conflicts with locally installed python packages by changing <code class="docutils literal notranslate"><span class="pre">PYTHONUSERBASE</span></code> for each release;
 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--user</span> <span class="pre">...</span></code> will store packages under <code class="docutils literal notranslate"><span class="pre">~/.digitalearthau</span></code>.</p>
 </div>
 </div>
-<div class="section" id="data-cube-module">
-<h2>Data Cube Module<a class="headerlink" href="#data-cube-module" title="Permalink to this headline">¶</a></h2>
-<p>The data cube module contains the Open Data Cube library. It is built against a
-specific Python envionment module (ie. frozen to specific versions of each of
-our dependencies)</p>
-<div class="section" id="id1">
-<h3>Creation<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> modules/agdc
-./package-module.sh --help
-    Usage: ./package-module.sh --env agdc-py2-env/anaconda2-2.5.0 --moduledir /g/data/v10/public/modules --version <span class="m">1</span>.1.9
-      Options:
-        --env agdc_env_module     Python module to use.
-        --moduledir module_dir    Destination module path.
-        --version version         GitHub tag to use. ie. <span class="s1">&#39;datacube-&lt;version&gt;&#39;</span>. Default is <span class="s1">&#39;&lt;HEAD&gt;&#39;</span>
-
-./package-module.sh --env agdc-py3-env/21121221 --moduledir /g/data/v10/public/modules
-</pre></div>
-</div>
-<p>This will create a new data cube module in
-<code class="docutils literal notranslate"><span class="pre">/g/data/v10/public/modules/agdc-py3/&lt;version&gt;</span></code>. Where <code class="docutils literal notranslate"><span class="pre">&lt;version&gt;</span></code> is the
-version of the latest code in
-<a class="reference external" href="https://github.com/data-cube/agdc-v2/tree/develop">agdc-v2/develop</a> (e.g.  1.1.6+12.abcdefgh).</p>
-<p>To specify a particular version, use the version number portion of the GitHub tag.
-Specifying <code class="docutils literal notranslate"><span class="pre">--version</span> <span class="pre">1.1.9</span></code> will use the <a class="reference external" href="https://github.com/data-cube/agdc-v2/tree/datacube-1.1.9">datacube-1.1.9</a> tag.</p>
-</div>
-<div class="section" id="id2">
-<h3>Use<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">module load agdc-py3</span>
-</pre></div>
-</div>
-<p>This will load <code class="docutils literal notranslate"><span class="pre">agdc-py3-env/21121221</span></code> and <code class="docutils literal notranslate"><span class="pre">agdc-py3/&lt;version&gt;</span></code> modules</p>
-</div>
-</div>
-<div class="section" id="instance-module">
-<h2>Instance Module<a class="headerlink" href="#instance-module" title="Permalink to this headline">¶</a></h2>
-<p>This module combines a Data Cube module with specific config (prod, test, dev…)</p>
-<p>It includes a config file, which it specifies by setting the
-<code class="docutils literal notranslate"><span class="pre">DATACUBE_CONFIG_PATH</span></code> environment variable.</p>
-<p>The version number matches the datacube version.</p>
-<div class="section" id="create-custom-instance">
-<h3>Create Custom Instance<a class="headerlink" href="#create-custom-instance" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> modules/agdc-instances
-./package-instance-module.sh  --help
-</pre></div>
-</div>
-<p>See the example and directions in the above help output.</p>
+<div class="section" id="dea-module">
+<h3>DEA Module<a class="headerlink" href="#dea-module" title="Permalink to this headline">¶</a></h3>
+<p>The DEA module contains the Open Data Cube library, along with all other Geoscience Specific code. It is built against a
+specific Python envionment module (ie. frozen to specific versions of each of our dependencies)</p>
 </div>
 </div>
 </div>
@@ -379,7 +309,7 @@ Specifying <code class="docutils literal notranslate"><span class="pre">--versio
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="orchestration.html" class="btn btn-neutral float-right" title="DEA Orchestration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="modules.html" class="btn btn-neutral float-right" title="Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="git_best_practice.html" class="btn btn-neutral" title="Git Best Practice" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

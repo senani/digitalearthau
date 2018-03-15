@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Creating New Product &mdash; Digital Earth Australia 1.0.0 documentation</title>
+  <title>Creating a New Product &mdash; Digital Earth Australia 1.0.0 documentation</title>
   
 
   
@@ -39,8 +39,8 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="Digital Earth Australia 1.0.0 documentation" href="../index.html"/>
-        <link rel="next" title="Build a version" href="release_process.html"/>
-        <link rel="prev" title="Surface Reflectance NBAR" href="../data/data.html"/> 
+        <link rel="next" title="Git Best Practice" href="git_best_practice.html"/>
+        <link rel="prev" title="Surface Reflectance" href="../data/data.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -100,14 +100,14 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../about/intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../about/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/changelog.html">DEA NCI Environment Changelog</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Connect</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../connect/account.html">Register</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connect/account.html#getting-help">Getting help</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connect/install.html">Install</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connect/nci_basics.html">Running DEA Manually</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connect/jupyter.html">Jupyter Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connect/account.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connect/install.html">Installation and Software Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connect/nci_basics.html">Command Line Usage (Advanced)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connect/jupyter.html">Jupyter Notebooks Introduction</a></li>
 </ul>
 <p class="caption"><span class="caption-text">User Guide</span></p>
 <ul>
@@ -121,14 +121,11 @@
 </ul>
 <p class="caption"><span class="caption-text">Data Guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../data/data.html">Surface Reflectance NBAR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data/data.html#surface-reflectance-nbar-t">Surface Reflectance NBAR-T</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data/data.html#pixel-quality">Pixel Quality</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data/data.html#fractional-cover">Fractional Cover</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html">Surface Reflectance</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Developer Guide</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Creating New Product</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Creating a New Product</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#profile-module-setup">Profile/Module Setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#test-database-access">Test Database Access</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#preparing-new-database">Preparing New Database</a></li>
@@ -143,16 +140,15 @@
 <li class="toctree-l2"><a class="reference internal" href="#appendix">Appendix</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="release_process.html">Build a version</a></li>
-<li class="toctree-l1"><a class="reference internal" href="release_process.html#marking-it-stable">Marking it stable</a></li>
 <li class="toctree-l1"><a class="reference internal" href="git_best_practice.html">Git Best Practice</a></li>
-<li class="toctree-l1"><a class="reference internal" href="release.html">Building a Release</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">DEA Release Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#user-instructions">User instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#maintainer-instructions">Maintainer Instructions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="orchestration.html">DEA Orchestration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="collection_management.html">Collection Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collection_management.html#defining-collections">Defining Collections</a></li>
 <li class="toctree-l1"><a class="reference internal" href="goalkeeper_instructions.html">What’s a Goalkeeper</a></li>
-<li class="toctree-l1"><a class="reference internal" href="requirements_met.html">DEA Smoke Test</a></li>
-<li class="toctree-l1"><a class="reference internal" href="requirements_met.html#Data-load-examples">Data load examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements_met.html">DEA Code Functionality Examples</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../genindex.html">Tags Index</a></li>
@@ -200,7 +196,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Creating New Product</li>
+      <li>Creating a New Product</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -253,8 +249,8 @@
     margin-right: 4px;  /* make room for the exclamation icon */
 }
 </style>
-<div class="section" id="creating-new-product">
-<h1>Creating New Product<a class="headerlink" href="#creating-new-product" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="creating-a-new-product">
+<h1>Creating a New Product<a class="headerlink" href="#creating-a-new-product" title="Permalink to this headline">¶</a></h1>
 <p>Notes for adding new products to NCI datacube</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
@@ -617,10 +613,10 @@ mk_overviews_ls_pq /g/data/u46/users/kk7182/PQ/ <span class="m">2014</span>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="release_process.html" class="btn btn-neutral float-right" title="Build a version" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="git_best_practice.html" class="btn btn-neutral float-right" title="Git Best Practice" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../data/data.html" class="btn btn-neutral" title="Surface Reflectance NBAR" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../data/data.html" class="btn btn-neutral" title="Surface Reflectance" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

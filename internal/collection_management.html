@@ -100,14 +100,14 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../about/intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../about/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/changelog.html">DEA NCI Environment Changelog</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Connect</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../connect/account.html">Register</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connect/account.html#getting-help">Getting help</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connect/install.html">Install</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connect/nci_basics.html">Running DEA Manually</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../connect/jupyter.html">Jupyter Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connect/account.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connect/install.html">Installation and Software Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connect/nci_basics.html">Command Line Usage (Advanced)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connect/jupyter.html">Jupyter Notebooks Introduction</a></li>
 </ul>
 <p class="caption"><span class="caption-text">User Guide</span></p>
 <ul>
@@ -121,24 +121,23 @@
 </ul>
 <p class="caption"><span class="caption-text">Data Guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../data/data.html">Surface Reflectance NBAR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data/data.html#surface-reflectance-nbar-t">Surface Reflectance NBAR-T</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data/data.html#pixel-quality">Pixel Quality</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data/data.html#fractional-cover">Fractional Cover</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html">Surface Reflectance</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Developer Guide</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="new_product.html">Creating New Product</a></li>
-<li class="toctree-l1"><a class="reference internal" href="release_process.html">Build a version</a></li>
-<li class="toctree-l1"><a class="reference internal" href="release_process.html#marking-it-stable">Marking it stable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="new_product.html">Creating a New Product</a></li>
 <li class="toctree-l1"><a class="reference internal" href="git_best_practice.html">Git Best Practice</a></li>
-<li class="toctree-l1"><a class="reference internal" href="release.html">Building a Release</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">DEA Release Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#user-instructions">User instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#maintainer-instructions">Maintainer Instructions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="orchestration.html">DEA Orchestration</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Collection Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#defining-collections">Defining Collections</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Collection Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#defining-collections">Defining Collections</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="goalkeeper_instructions.html">What’s a Goalkeeper</a></li>
-<li class="toctree-l1"><a class="reference internal" href="requirements_met.html">DEA Smoke Test</a></li>
-<li class="toctree-l1"><a class="reference internal" href="requirements_met.html#Data-load-examples">Data load examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements_met.html">DEA Code Functionality Examples</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../genindex.html">Tags Index</a></li>
@@ -260,9 +259,8 @@ dea-submit-sync --help
 </div>
 <p>Note that many of these operate on collections, not products. To perform a move or sync on a new product you
 may first need add it as a collection.</p>
-</div>
 <div class="section" id="defining-collections">
-<h1>Defining Collections<a class="headerlink" href="#defining-collections" title="Permalink to this headline">¶</a></h1>
+<h2>Defining Collections<a class="headerlink" href="#defining-collections" title="Permalink to this headline">¶</a></h2>
 <p>The Open Data Cube core keeps track of where individual datasets are in a product, but not where datasets as a
 whole should be (such as which filesystems).</p>
 <p>Knowing “where they should be” is currently handled in this DEA repository as the list of collections.</p>
@@ -295,6 +293,7 @@ example, can then iterate the two to find mismatches in both directions.</li>
         <span class="n">trust</span><span class="o">=</span><span class="n">Trust</span><span class="o">.</span><span class="n">disk</span><span class="p">,</span>
  <span class="p">)</span>
 </pre></div>
+</div>
 </div>
 </div>
 

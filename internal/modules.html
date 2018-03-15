@@ -1,0 +1,416 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Introduction &mdash; Digital Earth Australia 1.0.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/dea-favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Digital Earth Australia 1.0.0 documentation" href="../index.html"/>
+        <link rel="next" title="DEA Orchestration" href="orchestration.html"/>
+        <link rel="prev" title="DEA Release Process" href="release.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/DEA-logo-light.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/changelog.html">DEA NCI Environment Changelog</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Connect</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../connect/account.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connect/install.html">Installation and Software Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connect/nci_basics.html">Command Line Usage (Advanced)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connect/jupyter.html">Jupyter Notebooks Introduction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../query/Getting Started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../query/List Products.html">List Products &amp; Measurements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../query/Loading Data.html">Loading data from the datacube</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook Gallery</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/index.html">Notebook Gallery</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html">Surface Reflectance</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="new_product.html">Creating a New Product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git_best_practice.html">Git Best Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">DEA Release Process</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#user-instructions">User instructions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#maintainer-instructions">Maintainer Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="orchestration.html">DEA Orchestration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collection_management.html">Collection Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="goalkeeper_instructions.html">What’s a Goalkeeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements_met.html">DEA Code Functionality Examples</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">Tags Index</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Digital Earth Australia</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Introduction</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/internal/modules.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+/* nice headers on first paragraph of info/warning boxes */
+.admonition .first {
+    margin: -12px;
+    padding: 6px 12px;
+    margin-bottom: 12px;
+    color: #fff;
+    line-height: 1;
+    display: block;
+}
+.admonition.warning .first {
+    background: #f0b37e;
+}
+.admonition.note .first {
+    background: #6ab0de;
+}
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+</style>
+<p><a class="reference external" href="https://travis-ci.org/GeoscienceAustralia/digitalearthau"><img alt="Build Status" src="https://travis-ci.org/GeoscienceAustralia/digitalearthau.svg?branch=develop" /></a></p>
+<div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>These scripts are all about our deployment of code onto the NCI.</p>
+<p>We are going to have have three modules, with date-based version
+numbers:</p>
+<ol class="arabic simple">
+<li>A <em>Python Environment</em> module<ul>
+<li>Contains third party dependencies of all of the GA code, installed
+via a <code class="docutils literal notranslate"><span class="pre">conda</span></code> environment.</li>
+</ul>
+</li>
+<li>A <em>DEA</em> module, which depends on the <em>environment module</em> and
+contains:<ul>
+<li>A script for initial user creation in the Production Database</li>
+<li>A configuration file including environments for the available
+<em>Indexes</em></li>
+<li><a class="reference external" href="https://github.com/opendatacube/datacube-core/">Open Data Cube
+Core</a></li>
+<li><a class="reference external" href="https://github.com/GeoscienceAustralia/eo-datasets/">EO
+Datasets</a></li>
+<li><a class="reference external" href="https://github.com/GeoscienceAustralia/digitalearthau/">Digital Earth
+AU</a></li>
+<li><a class="reference external" href="https://github.com/GeoscienceAustralia/datacube-stats/">Data Cube
+Stats</a></li>
+<li><a class="reference external" href="https://github.com/GeoscienceAustralia/fc/">Fractional Cover</a></li>
+</ul>
+</li>
+<li>An <em>LPGS</em> module, which depends on a <em>DEA</em> module, and contains:<ul>
+<li><a class="reference external" href="https://github.com/sixy6e/idl-functions/">IDL Functions</a></li>
+<li><a class="reference external" href="https://github.com/GeoscienceAustralia/eo-tools/">EO Tools</a></li>
+<li><a class="reference external" href="https://github.com/GeoscienceAustralia/gaip/">GAIP/WAGL</a></li>
+<li><a class="reference external" href="https://github.com/GeoscienceAustralia/gqa/">GQA</a></li>
+<li><a class="reference external" href="https://github.com/jeremyh/galpgs/">GALPGS</a></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="user-instructions">
+<h1>User instructions<a class="headerlink" href="#user-instructions" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dea</span>
+<span class="n">datacube</span> <span class="n">system</span> <span class="n">check</span>
+</pre></div>
+</div>
+<p>This will load the latest version of <code class="docutils literal notranslate"><span class="pre">dea/&lt;build_date&gt;</span></code> module.</p>
+<p>It will also load <code class="docutils literal notranslate"><span class="pre">dea-env/&lt;build_date&gt;</span></code> which contains all of the
+software dependencies for using DEA.</p>
+<div class="section" id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
+<p>Loading these module might conflict with other python modules you have
+loaded.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">dea-env</span></code> module will prevent conflicts with locally installed
+python packages by changing <code class="docutils literal notranslate"><span class="pre">PYTHONUSERBASE</span></code> for each release;</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="o">&lt;</span><span class="n">package_name</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>will store packages under <code class="docutils literal notranslate"><span class="pre">~/.digitalearthau</span></code>.</p>
+<p>It includes a config file, which it specifies by setting the
+<code class="docutils literal notranslate"><span class="pre">DATACUBE_CONFIG_PATH</span></code> environment variable.</p>
+</div>
+</div>
+<div class="section" id="maintainer-instructions">
+<h1>Maintainer Instructions<a class="headerlink" href="#maintainer-instructions" title="Permalink to this headline">¶</a></h1>
+<p>Only run these scripts from Raijin. We’ve seen filesystem sync issues
+when run from VDI.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">python3</span><span class="o">/</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">2</span>
+<span class="n">pip3</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="n">yaml</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">build_environment_module</span><span class="o">.</span><span class="n">py</span> <span class="n">dea</span><span class="o">-</span><span class="n">env</span><span class="o">/</span><span class="n">modulespec</span><span class="o">.</span><span class="n">yaml</span>
+</pre></div>
+</div>
+<p>This will build a new environment module for today.</p>
+<p>The module version number is the current date in format YYYYMMDD, as it
+is a snapshot of all of our pip/conda dependencies on that date.</p>
+<p>A DEA module will specify one exact environment module.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">build_dea_module</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">environment_module</span><span class="o">&gt;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Once a module has been tested and approved, it can be made the default.</p>
+<p>Edit the <code class="docutils literal notranslate"><span class="pre">.version</span></code> file in the modulefiles directory.</p>
+<p>Eg. For <code class="docutils literal notranslate"><span class="pre">dea</span></code> this is:
+<code class="docutils literal notranslate"><span class="pre">/g/data/v10/public/modules/modulefiles/dea/.version</span></code></p>
+<p>…</p>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="orchestration.html" class="btn btn-neutral float-right" title="DEA Orchestration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="release.html" class="btn btn-neutral" title="DEA Release Process" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Geoscience Australia.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+
+
+<!-- Theme Analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-113800428-1"></script>
+<script>
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('js', new Date());
+ 
+ gtag('config', 'UA-113800428-1');
+</script>
+
+    
+  
+
+
+</body>
+</html>

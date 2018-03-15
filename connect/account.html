@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Register &mdash; Digital Earth Australia 1.0.0 documentation</title>
+  <title>Getting Started &mdash; Digital Earth Australia 1.0.0 documentation</title>
   
 
   
@@ -39,8 +39,8 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="Digital Earth Australia 1.0.0 documentation" href="../index.html"/>
-        <link rel="next" title="Install" href="install.html"/>
-        <link rel="prev" title="Glossary" href="../about/glossary.html"/> 
+        <link rel="next" title="Installation and Software Setup" href="install.html"/>
+        <link rel="prev" title="DEA NCI Environment Changelog" href="../about/changelog.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -100,14 +100,18 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../about/intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../about/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/changelog.html">DEA NCI Environment Changelog</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Connect</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Register</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#getting-help">Getting help</a></li>
-<li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
-<li class="toctree-l1"><a class="reference internal" href="nci_basics.html">Running DEA Manually</a></li>
-<li class="toctree-l1"><a class="reference internal" href="jupyter.html">Jupyter Notebook</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#registration">Registration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-help">Getting help</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation and Software Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nci_basics.html">Command Line Usage (Advanced)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jupyter.html">Jupyter Notebooks Introduction</a></li>
 </ul>
 <p class="caption"><span class="caption-text">User Guide</span></p>
 <ul>
@@ -121,24 +125,20 @@
 </ul>
 <p class="caption"><span class="caption-text">Data Guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../data/data.html">Surface Reflectance NBAR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data/data.html#surface-reflectance-nbar-t">Surface Reflectance NBAR-T</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data/data.html#pixel-quality">Pixel Quality</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data/data.html#fractional-cover">Fractional Cover</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data.html">Surface Reflectance</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Developer Guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../internal/new_product.html">Creating New Product</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/release_process.html">Build a version</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/release_process.html#marking-it-stable">Marking it stable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internal/new_product.html">Creating a New Product</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../internal/git_best_practice.html">Git Best Practice</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/release.html">Building a Release</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internal/release.html">DEA Release Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internal/modules.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internal/modules.html#user-instructions">User instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internal/modules.html#maintainer-instructions">Maintainer Instructions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../internal/orchestration.html">DEA Orchestration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../internal/collection_management.html">Collection Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/collection_management.html#defining-collections">Defining Collections</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../internal/goalkeeper_instructions.html">What’s a Goalkeeper</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/requirements_met.html">DEA Smoke Test</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/requirements_met.html#Data-load-examples">Data load examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internal/requirements_met.html">DEA Code Functionality Examples</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../genindex.html">Tags Index</a></li>
@@ -186,7 +186,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Register</li>
+      <li>Getting Started</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -239,8 +239,10 @@
     margin-right: 4px;  /* make room for the exclamation icon */
 }
 </style>
-<div class="section" id="register">
-<span id="account"></span><h1>Register<a class="headerlink" href="#register" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="getting-started">
+<span id="account"></span><h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="registration">
+<h2>Registration<a class="headerlink" href="#registration" title="Permalink to this headline">¶</a></h2>
 <p>Digital Earth Australia is currently in a private beta for Australian government and academic users
 eligible for accounts on National Computational Infrastructure (NCI).</p>
 <p>You can sign up with your government or academic institutional email address here:</p>
@@ -259,8 +261,9 @@ computing capabilities on Raijin are able to access DEA through the HPC system.<
 <p>This guide focuses on accessing and exploring DEA via the VDI environment.</p>
 </div>
 <div class="section" id="getting-help">
-<h1>Getting help<a class="headerlink" href="#getting-help" title="Permalink to this headline">¶</a></h1>
+<h2>Getting help<a class="headerlink" href="#getting-help" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://opendatacube.signup.team/">Join our Slack community</a> if you need help setting up or using DEA.</p>
+</div>
 </div>
 
 
@@ -273,10 +276,10 @@ computing capabilities on Raijin are able to access DEA through the HPC system.<
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="install.html" class="btn btn-neutral float-right" title="Install" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="install.html" class="btn btn-neutral float-right" title="Installation and Software Setup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../about/glossary.html" class="btn btn-neutral" title="Glossary" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../about/changelog.html" class="btn btn-neutral" title="DEA NCI Environment Changelog" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
