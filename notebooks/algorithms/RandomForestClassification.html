@@ -122,10 +122,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../products/README.html">Products</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="README.html">Algorithms</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="ProduceFalseColourGeotiffs.html">ProduceFalseColourGeotiffs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ProduceFalseColourGeotiffs.html#This-is-the-bit-that-allows-you-to-call-in-a-stand-alone-python-file.">This is the bit that allows you to call in a stand alone python file.</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ProduceFalseColourGeotiffs.html#Extract-some-data-using-our-imported-function">Extract some data using our imported function</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ProduceFalseColourGeotiffs.html#Draw-a-false-colour-image-using-our-imported-function">Draw a false colour image using our imported function</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ProduceFalseColourGeotiffs.html#Export-the-three-bands-to-Geotiff-using-our-imported-function">Export the three bands to Geotiff using our imported function</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Random forest classification</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Set-up-analysis">Set up analysis</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Import-modules">Import modules</a></li>
@@ -559,6 +555,7 @@ data source used for training and classification</p>
 <span class="kn">from</span> <span class="nn">ClassificationTools</span> <span class="k">import</span> <span class="n">randomforest_train</span>
 <span class="kn">from</span> <span class="nn">ClassificationTools</span> <span class="k">import</span> <span class="n">randomforest_classify</span>
 <span class="kn">from</span> <span class="nn">ClassificationTools</span> <span class="k">import</span> <span class="n">randomforest_eval</span>
+<span class="kn">from</span> <span class="nn">DEADataHandling</span> <span class="k">import</span> <span class="n">tasseled_cap</span>
 
 <span class="c1"># For nicer notebook plotting, hide warnings (comment out for real analysis)</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
@@ -639,75 +636,6 @@ data source used for training and classification</p>
     <span class="k">else</span><span class="p">:</span>
 
         <span class="k">return</span> <span class="kc">None</span>
-
-
-<span class="k">def</span> <span class="nf">tasseled_cap</span><span class="p">(</span><span class="n">sensor_data</span><span class="p">,</span> <span class="n">sensor</span><span class="p">,</span> <span class="n">tc_bands</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;greenness&#39;</span><span class="p">,</span> <span class="s1">&#39;brightness&#39;</span><span class="p">,</span> <span class="s1">&#39;wetness&#39;</span><span class="p">],</span>
-                 <span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
-
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Computes tasseled cap wetness, greenness and brightness bands from a six</span>
-<span class="sd">    band xarray dataset, and returns a new xarray dataset with old bands</span>
-<span class="sd">    optionally dropped</span>
-
-<span class="sd">    :attr sensor_data: input xarray dataset with six Landsat bands</span>
-<span class="sd">    :attr tc_bands: list of tasseled cap bands to compute</span>
-<span class="sd">    (valid options: &#39;wetness&#39;, &#39;greenness&#39;,&#39;brightness&#39;</span>
-<span class="sd">    :attr sensor: Landsat sensor used for coefficient values</span>
-<span class="sd">    (valid options: &#39;ls5&#39;, &#39;ls7&#39;, &#39;ls8&#39;)</span>
-<span class="sd">    :attr drop: if &#39;drop = False&#39;, return all original Landsat bands</span>
-
-<span class="sd">    :returns: xarray dataset with newly computed tasseled cap bands</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="c1"># Copy input dataset</span>
-    <span class="n">output_array</span> <span class="o">=</span> <span class="n">sensor_data</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-
-    <span class="c1"># Coefficients for each tasseled cap band</span>
-    <span class="n">wetness_coeff</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ls5&#39;</span><span class="p">:{</span><span class="s1">&#39;blue&#39;</span><span class="p">:</span><span class="mf">0.0315</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">:</span><span class="mf">0.2021</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">:</span><span class="mf">0.3102</span><span class="p">,</span>
-                            <span class="s1">&#39;nir&#39;</span><span class="p">:</span><span class="mf">0.1594</span><span class="p">,</span> <span class="s1">&#39;swir1&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.6806</span><span class="p">,</span> <span class="s1">&#39;swir2&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.6109</span><span class="p">},</span>
-                     <span class="s1">&#39;ls7&#39;</span><span class="p">:{</span><span class="s1">&#39;blue&#39;</span><span class="p">:</span><span class="mf">0.0315</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">:</span><span class="mf">0.2021</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">:</span><span class="mf">0.3102</span><span class="p">,</span>
-                            <span class="s1">&#39;nir&#39;</span><span class="p">:</span><span class="mf">0.1594</span><span class="p">,</span> <span class="s1">&#39;swir1&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.6806</span><span class="p">,</span> <span class="s1">&#39;swir2&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.6109</span><span class="p">},</span>
-                     <span class="s1">&#39;ls8&#39;</span><span class="p">:{</span><span class="s1">&#39;blue&#39;</span><span class="p">:</span><span class="mf">0.0315</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">:</span><span class="mf">0.2021</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">:</span><span class="mf">0.3102</span><span class="p">,</span>
-                            <span class="s1">&#39;nir&#39;</span><span class="p">:</span><span class="mf">0.1594</span><span class="p">,</span> <span class="s1">&#39;swir1&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.6806</span><span class="p">,</span> <span class="s1">&#39;swir2&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.6109</span><span class="p">}}</span>
-
-    <span class="n">greenness_coeff</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ls5&#39;</span><span class="p">:{</span><span class="s1">&#39;blue&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.1603</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.2819</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.4934</span><span class="p">,</span>
-                              <span class="s1">&#39;nir&#39;</span><span class="p">:</span><span class="mf">0.7940</span><span class="p">,</span> <span class="s1">&#39;swir1&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.0002</span><span class="p">,</span> <span class="s1">&#39;swir2&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.1446</span><span class="p">},</span>
-                       <span class="s1">&#39;ls7&#39;</span><span class="p">:{</span><span class="s1">&#39;blue&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.1603</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.2819</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.4934</span><span class="p">,</span>
-                              <span class="s1">&#39;nir&#39;</span><span class="p">:</span><span class="mf">0.7940</span><span class="p">,</span> <span class="s1">&#39;swir1&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.0002</span><span class="p">,</span> <span class="s1">&#39;swir2&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.1446</span><span class="p">},</span>
-                       <span class="s1">&#39;ls8&#39;</span><span class="p">:{</span><span class="s1">&#39;blue&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.1603</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.2819</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.4934</span><span class="p">,</span>
-                              <span class="s1">&#39;nir&#39;</span><span class="p">:</span><span class="mf">0.7940</span><span class="p">,</span> <span class="s1">&#39;swir1&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.0002</span><span class="p">,</span> <span class="s1">&#39;swir2&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">0.1446</span><span class="p">}}</span>
-
-    <span class="n">brightness_coeff</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ls5&#39;</span><span class="p">:{</span><span class="s1">&#39;blue&#39;</span><span class="p">:</span><span class="mf">0.2043</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">:</span><span class="mf">0.4158</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">:</span><span class="mf">0.5524</span><span class="p">,</span>
-                               <span class="s1">&#39;nir&#39;</span><span class="p">:</span><span class="mf">0.5741</span><span class="p">,</span> <span class="s1">&#39;swir1&#39;</span><span class="p">:</span><span class="mf">0.3124</span><span class="p">,</span> <span class="s1">&#39;swir2&#39;</span><span class="p">:</span><span class="mf">0.2303</span><span class="p">},</span>
-                        <span class="s1">&#39;ls7&#39;</span><span class="p">:{</span><span class="s1">&#39;blue&#39;</span><span class="p">:</span><span class="mf">0.2043</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">:</span><span class="mf">0.4158</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">:</span><span class="mf">0.5524</span><span class="p">,</span>
-                               <span class="s1">&#39;nir&#39;</span><span class="p">:</span><span class="mf">0.5741</span><span class="p">,</span> <span class="s1">&#39;swir1&#39;</span><span class="p">:</span><span class="mf">0.3124</span><span class="p">,</span> <span class="s1">&#39;swir2&#39;</span><span class="p">:</span><span class="mf">0.2303</span><span class="p">},</span>
-                        <span class="s1">&#39;ls8&#39;</span><span class="p">:{</span><span class="s1">&#39;blue&#39;</span><span class="p">:</span><span class="mf">0.2043</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">:</span><span class="mf">0.4158</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">:</span><span class="mf">0.5524</span><span class="p">,</span>
-                               <span class="s1">&#39;nir&#39;</span><span class="p">:</span><span class="mf">0.5741</span><span class="p">,</span> <span class="s1">&#39;swir1&#39;</span><span class="p">:</span><span class="mf">0.3124</span><span class="p">,</span> <span class="s1">&#39;swir2&#39;</span><span class="p">:</span><span class="mf">0.2303</span><span class="p">}}</span>
-
-    <span class="c1"># Dict to use correct coefficients for each tasseled cap band</span>
-    <span class="n">analysis_coefficient</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;wetness&#39;</span><span class="p">:</span> <span class="n">wetness_coeff</span><span class="p">,</span>
-                            <span class="s1">&#39;greenness&#39;</span><span class="p">:</span> <span class="n">greenness_coeff</span><span class="p">,</span>
-                            <span class="s1">&#39;brightness&#39;</span><span class="p">:</span> <span class="n">brightness_coeff</span><span class="p">}</span>
-
-    <span class="c1"># For each band, compute tasseled cap band and add to output dataset</span>
-    <span class="k">for</span> <span class="n">tc_band</span> <span class="ow">in</span> <span class="n">tc_bands</span><span class="p">:</span>
-
-        <span class="c1"># Create xarray of coefficient values used to multiply each band of input</span>
-        <span class="n">coeff</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">analysis_coefficient</span><span class="p">[</span><span class="n">tc_band</span><span class="p">][</span><span class="n">sensor</span><span class="p">])</span>
-        <span class="n">sensor_coeff</span> <span class="o">=</span> <span class="n">sensor_data</span> <span class="o">*</span> <span class="n">coeff</span>
-
-        <span class="c1"># Sum all bands</span>
-        <span class="n">output_array</span><span class="p">[</span><span class="n">tc_band</span><span class="p">]</span> <span class="o">=</span> <span class="n">sensor_coeff</span><span class="o">.</span><span class="n">blue</span> <span class="o">+</span> <span class="n">sensor_coeff</span><span class="o">.</span><span class="n">green</span> <span class="o">+</span> \
-                                <span class="n">sensor_coeff</span><span class="o">.</span><span class="n">red</span> <span class="o">+</span> <span class="n">sensor_coeff</span><span class="o">.</span><span class="n">nir</span> <span class="o">+</span> \
-                                <span class="n">sensor_coeff</span><span class="o">.</span><span class="n">swir1</span> <span class="o">+</span> <span class="n">sensor_coeff</span><span class="o">.</span><span class="n">swir2</span>
-
-    <span class="c1"># If drop = True, remove original bands</span>
-    <span class="k">if</span> <span class="n">drop</span><span class="p">:</span>
-
-        <span class="n">bands_to_drop</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sensor_data</span><span class="o">.</span><span class="n">data_vars</span><span class="p">)</span>
-        <span class="n">output_array</span> <span class="o">=</span> <span class="n">output_array</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">bands_to_drop</span><span class="p">)</span>
-
-    <span class="k">return</span><span class="p">(</span><span class="n">output_array</span><span class="p">)</span>
 
 </pre></div>
 </div>

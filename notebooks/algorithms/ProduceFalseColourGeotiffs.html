@@ -121,11 +121,13 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Notebook Gallery</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../products/README.html">Products</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="README.html">Algorithms</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">ProduceFalseColourGeotiffs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#This-is-the-bit-that-allows-you-to-call-in-a-stand-alone-python-file.">This is the bit that allows you to call in a stand alone python file.</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Extract-some-data-using-our-imported-function">Extract some data using our imported function</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Draw-a-false-colour-image-using-our-imported-function">Draw a false colour image using our imported function</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Export-the-three-bands-to-Geotiff-using-our-imported-function">Export the three bands to Geotiff using our imported function</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ProduceFalseColourGeotiffs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#This-is-the-bit-that-allows-you-to-call-in-a-stand-alone-python-file.">This is the bit that allows you to call in a stand alone python file.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Extract-some-data-using-our-imported-function">Extract some data using our imported function</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Draw-a-false-colour-image-using-our-imported-function">Draw a false colour image using our imported function</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Export-the-three-bands-to-Geotiff-using-our-imported-function">Export the three bands to Geotiff using our imported function</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="RandomForestClassification.html">Random forest classification</a></li>
 <li class="toctree-l3"><a class="reference internal" href="RandomForestClassification.html#Set-up-analysis">Set up analysis</a></li>
 <li class="toctree-l3"><a class="reference internal" href="RandomForestClassification.html#Import-modules">Import modules</a></li>
@@ -443,9 +445,8 @@ image and saves it as a Geotiff using the <code class="docutils literal notransl
 <p><strong>Date</strong> March 2018</p>
 <p><strong>Author</strong> Claire Krause</p>
 <p><strong>Tags</strong></p>
-</div>
 <div class="section" id="This-is-the-bit-that-allows-you-to-call-in-a-stand-alone-python-file.">
-<h1>This is the bit that allows you to call in a stand alone python file.<a class="headerlink" href="#This-is-the-bit-that-allows-you-to-call-in-a-stand-alone-python-file." title="Permalink to this headline">¶</a></h1>
+<h2>This is the bit that allows you to call in a stand alone python file.<a class="headerlink" href="#This-is-the-bit-that-allows-you-to-call-in-a-stand-alone-python-file." title="Permalink to this headline">¶</a></h2>
 <p>The two python files <code class="docutils literal notranslate"><span class="pre">DEAPlotting.py</span></code> and <code class="docutils literal notranslate"><span class="pre">DEADataHandling.py</span></code> are
 both sitting in the <code class="docutils literal notranslate"><span class="pre">algorithms</span></code> folder.</p>
 <div class="nbinput docutils container">
@@ -480,7 +481,7 @@ Populating the interactive namespace from numpy and matplotlib
 </div>
 </div>
 <div class="section" id="Extract-some-data-using-our-imported-function">
-<h1>Extract some data using our imported function<a class="headerlink" href="#Extract-some-data-using-our-imported-function" title="Permalink to this headline">¶</a></h1>
+<h2>Extract some data using our imported function<a class="headerlink" href="#Extract-some-data-using-our-imported-function" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [2]:
@@ -552,7 +553,7 @@ Attributes:
 </div>
 </div>
 <div class="section" id="Draw-a-false-colour-image-using-our-imported-function">
-<h1>Draw a false colour image using our imported function<a class="headerlink" href="#Draw-a-false-colour-image-using-our-imported-function" title="Permalink to this headline">¶</a></h1>
+<h2>Draw a false colour image using our imported function<a class="headerlink" href="#Draw-a-false-colour-image-using-our-imported-function" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [5]:
@@ -1350,7 +1351,7 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="section" id="Export-the-three-bands-to-Geotiff-using-our-imported-function">
-<h1>Export the three bands to Geotiff using our imported function<a class="headerlink" href="#Export-the-three-bands-to-Geotiff-using-our-imported-function" title="Permalink to this headline">¶</a></h1>
+<h2>Export the three bands to Geotiff using our imported function<a class="headerlink" href="#Export-the-three-bands-to-Geotiff-using-our-imported-function" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [6]:
@@ -1359,6 +1360,7 @@ if (IPython.notebook.kernel != null) {
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">DEAPlotting</span><span class="o">.</span><span class="n">write_to_geotiff</span><span class="p">(</span><span class="s1">&#39;JunctionBay_2006-09-09.tif&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">squeeze</span><span class="p">())</span>
 </pre></div>
+</div>
 </div>
 </div>
 </div>
