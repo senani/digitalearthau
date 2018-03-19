@@ -122,15 +122,17 @@
 <li class="toctree-l2"><a class="reference internal" href="../products/README.html">Products</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="README.html">Algorithms</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="ProduceFalseColourGeotiffs.html">ProduceFalseColourGeotiffs</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Random forest classification</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Set-up-analysis">Set up analysis</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Import-modules">Import modules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Functions-used-to-import-training-and-analysis-data">Functions used to import training and analysis data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Import-training-data-and-fit-model">Import training data and fit model</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Import-analysis-data-and-classify">Import analysis data and classify</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Feature/band/variable-importance">Feature/band/variable importance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Plot-performance-of-model-by-parameter-values">Plot performance of model by parameter values</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Export-tree-diagrams">Export tree diagrams</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Random forest classification</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Set-up-analysis">Set up analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Import-modules-and-define-functions">Import modules and define functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Functions-used-to-import-training-and-analysis-data">Functions used to import training and analysis data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Import-training-data-and-fit-model">Import training data and fit model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Import-analysis-data-and-classify">Import analysis data and classify</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Feature/band/variable-importance">Feature/band/variable importance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Plot-performance-of-model-by-parameter-values">Plot performance of model by parameter values</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Export-tree-diagrams">Export tree diagrams</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../case_studies/README.html">Case Studies</a></li>
@@ -439,11 +441,10 @@ of evaluation figures to help fine-tune the classifier.</p>
 <p><strong>Date:</strong> March 2018</p>
 <p><strong>Author:</strong> Robbi Bishop-Taylor</p>
 <p><strong>Tags:</strong></p>
-</div>
 <div class="section" id="Set-up-analysis">
-<h1>Set up analysis<a class="headerlink" href="#Set-up-analysis" title="Permalink to this headline">¶</a></h1>
-<p>Defines parameters used for analysis. Note: <code class="docutils literal notranslate"><span class="pre">data_func</span></code> and
-<code class="docutils literal notranslate"><span class="pre">data_func_params</span></code> need to be set at step 5 if changing remote sensing
+<h2>Set up analysis<a class="headerlink" href="#Set-up-analysis" title="Permalink to this headline">¶</a></h2>
+<p>Defines parameters used for analysis. Note: ‘data_func’ and
+‘data_func_params’ need to be set at step 5 if changing remote sensing
 data source used for training and classification</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
@@ -509,8 +510,8 @@ data source used for training and classification</p>
 </div>
 </div>
 </div>
-<div class="section" id="Import-modules">
-<h1>Import modules<a class="headerlink" href="#Import-modules" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Import-modules-and-define-functions">
+<h2>Import modules and define functions<a class="headerlink" href="#Import-modules-and-define-functions" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [4]:
@@ -642,11 +643,11 @@ data source used for training and classification</p>
 </div>
 </div>
 <div class="section" id="Functions-used-to-import-training-and-analysis-data">
-<h1>Functions used to import training and analysis data<a class="headerlink" href="#Functions-used-to-import-training-and-analysis-data" title="Permalink to this headline">¶</a></h1>
+<h2>Functions used to import training and analysis data<a class="headerlink" href="#Functions-used-to-import-training-and-analysis-data" title="Permalink to this headline">¶</a></h2>
 <p>Both of these functions import datacube data using a query, and return
-an xarray dataset with multiple bands/variables and <code class="docutils literal notranslate"><span class="pre">geo_transform</span></code>
-and <code class="docutils literal notranslate"><span class="pre">proj</span></code> attributes. This format is required as an input to both
-<code class="docutils literal notranslate"><span class="pre">randomforest_train</span></code> and <code class="docutils literal notranslate"><span class="pre">randomforest_classify</span></code> to ensure that both
+an xarray dataset with multiple bands/variables and ‘geo_transform’ and
+‘proj’ attributes. This format is required as an input to both
+‘randomforest_train’ and ‘randomforest_classify’ to ensure that both
 training and analysis data are consistent.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
@@ -709,8 +710,8 @@ training and analysis data are consistent.</p>
 </div>
 </div>
 <div class="section" id="Import-training-data-and-fit-model">
-<h1>Import training data and fit model<a class="headerlink" href="#Import-training-data-and-fit-model" title="Permalink to this headline">¶</a></h1>
-<p>Uses <code class="docutils literal notranslate"><span class="pre">randomforest_train</span></code> to extract training data from potentially
+<h2>Import training data and fit model<a class="headerlink" href="#Import-training-data-and-fit-model" title="Permalink to this headline">¶</a></h2>
+<p>Uses ‘randomforest_train’ to extract training data from potentially
 multiple training shapefiles, and returns a trained classifier (and
 optionally, training label and training sample arrays)</p>
 <div class="nbinput docutils container">
@@ -765,15 +766,15 @@ Model trained on 12 bands and 352 training samples
 </div>
 </div>
 <div class="section" id="Import-analysis-data-and-classify">
-<h1>Import analysis data and classify<a class="headerlink" href="#Import-analysis-data-and-classify" title="Permalink to this headline">¶</a></h1>
+<h2>Import analysis data and classify<a class="headerlink" href="#Import-analysis-data-and-classify" title="Permalink to this headline">¶</a></h2>
 <p>Classifies and exports an analysis dataset using a previously trained
 random forest classifier, provided this dataset has the same number of
 bands/variables as the data used to train the classifier. Using the same
-data function used to train the classifier (e.g. <code class="docutils literal notranslate"><span class="pre">data_func</span></code>
-previously defined as either <code class="docutils literal notranslate"><span class="pre">tc_import</span></code> or <code class="docutils literal notranslate"><span class="pre">hltc_import</span></code>) will
-ensure this is the case. By setting <code class="docutils literal notranslate"><span class="pre">class_prob</span> <span class="pre">=</span> <span class="pre">True</span></code>, can
-optionally export a geotiff of predicted class probabilities in addition
-to the classification output.</p>
+data function used to train the classifier (e.g. ‘data_func’ previously
+defined as either ‘tc_import’ or ‘hltc_import’) will ensure this is
+the case. By setting ‘class_prob = True’, can optionally export a
+geotiff of predicted class probabilities in addition to the
+classification output.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [10]:
@@ -862,7 +863,7 @@ Class probability processing...
 </div>
 </div>
 <div class="section" id="Feature/band/variable-importance">
-<h1>Feature/band/variable importance<a class="headerlink" href="#Feature/band/variable-importance" title="Permalink to this headline">¶</a></h1>
+<h2>Feature/band/variable importance<a class="headerlink" href="#Feature/band/variable-importance" title="Permalink to this headline">¶</a></h2>
 <p>Extract classifier estimates of the relative importance of each
 band/variable for training the classifier. Useful for potentially
 selecting a subset of input bands/variables for model
@@ -975,7 +976,7 @@ training/classification (i.e. optimising feature space)</p>
 </div>
 </div>
 <div class="section" id="Plot-performance-of-model-by-parameter-values">
-<h1>Plot performance of model by parameter values<a class="headerlink" href="#Plot-performance-of-model-by-parameter-values" title="Permalink to this headline">¶</a></h1>
+<h2>Plot performance of model by parameter values<a class="headerlink" href="#Plot-performance-of-model-by-parameter-values" title="Permalink to this headline">¶</a></h2>
 <p>Random forest classifiers contain many modifiable parameters that can
 strongly affect the performance of the model. This section evaluates the
 effect of these parameters by plotting out-of-bag (OOB) error for a set
@@ -1137,7 +1138,7 @@ file.</p>
 </div>
 </div>
 <div class="section" id="Export-tree-diagrams">
-<h1>Export tree diagrams<a class="headerlink" href="#Export-tree-diagrams" title="Permalink to this headline">¶</a></h1>
+<h2>Export tree diagrams<a class="headerlink" href="#Export-tree-diagrams" title="Permalink to this headline">¶</a></h2>
 <p>Export .png plots of each decision tree in the random forest ensemble.
 Useful for inspecting the splits used by the classifier to classify the
 data.</p>
@@ -1163,6 +1164,7 @@ data.</p>
               <span class="s1">&#39;figures/tree_graphs/tree&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.png&#39;</span><span class="p">)</span>
 
 </pre></div>
+</div>
 </div>
 </div>
 </div>
