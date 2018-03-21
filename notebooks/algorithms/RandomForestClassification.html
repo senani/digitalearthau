@@ -123,9 +123,9 @@
 <li class="toctree-l2 current"><a class="reference internal" href="README.html">Algorithms</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="ProduceFalseColourGeotiffs.html">ProduceFalseColourGeotiffs</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Random forest classification</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#Set-up-analysis">Set up analysis</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Import-modules-and-define-functions">Import modules and define functions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Functions-used-to-import-training-and-analysis-data">Functions used to import training and analysis data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Set-up-analysis">Set up analysis</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Import-training-data-and-fit-model">Import training data and fit model</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Import-analysis-data-and-classify">Import analysis data and classify</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Feature/band/variable-importance">Feature/band/variable importance</a></li>
@@ -440,203 +440,44 @@ data). The notebook exports geotiff classification outputs and a series
 of evaluation figures to help fine-tune the classifier.</p>
 <p><strong>Date:</strong> March 2018</p>
 <p><strong>Author:</strong> Robbi Bishop-Taylor</p>
-<p><strong>Tags:</strong></p>
-<div class="section" id="Set-up-analysis">
-<h2>Set up analysis<a class="headerlink" href="#Set-up-analysis" title="Permalink to this headline">¶</a></h2>
-<p>Defines parameters used for analysis. Note: ‘data_func’ and
-‘data_func_params’ need to be set at step 5 if changing remote sensing
-data source used for training and classification</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [3]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1">###########################################</span>
-<span class="c1"># For HLTC-based mangrove classification: #</span>
-<span class="c1">###########################################</span>
-
-<span class="c1"># List of training files to import. Shapefiles can be either points, lines or polygons,</span>
-<span class="c1"># but must be in the same projection system as the remote sensing dataset being analysed.</span>
-<span class="c1"># Each file should cover a small enough spatial area so as to not slow dc.load function</span>
-<span class="c1"># excessively (e.g. 100 x 100km max)</span>
-<span class="n">train_shps</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;raw_data/train/training_data_mangrove.shp&quot;</span><span class="p">,</span>
-              <span class="s2">&quot;raw_data/train/training_data_mangrove1.shp&quot;</span><span class="p">,</span>
-              <span class="s2">&quot;raw_data/train/training_data_mangrove2.shp&quot;</span><span class="p">,</span>
-              <span class="s2">&quot;raw_data/train/training_data_mangrove3.shp&quot;</span><span class="p">,]</span>
-
-<span class="c1"># Output path for classified geotiff</span>
-<span class="n">classification_output</span> <span class="o">=</span> <span class="s2">&quot;output_data/classification_dc_mangrove.tif&quot;</span>
-
-<span class="c1"># Optional dict to re-map training shapefile classes; useful for combining classes</span>
-<span class="c1"># (&#39;3:2&#39; re-maps class 3 to class 2)</span>
-<span class="c1"># train_reclass = {1:1, 2:2, 3:2, 4:2}</span>
-<span class="n">train_reclass</span> <span class="o">=</span> <span class="kc">None</span>
-
-<span class="c1"># Names of output classification classes</span>
-<span class="c1"># classification_names = [&quot;mangrove&quot;, &quot;other&quot;]</span>
-<span class="n">classification_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;mangrove&quot;</span><span class="p">,</span> <span class="s2">&quot;water&quot;</span><span class="p">,</span> <span class="s2">&quot;veg&quot;</span><span class="p">,</span> <span class="s2">&quot;other&quot;</span><span class="p">]</span>
-
-</pre></div>
-</div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1">##########################################</span>
-<span class="c1"># For Tasseled cap-based classification: #</span>
-<span class="c1">##########################################</span>
-
-<span class="c1"># # List of training files to import. Shapefiles can be either points, lines or polygons,</span>
-<span class="c1"># # but must be in the same projection system as the remote sensing dataset being analysed.</span>
-<span class="c1"># # Each file should cover a small enough spatial area so as to not slow dc.load function</span>
-<span class="c1"># # excessively (e.g. 100 x 100km max)</span>
-<span class="c1"># train_shps = [&quot;raw_data/train/training_data_tasseledcap.shp&quot;]</span>
-
-<span class="c1"># # Output path for classified geotiff</span>
-<span class="c1"># classification_output = &quot;output_data/classification_dc_tasseledcap.tif&quot;</span>
-
-<span class="c1"># # Optional dict to re-map training shapefile classes; useful for combining classes</span>
-<span class="c1"># # (&#39;3:2&#39; re-maps class 3 to class 2)</span>
-<span class="c1"># train_reclass = None</span>
-
-<span class="c1"># # Names of output classification classes</span>
-<span class="c1"># classification_names = [&quot;wetland&quot;, &quot;escarpment&quot;, &quot;plateau&quot;, &quot;other_wetland&quot;]</span>
-
-</pre></div>
-</div>
-</div>
-</div>
+<p>“<strong>Tags</strong>: <span class="target" id="index-0"></span>image_classification, <span class="target" id="index-1"></span>machine_learning, <span class="target" id="index-2"></span>random_forest, <span class="target" id="index-3"></span>Landsat8, <span class="target" id="index-4"></span>mangroves, <span class="target" id="index-5"></span>tasseled_cap</p>
 <div class="section" id="Import-modules-and-define-functions">
 <h2>Import modules and define functions<a class="headerlink" href="#Import-modules-and-define-functions" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [4]:
+<span></span>In [34]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># Load modules</span>
 <span class="kn">import</span> <span class="nn">datacube</span>
-<span class="kn">import</span> <span class="nn">fiona</span>
-<span class="kn">import</span> <span class="nn">glob</span>
-<span class="kn">import</span> <span class="nn">itertools</span>
-<span class="kn">import</span> <span class="nn">matplotlib</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">rasterio</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">rasterio.features</span>
 <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">OrderedDict</span>
-<span class="kn">from</span> <span class="nn">datacube.helpers</span> <span class="k">import</span> <span class="n">ga_pq_fuser</span>
-<span class="kn">from</span> <span class="nn">datacube.storage</span> <span class="k">import</span> <span class="n">masking</span>
-<span class="kn">from</span> <span class="nn">datacube.storage.masking</span> <span class="k">import</span> <span class="n">mask_invalid_data</span>
+<span class="kn">import</span> <span class="nn">matplotlib.image</span> <span class="k">as</span> <span class="nn">mpimg</span>
 <span class="kn">from</span> <span class="nn">datacube.utils</span> <span class="k">import</span> <span class="n">geometry</span>
 <span class="kn">from</span> <span class="nn">datacube.utils.geometry</span> <span class="k">import</span> <span class="n">CRS</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="kn">from</span> <span class="nn">osgeo</span> <span class="k">import</span> <span class="n">gdal</span>
-<span class="kn">from</span> <span class="nn">os.path</span> <span class="k">import</span> <span class="n">splitext</span>
-<span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="k">import</span> <span class="n">Point</span>
-<span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="k">import</span> <span class="n">shape</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">metrics</span>
 <span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <span class="n">RandomForestClassifier</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="k">import</span> <span class="n">scale</span>
 <span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="k">import</span> <span class="n">export_graphviz</span>
-<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="k">import</span> <span class="n">_tree</span>
 
-<span class="c1"># Import DEA Notebooks scripts</span>
+<span class="c1"># # Import DEA Notebooks scripts</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;/g/data/r78/rt1527/dea-notebooks/algorithms&#39;</span><span class="p">))</span>
-<span class="kn">from</span> <span class="nn">ShapefileTools</span> <span class="k">import</span> <span class="n">layer_extent</span>
-<span class="kn">from</span> <span class="nn">ShapefileTools</span> <span class="k">import</span> <span class="n">rasterize_vector</span>
 <span class="kn">from</span> <span class="nn">ClassificationTools</span> <span class="k">import</span> <span class="n">randomforest_train</span>
 <span class="kn">from</span> <span class="nn">ClassificationTools</span> <span class="k">import</span> <span class="n">randomforest_classify</span>
 <span class="kn">from</span> <span class="nn">ClassificationTools</span> <span class="k">import</span> <span class="n">randomforest_eval</span>
+<span class="kn">from</span> <span class="nn">DEAPlotting</span> <span class="k">import</span> <span class="n">three_band_image</span>
 <span class="kn">from</span> <span class="nn">DEADataHandling</span> <span class="k">import</span> <span class="n">tasseled_cap</span>
+<span class="kn">from</span> <span class="nn">DEADataHandling</span> <span class="k">import</span> <span class="n">load_nbarx</span>
 
 <span class="c1"># For nicer notebook plotting, hide warnings (comment out for real analysis)</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
 
 <span class="c1"># Set up datacube instance</span>
 <span class="n">dc</span> <span class="o">=</span> <span class="n">datacube</span><span class="o">.</span><span class="n">Datacube</span><span class="p">(</span><span class="n">app</span> <span class="o">=</span> <span class="s1">&#39;Random forest classification&#39;</span><span class="p">)</span>
-
-
-<span class="k">def</span> <span class="nf">load_nbart</span><span class="p">(</span><span class="n">sensor</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
-
-    <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Loads nbart data for a sensor, mask by pq and filter terrain -999s.</span>
-<span class="sd">    Modified from original function written by B Dunn (2017).</span>
-
-<span class="sd">    :attr sensor: Landsat sensor to import (valid options: &#39;ls5&#39;, &#39;ls7&#39;, &#39;ls8&#39;)</span>
-<span class="sd">    :attr query: complete datacube query used to import data</span>
-
-<span class="sd">    :returns: xarray dataset matching query</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-
-    <span class="n">product_name</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">_</span><span class="si">{}</span><span class="s1">_albers&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sensor</span><span class="p">,</span> <span class="s1">&#39;nbart&#39;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Loading </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">product_name</span><span class="p">))</span>
-    <span class="n">ds</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">product</span> <span class="o">=</span> <span class="n">product_name</span><span class="p">,</span>
-                 <span class="n">group_by</span> <span class="o">=</span> <span class="s1">&#39;solar_day&#39;</span><span class="p">,</span>
-                 <span class="o">**</span><span class="n">query</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">ds</span><span class="p">:</span>
-
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Loaded </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">product_name</span><span class="p">))</span>
-
-        <span class="c1"># Extract PQ data for masking</span>
-        <span class="n">mask_product</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">_</span><span class="si">{}</span><span class="s1">_albers&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sensor</span><span class="p">,</span> <span class="s1">&#39;pq&#39;</span><span class="p">)</span>
-        <span class="n">sensor_pq</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">product</span> <span class="o">=</span> <span class="n">mask_product</span><span class="p">,</span>
-                            <span class="n">fuse_func</span> <span class="o">=</span> <span class="n">ga_pq_fuser</span><span class="p">,</span>
-                            <span class="n">group_by</span> <span class="o">=</span> <span class="s1">&#39;solar_day&#39;</span><span class="p">,</span>
-                            <span class="o">**</span><span class="n">query</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="n">sensor_pq</span><span class="p">:</span>
-
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Making mask </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mask_product</span><span class="p">))</span>
-            <span class="n">cloud_free</span> <span class="o">=</span> <span class="n">masking</span><span class="o">.</span><span class="n">make_mask</span><span class="p">(</span><span class="n">sensor_pq</span><span class="o">.</span><span class="n">pixelquality</span><span class="p">,</span>
-                                           <span class="n">cloud_acca</span> <span class="o">=</span> <span class="s1">&#39;no_cloud&#39;</span><span class="p">,</span>
-                                           <span class="n">cloud_shadow_acca</span> <span class="o">=</span> <span class="s1">&#39;no_cloud_shadow&#39;</span><span class="p">,</span>
-                                           <span class="n">cloud_shadow_fmask</span> <span class="o">=</span> <span class="s1">&#39;no_cloud_shadow&#39;</span><span class="p">,</span>
-                                           <span class="n">cloud_fmask</span> <span class="o">=</span> <span class="s1">&#39;no_cloud&#39;</span><span class="p">,</span>
-                                           <span class="n">blue_saturated</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-                                           <span class="n">green_saturated</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-                                           <span class="n">red_saturated</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-                                           <span class="n">nir_saturated</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-                                           <span class="n">swir1_saturated</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-                                           <span class="n">swir2_saturated</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-                                           <span class="n">contiguous</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-
-            <span class="c1"># Filter to remove clouds and -999 terrain issues</span>
-            <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">cloud_free</span><span class="p">)</span>
-            <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ds</span> <span class="o">!=</span> <span class="o">-</span><span class="mf">999.0</span><span class="p">)</span>
-
-            <span class="c1"># Add projection attributes</span>
-            <span class="n">ds</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;crs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">crs</span>
-            <span class="n">ds</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;affine&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">affine</span>
-            <span class="n">ds</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;geo_transform&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">geobox</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">to_gdal</span><span class="p">()</span>
-            <span class="n">ds</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;proj&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">geobox</span><span class="o">.</span><span class="n">crs</span><span class="o">.</span><span class="n">wkt</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Masked </span><span class="si">{}</span><span class="s1"> with </span><span class="si">{}</span><span class="s1"> and filtered &#39;</span> \
-                  <span class="s1">&#39;terrain&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">product_name</span><span class="p">,</span> <span class="n">mask_product</span><span class="p">))</span>
-
-        <span class="k">else</span><span class="p">:</span>
-
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Did not mask </span><span class="si">{}</span><span class="s1"> with </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">product_name</span><span class="p">,</span> <span class="n">mask_product</span><span class="p">))</span>
-
-    <span class="k">else</span><span class="p">:</span>
-
-        <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Did not load </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">product_name</span><span class="p">))</span>
-
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-
-        <span class="k">return</span> <span class="n">ds</span>
-
-    <span class="k">else</span><span class="p">:</span>
-
-        <span class="k">return</span> <span class="kc">None</span>
 
 </pre></div>
 </div>
@@ -645,13 +486,13 @@ data source used for training and classification</p>
 <div class="section" id="Functions-used-to-import-training-and-analysis-data">
 <h2>Functions used to import training and analysis data<a class="headerlink" href="#Functions-used-to-import-training-and-analysis-data" title="Permalink to this headline">¶</a></h2>
 <p>Both of these functions import datacube data using a query, and return
-an xarray dataset with multiple bands/variables and ‘geo_transform’ and
-‘proj’ attributes. This format is required as an input to both
-‘randomforest_train’ and ‘randomforest_classify’ to ensure that both
+an xarray dataset with multiple bands/variables and <code class="docutils literal notranslate"><span class="pre">crs</span></code> and
+<code class="docutils literal notranslate"><span class="pre">affine</span></code> attributes. This format is required as an input to both
+<code class="docutils literal notranslate"><span class="pre">randomforest_train</span></code> and <code class="docutils literal notranslate"><span class="pre">randomforest_classify</span></code> to ensure that both
 training and analysis data are consistent.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [5]:
+<span></span>In [35]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -659,10 +500,10 @@ training and analysis data are consistent.</p>
 
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Imports high and low composite data for a given spatial query, and</span>
-<span class="sd">    return an xarray dataset with &#39;geo_transform&#39; and &#39;proj&#39; attributes</span>
+<span class="sd">    return an xarray dataset with &#39;crs&#39; and &#39;affine&#39; attributes</span>
 
 <span class="sd">    :attr query: spatial query for datacube.load()</span>
-<span class="sd">    :returns: xarray dataset with &#39;geo_transform&#39; and &#39;proj&#39; attributes</span>
+<span class="sd">    :returns: xarray dataset with &#39;crs&#39; and &#39;affine&#39; attributes</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1"># Import data</span>
@@ -678,8 +519,8 @@ training and analysis data are consistent.</p>
     <span class="n">output_xarray</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">auto_combine</span><span class="p">([</span><span class="n">low_tide</span><span class="p">,</span> <span class="n">high_tide</span><span class="p">])</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
 
     <span class="c1"># Set attributes</span>
-    <span class="n">output_xarray</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;proj&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">low_tide</span><span class="o">.</span><span class="n">geobox</span><span class="o">.</span><span class="n">crs</span><span class="o">.</span><span class="n">wkt</span>
-    <span class="n">output_xarray</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;geo_transform&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">low_tide</span><span class="o">.</span><span class="n">geobox</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">to_gdal</span><span class="p">()</span>
+    <span class="n">output_xarray</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;crs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">low_tide</span><span class="o">.</span><span class="n">crs</span>
+    <span class="n">output_xarray</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;affine&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">low_tide</span><span class="o">.</span><span class="n">affine</span>
 
     <span class="k">return</span> <span class="n">output_xarray</span>
 
@@ -687,19 +528,19 @@ training and analysis data are consistent.</p>
 <span class="k">def</span> <span class="nf">tc_import</span><span class="p">(</span><span class="n">query</span><span class="p">):</span>
 
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Wrapper around load_nbart and tasseled cap to return an xarray dataset with</span>
-<span class="sd">    &#39;geo_transform&#39; and &#39;proj&#39; attributes</span>
+<span class="sd">    Wrapper around load_nbarx and tasseled_cap to return an xarray dataset with</span>
+<span class="sd">    &#39;crs&#39; and &#39;affine&#39; attributes</span>
 
 <span class="sd">    :attr query: query for datacube call; for training, supply only</span>
 <span class="sd">    non-spatial queries as spatial are generated from training data</span>
-<span class="sd">    :returns: xarray dataset with &#39;geo_transform&#39; and &#39;proj&#39; attributes</span>
+<span class="sd">    :returns: xarray dataset with &#39;crs&#39; and &#39;affine&#39; attributes</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="c1"># Import cleaned Landsat bands data</span>
-    <span class="n">nbar_example</span> <span class="o">=</span> <span class="n">load_nbart</span><span class="p">(</span><span class="s1">&#39;ls8&#39;</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span>
+    <span class="n">nbart_data</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_nbarx</span><span class="p">(</span><span class="n">dc</span><span class="p">,</span> <span class="s2">&quot;ls8&quot;</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span>
 
     <span class="c1"># Compute tasseled cap indices and take median of multiple timesteps</span>
-    <span class="n">output_xarray</span> <span class="o">=</span> <span class="n">tasseled_cap</span><span class="p">(</span><span class="n">sensor_data</span> <span class="o">=</span> <span class="n">nbar_example</span><span class="p">,</span>
+    <span class="n">output_xarray</span> <span class="o">=</span> <span class="n">tasseled_cap</span><span class="p">(</span><span class="n">sensor_data</span> <span class="o">=</span> <span class="n">nbart_data</span><span class="p">,</span>
                                  <span class="n">sensor</span> <span class="o">=</span> <span class="s1">&#39;ls8&#39;</span><span class="p">,</span>
                                  <span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">keep_attrs</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 
@@ -709,14 +550,102 @@ training and analysis data are consistent.</p>
 </div>
 </div>
 </div>
+<div class="section" id="Set-up-analysis">
+<h2>Set up analysis<a class="headerlink" href="#Set-up-analysis" title="Permalink to this headline">¶</a></h2>
+<p>Defines parameters used for analysis. This notebook contains example
+analyses for two classification tasks: classifying mangroves using
+high-low tide composites (HLTC), and tasseled cap classification. Run
+either of the two cells below to select the desired analysis.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [49]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">###########################################</span>
+<span class="c1"># For HLTC-based mangrove classification: #</span>
+<span class="c1">###########################################</span>
+
+<span class="c1"># Working directory</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">&quot;/g/data/r78/rt1527/random_forest&quot;</span><span class="p">)</span>
+
+<span class="c1"># List of training files to import. Shapefiles can be either points, lines or polygons,</span>
+<span class="c1"># but must be in the same projection system as the remote sensing dataset being analysed.</span>
+<span class="c1"># Each file should cover a small enough spatial area so as to not slow dc.load function</span>
+<span class="c1"># excessively (e.g. 100 x 100km max)</span>
+<span class="n">train_shps</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;raw_data/train/training_data_mangrove.shp&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;raw_data/train/training_data_mangrove1.shp&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;raw_data/train/training_data_mangrove2.shp&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;raw_data/train/training_data_mangrove3.shp&quot;</span><span class="p">]</span>
+
+<span class="c1"># Output path for classified geotiff</span>
+<span class="n">classification_output</span> <span class="o">=</span> <span class="s2">&quot;output_data/classification_dc_mangrove.tif&quot;</span>
+
+<span class="c1"># Optional dict to re-map training shapefile classes; useful for combining classes</span>
+<span class="c1"># (&#39;3:2&#39; re-maps class 3 to class 2)</span>
+<span class="c1"># train_reclass = {1:1, 2:2, 3:2, 4:2}</span>
+<span class="n">train_reclass</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="c1"># Names of output classification classes</span>
+<span class="c1"># classification_names = [&quot;mangrove&quot;, &quot;other&quot;]</span>
+<span class="n">classification_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;mangrove&quot;</span><span class="p">,</span> <span class="s2">&quot;water&quot;</span><span class="p">,</span> <span class="s2">&quot;veg&quot;</span><span class="p">,</span> <span class="s2">&quot;other&quot;</span><span class="p">]</span>
+
+<span class="c1"># Set data function used to import data and optional parameters (e.g. time for temporal data).</span>
+<span class="c1"># For example, &#39;tc_import&#39; needs an additional &#39;time&#39; query as it draws on Landsat time-series</span>
+<span class="c1"># data, while &#39;hltc_import&#39; uses high-low tide composites that have no temporal dimension</span>
+<span class="n">data_func</span> <span class="o">=</span> <span class="n">hltc_import</span>
+<span class="n">data_func_params</span> <span class="o">=</span> <span class="p">{}</span>
+
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [36]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">##########################################</span>
+<span class="c1"># For Tasseled cap-based classification: #</span>
+<span class="c1">##########################################</span>
+
+<span class="c1"># Working directory</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">&quot;/g/data/r78/rt1527/random_forest&quot;</span><span class="p">)</span>
+
+<span class="c1"># List of training files to import. Shapefiles can be either points, lines or polygons,</span>
+<span class="c1"># but must be in the same projection system as the remote sensing dataset being analysed.</span>
+<span class="c1"># Each file should cover a small enough spatial area so as to not slow dc.load function</span>
+<span class="c1"># excessively (e.g. 100 x 100km max)</span>
+<span class="n">train_shps</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;raw_data/train/training_data_tasseledcap.shp&quot;</span><span class="p">]</span>
+
+<span class="c1"># Output path for classified geotiff</span>
+<span class="n">classification_output</span> <span class="o">=</span> <span class="s2">&quot;output_data/classification_dc_tasseledcap.tif&quot;</span>
+
+<span class="c1"># Optional dict to re-map training shapefile classes; useful for combining classes</span>
+<span class="c1"># (&#39;3:2&#39; re-maps class 3 to class 2)</span>
+<span class="n">train_reclass</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="c1"># Names of output classification classes</span>
+<span class="n">classification_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;wetland&quot;</span><span class="p">,</span> <span class="s2">&quot;escarpment&quot;</span><span class="p">,</span> <span class="s2">&quot;plateau&quot;</span><span class="p">,</span> <span class="s2">&quot;other_wetland&quot;</span><span class="p">]</span>
+
+<span class="c1"># Set data function used to import data and optional parameters (e.g. time for temporal data).</span>
+<span class="c1"># For example, &#39;tc_import&#39; needs an additional &#39;time&#39; query as it draws on Landsat time-series</span>
+<span class="c1"># data, while &#39;hltc_import&#39; uses high-low tide composites that have no temporal dimension</span>
+<span class="n">data_func</span> <span class="o">=</span> <span class="n">tc_import</span>
+<span class="n">data_func_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;2017-03-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2017-06-28&#39;</span><span class="p">)}</span>
+
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="Import-training-data-and-fit-model">
 <h2>Import training data and fit model<a class="headerlink" href="#Import-training-data-and-fit-model" title="Permalink to this headline">¶</a></h2>
-<p>Uses ‘randomforest_train’ to extract training data from potentially
+<p>Uses <code class="docutils literal notranslate"><span class="pre">randomforest_train</span></code> to extract training data from potentially
 multiple training shapefiles, and returns a trained classifier (and
 optionally, training label and training sample arrays)</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [6]:
+<span></span>In [73]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -726,14 +655,6 @@ optionally, training label and training sample arrays)</p>
                      <span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="s2">&quot;auto&quot;</span><span class="p">,</span>
                      <span class="s1">&#39;min_samples_leaf&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
                      <span class="s1">&#39;oob_score&#39;</span><span class="p">:</span> <span class="kc">True</span> <span class="p">}</span>
-
-<span class="c1"># Set data function used to import data and optional parameters (e.g. time for temporal data).</span>
-<span class="c1"># For example, &#39;tc_import&#39; needs an additional &#39;time&#39; query as it draws on Landsat time-series</span>
-<span class="c1"># data, while &#39;hltc_import&#39; uses high-low tide composites that have no temporal dimension</span>
-<span class="n">data_func</span> <span class="o">=</span> <span class="n">hltc_import</span>
-<span class="n">data_func_params</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="c1"># data_func = tc_import</span>
-<span class="c1"># data_func_params = {&#39;time&#39;: (&#39;2017-03-01&#39;, &#39;2017-06-28&#39;)}</span>
 
 <span class="c1"># Extract training data for each training shapefile and train classifier</span>
 <span class="n">classifier</span><span class="p">,</span> <span class="n">train_lab</span><span class="p">,</span> <span class="n">train_samp</span> <span class="o">=</span> <span class="n">randomforest_train</span><span class="p">(</span><span class="n">train_shps</span> <span class="o">=</span> <span class="n">train_shps</span><span class="p">,</span>
@@ -751,14 +672,14 @@ optionally, training label and training sample arrays)</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Importing training data from raw_data/train/training_data_mangrove3.shp:
-{&#39;x&#39;: (-699112.9082409441, -724416.739027992), &#39;y&#39;: (-1612261.936734104, -1634952.3249203684), &#39;crs&#39;: &#39;EPSG:3577&#39;}
 Importing training data from raw_data/train/training_data_mangrove.shp:
 {&#39;x&#39;: (-96195.37617727809, -159027.5762163046), &#39;y&#39;: (-1293746.4245350992, -1349139.5474466463), &#39;crs&#39;: &#39;EPSG:3577&#39;}
 Importing training data from raw_data/train/training_data_mangrove1.shp:
 {&#39;x&#39;: (-248822.2628674942, -269215.4139100249), &#39;y&#39;: (-1570514.9681683218, -1590991.9822624666), &#39;crs&#39;: &#39;EPSG:3577&#39;}
 Importing training data from raw_data/train/training_data_mangrove2.shp:
 {&#39;x&#39;: (-216770.8137106544, -237605.05985552695), &#39;y&#39;: (-1630468.8744477245, -1646265.5913745423), &#39;crs&#39;: &#39;EPSG:3577&#39;}
+Importing training data from raw_data/train/training_data_mangrove3.shp:
+{&#39;x&#39;: (-699112.9082409441, -724416.739027992), &#39;y&#39;: (-1612261.936734104, -1634952.3249203684), &#39;crs&#39;: &#39;EPSG:3577&#39;}
 
 Training random forest classifier...
 Model trained on 12 bands and 352 training samples
@@ -770,19 +691,20 @@ Model trained on 12 bands and 352 training samples
 <p>Classifies and exports an analysis dataset using a previously trained
 random forest classifier, provided this dataset has the same number of
 bands/variables as the data used to train the classifier. Using the same
-data function used to train the classifier (e.g. ‘data_func’ previously
-defined as either ‘tc_import’ or ‘hltc_import’) will ensure this is
-the case. By setting ‘class_prob = True’, can optionally export a
-geotiff of predicted class probabilities in addition to the
-classification output.</p>
+data function used to train the classifier (e.g. <code class="docutils literal notranslate"><span class="pre">data_func</span></code>
+previously defined as either <code class="docutils literal notranslate"><span class="pre">tc_import</span></code> or <code class="docutils literal notranslate"><span class="pre">hltc_import</span></code>) will
+ensure this is the case. By setting <code class="docutils literal notranslate"><span class="pre">class_prob</span> <span class="pre">=</span> <span class="pre">True</span></code>, you can
+optionally export a geotiff of predicted class probabilities in addition
+to the classification output.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [10]:
+<span></span>In [86]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># Set up analysis data query</span>
 <span class="n">lat_point</span><span class="p">,</span> <span class="n">lon_point</span><span class="p">,</span> <span class="n">buffer</span> <span class="o">=</span> <span class="o">-</span><span class="mf">12.5798399926</span><span class="p">,</span> <span class="mf">130.782907919</span><span class="p">,</span> <span class="mi">30000</span>
+<span class="c1"># lat_point, lon_point, buffer = -12.5693189393, 135.033955268, 20000</span>
 <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">point</span><span class="p">(</span><span class="n">lon_point</span><span class="p">,</span> <span class="n">lat_point</span><span class="p">,</span> <span class="n">CRS</span><span class="p">(</span><span class="s1">&#39;WGS84&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">CRS</span><span class="p">(</span><span class="s1">&#39;EPSG:3577&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">query</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">buffer</span><span class="p">),</span>
          <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">buffer</span><span class="p">),</span>
@@ -798,13 +720,19 @@ classification output.</p>
                                                 <span class="n">classification_output</span> <span class="o">=</span> <span class="n">classification_output</span><span class="p">,</span>
                                                 <span class="n">class_prob</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 
+<span class="c1"># Plot input data as reference</span>
+<span class="n">three_band_image</span><span class="p">(</span><span class="n">analysis_xarray</span><span class="p">,</span>
+                 <span class="n">bands</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">analysis_xarray</span><span class="o">.</span><span class="n">data_vars</span><span class="p">)[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span>
+                 <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Analysis data&#39;</span><span class="p">,</span>
+                 <span class="n">figsize</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mf">6.45</span><span class="p">])</span>
+
 <span class="c1"># Plot output classification</span>
 <span class="n">class_xarray</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">class_array</span><span class="p">,</span>
                    <span class="n">coords</span> <span class="o">=</span> <span class="p">[</span><span class="n">analysis_xarray</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">analysis_xarray</span><span class="o">.</span><span class="n">x</span><span class="p">],</span>
                    <span class="n">dims</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">],</span>
                    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Classification output&quot;</span><span class="p">)</span>
 <span class="n">class_xarray</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">levels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">class_array</span><span class="p">))</span> <span class="o">+</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">class_array</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span>
-                               <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+                  <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 
 <span class="c1"># Plot predicted class probability (proportion of trees agreeing with classification)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
@@ -812,9 +740,10 @@ classification output.</p>
                            <span class="n">coords</span> <span class="o">=</span> <span class="p">[</span><span class="n">analysis_xarray</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">analysis_xarray</span><span class="o">.</span><span class="n">x</span><span class="p">],</span>
                            <span class="n">dims</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">],</span>
                            <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Predicted class probability&quot;</span><span class="p">)</span>
-<span class="n">prob_xarray</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;plasma_r&quot;</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+<span class="n">prob_xarray</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;plasma_r&quot;</span><span class="p">,</span>
                  <span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">prob_array</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
-                 <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">prob_array</span><span class="p">,</span> <span class="mi">97</span><span class="p">))</span>
+                 <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">prob_array</span><span class="p">,</span> <span class="mi">97</span><span class="p">),</span>
+                 <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 
 </pre></div>
 </div>
@@ -839,11 +768,11 @@ Class probability processing...
 </div>
 <div class="nboutput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[10]:
+<span></span>Out[86]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.collections.QuadMesh at 0x7f94ba464b00&gt;
+<span></span>&lt;matplotlib.collections.QuadMesh at 0x7f5a1346e320&gt;
 </pre></div>
 </div>
 </div>
@@ -851,14 +780,21 @@ Class probability processing...
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_algorithms_RandomForestClassification_11_2.png" src="../../_images/notebooks_algorithms_RandomForestClassification_11_2.png" />
+<img alt="../../_images/notebooks_algorithms_RandomForestClassification_12_2.png" src="../../_images/notebooks_algorithms_RandomForestClassification_12_2.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/notebooks_algorithms_RandomForestClassification_12_3.png" src="../../_images/notebooks_algorithms_RandomForestClassification_12_3.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_algorithms_RandomForestClassification_11_3.png" src="../../_images/notebooks_algorithms_RandomForestClassification_11_3.png" />
+<img alt="../../_images/notebooks_algorithms_RandomForestClassification_12_4.png" src="../../_images/notebooks_algorithms_RandomForestClassification_12_4.png" />
 </div>
 </div>
 </div>
@@ -870,7 +806,7 @@ selecting a subset of input bands/variables for model
 training/classification (i.e. optimising feature space)</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [8]:
+<span></span>In [6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -917,51 +853,51 @@ training/classification (i.e. optimising feature space)</p>
   <tbody>
     <tr>
       <th>lt_blue</th>
-      <td>0.079259</td>
+      <td>0.067479</td>
     </tr>
     <tr>
       <th>lt_green</th>
-      <td>0.059194</td>
+      <td>0.056581</td>
     </tr>
     <tr>
       <th>lt_red</th>
-      <td>0.045157</td>
+      <td>0.044614</td>
     </tr>
     <tr>
       <th>lt_nir</th>
-      <td>0.060546</td>
+      <td>0.067205</td>
     </tr>
     <tr>
       <th>lt_swir1</th>
-      <td>0.071981</td>
+      <td>0.080543</td>
     </tr>
     <tr>
       <th>lt_swir2</th>
-      <td>0.123812</td>
+      <td>0.122679</td>
     </tr>
     <tr>
       <th>ht_blue</th>
-      <td>0.051885</td>
+      <td>0.059830</td>
     </tr>
     <tr>
       <th>ht_green</th>
-      <td>0.055157</td>
+      <td>0.060820</td>
     </tr>
     <tr>
       <th>ht_red</th>
-      <td>0.042315</td>
+      <td>0.036466</td>
     </tr>
     <tr>
       <th>ht_nir</th>
-      <td>0.077109</td>
+      <td>0.076205</td>
     </tr>
     <tr>
       <th>ht_swir1</th>
-      <td>0.141558</td>
+      <td>0.130176</td>
     </tr>
     <tr>
       <th>ht_swir2</th>
-      <td>0.192025</td>
+      <td>0.197402</td>
     </tr>
   </tbody>
 </table>
@@ -971,7 +907,7 @@ training/classification (i.e. optimising feature space)</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_algorithms_RandomForestClassification_13_1.png" src="../../_images/notebooks_algorithms_RandomForestClassification_13_1.png" />
+<img alt="../../_images/notebooks_algorithms_RandomForestClassification_14_1.png" src="../../_images/notebooks_algorithms_RandomForestClassification_14_1.png" />
 </div>
 </div>
 </div>
@@ -984,7 +920,7 @@ of classifier parameter scenarios, and exports the resulting plots to
 file.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [9]:
+<span></span>In [7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1105,35 +1041,35 @@ file.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_algorithms_RandomForestClassification_15_0.png" src="../../_images/notebooks_algorithms_RandomForestClassification_15_0.png" />
+<img alt="../../_images/notebooks_algorithms_RandomForestClassification_16_0.png" src="../../_images/notebooks_algorithms_RandomForestClassification_16_0.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_algorithms_RandomForestClassification_15_1.png" src="../../_images/notebooks_algorithms_RandomForestClassification_15_1.png" />
+<img alt="../../_images/notebooks_algorithms_RandomForestClassification_16_1.png" src="../../_images/notebooks_algorithms_RandomForestClassification_16_1.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_algorithms_RandomForestClassification_15_2.png" src="../../_images/notebooks_algorithms_RandomForestClassification_15_2.png" />
+<img alt="../../_images/notebooks_algorithms_RandomForestClassification_16_2.png" src="../../_images/notebooks_algorithms_RandomForestClassification_16_2.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_algorithms_RandomForestClassification_15_3.png" src="../../_images/notebooks_algorithms_RandomForestClassification_15_3.png" />
+<img alt="../../_images/notebooks_algorithms_RandomForestClassification_16_3.png" src="../../_images/notebooks_algorithms_RandomForestClassification_16_3.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_algorithms_RandomForestClassification_15_4.png" src="../../_images/notebooks_algorithms_RandomForestClassification_15_4.png" />
+<img alt="../../_images/notebooks_algorithms_RandomForestClassification_16_4.png" src="../../_images/notebooks_algorithms_RandomForestClassification_16_4.png" />
 </div>
 </div>
 </div>
@@ -1142,9 +1078,9 @@ file.</p>
 <p>Export .png plots of each decision tree in the random forest ensemble.
 Useful for inspecting the splits used by the classifier to classify the
 data.</p>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [ ]:
+<span></span>In [33]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1163,7 +1099,20 @@ data.</p>
     <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;dot -Tpng figures/tree_graphs/tree.dot -o &#39;</span> <span class="o">+</span> \
               <span class="s1">&#39;figures/tree_graphs/tree&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.png&#39;</span><span class="p">)</span>
 
+<span class="c1"># Plot first resulting tree</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;figures/tree_graphs/tree1.png&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">interpolation</span> <span class="o">=</span> <span class="s2">&quot;bilinear&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
 </pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/notebooks_algorithms_RandomForestClassification_18_0.png" src="../../_images/notebooks_algorithms_RandomForestClassification_18_0.png" />
 </div>
 </div>
 </div>
