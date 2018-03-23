@@ -124,7 +124,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../case_studies/README.html">Case Studies</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="README.html">Workflows</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Intertidal Digital Elevation Model</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#Load-modules-and-set-up-analysis">Load modules and set up analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Load-modules-and-define-functions">Load modules and define functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Set-up-analysis">Set up analysis</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#ITEM-interval-boundary-value-extraction">ITEM interval boundary value extraction</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Import-and-prepare-ITEM-OFFSET">Import and prepare ITEM OFFSET</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Extract-contours">Extract contours</a></li>
@@ -439,16 +440,11 @@ simple validation using RTK GPS data.</p>
 <p><strong>Date:</strong> March 2018</p>
 <p><strong>Author:</strong> Robbi Bishop-Taylor</p>
 <p>Tags: <span class="target" id="index-0"></span>ITEM, <span class="target" id="index-1"></span>interpolation, <span class="target" id="index-2"></span>digital_elevation_model, <span class="target" id="index-3"></span>intertidal_zone</p>
-<div class="section" id="Load-modules-and-set-up-analysis">
-<h2>Load modules and set up analysis<a class="headerlink" href="#Load-modules-and-set-up-analysis" title="Permalink to this headline">¶</a></h2>
-<p>To be manually set: * Path to ITEM offset files (<code class="docutils literal notranslate"><span class="pre">item_offset_path</span></code>)
-* Polygon ID of ITEM polygon to process (<code class="docutils literal notranslate"><span class="pre">polygon_ID</span></code>) * Optional: a
-numpy index to restrict resulting plots (has no effect on analysis, but
-allows for closer inspection of input and output datasets
-(<code class="docutils literal notranslate"><span class="pre">plotting_subset</span></code>)</p>
+<div class="section" id="Load-modules-and-define-functions">
+<h2>Load modules and define functions<a class="headerlink" href="#Load-modules-and-define-functions" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [14]:
+<span></span>In [1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -467,6 +463,7 @@ allows for closer inspection of input and output datasets
 <span class="kn">from</span> <span class="nn">fiona.crs</span> <span class="k">import</span> <span class="n">from_epsg</span>
 <span class="kn">from</span> <span class="nn">osgeo</span> <span class="k">import</span> <span class="n">gdal</span>
 <span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="k">import</span> <span class="n">griddata</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">ndimage</span> <span class="k">as</span> <span class="n">nd</span>
 <span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">measure</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
@@ -474,11 +471,52 @@ allows for closer inspection of input and output datasets
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;/g/data/r78/rt1527/dea-notebooks/algorithms&#39;</span><span class="p">))</span>
 <span class="kn">from</span> <span class="nn">DEADataHandling</span> <span class="k">import</span> <span class="n">array_to_geotiff</span>
 
-
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">TODO: Investigate scipy.interpolate.RectBivariateSpline, scipy.interpolate.interp2d,</span>
 <span class="sd">spipy.interpolate.RegularGridInterpolator, sklearn.gaussian_process.GaussianProcess</span>
 <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">fill</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">invalid</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Replace value of invalid cells by the value of the nearest</span>
+<span class="sd">    cell with valid data</span>
+
+<span class="sd">    :attr data: numpy array of any dimension</span>
+<span class="sd">    :attr invalid: a binary array of same shape as &#39;data&#39;. Data value</span>
+<span class="sd">                   are replaced where invalid is True. Defaults to</span>
+<span class="sd">                   np.isnan(data) if no layer is given</span>
+
+<span class="sd">    :returns: Array with invalid values filled with nearest valid data value</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># If no invalid array is given, default to setting invalid based on nan</span>
+    <span class="k">if</span> <span class="n">invalid</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+
+        <span class="n">invalid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="n">ind</span> <span class="o">=</span> <span class="n">nd</span><span class="o">.</span><span class="n">distance_transform_edt</span><span class="p">(</span><span class="n">invalid</span><span class="p">,</span>
+                                    <span class="n">return_distances</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                    <span class="n">return_indices</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">ind</span><span class="p">)]</span>
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Set-up-analysis">
+<h2>Set up analysis<a class="headerlink" href="#Set-up-analysis" title="Permalink to this headline">¶</a></h2>
+<p>Set up path to data and polygon to process. <code class="docutils literal notranslate"><span class="pre">plotting_subset</span></code> does not
+affect the analysis, but can be used to provide more useful zoomed-in
+plots.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Working directory</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">&quot;/g/data/r78/rt1527/item_dem&quot;</span><span class="p">)</span>
 
 <span class="c1"># Path to ITEM offset product</span>
 <span class="n">item_offset_path</span> <span class="o">=</span> <span class="s2">&quot;/g/data2/v10/ITEM/offset_products&quot;</span>
@@ -489,8 +527,19 @@ allows for closer inspection of input and output datasets
 <span class="c1"># Zoom-in for plots (has no effect on analysis but allows you to plot a zoomed-in subset)</span>
 <span class="c1"># plotting_subset = np.index_exp[:, :]</span>
 <span class="n">plotting_subset</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">index_exp</span><span class="p">[</span><span class="mi">1750</span><span class="p">:</span> <span class="mi">1950</span><span class="p">,</span> <span class="mi">930</span><span class="p">:</span><span class="mi">1130</span><span class="p">]</span>
+
+<span class="c1"># Print run details</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Processing polygon </span><span class="si">{0}</span><span class="s2"> from </span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">polygon_ID</span><span class="p">,</span> <span class="n">item_offset_path</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Processing polygon 33 from /g/data2/v10/ITEM/offset_products
+</pre></div></div>
 </div>
 </div>
 <div class="section" id="ITEM-interval-boundary-value-extraction">
@@ -506,7 +555,7 @@ intervals than would be possible through simply assigning median tidal
 heights to the downhill or uphill contours.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [15]:
+<span></span>In [7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -544,7 +593,7 @@ heights to the downhill or uphill contours.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_workflows_IntertidalDEM_5_0.png" src="../../_images/notebooks_workflows_IntertidalDEM_5_0.png" />
+<img alt="../../_images/notebooks_workflows_IntertidalDEM_7_0.png" src="../../_images/notebooks_workflows_IntertidalDEM_7_0.png" />
 </div>
 </div>
 </div>
@@ -555,7 +604,7 @@ nodata and adding in artificially low minimum interval to ensure correct
 contour extraction.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [16]:
+<span></span>In [8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -576,10 +625,17 @@ contour extraction.</p>
 <span class="n">item_array</span><span class="p">[</span><span class="n">item_array</span> <span class="o">==</span> <span class="o">-</span><span class="mi">6666</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
 <span class="n">item_array</span><span class="p">[</span><span class="n">item_array</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span>
 
+<span class="c1"># Dilate data area of array by two pixels to eliminate NA contours on tile edges</span>
+<span class="c1"># (this only affects pixels directly on the boundary of two polygon arrays)</span>
+<span class="n">dilated_array</span> <span class="o">=</span> <span class="n">nd</span><span class="o">.</span><span class="n">morphology</span><span class="o">.</span><span class="n">binary_dilation</span><span class="p">(</span><span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">item_array</span><span class="p">),</span>  <span class="n">iterations</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">item_array</span> <span class="o">=</span> <span class="n">fill</span><span class="p">(</span><span class="n">item_array</span><span class="p">)</span>
+<span class="n">item_array</span><span class="p">[</span><span class="o">~</span><span class="n">dilated_array</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
 <span class="c1"># Plot original data</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">item_array</span><span class="p">[</span><span class="n">plotting_subset</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
 </pre></div>
 </div>
 </div>
@@ -587,7 +643,7 @@ contour extraction.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_workflows_IntertidalDEM_7_0.png" src="../../_images/notebooks_workflows_IntertidalDEM_7_0.png" />
+<img alt="../../_images/notebooks_workflows_IntertidalDEM_9_0.png" src="../../_images/notebooks_workflows_IntertidalDEM_9_0.png" />
 </div>
 </div>
 </div>
@@ -599,42 +655,40 @@ previously calculated elevation values. Contours are exported as line
 shapefiles to assist in subsequent assessment of output DEMs.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [17]:
+<span></span>In [11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Set up output list and items to iterate over; subtract 1m from highest class to allow</span>
-<span class="c1"># highest contour to calculate (otherwise, this height is read as being in NaN area)</span>
-<span class="n">contour_classes</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">9999</span><span class="p">]</span> <span class="o">+</span> <span class="n">interval_offsets</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">interval_offsets</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">-</span> <span class="mf">0.1</span><span class="p">]</span>
-
-<span class="c1"># Output dict</span>
+<span></span><span class="c1"># Output dict to hold contours for each offset</span>
 <span class="n">contour_dict</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
 
-<span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">contour_class</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">contour_classes</span><span class="p">):</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">contour_offset</span> <span class="ow">in</span> <span class="n">contour_offsets</span><span class="p">:</span>
 
-    <span class="c1"># Extract contours from array</span>
-    <span class="n">contours</span> <span class="o">=</span> <span class="n">measure</span><span class="o">.</span><span class="n">find_contours</span><span class="p">(</span><span class="n">item_array</span><span class="p">,</span> <span class="n">contour_class</span><span class="p">)</span>
-    <span class="n">contour_offset</span> <span class="o">=</span> <span class="n">contour_offsets</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Extracting contour </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">contour_offset</span><span class="p">))</span>
+        <span class="c1"># Extract contours from array</span>
+        <span class="n">contours</span> <span class="o">=</span> <span class="n">measure</span><span class="o">.</span><span class="n">find_contours</span><span class="p">(</span><span class="n">item_array</span><span class="p">,</span> <span class="n">contour_offset</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Extracting contour </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">contour_offset</span><span class="p">))</span>
 
-    <span class="c1"># Iterate through each contour feature, remove NAs and fix coordinates</span>
-    <span class="n">contour_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">contour</span> <span class="ow">in</span> <span class="n">contours</span><span class="p">:</span>
+        <span class="c1"># Iterate through each contour feature, remove NAs and fix coordinates</span>
+        <span class="n">contour_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">contour</span> <span class="ow">in</span> <span class="n">contours</span><span class="p">:</span>
 
-        <span class="c1"># Convert index coordinates to spatial coordinates in-place</span>
-        <span class="n">contour</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">contour</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">float</span><span class="p">(</span><span class="n">y_size</span><span class="p">)</span> <span class="o">+</span> <span class="n">upleft_y</span> <span class="o">+</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">y_size</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
-        <span class="n">contour</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">contour</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="nb">float</span><span class="p">(</span><span class="n">x_size</span><span class="p">)</span> <span class="o">+</span> <span class="n">upleft_x</span> <span class="o">+</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">x_size</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
-        <span class="n">contour</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">contour</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">contour_offset</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="c1"># Convert index coordinates to spatial coordinates in-place</span>
+            <span class="n">contour</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">contour</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">float</span><span class="p">(</span><span class="n">y_size</span><span class="p">)</span> <span class="o">+</span> <span class="n">upleft_y</span> <span class="o">+</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">y_size</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="n">contour</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">contour</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="nb">float</span><span class="p">(</span><span class="n">x_size</span><span class="p">)</span> <span class="o">+</span> <span class="n">upleft_x</span> <span class="o">+</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">x_size</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="n">contour</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">contour</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">contour_offset</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 
-        <span class="c1"># Remove contour points with NAs</span>
-        <span class="n">contour</span> <span class="o">=</span> <span class="n">contour</span><span class="p">[</span><span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">contour</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>
-        <span class="n">contour_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">contour</span><span class="p">)</span>
+            <span class="c1"># Remove contour points with NAs</span>
+            <span class="n">contour</span> <span class="o">=</span> <span class="n">contour</span><span class="p">[</span><span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">contour</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>
+            <span class="n">contour_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">contour</span><span class="p">)</span>
 
-    <span class="c1"># Add list of contour arrays to dict</span>
-    <span class="n">contour_dict</span><span class="p">[</span><span class="n">contour_offset</span><span class="p">]</span> <span class="o">=</span> <span class="n">contour_list</span>
+        <span class="c1"># Add list of contour arrays to dict</span>
+        <span class="n">contour_dict</span><span class="p">[</span><span class="n">contour_offset</span><span class="p">]</span> <span class="o">=</span> <span class="n">contour_list</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;fail&quot;</span><span class="p">)</span>
 
 
-<span class="c1"># Export points to shapefile</span>
+<span class="c1"># Export contours to line shapefile to assist in evaluating DEMs</span>
 <span class="n">schema</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;geometry&#39;</span><span class="p">:</span>  <span class="s1">&#39;MultiLineString&#39;</span><span class="p">,</span>
           <span class="s1">&#39;properties&#39;</span><span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;elevation&#39;</span><span class="p">:</span> <span class="s1">&#39;int&#39;</span> <span class="p">}</span> <span class="p">}</span>
 
@@ -692,7 +746,7 @@ TIN/Delaunay triangulation of the input data using Qhull before
 performing linear barycentric interpolation on each triangle.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [19]:
+<span></span>In [12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -720,7 +774,7 @@ performing linear barycentric interpolation on each triangle.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">interpolated_array</span><span class="p">[</span><span class="n">plotting_subset</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
-<span class="c1"># Export to tif</span>
+<span class="c1"># Export resulting DEM as a geotif</span>
 <span class="n">array_to_geotiff</span><span class="p">(</span><span class="n">fname</span> <span class="o">=</span> <span class="s2">&quot;output_data/ITEM_DEM_</span><span class="si">{}</span><span class="s2">.tif&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">polygon_ID</span><span class="p">),</span>
                  <span class="n">data</span> <span class="o">=</span> <span class="n">interpolated_array</span><span class="p">,</span>
                  <span class="n">geo_transform</span> <span class="o">=</span> <span class="n">geotrans</span><span class="p">,</span>
@@ -734,7 +788,7 @@ performing linear barycentric interpolation on each triangle.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_workflows_IntertidalDEM_11_0.png" src="../../_images/notebooks_workflows_IntertidalDEM_11_0.png" />
+<img alt="../../_images/notebooks_workflows_IntertidalDEM_13_0.png" src="../../_images/notebooks_workflows_IntertidalDEM_13_0.png" />
 </div>
 </div>
 </div>
@@ -745,7 +799,7 @@ Because validation data only exists for polygon 33 (Darwin), this
 imports DEM data for polygon 33 if another polygon is being analysed.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [20]:
+<span></span>In [14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -756,6 +810,11 @@ imports DEM data for polygon 33 if another polygon is being analysed.</p>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Importing ITEM_DEM_33.tif from file&quot;</span><span class="p">)</span>
     <span class="n">poly33_ds</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;output_data/ITEM_DEM_33.tif&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
     <span class="n">interpolated_array</span> <span class="o">=</span> <span class="n">poly33_ds</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()</span>
+
+    <span class="c1"># Get projection</span>
+    <span class="n">geotrans</span> <span class="o">=</span> <span class="n">poly33_ds</span><span class="o">.</span><span class="n">GetGeoTransform</span><span class="p">()</span>
+    <span class="n">upleft_x</span><span class="p">,</span> <span class="n">x_size</span><span class="p">,</span> <span class="n">x_rotation</span><span class="p">,</span> <span class="n">upleft_y</span><span class="p">,</span> <span class="n">y_rotation</span><span class="p">,</span> <span class="n">y_size</span> <span class="o">=</span> <span class="n">geotrans</span>
+
 
 <span class="c1"># Open validation point shapefile and use to extract data from underlying array</span>
 <span class="k">with</span> <span class="n">fiona</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;raw_data/EastPointonlyRTK_albers.shp&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">points</span><span class="p">:</span>
@@ -809,7 +868,7 @@ imports DEM data for polygon 33 if another polygon is being analysed.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_workflows_IntertidalDEM_13_0.png" src="../../_images/notebooks_workflows_IntertidalDEM_13_0.png" />
+<img alt="../../_images/notebooks_workflows_IntertidalDEM_15_0.png" src="../../_images/notebooks_workflows_IntertidalDEM_15_0.png" />
 </div>
 </div>
 </div>
