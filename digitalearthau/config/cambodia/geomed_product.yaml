@@ -3,6 +3,8 @@ description: Landsat Level-2 Annual GeoMedian
 metadata:
    format:
        name: GeoTiff
+   platform:
+       code: LANDSAT-7,LANDSAT-8
    product_type: surface_reflectance_statistical_summary
    statistics: {period: '1y'}
 metadata_type: eo
