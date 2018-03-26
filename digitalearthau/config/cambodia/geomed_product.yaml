@@ -1,6 +1,8 @@
 name: ls_level2_geomedian_annual 
 description: Landsat Level-2 Annual GeoMedian
 metadata:
+   format:
+       name: GeoTiff
    product_type: surface_reflectance_statistical_summary
    statistics: {period: '1y'}
 metadata_type: eo
