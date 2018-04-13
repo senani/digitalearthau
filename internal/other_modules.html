@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Command Line Usage (Advanced) &mdash; Digital Earth Australia 1.0.0 documentation</title>
+  <title>Other Modules &mdash; Digital Earth Australia 1.0.0 documentation</title>
   
 
   
@@ -32,8 +32,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Jupyter Notebooks Introduction" href="jupyter.html" />
-    <link rel="prev" title="Installation and Software Setup" href="install.html" /> 
+    <link rel="next" title="DEA Orchestration" href="orchestration.html" />
+    <link rel="prev" title="Introduction" href="modules.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -96,11 +96,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../about/changelog.html">DEA NCI Environment Changelog</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Connect</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="account.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="install.html">Installation and Software Setup</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Command Line Usage (Advanced)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="jupyter.html">Jupyter Notebooks Introduction</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../connect/account.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connect/install.html">Installation and Software Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connect/nci_basics.html">Command Line Usage (Advanced)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connect/jupyter.html">Jupyter Notebooks Introduction</a></li>
 </ul>
 <p class="caption"><span class="caption-text">User Guide</span></p>
 <ul>
@@ -117,18 +117,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../data/data.html">Surface Reflectance</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Developer Guide</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../internal/new_product.html">Creating a New Product</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/git_best_practice.html">Git Best Practice</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/release.html">DEA Release Process</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/modules.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/modules.html#user-instructions">User instructions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/modules.html#maintainer-instructions">Maintainer Instructions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/other_modules.html">Other Modules</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/orchestration.html">DEA Orchestration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/collection_management.html">Collection Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/goalkeeper_instructions.html">What’s a Goalkeeper</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internal/requirements_met.html">DEA Code Functionality Examples</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="new_product.html">Creating a New Product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git_best_practice.html">Git Best Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">DEA Release Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#user-instructions">User instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#maintainer-instructions">Maintainer Instructions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Other Modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pycharm">Pycharm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nc-tools">NC Tools</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="orchestration.html">DEA Orchestration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collection_management.html">Collection Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="goalkeeper_instructions.html">What’s a Goalkeeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements_met.html">DEA Code Functionality Examples</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../genindex.html">Tags Index</a></li>
@@ -177,13 +181,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Command Line Usage (Advanced)</li>
+      <li>Other Modules</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/connect/nci_basics.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/internal/other_modules.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -230,54 +234,40 @@
     margin-right: 4px;  /* make room for the exclamation icon */
 }
 </style>
-<div class="section" id="command-line-usage-advanced">
-<h1>Command Line Usage (Advanced)<a class="headerlink" href="#command-line-usage-advanced" title="Permalink to this headline">¶</a></h1>
-<p>On <code class="docutils literal notranslate"><span class="pre">VDI</span></code>, you can start a terminal window from <strong>Applications</strong> -&gt; <strong>System Tools</strong>.</p>
-<p>To manually use the modules on <code class="docutils literal notranslate"><span class="pre">raijin</span></code> or <code class="docutils literal notranslate"><span class="pre">VDI</span></code>, add the datacube module path:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> module use /g/data/v10/public/modules/modulefiles/
-</pre></div>
+<div class="section" id="other-modules">
+<h1>Other Modules<a class="headerlink" href="#other-modules" title="Permalink to this headline">¶</a></h1>
+<p>To use these modules, you will need the public modules available:</p>
+<blockquote>
+<div>module use /g/data/v10/public/modules/modulefiles</div></blockquote>
+<div class="section" id="pycharm">
+<h2>Pycharm<a class="headerlink" href="#pycharm" title="Permalink to this headline">¶</a></h2>
+<p>Pycharm (Community Edition) is a free
+The easiest way to run Pycharm is to copy the launcher on to your desktop.</p>
+<p>You can do this by running:</p>
+<blockquote>
+<div>cp /g/data/v10/public/modules/pycharm/PyCharm.desktop ~/Desktop/</div></blockquote>
+<p>To upgrade the version, download the latest tarball from the jetbrains website and place it in the folder
+<code class="docutils literal notranslate"><span class="pre">/g/data/v10/public/modules/pycharm/</span></code></p>
+<p>If you have a license for Pycharm Professional Edition, you can use your JetBrains Account with the version at:</p>
+<blockquote>
+<div>cp /g/data/v10/public/modules/pycharm-pro/PyCharmPro.desktop ~/Desktop/</div></blockquote>
+<p>To set up your virtual environment, in PyCharm:</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>File</strong> -&gt; <strong>Settings…</strong> -&gt; <strong>Project/Project Interpreter</strong></li>
+<li>Click the cog icon and select “Add Local…” -&gt; Conda Environment</li>
+<li>In <strong>Existing Environment</strong> -&gt; <strong>Interpreter</strong>, enter the path to the python executable,
+eg <cite>/g/data/v10/public/modules/dea-env/20180405/bin/python</cite></li>
+</ul>
+</div></blockquote>
 </div>
-<p>(you can add the above to your <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> to avoid running it every time)</p>
-<p>You should now be able to load the DEA module by running:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> module load dea
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Behind the scenes this will load a second module called <code class="docutils literal notranslate"><span class="pre">dea-env</span></code>
-which contains all required libraries and supporting software to use <code class="docutils literal notranslate"><span class="pre">dea</span></code>.</p>
-</div>
-<p>You can see a list of available modules by running:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> module avail
-</pre></div>
-</div>
-<p>The first time you load the module, it will register your account with the datacube, granting you read-only access.</p>
-<p>It will store your password in the file <cite>~/.pgpass</cite>.</p>
-<p>You can then launch the jupyter-lab notebook by running:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> jupyter-lab notebook
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>VDI and Raijin have separate home directories, so you must copy your pgpass to the other if
-you use both environments.</p>
-<p>You can push the contents of your pgpass file from VDI to Raijin by running on a terminal window in VDI:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">remote-hpc-cmd init</span>
-<span class="go">ssh raijin &quot;cat &gt;&gt; ~/.pgpass&quot; &lt; ~/.pgpass</span>
-<span class="go">ssh raijin &quot;chmod 0600 ~/.pgpass&quot;</span>
-</pre></div>
-</div>
-<p>You will most likely be prompted for your NCI password.</p>
-<p>To pull the contents of your pgpass from Raijin to VDI instead, run</p>
-<div class="last highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ssh raijin &quot;cat ~/.pgpass&quot; &gt;&gt; ~/.pgpass</span>
-<span class="go">chmod 0600 ~/.pgpass</span>
-</pre></div>
-</div>
-</div>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">If you have created a <code class="docutils literal notranslate"><span class="pre">.datacube.conf</span></code> file in your home folder from early Data Cube betas, you should rename or remove it
-to avoid it conflicting with the settings loaded by the module.</p>
+<div class="section" id="nc-tools">
+<h2>NC Tools<a class="headerlink" href="#nc-tools" title="Permalink to this headline">¶</a></h2>
+<p>The Java NetCDF ToolsUI can be run by calling:</p>
+<blockquote>
+<div>module load nctools
+nctools</div></blockquote>
+<p>More information can be found at <a class="reference external" href="https://www.unidata.ucar.edu/downloads/netcdf/netcdf-java-4/index.jsp">https://www.unidata.ucar.edu/downloads/netcdf/netcdf-java-4/index.jsp</a></p>
 </div>
 </div>
 
@@ -289,10 +279,10 @@ to avoid it conflicting with the settings loaded by the module.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="jupyter.html" class="btn btn-neutral float-right" title="Jupyter Notebooks Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="orchestration.html" class="btn btn-neutral float-right" title="DEA Orchestration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="install.html" class="btn btn-neutral" title="Installation and Software Setup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="modules.html" class="btn btn-neutral" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
