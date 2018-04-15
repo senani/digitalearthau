@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Introduction &mdash; Digital Earth Australia 1.0.0 documentation</title>
+  <title>DEA Modules &mdash; Digital Earth Australia 1.0.0 documentation</title>
   
 
   
@@ -121,12 +121,21 @@
 <li class="toctree-l1"><a class="reference internal" href="new_product.html">Creating a New Product</a></li>
 <li class="toctree-l1"><a class="reference internal" href="git_best_practice.html">Git Best Practice</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release.html">DEA Release Process</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#user-instructions">User instructions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#notes">Notes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">DEA Modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#user-instructions">User instructions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#notes">Notes</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#maintainer-instructions">Maintainer Instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#maintainer-instructions">Maintainer Instructions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#building-a-new-environment-module">Building a new <em>Environment Module</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-a-new-dea-module">Building a new <em>DEA Module</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#updating-the-default-version">Updating the Default Version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#archiving-an-old-module">Archiving an old module</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="other_modules.html">Other Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="orchestration.html">DEA Orchestration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="collection_management.html">Collection Management</a></li>
@@ -180,7 +189,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Introduction</li>
+      <li>DEA Modules</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -233,9 +242,11 @@
     margin-right: 4px;  /* make room for the exclamation icon */
 }
 </style>
+<div class="section" id="dea-modules">
+<h1>DEA Modules<a class="headerlink" href="#dea-modules" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://travis-ci.org/GeoscienceAustralia/digitalearthau"><img alt="Build Status" src="https://travis-ci.org/GeoscienceAustralia/digitalearthau.svg?branch=develop" /></a></p>
 <div class="section" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>These scripts are all about our deployment of code onto the NCI.</p>
 <p>We are going to have have three modules, with date-based version
 numbers:</p>
@@ -272,7 +283,7 @@ Stats</a></li>
 </ol>
 </div>
 <div class="section" id="user-instructions">
-<h1>User instructions<a class="headerlink" href="#user-instructions" title="Permalink to this headline">¶</a></h1>
+<h2>User instructions<a class="headerlink" href="#user-instructions" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">dea</span>
 <span class="n">datacube</span> <span class="n">system</span> <span class="n">check</span>
 </pre></div>
@@ -281,7 +292,7 @@ Stats</a></li>
 <p>It will also load <code class="docutils literal notranslate"><span class="pre">dea-env/&lt;build_date&gt;</span></code> which contains all of the
 software dependencies for using DEA.</p>
 <div class="section" id="notes">
-<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
+<h3>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h3>
 <p>Loading these module might conflict with other python modules you have
 loaded.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">dea-env</span></code> module will prevent conflicts with locally installed
@@ -295,28 +306,41 @@ python packages by changing <code class="docutils literal notranslate"><span cla
 </div>
 </div>
 <div class="section" id="maintainer-instructions">
-<h1>Maintainer Instructions<a class="headerlink" href="#maintainer-instructions" title="Permalink to this headline">¶</a></h1>
+<h2>Maintainer Instructions<a class="headerlink" href="#maintainer-instructions" title="Permalink to this headline">¶</a></h2>
 <p>Only run these scripts from Raijin. We’ve seen filesystem sync issues
 when run from VDI.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">python3</span><span class="o">/</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">2</span>
 <span class="n">pip3</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="n">yaml</span>
 </pre></div>
 </div>
+<div class="section" id="building-a-new-environment-module">
+<h3>Building a new <em>Environment Module</em><a class="headerlink" href="#building-a-new-environment-module" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">build_environment_module</span><span class="o">.</span><span class="n">py</span> <span class="n">dea</span><span class="o">-</span><span class="n">env</span><span class="o">/</span><span class="n">modulespec</span><span class="o">.</span><span class="n">yaml</span>
 </pre></div>
 </div>
 <p>This will build a new environment module for today.</p>
 <p>The module version number is the current date in format YYYYMMDD, as it
 is a snapshot of all of our pip/conda dependencies on that date.</p>
+</div>
+<div class="section" id="building-a-new-dea-module">
+<h3>Building a new <em>DEA Module</em><a class="headerlink" href="#building-a-new-dea-module" title="Permalink to this headline">¶</a></h3>
 <p>A DEA module will specify one exact environment module.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">build_dea_module</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">environment_module</span><span class="o">&gt;</span><span class="p">]</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="updating-the-default-version">
+<h3>Updating the Default Version<a class="headerlink" href="#updating-the-default-version" title="Permalink to this headline">¶</a></h3>
 <p>Once a module has been tested and approved, it can be made the default.</p>
 <p>Edit the <code class="docutils literal notranslate"><span class="pre">.version</span></code> file in the modulefiles directory.</p>
 <p>Eg. For <code class="docutils literal notranslate"><span class="pre">dea</span></code> this is:
 <code class="docutils literal notranslate"><span class="pre">/g/data/v10/public/modules/modulefiles/dea/.version</span></code></p>
+</div>
+<div class="section" id="archiving-an-old-module">
+<h3>Archiving an old module<a class="headerlink" href="#archiving-an-old-module" title="Permalink to this headline">¶</a></h3>
 <p>…</p>
+</div>
+</div>
 </div>
 
 
