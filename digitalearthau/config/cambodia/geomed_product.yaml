@@ -6,7 +6,7 @@ metadata:
    platform:
        code: LANDSAT_5,LANDSAT_7,LANDSAT_8
    instrument:
-       name: ETM,OLI_TIRS
+       name: TM,ETM,OLI_TIRS
    product_type: surface_reflectance_statistical_summary
    statistics: {period: '1y'}
 metadata_type: eo
