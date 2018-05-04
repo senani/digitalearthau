@@ -4,7 +4,7 @@ metadata:
    format:
        name: GeoTiff
    platform:
-       code: LANDSAT_7,LANDSAT_8
+       code: LANDSAT_5,LANDSAT_7,LANDSAT_8
    instrument:
        name: ETM,OLI_TIRS
    product_type: surface_reflectance_statistical_summary
