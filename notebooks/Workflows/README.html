@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Algorithms &mdash; Digital Earth Australia 1.0.0 documentation</title>
+  <title>Workflows &mdash; Digital Earth Australia 1.0.0 documentation</title>
   
 
   
@@ -32,8 +32,8 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="ProduceFalseColourGeotiffs" href="ProduceFalseColourGeotiffs.html" />
-    <link rel="prev" title="View Landsat 8 imagery for a chosen time period" href="../products/RetrieveLandsat8ViewAndExport.html" /> 
+    <link rel="next" title="View Landsat 8 imagery for a chosen time period" href="RetrieveLandsat8ViewAndExport.html" />
+    <link rel="prev" title="ProduceFalseColourGeotiffs" href="../Outputting_data/ProduceFalseColourGeotiffs.html" /> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -111,16 +111,22 @@
 </ul>
 <p class="caption"><span class="caption-text">Notebook Gallery</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Notebook Gallery</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../products/README.html">Products</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Algorithms</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="ProduceFalseColourGeotiffs.html">ProduceFalseColourGeotiffs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="RandomForestClassification.html">Random forest classification</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../DEA_datasets/README.html">DEA Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Integrating_external_data/README.html">Integrating External Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Index_calculation/README.html">Index Calculation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Temporal_analysis/README.html">Temporal Analyses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Composite_generation/README.html">Composite Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Image_classification/README.html">Image Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Outputting_data/README.html">Outputting data</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Workflows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RetrieveLandsat8ViewAndExport.html">View Landsat 8 imagery for a chosen time period</a></li>
+<li class="toctree-l3"><a class="reference internal" href="IntertidalDEM.html">Intertidal Digital Elevation Model</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../case_studies/README.html">Case Studies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../workflows/README.html">Workflows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../README.html">Notebook Gallery Instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Scripts/README.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../README.html">About this repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../README.html#notebook-gallery-instructions">Notebook Gallery Instructions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tags.html">Tagging Notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../genindex.html">Tags Index</a></li>
 </ul>
@@ -189,15 +195,15 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../index.html">Notebook Gallery</a> &raquo;</li>
+          <li><a href="../index.html">User Guide</a> &raquo;</li>
         
-      <li>Algorithms</li>
+      <li>Workflows</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/notebooks/algorithms/README.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/notebooks/Workflows/README.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -229,53 +235,13 @@
     margin-right: 4px;  /* make room for the exclamation icon */
 }
 </style>
-<div class="section" id="algorithms">
-<h1>Algorithms<a class="headerlink" href="#algorithms" title="Permalink to this headline">¶</a></h1>
-<p>This folder contains examples of python code that demonstrates the use of functions and tools suitable for use in the DEA environment. The following functions are currently included in Python scripts for loading into notebooks:</p>
-<dl class="docutils">
-<dt>DEADataHandling.py: handling data using DEA functionality (i.e. dc.load or xarrays)</dt>
-<dd><ul class="first last simple">
-<li><strong>load_nbarx</strong>: Loads NBAR (Nadir BRDF Adjusted Reflectance) or NBAR-T (terrain corrected NBAR) data for a sensor, masks using pixel quality (PQ), then optionally filters out terrain -999s (for NBAR-T)</li>
-<li><strong>load_sentinel</strong>: Loads a Sentinel granule product and masks using PQ</li>
-<li><strong>tasseled_cap</strong>: Computes tasseled cap wetness, greenness and brightness bands from a six band xarray dataset</li>
-<li><strong>dataset_to_geotiff</strong>: Writes a multi-band geotiff for one xarray timeslice, or for a single composite image</li>
-</ul>
-</dd>
-<dt>DEAPlotting.py: plotting DEA data (e.g. xarrays)</dt>
-<dd><ul class="first last simple">
-<li><strong>three_band_image</strong>: Takes three spectral bands and plots them on the RGB bands of an image</li>
-<li><strong>three_band_image_subplots</strong>: Takes three spectral bands and multiple time steps, and plots them on the RGB bands of an image</li>
-</ul>
-</dd>
-<dt>BandIndices.py: calculating remote sensing band indices</dt>
-<dd><ul class="first last simple">
-<li><strong>calculate_indices</strong>: Computes a set of indices (including NDVI, GNDVI, NDWI, NDMI) from an xarray dataset</li>
-<li><strong>geological_indices</strong>: Computes a set of geological remote sensing indices (including CMR, FMR, IOR) from an xarray dataset</li>
-</ul>
-</dd>
-<dt>SpatialTools.py: Rasters/shapefile manipulation functions that do not rely on DEA (i.e. no dc.load or xarrays)</dt>
-<dd><ul class="first last simple">
-<li><strong>rasterize_vector</strong>: Rasterize a vector file and return as an array</li>
-<li><strong>layer_extent</strong>: Computes min and max extents from GDAL layer features</li>
-<li><strong>indices_to_coords</strong>: Takes lists of x and y array indices and converts them to equivelent spatial x and y coordinates</li>
-<li><strong>coords_to_indices</strong>: Takes lists of x and y coordinates and converts to equivelent raster array cell indices</li>
-<li><strong>raster_randomsample</strong>: Generate a set of n random points within cells of a raster that contain data</li>
-<li><strong>array_to_geotiff</strong>: Create a single band GeoTIFF file with data from an array</li>
-<li><strong>reproject_to_template</strong>: Reprojects a raster to match the extent, cell size, projection and dimensions of a template raster using GDAL</li>
-</ul>
-</dd>
-<dt>ClassificationTools.py: classifying remote sensing imagery using classifiers and machine learning</dt>
-<dd><ul class="first last simple">
-<li><strong>randomforest_train</strong>: Extracts training data from xarray dataset for multiple training shapefiles</li>
-<li><strong>randomforest_classify</strong>: Performs classification of xarray dataset using pre-trained random forest classifier, and export classified output to a geotiff</li>
-<li><strong>randomforest_eval</strong>: Takes a set of training labels and training samples, and plots OOB error against a range of classifier parameters to explore how parameters affect classification</li>
-</ul>
-</dd>
-</dl>
+<div class="section" id="workflows">
+<h1>Workflows<a class="headerlink" href="#workflows" title="Permalink to this headline">¶</a></h1>
+<p>These pages will demonstrate more complex examples of possible DEA workflows.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="ProduceFalseColourGeotiffs.html">ProduceFalseColourGeotiffs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="RandomForestClassification.html">Random forest classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RetrieveLandsat8ViewAndExport.html">View Landsat 8 imagery for a chosen time period</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IntertidalDEM.html">Intertidal Digital Elevation Model</a></li>
 </ul>
 </div>
 </div>
@@ -288,10 +254,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="ProduceFalseColourGeotiffs.html" class="btn btn-neutral float-right" title="ProduceFalseColourGeotiffs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="RetrieveLandsat8ViewAndExport.html" class="btn btn-neutral float-right" title="View Landsat 8 imagery for a chosen time period" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../products/RetrieveLandsat8ViewAndExport.html" class="btn btn-neutral" title="View Landsat 8 imagery for a chosen time period" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../Outputting_data/ProduceFalseColourGeotiffs.html" class="btn btn-neutral" title="ProduceFalseColourGeotiffs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
