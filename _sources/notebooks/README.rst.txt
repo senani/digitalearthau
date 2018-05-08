@@ -1,5 +1,33 @@
 .. Notebook Gallery Instructions:
 
+=====================
+About this documentation
+=====================
+This documentation is designed to step the user through getting started with DEA, through to more complicated algorithms and workflows. 
+The intended order of these notebook folders are:
+
+1. Getting_started
+
+2. DEA_datasets
+
+3. Integrating_external_data
+
+4. Index_calculation
+
+5. Temporal_analysis
+
+6. Composite_generation
+
+7. Image_classification
+
+8. Outputting_data
+
+9. Workflows
+
+10. Scripts
+
+If you are searching for a specific functionality, use the :doc:`Tags Index </genindex>` to search for a suitable example. If there is a functionality that has not been documented that you think should be, please create an `Issue` in the `dea-notebooks repository<https://github.com/GeoscienceAustralia/dea-notebooks>`_. 
+
 =============================
 Notebook Gallery Instructions
 =============================
@@ -79,6 +107,10 @@ As an example...
 
 **Author**: Claire Krause
 
+Note on using heading levels in the Jupyter Notebooks
+-----------------------------------------------------
+The code that publishes the notebooks to the website uses Heading levels to grab titles and set up hyperlinks. **Please only use heading level 1 (i.e. ``#``) for the overall notebook title**. Headings throughout the notebook should use headinglevel two or below (i.e. ``##``). 
+
 Tagging
 -------
 
@@ -123,6 +155,10 @@ Anyone with admin access to the ``dea-notebooks`` repo can approve pull requests
 Once the code has been approved, you can merge it into the ``master`` branch. Select the ``squash and merge`` option (you may need to find this in the drop down menu to the right of the green merge button. The squash and merge will squash all the commits on the temp branch into a single commit, and just make things neater. Once you have merged the new branch in, you need to **delete the branch**. There is a button on the push page that asks you if you would like to delete the now merged branch. Yes. Delete it. The changes from this branch have now been merged in, so there is no risk of losing someone's work. This will stop lots and lots of staging/temp branches from building up in the repo. 
 
 You are now done!
+
+Revising a pull request
+-----------------------
+If your reviewer suggests you make changes to code you submitted as a ``pull request``, it's easy to fix things up. Simply update your code on the same temporary branch you submitted the ``pull request`` from, commit the changes (``git commit -m "Short explanation``), push them back up to the remote repo (``git push origin <tempbranchname>``), and the new commit will automatically appear in the same ``pull request`` ready to be accepted!
 
 Cleaning up your own repo
 -------------------------
