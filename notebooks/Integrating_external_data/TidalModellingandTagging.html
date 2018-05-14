@@ -421,8 +421,10 @@ datasets including the Intertidal Extents Model (ITEM), High-Low Tide
 Composites (HLTC), and the National Intertidal Digital Elevation Model
 (NIDEM).</p>
 <p><strong>Inputs:</strong></p>
-<p>This example uses an external <code class="docutils literal notranslate"><span class="pre">three_band_image</span></code> function available in
-the <code class="docutils literal notranslate"><span class="pre">Scripts</span></code> folder of the <a class="reference external" href="https://github.com/GeoscienceAustralia/dea-notebooks/tree/master/Scripts">dea-notebooks Github
+<p>Before running this notebook, please ensure that the <code class="docutils literal notranslate"><span class="pre">otps</span></code> module has
+been loaded by running: <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">otps</span></code></p>
+<p>This example also uses an external <code class="docutils literal notranslate"><span class="pre">three_band_image</span></code> function
+available in the <code class="docutils literal notranslate"><span class="pre">Scripts</span></code> folder of the <a class="reference external" href="https://github.com/GeoscienceAustralia/dea-notebooks/tree/master/Scripts">dea-notebooks Github
 repository</a>.
 Note that <code class="docutils literal notranslate"><span class="pre">dea-notebooks</span></code> functions have been developed by DEA users,
 not the DEA development team, and so are provided without warranty. If
@@ -708,7 +710,8 @@ characteristics of the coastline at various tidal stages.</p>
 <span class="n">filtered_high</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">tide_heights</span> <span class="o">&gt;</span> <span class="n">high_height</span><span class="p">,</span> <span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 <span class="n">filtered_low</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">tide_heights</span> <span class="o">&lt;</span> <span class="n">low_height</span><span class="p">,</span> <span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 
-<span class="c1"># Take the median of each set of low and high tide observations to produce a composite:</span>
+<span class="c1"># Take the simple median of each set of low and high tide observations to produce a composite.</span>
+<span class="c1"># (Alternatively, observations could be combined using a geomedian to keep band relationships consistent)</span>
 <span class="n">median_high</span> <span class="o">=</span> <span class="n">filtered_high</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">dim</span> <span class="o">=</span> <span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">keep_attrs</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 <span class="n">median_low</span> <span class="o">=</span> <span class="n">filtered_low</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">dim</span> <span class="o">=</span> <span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">keep_attrs</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 
