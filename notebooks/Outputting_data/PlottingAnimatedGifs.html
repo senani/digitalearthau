@@ -1,0 +1,715 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Plotting animated GIFs from time series imagery &mdash; Digital Earth Australia 1.0.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/dea-favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Workflows" href="../Workflows/README.html" />
+    <link rel="prev" title="ProduceFalseColourGeotiffs" href="ProduceFalseColourGeotiffs.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/DEA-logo-light.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../about/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about/changelog.html">DEA NCI Environment Changelog</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Connect</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../connect/account.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../connect/install.html">Installation and Software Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../connect/nci_basics.html">Command Line Usage (Advanced)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../connect/jupyter.html">Jupyter Notebooks Introduction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../query/Getting Started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../query/List Products.html">List Products &amp; Measurements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../query/Loading Data.html">Loading data from the datacube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../query/Advanced Querying.html">Advanced Querying</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook Gallery</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Getting_started/README.html">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DEA_datasets/README.html">DEA Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Integrating_external_data/README.html">Integrating External Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Index_calculation/README.html">Index Calculation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Temporal_analysis/README.html">Temporal Analyses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Composite_generation/README.html">Composite Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Image_classification/README.html">Image Classification</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="README.html">Outputting data</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="ProduceFalseColourGeotiffs.html">ProduceFalseColourGeotiffs</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Plotting animated GIFs from time series imagery</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Set-up-datacube-query">Set up datacube query</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Extract-cloud-free-clear-Landsat-observations-from-all-sensors">Extract cloud-free clear Landsat observations from all sensors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Plot-entire-time-series-as-an-animated-GIF">Plot entire time series as an animated GIF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Plot-fading/transitioning-animation-to-compare-two-timesteps">Plot fading/transitioning animation to compare two timesteps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Workflows/README.html">Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Scripts/README.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../README.html">Overview of DEA Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../README.html#publishing-finished-notebooks">Publishing finished notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../README.html#dea-notebooks-using-command-line-git">DEA notebooks using command-line git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../README.html#dea-notebooks-using-github">DEA notebooks using Github</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../README.html#approving-pull-requests">Approving pull requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tags.html">Tagging Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../genindex.html">Tags Index</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Data Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../data/data.html">Surface Reflectance</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../internal/new_product.html">Creating a New Product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../internal/git_best_practice.html">Git Best Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../internal/release.html">DEA Release Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../internal/modules.html">DEA Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../internal/other_modules.html">Other Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../internal/orchestration.html">DEA Orchestration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../internal/collection_management.html">Collection Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../internal/goalkeeper_instructions.html">What’s a Goalkeeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../internal/requirements_met.html">DEA Code Functionality Examples</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../genindex.html">Tags Index</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Digital Earth Australia</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">User Guide</a> &raquo;</li>
+        
+          <li><a href="README.html">Outputting data</a> &raquo;</li>
+        
+      <li>Plotting animated GIFs from time series imagery</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/notebooks/Outputting_data/PlottingAnimatedGifs.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #303F9F;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #D84315;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 8ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #cfcfcf;
+    border-radius: 2px;
+    background: #f7f7f7;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.pngmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+</style>
+<div class="section" id="Plotting-animated-GIFs-from-time-series-imagery">
+<h1>Plotting animated GIFs from time series imagery<a class="headerlink" href="#Plotting-animated-GIFs-from-time-series-imagery" title="Permalink to this headline">¶</a></h1>
+<p><strong>What does this notebook do?</strong></p>
+<p>This notebook demonstrates how to import a time series of DEA cloud-free
+Landsat imagery from multiple sensors (i.e. Landsat 5, 7 and 8) as an
+xarray dataset, and then plot the data as an animated time series GIF
+and a transitioning/fading GIF that compares two timesteps. Animations
+can be produced as either GIFs or MP4s for any area in Australia using a
+standard datacube query.</p>
+<p><strong>Required inputs</strong></p>
+<p>This example uses three external functions called <code class="docutils literal notranslate"><span class="pre">load_clearlandsat</span></code>,
+<code class="docutils literal notranslate"><span class="pre">animated_timeseries</span></code> and <code class="docutils literal notranslate"><span class="pre">animated_fade</span></code>. These functions are
+available in the Scripts folder of the <a class="reference external" href="https://github.com/GeoscienceAustralia/dea-notebooks/tree/master/Scripts">dea-notebooks Github
+repository</a>.
+Note that these functions have been developed by DEA users, not the DEA
+development team, and so are provided without warranty. If you find an
+error or bug in the functions, please either create an ‘Issue’ in the
+Github repository, or fix it yourself and create a ‘Pull’ request to
+contribute the updated function back into the repository (See the
+repository
+<a class="reference external" href="https://github.com/GeoscienceAustralia/dea-notebooks/blob/master/README.rst">README</a>
+for instructions on creating a Pull request).</p>
+<p><strong>Date:</strong> May 2018</p>
+<p><strong>Author:</strong> Robbi Bishop-Taylor</p>
+<p><strong>Tags</strong>: <span class="target" id="index-0"></span>plot, <span class="target" id="index-1"></span>animation, <span class="target" id="index-2"></span>time_series, <span class="target" id="index-3"></span>gif, <span class="target" id="index-4"></span>mp4, <span class="target" id="index-5"></span>movie, <span class="target" id="index-6"></span>Landsat5, <span class="target" id="index-7"></span>Landsat7, <span class="target" id="index-8"></span>Landsat8, <span class="target" id="index-9"></span>load_clearlandsat, <span class="target" id="index-10"></span>animated_timeseries, <span class="target" id="index-11"></span>animated_fade, <span class="target" id="index-12"></span>DEAPlotting, <span class="target" id="index-13"></span>DEADataHandling, <span class="target" id="index-14"></span>Scripts</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Import modules</span>
+<span class="kn">import</span> <span class="nn">datacube</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1"># Import external dea-notebooks functions using relative link to Scripts directory</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../Scripts&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">DEADataHandling</span>
+<span class="kn">import</span> <span class="nn">DEAPlotting</span>
+
+<span class="c1"># Set up datacube instance</span>
+<span class="n">dc</span> <span class="o">=</span> <span class="n">datacube</span><span class="o">.</span><span class="n">Datacube</span><span class="p">(</span><span class="n">app</span><span class="o">=</span><span class="s1">&#39;Time series animation&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Set-up-datacube-query">
+<h2>Set up datacube query<a class="headerlink" href="#Set-up-datacube-query" title="Permalink to this headline">¶</a></h2>
+<p>Define the query bounds for datacube extraction using a dict. This
+should include <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> limits, potentially a list of
+<code class="docutils literal notranslate"><span class="pre">measurements</span></code> (i.e. the bands you want to extract like ‘red’,
+‘green’, ‘blue’; this significantly speeds up the import) and a <code class="docutils literal notranslate"><span class="pre">time</span></code>
+extent. If no <code class="docutils literal notranslate"><span class="pre">time</span></code> is given, the function defaults to all timesteps
+available to all sensors (e.g. 1987-2018).</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Set up spatial and temporal query.</span>
+<span class="n">query</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">970476</span><span class="p">,</span> <span class="mi">987476</span><span class="p">),</span>
+         <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="mi">3568950</span><span class="p">,</span> <span class="o">-</span><span class="mi">3551951</span><span class="p">),</span>
+         <span class="s1">&#39;measurements&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">],</span>
+         <span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;2013-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2018-01-01&#39;</span><span class="p">),</span>
+         <span class="s1">&#39;crs&#39;</span><span class="p">:</span> <span class="s1">&#39;EPSG:3577&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Extract-cloud-free-clear-Landsat-observations-from-all-sensors">
+<h2>Extract cloud-free clear Landsat observations from all sensors<a class="headerlink" href="#Extract-cloud-free-clear-Landsat-observations-from-all-sensors" title="Permalink to this headline">¶</a></h2>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">load_clearlandsat</span></code> function to load Landsat observations and
+PQ data for multiple sensors (i.e. ls5, ls7, ls8), and return a single
+xarray dataset containing only observations that contain greater than a
+specified proportion of clear pixels. This uses <code class="docutils literal notranslate"><span class="pre">dask</span></code> to only load in
+the filtered observations, and results in a visually appealing time
+series of observations that are not affected by cloud!</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Set the minimum proportion of clear pixels (pixels with no clouds or other nodata)</span>
+<span class="n">masked_prop</span><span class="o">=</span><span class="mf">0.99</span>
+
+<span class="c1"># Load in only clear Landsat observations with &lt; 1% unclear values</span>
+<span class="n">combined_ds</span> <span class="o">=</span> <span class="n">DEADataHandling</span><span class="o">.</span><span class="n">load_clearlandsat</span><span class="p">(</span><span class="n">dc</span><span class="o">=</span><span class="n">dc</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">masked_prop</span><span class="o">=</span><span class="n">masked_prop</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">combined_ds</span><span class="p">)</span>
+
+<span class="c1"># Plot first five time series images (just using the red band for simplicity):</span>
+<span class="n">combined_ds</span><span class="o">.</span><span class="n">red</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">robust</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;xarray.Dataset&gt;
+Dimensions:    (time: 55, x: 680, y: 680)
+Coordinates:
+  * y          (y) float64 -3.552e+06 -3.552e+06 -3.552e+06 -3.552e+06 ...
+  * x          (x) float64 9.705e+05 9.705e+05 9.705e+05 9.706e+05 9.706e+05 ...
+  * time       (time) datetime64[ns] 2013-04-03T00:22:12 2013-04-22T00:22:11 ...
+Data variables:
+    red        (time, y, x) float64 838.0 909.0 1.074e+03 1.15e+03 1.253e+03 ...
+    green      (time, y, x) float64 682.0 712.0 788.0 819.0 876.0 893.0 ...
+    blue       (time, y, x) float64 574.0 583.0 596.0 596.0 608.0 617.0 ...
+    data_perc  (time) float64 1.0 1.0 0.9997 0.9994 0.9998 1.0 1.0 1.0 1.0 ...
+Attributes:
+    crs:      EPSG:3577
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[30]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;xarray.plot.facetgrid.FacetGrid at 0x7f5cf4df7898&gt;
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/notebooks_Outputting_data_PlottingAnimatedGifs_7_2.png" src="../../_images/notebooks_Outputting_data_PlottingAnimatedGifs_7_2.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Plot-entire-time-series-as-an-animated-GIF">
+<h2>Plot entire time series as an animated GIF<a class="headerlink" href="#Plot-entire-time-series-as-an-animated-GIF" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">animated_timeseries</span></code> function takes an xarray time series and
+exports a three band (e.g. true or false colour) GIF or MP4 animation
+showing changes in the landscape across time. Here, we plot the xarray
+as an animated GIF that includes a date annotation for each frame. We
+set the interval between the animation frames to 80 milliseconds, and
+set <code class="docutils literal notranslate"><span class="pre">reflect_stand=2500</span></code> to use a bright and vibrant colour stretch:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Produce time series animation of red, green and blue bands</span>
+<span class="n">DEAPlotting</span><span class="o">.</span><span class="n">animated_timeseries</span><span class="p">(</span><span class="n">ds</span><span class="o">=</span><span class="n">combined_ds</span><span class="p">,</span> <span class="n">output_path</span><span class="o">=</span><span class="s2">&quot;animated_timeseries.gif&quot;</span><span class="p">,</span>
+                                <span class="n">interval</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">reflect_stand</span><span class="o">=</span><span class="mi">2500</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Generating animation with 55 frames
+    Exporting animation to animated_timeseries.gif
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/notebooks_Outputting_data_PlottingAnimatedGifs_9_1.png" src="../../_images/notebooks_Outputting_data_PlottingAnimatedGifs_9_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Plot-fading/transitioning-animation-to-compare-two-timesteps">
+<h2>Plot fading/transitioning animation to compare two timesteps<a class="headerlink" href="#Plot-fading/transitioning-animation-to-compare-two-timesteps" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">animated_fade</span></code> function takes two single-timestep xarray
+datasets, and plots an animation of the two layers fading between each
+other. This may be useful for comparing an area before and after
+environmental change (i.e. flood, drought, fire, development), or
+comparing two different geographic areas. Here, we compare a dry and a
+wet timestep, and use the <code class="docutils literal notranslate"><span class="pre">endpoint_text</span></code> parameter to annotate the
+two images:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Extract xarray datasets for two timesteps</span>
+<span class="n">ds1</span> <span class="o">=</span> <span class="n">combined_ds</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ds2</span> <span class="o">=</span> <span class="n">combined_ds</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="c1"># Produce animation that fades between ds1 and ds2</span>
+<span class="n">DEAPlotting</span><span class="o">.</span><span class="n">animated_fade</span><span class="p">(</span><span class="n">ds1</span><span class="o">=</span><span class="n">ds1</span><span class="p">,</span> <span class="n">ds2</span><span class="o">=</span><span class="n">ds2</span><span class="p">,</span>
+                          <span class="n">output_path</span><span class="o">=</span><span class="s1">&#39;animated_fade.gif&#39;</span><span class="p">,</span>
+                          <span class="n">reflect_stand</span><span class="o">=</span><span class="mi">2500</span><span class="p">,</span>
+                          <span class="n">endpoint_text</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Dry timestep&#39;</span><span class="p">,</span>  <span class="s1">&#39;Wet timestep&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Exporting animation to animated_fade.gif
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/notebooks_Outputting_data_PlottingAnimatedGifs_11_1.png" src="../../_images/notebooks_Outputting_data_PlottingAnimatedGifs_11_1.png" />
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Workflows/README.html" class="btn btn-neutral float-right" title="Workflows" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ProduceFalseColourGeotiffs.html" class="btn btn-neutral" title="ProduceFalseColourGeotiffs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Geoscience Australia.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+
+<!-- Theme Analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-113800428-1"></script>
+<script>
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('js', new Date());
+ 
+ gtag('config', 'UA-113800428-1');
+</script>
+
+    
+  
+
+
+</body>
+</html>

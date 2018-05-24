@@ -135,8 +135,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../Outputting_data/README.html">Outputting data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Workflows/README.html">Workflows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Scripts/README.html">Scripts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../README.html">About this documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../README.html#notebook-gallery-instructions">Notebook Gallery Instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../README.html">Overview of DEA Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../README.html#publishing-finished-notebooks">Publishing finished notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../README.html#dea-notebooks-using-command-line-git">DEA notebooks using command-line git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../README.html#dea-notebooks-using-github">DEA notebooks using Github</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../README.html#approving-pull-requests">Approving pull requests</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tags.html">Tagging Notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../genindex.html">Tags Index</a></li>
 </ul>
@@ -427,7 +430,7 @@ of evaluation figures to help fine-tune the classifier.</p>
 <p>“<strong>Tags</strong>: <span class="target" id="index-0"></span>image_classification, <span class="target" id="index-1"></span>machine_learning, <span class="target" id="index-2"></span>random_forest, <span class="target" id="index-3"></span>Landsat8, <span class="target" id="index-4"></span>mangroves, <span class="target" id="index-5"></span>tasseled_cap</p>
 <div class="section" id="Import-modules-and-define-functions">
 <h2>Import modules and define functions<a class="headerlink" href="#Import-modules-and-define-functions" title="Permalink to this headline">¶</a></h2>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [1]:
 </pre></div>
@@ -449,8 +452,8 @@ of evaluation figures to help fine-tune the classifier.</p>
 <span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="k">import</span> <span class="n">export_graphviz</span>
 <span class="kn">from</span> <span class="nn">datacube_stats.statistics</span> <span class="k">import</span> <span class="n">GeoMedian</span>
 
-<span class="c1"># # Import DEA Notebooks scripts</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;/g/data/r78/rt1527/dea-notebooks/algorithms&#39;</span><span class="p">))</span>
+<span class="c1"># Import external functions from dea-notebooks using relative link to Scripts</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../Scripts&#39;</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">ClassificationTools</span> <span class="k">import</span> <span class="n">randomforest_train</span>
 <span class="kn">from</span> <span class="nn">ClassificationTools</span> <span class="k">import</span> <span class="n">randomforest_classify</span>
 <span class="kn">from</span> <span class="nn">ClassificationTools</span> <span class="k">import</span> <span class="n">randomforest_eval</span>
@@ -465,6 +468,14 @@ of evaluation figures to help fine-tune the classifier.</p>
 
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="stderr output_area docutils container">
+<div class="highlight"><pre>
+Failed to resolve driver datacube.plugins.index::s3aio_index
+</pre></div></div>
 </div>
 </div>
 <div class="section" id="Functions-used-to-import-training-and-analysis-data">

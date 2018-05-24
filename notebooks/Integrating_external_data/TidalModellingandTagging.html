@@ -133,8 +133,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../Outputting_data/README.html">Outputting data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Workflows/README.html">Workflows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Scripts/README.html">Scripts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../README.html">About this documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../README.html#notebook-gallery-instructions">Notebook Gallery Instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../README.html">Overview of DEA Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../README.html#publishing-finished-notebooks">Publishing finished notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../README.html#dea-notebooks-using-command-line-git">DEA notebooks using command-line git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../README.html#dea-notebooks-using-github">DEA notebooks using Github</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../README.html#approving-pull-requests">Approving pull requests</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tags.html">Tagging Notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../genindex.html">Tags Index</a></li>
 </ul>
@@ -441,7 +444,7 @@ for instructions on creating a Pull request).</p>
 <h2>Import modules<a class="headerlink" href="#Import-modules" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [10]:
+<span></span>In [1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -458,8 +461,8 @@ for instructions on creating a Pull request).</p>
 <span class="kn">from</span> <span class="nn">datacube.utils</span> <span class="k">import</span> <span class="n">geometry</span>
 <span class="kn">from</span> <span class="nn">datacube.utils.geometry</span> <span class="k">import</span> <span class="n">CRS</span>
 
-<span class="c1"># Import external functions from dea-notebooks</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~/dea-notebooks/Scripts&#39;</span><span class="p">))</span>
+<span class="c1"># Import external functions from dea-notebooks using relative link to Scripts</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../Scripts&#39;</span><span class="p">)</span>
 <span class="kn">import</span> <span class="nn">DEAPlotting</span>
 
 <span class="c1"># Create datacube instance</span>
