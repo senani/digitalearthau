@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting Started With Fractional Cover Data &mdash; Digital Earth Australia 1.0.0 documentation</title>
+  <title>Introduction to Fractional Cover Data &mdash; Digital Earth Australia 1.0.0 documentation</title>
   
 
   
@@ -32,8 +32,8 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Introduction to Fractional Cover Data" href="Introduction_to_Fractional_Cover.html" />
-    <link rel="prev" title="View Landsats Imagery with PQ25 mask" href="Landsat5-7-8-PQ.html" /> 
+    <link rel="next" title="Integrating External Data" href="../Integrating_external_data/README.html" />
+    <link rel="prev" title="Getting Started With Fractional Cover Data" href="Landsat5-7-8-FC.html" /> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -118,14 +118,16 @@
 <li class="toctree-l3"><a class="reference internal" href="GettingStartedWithHLTC.html">Getting started with High-Low Tide Composites (HLTC_25)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="GettingStartedWithLandsat5-7-8.html">Getting Started With Landsat Data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Landsat5-7-8-PQ.html">View Landsats Imagery with PQ25 mask</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Getting Started With Fractional Cover Data</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#Retrieve-and-plot-the-FC-data-from-Landsats-5,-7-and-8">Retrieve and plot the FC data from Landsats 5, 7 and 8</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#What-is-Fractional-Cover?-[1]">What is Fractional Cover? [1]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Landsat5-7-8-FC.html">Getting Started With Fractional Cover Data</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Introduction to Fractional Cover Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#What-is-Fractional-Cover?-[1,-2]">What is Fractional Cover? [1, 2]</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#How-to-retrieve-and-plot-the-data">How to retrieve and plot the data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Import-modules-from-standard-libraries,-datacube-and-files">Import modules from standard libraries, datacube and files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Save-Fractional-Cover-scenes-to-NetCDF">Save Fractional Cover scenes to NetCDF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Save-Fractional-Cover-scenes-to-GeoTIFF">Save Fractional Cover scenes to GeoTIFF</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#References">References</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="Introduction_to_Fractional_Cover.html">Introduction to Fractional Cover Data</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Integrating_external_data/README.html">Integrating External Data</a></li>
@@ -214,13 +216,13 @@
         
           <li><a href="README.html">DEA Datasets</a> &raquo;</li>
         
-      <li>Getting Started With Fractional Cover Data</li>
+      <li>Introduction to Fractional Cover Data</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/notebooks/DEA_datasets/Landsat5-7-8-FC.ipynb.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/notebooks/DEA_datasets/Introduction_to_Fractional_Cover.ipynb.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -416,8 +418,8 @@ div.nboutput div.output_area.stderr {
     margin-right: 4px;  /* make room for the exclamation icon */
 }
 </style>
-<div class="section" id="Getting-Started-With-Fractional-Cover-Data">
-<h1>Getting Started With Fractional Cover Data<a class="headerlink" href="#Getting-Started-With-Fractional-Cover-Data" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Introduction-to-Fractional-Cover-Data">
+<h1>Introduction to Fractional Cover Data<a class="headerlink" href="#Introduction-to-Fractional-Cover-Data" title="Permalink to this headline">¶</a></h1>
 <table border="1" class="docutils">
 <colgroup>
 <col width="25%" />
@@ -433,29 +435,27 @@ div.nboutput div.output_area.stderr {
 <td>May 14, 2018</td>
 </tr>
 <tr class="row-odd"><td>Last edited:</td>
-<td>May 18, 2018</td>
+<td>May 30, 2018</td>
 </tr>
 </tbody>
 </table>
-<div class="section" id="Retrieve-and-plot-the-FC-data-from-Landsats-5,-7-and-8">
-<h2>Retrieve and plot the FC data from Landsats 5, 7 and 8<a class="headerlink" href="#Retrieve-and-plot-the-FC-data-from-Landsats-5,-7-and-8" title="Permalink to this headline">¶</a></h2>
-<p><strong>Background:</strong> Data from three Landsats (5,7 and 8) are available to
-access within DEA. The code snippets in this doc will let you retrieve
-and plot the Fractional Cover (FC) data for <strong>lsN_fc_albers</strong> and
-<strong>lsN_fc_albers</strong>, where N is 5, 7 or 8 to denote the satellite.</p>
-<p><strong>What does this document do?</strong></p>
-<ul class="simple">
-<li>Show how to open a datacube to retrieve the data for various time
-points and geo-coordinates.</li>
-<li>Compare multiple scenes side-by-side as Fractional Cover (FC) images
-for three bands and errors.</li>
-<li>Plot an enlarged scene for each band.</li>
-</ul>
-<p><strong>How to use this document:</strong></p>
-<p>A basic understanding of <em>any</em> programming language is desirable, so
-that the code will make sense, but one doesn’t have to be an expert
-Python programmer to manipulate the code to get and display the data.</p>
-<p>This doc applies to the following Landsats and Fractional Cover bands:</p>
+<p><strong>Background:</strong> Data from the
+<a class="reference external" href="https://landsat.usgs.gov/about-landsat">Landsat</a> 5,7 and 8 satellite
+missions are accessible through <a class="reference external" href="http://www.ga.gov.au/about/projects/geographic/digital-earth-australia">Digital Earth
+Australia</a>
+(DEA). The code snippets in this notebook will let you retrieve and plot
+the <a class="reference external" href="https://d28rz98at9flks.cloudfront.net/79676/Fractional_Cover_FC25_v1_5.PDF">Fractional
+Cover</a>
+(FC25) data stored in DEA.</p>
+<p><strong>What does this notebook do?:</strong> This notebook introduces Fractional
+Cover and demonstrates how to load and filter Fractional Cover data
+using the DEA datacube. The data is then saved to NetCDF and GeoTIFF for
+analysis elsewhere.</p>
+<p><strong>How to use this notebook:</strong></p>
+<p>A basic understanding of any programming language is desirable but one
+doesn’t have to be an expert Python programmer to manipulate the code to
+get and display the data.This doc applies to the following Landsat
+satellites and Fractional Cover bands:</p>
 <ul class="simple">
 <li>Landsat 5</li>
 <li>Landsat 7</li>
@@ -465,71 +465,115 @@ Python programmer to manipulate the code to get and display the data.</p>
 <li>BS - Bare Soil</li>
 <li>UE - Unmixing Error</li>
 </ul>
-</div>
-<div class="section" id="What-is-Fractional-Cover?-[1]">
-<h2>What is Fractional Cover? [<a class="reference external" href="#References">1</a>]<a class="headerlink" href="#What-is-Fractional-Cover?-[1]" title="Permalink to this headline">¶</a></h2>
-<p>“The Fractional Cover product is derived from Geoscience Australia’s
-Australian Reflectance Grid 25 (ARG25) product and provides a 25m scale
-fractional cover representation of the proportions of green or
-photosynthetic vegetation, non-photosynthetic vegetation, and bare
-surface cover across the Australian continent. The green fraction
-includes leaves and grass, the non-photosynthetic includes branches, dry
-grass and dead leaf litter, and the bare soil fraction includes bare
-soil or rock.”</p>
-<p>“Fractional cover data can be used to identify large scale patterns and
-trends and inform evidence based decision making and policy on topics
-including wind and water erosion risk, soil carbon dynamics, land
-management practices and rangeland condition.”</p>
-<p>“The fractional cover unmixing algorithm uses the spectral signature for
-a picture element (pixel) to break it up into three parts or fractions.
-This is based on field work identifying the spectral characteristics of
-each of the fractions.”</p>
-<p>For more information on Fractional Cover, the following page will lead
-to several research articles, brochures and data access links
-[<a class="reference external" href="#References">3</a>].</p>
+<div class="section" id="What-is-Fractional-Cover?-[1,-2]">
+<h2>What is Fractional Cover? [<a class="reference external" href="#References">1, 2</a>]<a class="headerlink" href="#What-is-Fractional-Cover?-[1,-2]" title="Permalink to this headline">¶</a></h2>
+<p>The Landsat Fractional Cover product stored in DEA is at 25m x 25m
+resolution (the same as the Landsat surface reflectance products).</p>
+<p>Fractional Cover represents the proportion of the land surface that is
+bare (BS), covered by photosynthetic vegetation (PV), or
+non-photosynthetic vegetation (NPV).</p>
+<p>The Fractional Cover product was generated using the spectral unmixing
+algorithm developed by the Joint Remote Sensing Research Program (JRSRP)
+[<a class="reference external" href="#References">2</a>] which used the spectral signature for each pixel
+to break it up into three fractions, based on field work that determined
+the spectral characteristics of these fractions.
+[<a class="reference external" href="#References">1</a>]The fractions were retrieved by inverting
+multiple linear regression estimates and using synthetic endmembers in a
+constrained non-negative least squares unmixing
+model.[<a class="reference external" href="#References">1</a>]</p>
+<p>The green (PV) fraction includes leaves and grass, the
+non-photosynthetic fraction (NPV) includes branches, dry grass and dead
+leaf litter, and the bare soil (BS) fraction includes bare soil or
+rock.[<a class="reference external" href="#References">1</a>]</p>
+<div class="section" id="Fractional-Cover-Bands:-[1]">
+<h3>Fractional Cover Bands: [<a class="reference external" href="#References">1</a>]<a class="headerlink" href="#Fractional-Cover-Bands:-[1]" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><a class="reference external" href="http://remote-sensing.nci.org.au/u39/public/html/modis/fractionalcover-clw/">http://remote-sensing.nci.org.au/u39/public/html/modis/fractionalcover-clw/</a></li>
+<li><strong>Bare Soil (bare ground, rock, disturbed) (BS):</strong> - Bare Ground
+(bare soil, rock) percentage; Digital Number 10000 = 100%</li>
+<li><strong>Photosythetic Vegetation. (green grass, trees, etc.) (PV):</strong> -
+Photosynthetic Vegetation: Green Vegetation percentage;Digital Number
+10000 = 100%</li>
+<li><strong>Non-Photosythetic vegetation (litter, dead leaf and branches)
+(NPV):</strong> - Non-Photosynthetic Vegetation (litter, dead leaves
+andbranches) percentage; Digital Number 10000 = 100%</li>
+<li><strong>Unmixing Error (UE):</strong> - Unmixing Error. The residual error,
+defined as the Euclidean Norm of the Residual Vector. High values
+express less confidence in the fractional components.</li>
 </ul>
-<p>In particular, the article in Remote Sensing of Environment
-[<a class="reference external" href="#References">4</a>] talks about “Estimating fractional cover of
-photosynthetic vegetation, non-photosynthetic vegetation and bare soil
-in the Australian tropical savanna region upscaling the EO-1 Hyperion
-and MODIS sensors.”</p>
-<p>Another excellent paper from CSIRO and the Department of Agriculture,
-Fisheries and Forestry [<a class="reference external" href="#References">5</a>] talks about the
-“Evaluation of the MODIS-based vegetation fractional cover product”.</p>
-<p>The above link also lists some useful scripts and links to download the
-data.</p>
+<p><strong>No Data Values:</strong> Fractional cover contains no data values (-1) we use
+the datacube storage function “masking.mask_invalid_data” to remove
+these from our data before using the data</p>
+</div>
+<div class="section" id="Limitations,-Errors-and-Uncertainty:">
+<h3>Limitations, Errors and Uncertainty:<a class="headerlink" href="#Limitations,-Errors-and-Uncertainty:" title="Permalink to this headline">¶</a></h3>
+<p><strong>Water and soil moisture:</strong> Pixels over water may show incorrect values
+for Photosynthetic Vegetation. [<a class="reference external" href="#References">1</a>] Water should be
+masked out, maybe by using WOfS or a water index. Soil moisture may
+affect the accuracy of the product [<a class="reference external" href="#References">1</a>].</p>
+<p><strong>Sums greater than 100%:</strong> “Occasionally the sum of the three
+components is not equal to 100%. Differences are usually small and are
+not rounded in order to preserve what may be useful seasonal indicators.
+“[<a class="reference external" href="#References">1</a>]</p>
+<p><strong>Similarity between Bare Soil and NPV:</strong> Model can perform badly on
+pixels where bare soil and NPV endmembers are similar.
+[<a class="reference external" href="#References">1</a>]</p>
+<p><strong>Compared to field data:</strong> “Based on the comparison with the field data
+the FC25 product has an overall Root Mean Squared Error (RMSE) of 11.8%.
+The error margins vary for the three different layers: green RMSE:
+11.0%, non-green RMSE: 17.4% and bare RMSE: 12.5%”
+[<a class="reference external" href="#References">1</a>]</p>
 <p><strong>Tags:</strong> <span class="target" id="index-0"></span>Landsats 5,7,8, <span class="target" id="index-1"></span>products, <span class="target" id="index-2"></span>Fractional Cover, <span class="target" id="index-3"></span>dc.list_products, <span class="target" id="index-4"></span>dc.load, <span class="target" id="index-5"></span>query, <span class="target" id="index-6"></span>plot, <span class="target" id="index-7"></span>image, <span class="target" id="index-8"></span>Plot Multiple Images</p>
+</div>
 </div>
 <div class="section" id="How-to-retrieve-and-plot-the-data">
 <h2>How to retrieve and plot the data<a class="headerlink" href="#How-to-retrieve-and-plot-the-data" title="Permalink to this headline">¶</a></h2>
 <p>Let us go through the process step by step. This is a Python program or
-a HTML page derived from one.</p>
-<p>Given below are code snippets that you can execute to perform various
-actions such as retrieve, display and plot the data.</p>
+a HTML page derived from one. Given below are code snippets that you can
+execute to perform various actions such as retrieve, display and plot
+the data. These snippets or ‘cells’ can be copied to other notebooks and
+reused.</p>
+</div>
+<div class="section" id="Import-modules-from-standard-libraries,-datacube-and-files">
+<h2>Import modules from standard libraries, datacube and files<a class="headerlink" href="#Import-modules-from-standard-libraries,-datacube-and-files" title="Permalink to this headline">¶</a></h2>
+<p>Select ‘Trust this notebook’ to import these modules.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [10]:
+<span></span>In [145]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">import</span> <span class="nn">datacube</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">exposure</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
 <span class="kn">import</span> <span class="nn">matplotlib.gridspec</span> <span class="k">as</span> <span class="nn">gridspec</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="c1">#modules for datacube</span>
+<span class="kn">import</span> <span class="nn">datacube</span>
+<span class="kn">from</span> <span class="nn">datacube.storage</span> <span class="k">import</span> <span class="n">masking</span>
+<span class="kn">from</span> <span class="nn">datacube.storage.storage</span> <span class="k">import</span> <span class="n">write_dataset_to_netcdf</span>
+<span class="kn">from</span> <span class="nn">datacube.helpers</span> <span class="k">import</span> <span class="n">ga_pq_fuser</span><span class="p">,</span> <span class="n">write_geotiff</span>
+
+<span class="c1"># Import external functions from dea-notebooks</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~/dea-notebooks/Scripts/&#39;</span><span class="p">))</span>
+<span class="kn">import</span> <span class="nn">DEAPlotting</span><span class="o">,</span> <span class="nn">DEADataHandling</span>
+<span class="kn">from</span> <span class="nn">FileDialogs</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="c1">#ignore datacube warnings (needs to be last import statement)</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">module</span><span class="o">=</span><span class="s1">&#39;datacube&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="See-what-products-are-currently-available">
 <h3>See what products are currently available<a class="headerlink" href="#See-what-products-are-currently-available" title="Permalink to this headline">¶</a></h3>
 <p>The <strong>list_products</strong> method in the Datacube class displays the names
-and details of all available products. A product may be defined as the
-data collected by a particular satellite and reformatted. For example,
-<strong>ls8_fc_albers</strong>, is a set of data collected by the Landsat 7 as per
-the Australian Albers projected coordinate system.</p>
+and details of all available products. For example, <strong>ls8_fc_albers</strong>,
+is a set of data collected by Landsat 8, processed with the Fractional
+Cover algorithm and stored in the Australian Albers projected coordinate
+system.</p>
 <p>Given below are the products that are of interest to us in the context
 of this document. The code given below the list will let you see ALL
 products in the datacube.</p>
@@ -564,16 +608,17 @@ products in the datacube.</p>
 <h4>Code to display the products<a class="headerlink" href="#Code-to-display-the-products" title="Permalink to this headline">¶</a></h4>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [11]:
+<span></span>In [146]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">dc</span> <span class="o">=</span> <span class="n">datacube</span><span class="o">.</span><span class="n">Datacube</span><span class="p">(</span><span class="n">app</span><span class="o">=</span><span class="s1">&#39;dc-metadata&#39;</span><span class="p">)</span>
+<span></span><span class="c1"># set datacube alias (just a string with what you&#39;re doing)</span>
+<span class="n">dc</span> <span class="o">=</span> <span class="n">datacube</span><span class="o">.</span><span class="n">Datacube</span><span class="p">(</span><span class="n">app</span><span class="o">=</span><span class="s1">&#39;dc-FC&#39;</span><span class="p">)</span>
 <span class="n">products</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">list_products</span><span class="p">()</span>
 <span class="n">display_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">]</span>
 <span class="n">display_rows</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">dc_products</span> <span class="o">=</span> <span class="n">products</span><span class="p">[</span><span class="n">display_columns</span><span class="p">]</span>
-<span class="c1">#dc_products # Activate this line to see all products</span>
+<span class="c1">#dc_products #Uncomment this line to see all products</span>
 </pre></div>
 </div>
 </div>
@@ -581,6 +626,7 @@ products in the datacube.</p>
 </div>
 <div class="section" id="Specify-the-query-with-the-coordinates-and-date-range">
 <h3>Specify the <em>query</em> with the coordinates and date range<a class="headerlink" href="#Specify-the-query-with-the-coordinates-and-date-range" title="Permalink to this headline">¶</a></h3>
+<p>The <em>query</em> is what you are asking the datacube to return.</p>
 <ul class="simple">
 <li><strong>lat/lon:</strong> Latitude and longitude of the area. e.g. Canberra =
 ‘lat’: (-35.25, -35.35), ‘lon’: (149.05, 149.17)</li>
@@ -599,16 +645,16 @@ specified as 0.</li>
 </ul>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [12]:
+<span></span>In [147]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">query</span> <span class="o">=</span> <span class="p">{</span>
+<span></span><span class="c1">#the query is a dictionary where the keys are the spatio-temporal specs</span>
+<span class="n">query</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s1">&#39;lat&#39;</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="mf">35.25</span><span class="p">,</span> <span class="o">-</span><span class="mf">35.35</span><span class="p">),</span>
         <span class="s1">&#39;lon&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">149.05</span><span class="p">,</span> <span class="mf">149.17</span><span class="p">),</span>
         <span class="s1">&#39;time&#39;</span><span class="p">:(</span><span class="s1">&#39;2014-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2014-01-31&#39;</span><span class="p">)</span>
         <span class="p">}</span>
-<span class="n">scene</span> <span class="o">=</span> <span class="mi">1</span>
 </pre></div>
 </div>
 </div>
@@ -632,67 +678,72 @@ dict-like container of DataArray objects aligned along any number of
 shared dimensions, and serves a similar purpose in xarray to the
 <strong>pandas.DataFrame</strong>.</li>
 </ul>
-<p>The bands that are in the data are as follows: [<a class="reference external" href="#References">2</a>]
-[<a class="reference external" href="#References">3</a>]</p>
-<ul class="simple">
-<li><strong>Band1 (BS):</strong> - Bare Soil (bare ground, rock, disturbed),</li>
-<li><strong>Band2 (PV):</strong> - Photosythetic vegetation. (green grass, trees,
-etc.)</li>
-<li><strong>Band3 (NPV):</strong> - Non-Photosythetic vegetation (litter, dead leaf
-and branches),</li>
-<li><strong>Band4 (UE):</strong> - Mask Layer, also called Unmixing Error or UE. Its
-values are as given below.<ul>
-<li>0 - no-data.</li>
-<li>1 - good data.</li>
-<li>2 - unmixing error was excessive.</li>
-<li>3 - water was detected in the pixel.</li>
-<li>4 - the pixel had cast shadow.</li>
-<li>5 - the pixel incidence or exidence angle exceeded 80 degrees.</li>
-<li>6 - a cloud shadow was detected.</li>
-<li>7 - a cloud was detected.</li>
-</ul>
-</li>
-</ul>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [13]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">product</span><span class="o">=</span><span class="s1">&#39;ls8_fc_albers&#39;</span><span class="p">,</span> <span class="n">group_by</span><span class="o">=</span><span class="s1">&#39;solar_day&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">query</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="Plot-all-bands">
-<h3>Plot all bands<a class="headerlink" href="#Plot-all-bands" title="Permalink to this headline">¶</a></h3>
-<p>The plots below display the three bands plus the unmixing error data
-(‘UE’) in different colors. Plots given below it are individual bands as
-enlarged figures.</p>
-<p>The bare soil, green vegetation and non-green vegetation end menbers are
-calculated using models linked to an intensive field sampling program
-whereby more than 600 sites covering a wide variety of vegetation, soil
-and climate types were sampled to measure overstorey and ground cover</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [14]:
+<span></span>In [154]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span></span><span class="c1">#load the data according to our query</span>
+<span class="c1">#choose a mask proportion to look for a clear timestep</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">DEADataHandling</span><span class="o">.</span><span class="n">load_clearlandsat</span><span class="p">(</span><span class="n">dc</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span><span class="n">product</span><span class="o">=</span><span class="s1">&#39;fc&#39;</span><span class="p">,</span><span class="n">masked_prop</span><span class="o">=</span><span class="mf">0.80</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Loading ls5 data
+    Skipping ls5
+Loading ls7 data
+    Loading 0 filtered ls7 timesteps
+Loading ls8 data
+    Loading 2 filtered ls8 timesteps
+Combining and sorting ls5, ls7 and ls8 data
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Plot-Fractional-Cover-and-Unmixing-Error-Bands">
+<h3>Plot Fractional Cover and Unmixing Error Bands<a class="headerlink" href="#Plot-Fractional-Cover-and-Unmixing-Error-Bands" title="Permalink to this headline">¶</a></h3>
+<p>Note that Unmixing Error is high over water</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [138]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#just a scene we want to plot - this can be done other ways</span>
+<span class="n">scene</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [139]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#set up our images on a grid using gridspec</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 <span class="n">gs</span> <span class="o">=</span> <span class="n">gridspec</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># set up a 2 x 2 grid of 4 images for better presentation</span>
 
 <span class="n">ax1</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">ds</span><span class="o">.</span><span class="n">PV</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">scene</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greens&#39;</span><span class="p">)</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">PV</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">scene</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gist_earth_r&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;PV&#39;</span><span class="p">)</span>
 
 <span class="n">ax2</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">ds</span><span class="o">.</span><span class="n">BS</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">scene</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Oranges&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;BS&#39;</span><span class="p">)</span>
 
 <span class="n">ax3</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">ds</span><span class="o">.</span><span class="n">NPV</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">scene</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;copper&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;NPV&#39;</span><span class="p">)</span>
 
 <span class="n">ax4</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">ds</span><span class="o">.</span><span class="n">UE</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">scene</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">UE</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">scene</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;magma&#39;</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;UE&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -703,23 +754,29 @@ and climate types were sampled to measure overstorey and ground cover</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_DEA_datasets_Landsat5-7-8-FC_16_0.png" src="../../_images/notebooks_DEA_datasets_Landsat5-7-8-FC_16_0.png" />
+<img alt="../../_images/notebooks_DEA_datasets_Introduction_to_Fractional_Cover_17_0.png" src="../../_images/notebooks_DEA_datasets_Introduction_to_Fractional_Cover_17_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="Plot-an-image-of-Photosynthetic-Vegetation-(PV)">
-<h3>Plot an image of Photosynthetic Vegetation (PV)<a class="headerlink" href="#Plot-an-image-of-Photosynthetic-Vegetation-(PV)" title="Permalink to this headline">¶</a></h3>
-<p>The intensity of green in the plot indicates the percentage coverage, as
-shown in the scale to the right. Since water is considerd as PV, the
-lake in the middle appears as intense green.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [15]:
+<span></span>In [140]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
-<span class="n">ds</span><span class="o">.</span><span class="n">PV</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="n">scene</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greens&#39;</span><span class="p">);</span>
+<span></span><span class="c1">#this image shows that you can filter using unmixing error if you wish</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">UE</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">UE</span><span class="o">&lt;=</span><span class="mf">20.0</span><span class="p">)</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">scene</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gist_earth_r&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;UE filtered&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[140]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Text(0.5,1,&#39;UE filtered&#39;)
 </pre></div>
 </div>
 </div>
@@ -727,23 +784,39 @@ lake in the middle appears as intense green.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_DEA_datasets_Landsat5-7-8-FC_18_0.png" src="../../_images/notebooks_DEA_datasets_Landsat5-7-8-FC_18_0.png" />
+<img alt="../../_images/notebooks_DEA_datasets_Introduction_to_Fractional_Cover_18_1.png" src="../../_images/notebooks_DEA_datasets_Introduction_to_Fractional_Cover_18_1.png" />
 </div>
 </div>
 </div>
-<div class="section" id="Plot-an-image-of-Non-Photosynthetic-Vegetation-(NPV)">
-<h3>Plot an image of Non-Photosynthetic Vegetation (NPV)<a class="headerlink" href="#Plot-an-image-of-Non-Photosynthetic-Vegetation-(NPV)" title="Permalink to this headline">¶</a></h3>
-<p>The intensity of colour in the plot indicates the percentage coverage.
-Since water is considerd as 100% PV, the lake in the middle appears as
-black.</p>
-<div class="nbinput docutils container">
+<div class="section" id="Edit-save-file-path-to-choose-where-to-save-your-output-files">
+<h3>Edit save file path to choose where to save your output files<a class="headerlink" href="#Edit-save-file-path-to-choose-where-to-save-your-output-files" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [16]:
+<span></span>In [118]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
-<span class="n">ds</span><span class="o">.</span><span class="n">NPV</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="n">scene</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;copper&#39;</span><span class="p">);</span>
+<span></span><span class="c1">#save files to your home directory (add your outpath here if you want to change it)</span>
+<span class="n">savefilepath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~/&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Save-Fractional-Cover-scenes-to-NetCDF">
+<h2>Save Fractional Cover scenes to NetCDF<a class="headerlink" href="#Save-Fractional-Cover-scenes-to-NetCDF" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [105]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">DEADataHandling</span><span class="o">.</span><span class="n">write_your_netcdf</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="s1">&#39;FC25&#39;</span><span class="p">,</span> <span class="n">savefilepath</span><span class="o">+</span><span class="s1">&#39;FC25&#39;</span><span class="o">+</span><span class="s1">&#39;.nc&#39;</span><span class="p">,</span> <span class="n">crs</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+<span class="c1">#complain if the file already exists but don&#39;t fail</span>
+<span class="k">except</span> <span class="ne">RuntimeError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RuntimeError: </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;wrote to netCDF&#39;</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -751,24 +824,40 @@ black.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_DEA_datasets_Landsat5-7-8-FC_20_0.png" src="../../_images/notebooks_DEA_datasets_Landsat5-7-8-FC_20_0.png" />
+<div class="highlight"><pre>
+RuntimeError: Storage Unit already exists: /home/547/rjd547/FC25.nc
+wrote to netCDF
+</pre></div></div>
 </div>
 </div>
-</div>
-<div class="section" id="Plot-an-image-of-Bare-Soil-(BS)">
-<h3>Plot an image of Bare Soil (BS)<a class="headerlink" href="#Plot-an-image-of-Bare-Soil-(BS)" title="Permalink to this headline">¶</a></h3>
-<p>The intensity of colour in the plot indicates the percentage coverage.
-Obviously, the area covered by water will appear as white. Other areas
-fully covered by one of the other bands (PV or NPV) will also appear as
-white. You can compare with their plots to determine which is which.</p>
+<div class="section" id="Save-Fractional-Cover-scenes-to-GeoTIFF">
+<h2>Save Fractional Cover scenes to GeoTIFF<a class="headerlink" href="#Save-Fractional-Cover-scenes-to-GeoTIFF" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [17]:
+<span></span>In [155]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
-<span class="n">ds</span><span class="o">.</span><span class="n">BS</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="n">scene</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Oranges&#39;</span><span class="p">);</span>
+<span></span><span class="c1">#write a geotiff to file for each timestep</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">time</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;one timestep&#39;</span><span class="p">)</span>
+    <span class="c1">#drop the time dimension for only one timestep</span>
+    <span class="c1">#write the dataset without the data percentage to file</span>
+    <span class="n">ds1</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+    <span class="n">ds1</span> <span class="o">=</span> <span class="n">ds1</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;data_perc&#39;</span><span class="p">)</span>
+    <span class="n">write_geotiff</span><span class="p">(</span><span class="n">savefilepath</span><span class="o">+</span><span class="s1">&#39;FC25_&#39;</span><span class="o">+</span><span class="s1">&#39;.tif&#39;</span><span class="p">,</span> <span class="n">ds1</span><span class="p">)</span>
+
+<span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">time</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;multiple timesteps&#39;</span><span class="p">)</span>
+    <span class="c1">#remove data percentage as it breaks the geotiff writer</span>
+    <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;data_perc&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">timestep</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">time</span><span class="p">)):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">write_geotiff</span><span class="p">(</span><span class="n">savefilepath</span><span class="o">+</span><span class="s1">&#39;FC25_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">timestep</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.tif&#39;</span><span class="p">,</span> <span class="n">ds</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span><span class="n">timestep</span><span class="p">))</span>
+            <span class="c1">#complain if the file already exists but don&#39;t fail</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;wrote to GeoTIFF&#39;</span> <span class="p">)</span>
+        <span class="k">except</span> <span class="ne">RuntimeError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RuntimeError: </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -776,33 +865,11 @@ white. You can compare with their plots to determine which is which.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_DEA_datasets_Landsat5-7-8-FC_22_0.png" src="../../_images/notebooks_DEA_datasets_Landsat5-7-8-FC_22_0.png" />
-</div>
-</div>
-</div>
-<div class="section" id="Plot-an-image-of-Unmixing-Errors-(UE)">
-<h3>Plot an image of Unmixing Errors (UE)<a class="headerlink" href="#Plot-an-image-of-Unmixing-Errors-(UE)" title="Permalink to this headline">¶</a></h3>
-<p>The intensity of colour in the plot indicates the severity of errors.
-The 100% error shown in the UE band for water means that the water is
-100% incorrectly classified in this band.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [18]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
-<span class="n">ds</span><span class="o">.</span><span class="n">UE</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="n">scene</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../../_images/notebooks_DEA_datasets_Landsat5-7-8-FC_24_0.png" src="../../_images/notebooks_DEA_datasets_Landsat5-7-8-FC_24_0.png" />
-</div>
-</div>
+<div class="highlight"><pre>
+multiple timesteps
+wrote to GeoTIFF
+wrote to GeoTIFF
+</pre></div></div>
 </div>
 </div>
 <div class="section" id="References">
@@ -814,16 +881,6 @@ The 100% error shown in the UE band for water means that the water is
 Sensing Research Program algorithm, Australia coverage.</em> Last
 modified by Peter Scarth on 2017/03/24 09:53.
 <a class="reference external" href="http://data.auscover.org.au/xwiki/bin/view/Product+pages/Landsat+Fractional+Cover">http://data.auscover.org.au/xwiki/bin/view/Product+pages/Landsat+Fractional+Cover</a></li>
-<li>NCI, 2006. <em>Fractional cover - MODIS, CSIRO Land and Water algorithm,
-Australia coverageAustralia.</em> Last modified, Nov 2012.
-<a class="reference external" href="http://remote-sensing.nci.org.au/u39/public/html/modis/fractionalcover-clw/">http://remote-sensing.nci.org.au/u39/public/html/modis/fractionalcover-clw/</a></li>
-<li>Remote Sensing of Environment, 2009. <em>Estimating fractional cover of
-photosynthetic vegetation, non-photosynthetic vegetation…</em>, Volume
-113, Issue 5, 15 May 2009, Pages 928-945.
-<a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0034425709000121?via%3Dihub">https://www.sciencedirect.com/science/article/pii/S0034425709000121?via%3Dihub</a></li>
-<li>CSIRO, 2012. <em>Evaluation of the MODIS-based vegetation fractional
-cover product</em>.
-<a class="reference external" href="http://www.clw.csiro.au/publications/science/2012/SAF-MODIS-fractional-cover.pdf">http://www.clw.csiro.au/publications/science/2012/SAF-MODIS-fractional-cover.pdf</a></li>
 </ol>
 </div>
 </div>
@@ -836,10 +893,10 @@ cover product</em>.
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Introduction_to_Fractional_Cover.html" class="btn btn-neutral float-right" title="Introduction to Fractional Cover Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../Integrating_external_data/README.html" class="btn btn-neutral float-right" title="Integrating External Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Landsat5-7-8-PQ.html" class="btn btn-neutral" title="View Landsats Imagery with PQ25 mask" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Landsat5-7-8-FC.html" class="btn btn-neutral" title="Getting Started With Fractional Cover Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
