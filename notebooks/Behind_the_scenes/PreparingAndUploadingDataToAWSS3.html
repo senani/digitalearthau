@@ -1,0 +1,382 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Preparing and Uploading Data to AWS &mdash; Digital Earth Australia 1.0.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/dea-favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/DEA-logo-light.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../about/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about/changelog.html">DEA NCI Environment Changelog</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Connect</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../connect/account.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../connect/install.html">Installation and Software Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../connect/nci_basics.html">Command Line Usage (Advanced)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../connect/jupyter.html">Jupyter Notebooks Introduction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../query/Getting Started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../query/List Products.html">List Products &amp; Measurements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../query/Loading Data.html">Loading data from the datacube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../query/Advanced Querying.html">Advanced Querying</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Notebook Gallery</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">User Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../data/data.html">Surface Reflectance</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../internal/new_product.html">Creating a New Product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../internal/git_best_practice.html">Git Best Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../internal/release.html">DEA Release Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../internal/modules.html">DEA Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../internal/other_modules.html">Other Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../internal/orchestration.html">DEA Orchestration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../internal/collection_management.html">Collection Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../internal/goalkeeper_instructions.html">What’s a Goalkeeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../internal/requirements_met.html">DEA Code Functionality Examples</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../genindex.html">Tags Index</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Digital Earth Australia</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Preparing and Uploading Data to AWS</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/notebooks/Behind_the_scenes/PreparingAndUploadingDataToAWSS3.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+</style>
+<div class="section" id="Preparing-and-Uploading-Data-to-AWS">
+<h1>Preparing and Uploading Data to AWS<a class="headerlink" href="#Preparing-and-Uploading-Data-to-AWS" title="Permalink to this headline">¶</a></h1>
+<p>These instructions are indended as a starting point. Please add to them
+if you find steps that are missing etc.</p>
+<p><strong>Date</strong> June 2018</p>
+<p><strong>Author</strong> Claire Krause</p>
+<div class="section" id="Get-an-AWS-account">
+<h2>Get an AWS account<a class="headerlink" href="#Get-an-AWS-account" title="Permalink to this headline">¶</a></h2>
+<p>Before you can do anything, you need to get a GA AWS account. This will
+give you permissions to move data onto the DEA AWS S3 bucket. Speak to
+DEA’s cloud engineer to organise an account. They can also point you to
+the correct place to load data, and will make sure the data you intend
+to upload can be accommodated.</p>
+</div>
+<div class="section" id="Turn-the-required-data-into-cog-tif-files">
+<h2>Turn the required data into cog tif files<a class="headerlink" href="#Turn-the-required-data-into-cog-tif-files" title="Permalink to this headline">¶</a></h2>
+<p>The preferred format for datasets on S3 is cog format, aka ‘cloud
+optimised geoTIFF’. This file format is smaller than netCDF, enables
+pyramid loading, and is supported by <code class="docutils literal notranslate"><span class="pre">rasterio</span></code>.</p>
+<div class="section" id="Translating-data-into-cog-format">
+<h3>Translating data into cog format<a class="headerlink" href="#Translating-data-into-cog-format" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/harshurampur">Harshu</a> has written some helper
+functions for translating data into cog format. This code can be found
+in the <a class="reference external" href="https://github.com/harshurampur/Geotiff-conversion">Geotiff-conversion
+repo</a>. To use
+this code, clone the repo into a suitable location (I used my folder on
+<code class="docutils literal notranslate"><span class="pre">/g/data/...</span></code>). For translation, there are two functions to choose
+from, depending on the current format of the data you want to upload: *
+<code class="docutils literal notranslate"><span class="pre">geotiff-cog.py</span></code> - for translating GeoTIFF to cog geoTIFFs *
+<code class="docutils literal notranslate"><span class="pre">netcdf-cog.py</span></code> - for translating netCDF to cog geoTIFFs</p>
+<p>To run the translation scripts, you will need to specify the path of the
+input and output files. You can then run the scripts from the command
+line. (You will need to have the DEA library loaded as this script
+requires some libraries to run):</p>
+<p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">geotiff-cog.py</span> <span class="pre">-p</span> <span class="pre">/path/to/directory/of/files/for/translation</span> <span class="pre">-o</span> <span class="pre">/path/to/output/directory</span></code></p>
+<p>The script will create a directory in the output location that mirrors
+the directory name containing the input files. This script can handle
+data with multiple bands and time steps. A new cog <code class="docutils literal notranslate"><span class="pre">.tif</span></code> file is
+created for each timestep and band, so this code can take a while to
+run…</p>
+</div>
+</div>
+<div class="section" id="Copy-the-data-to-aws">
+<h2>Copy the data to aws<a class="headerlink" href="#Copy-the-data-to-aws" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Add-your-aws-credentials-to-raijin:">
+<h3>Add your aws credentials to raijin:<a class="headerlink" href="#Add-your-aws-credentials-to-raijin:" title="Permalink to this headline">¶</a></h3>
+<p>In order to run aws commands from within raijin, you will need to have
+your credentials and configuration files set up in your raijin home
+directory.</p>
+<p>Your credientials can be found by opening your AWS account, and
+selecting <code class="docutils literal notranslate"><span class="pre">IAM</span></code>. Select <code class="docutils literal notranslate"><span class="pre">Users</span></code> on the left-hand panel, then search
+for your u-number. Once you click on your u-number, you will see a box
+to <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">new</span> <span class="pre">security</span> <span class="pre">keys</span></code>. Select this, and then copy the access key
+and secret access key into the credentials file explained below.</p>
+<p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">~</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">.aws</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">nano</span> <span class="pre">.aws/credentials</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">default</span><span class="p">]</span>
+<span class="n">aws_access_key_id</span><span class="o">=</span>
+<span class="n">aws_secret_access_key</span><span class="o">=</span>
+</pre></div>
+</div>
+<p><em>(Ctrl-O to save, Ctrl-X to exit)</em></p>
+<p><code class="docutils literal notranslate"><span class="pre">nano</span> <span class="pre">.aws/config</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">default</span><span class="p">]</span>
+<span class="n">region</span><span class="o">=</span><span class="n">ap</span><span class="o">-</span><span class="n">southeast</span><span class="o">-</span><span class="mi">2</span>
+</pre></div>
+</div>
+<p><em>(Ctrl-O to save, Ctrl-X to exit)</em></p>
+</div>
+<div class="section" id="Run-the-PBS-script-to-sync-your-data-with-aws">
+<h3>Run the PBS script to sync your data with aws<a class="headerlink" href="#Run-the-PBS-script-to-sync-your-data-with-aws" title="Permalink to this headline">¶</a></h3>
+<p>The code for doing this can be found in the same <a class="reference external" href="https://github.com/harshurampur/Geotiff-conversion/tree/master/compute-sync">Geotiff-conversion
+repository</a>.
+Modify the <code class="docutils literal notranslate"><span class="pre">compute_sync.sh</span></code> code with your own username, and update
+last line the command to point to the two directories you want to sink;
+- the directory on NCI with the prepared data - the folder on S3 where
+you want the data to go</p>
+</div>
+<div class="section" id="Hit-go!">
+<h3>Hit go!<a class="headerlink" href="#Hit-go!" title="Permalink to this headline">¶</a></h3>
+<p>Once you have set up your aws credentials, and modified
+<code class="docutils literal notranslate"><span class="pre">compute_sync.sh</span></code>, submit this script to PBS (either from within the
+<code class="docutils literal notranslate"><span class="pre">Geotiff-conversion/compute-sync</span></code> folder, or from anywhere on raijin
+with the full or relative path to the <code class="docutils literal notranslate"><span class="pre">compute_sync.sh</span></code> file
+included):</p>
+<p><code class="docutils literal notranslate"><span class="pre">qsub</span> <span class="pre">compute_sync.sh</span></code></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Geoscience Australia.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+
+<!-- Theme Analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-113800428-1"></script>
+<script>
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('js', new Date());
+ 
+ gtag('config', 'UA-113800428-1');
+</script>
+
+    
+  
+
+
+</body>
+</html>
