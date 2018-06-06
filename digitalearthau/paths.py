@@ -1,3 +1,6 @@
+"""
+
+"""
 import atexit
 import datetime
 import os
@@ -127,7 +130,7 @@ def write_files(files_spec, containing_dir=None):
     """
     Convenience method for writing a tree of files to a temporary directory.
 
-    (primarily indended for use in tests)
+    (primarily intended for use in tests)
 
     Dict format is "filename": "text content"
 
@@ -332,6 +335,7 @@ def get_product_work_directory(
 ):
     """Get an NCI work directory for processing the given product.
 
+    :param output_product: name of a product
     :param time: A timestamp for roughly when your job happened (or was submitted)
     :param task_type: Informally the kind of work you're doing on the product: create, sync, archive, ...
     """

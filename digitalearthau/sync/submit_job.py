@@ -22,6 +22,7 @@ from digitalearthau import collections
 from digitalearthau.collections import Trust
 from digitalearthau.paths import get_dataset_paths
 from digitalearthau.sync import scan
+from digitalearthau.sync.main import CLICK_SETTINGS
 
 SUBMIT_THROTTLE_SECS = 1
 
@@ -172,7 +173,7 @@ class SyncSubmission(object):
         return job_id, command
 
 
-@click.command()
+@click.command(context_settings=CLICK_SETTINGS)
 @click.argument('folders',
                 type=click.Path(exists=True, readable=True),
                 nargs=-1)
