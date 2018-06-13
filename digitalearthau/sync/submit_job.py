@@ -214,12 +214,9 @@ def main(folders: Iterable[str],
     Submit PBS jobs to run dea-sync
 
     Note that this is currently specific to tiled products, as it expects their folder naming conventions
-    when splitting up jobs. TODO generalise function task_split()
+    when splitting up jobs.
 
-    Example usage: dea-submit-sync 5fc /g/data/fk4/datacube/002/LS5_TM_FC
-
-    5fc is just the name for the job: subsequent resubmissions will not rerun jobs with the same name
-    if output files exist.
+    Example usage: dea-submit-sync /g/data/fk4/datacube/002/LS5_TM_FC
 
     A run folder is used (defaulting to `runs` in current dir) for storing output status.
     """
