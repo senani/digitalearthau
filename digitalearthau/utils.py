@@ -1,9 +1,9 @@
 # coding=utf-8
 import sys
-from functools import partial
 
 import numpy
 import structlog
+from functools import partial
 
 from digitalearthau import serialise
 
@@ -25,6 +25,8 @@ def simple_object_repr(o):
 def wofs_fuser(dest, src):
     """
     Fuse two WOfS water measurements represented as `ndarray`s.
+
+    For use when loading and combining WOfS data using `dc.load(group_by=..., fuse_function=wofs_fuser)`
     """
     empty = (dest & 1).astype(numpy.bool)
     both = ~empty & ~((src & 1).astype(numpy.bool))

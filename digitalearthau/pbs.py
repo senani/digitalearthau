@@ -109,8 +109,7 @@ def preferred_queue_size():
 def get_env(extras=None, **more_env):
     extras = extras or []
 
-    pass_envs = set(['PATH', 'LANG', 'LD_LIBRARY_PATH', 'HOME', 'USER',
-                     'CPL_ZIP_ENCODING'])
+    pass_envs = {'PATH', 'LANG', 'LD_LIBRARY_PATH', 'HOME', 'USER', 'CPL_ZIP_ENCODING'}
     regexes = ['^PYTHON.*', '^GDAL.*', '^LC.*', '^DATACUBE.*']
     rgxs = [re.compile(r) for r in regexes]
 
