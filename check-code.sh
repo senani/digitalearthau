@@ -11,7 +11,7 @@ pylint -j 2 --reports no \
     scripts/**/*.py
 
 # We check the integration tests even though they aren't run by default here.
-pylint --rcfile=integration_tests/pylintrc integration_tests/**/*.py
+pylint --rcfile=tests/pylintrc tests/**/*.py
 
 # E122: 'continuation line' has too many spurious errors.
 # E711: "is None" instead of "= None". Duplicates pylint check.
@@ -19,7 +19,7 @@ pylint --rcfile=integration_tests/pylintrc integration_tests/**/*.py
 # E501: "line too long" duplicates pylint check
 pycodestyle --ignore=E122,E711,E701,E501 --max-line-length 120  \
     digitalearthau \
-    integration_tests \
+    tests \
     scripts/**/*.py
 
 shellcheck ./**/*.sh
