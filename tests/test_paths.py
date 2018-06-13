@@ -1,4 +1,4 @@
-from . import paths
+from digitalearthau import paths
 
 
 def test_list_file_paths():

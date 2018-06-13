@@ -290,3 +290,4 @@ def freeze_index(index: Index) -> Mapping[DatasetLite, Iterable[str]]:
         )
         for dataset in index.datasets.search()
     )
+

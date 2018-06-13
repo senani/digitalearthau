@@ -15,7 +15,7 @@ from typing import List
 from digitalearthau.events import TaskEvent, NodeMessage, Status
 from digitalearthau.runners import model
 from digitalearthau.runners.celery_environment import _celery_event_to_task
-from . import qsub
+from digitalearthau import qsub
 
 import celery.events.state as celery_state
 import sys

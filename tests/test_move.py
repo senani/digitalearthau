@@ -7,7 +7,7 @@ from click.testing import CliRunner, Result
 
 from digitalearthau import move, paths, collections
 from digitalearthau.collections import Collection
-from integration_tests.conftest import DatasetForTests, freeze_index
+from tests.conftest import DatasetForTests, freeze_index
 
 
 @pytest.fixture

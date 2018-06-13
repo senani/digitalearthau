@@ -17,7 +17,7 @@ from digitalearthau.collections import Collection
 from digitalearthau.index import DatasetLite
 from digitalearthau.paths import register_base_directory
 from digitalearthau.sync import differences as mm, fixes, scan, Mismatch
-from integration_tests.conftest import DatasetForTests, freeze_index
+from tests.conftest import DatasetForTests, freeze_index
 
 
 # These are ok in tests.

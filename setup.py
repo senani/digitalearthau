@@ -22,8 +22,7 @@ setup(
     license='Apache License 2.0',
 
     packages=find_packages(
-        exclude=('tests', 'tests.*',
-                 'integration_tests', 'integration_tests.*')
+        exclude=('tests', 'tests.*')
     ),
     package_data={
         '': ['*.yaml', '*/*.yaml'],

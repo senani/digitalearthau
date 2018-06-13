@@ -6,7 +6,7 @@ import pytest
 from click.testing import CliRunner, Result
 
 from digitalearthau import cleanup
-from integration_tests.conftest import DatasetForTests
+from tests.conftest import DatasetForTests
 
 # Default is to clean up older than three days ago.
 A_LONG_TIME_AGO = datetime.utcnow() - timedelta(days=4)
