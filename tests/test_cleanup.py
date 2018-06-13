@@ -122,6 +122,7 @@ def test_only_clean_up_matching_uuids(run_cleanup,
 
 @pytest.fixture
 def run_cleanup(global_integration_cli_args, integration_test_data):
+    """Return a function that runs the `dea-cleanup` tool."""
     # Run cleanup over the integration test data directory
     return functools.partial(
         _call_cleanup,

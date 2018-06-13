@@ -1,10 +1,9 @@
 import atexit
 import os
-import shutil
 import tempfile
 from pathlib import Path
 
-from digitalearthau.paths import _write_files_to_dir
+import shutil
 
 
 def write_files(files_spec, containing_dir=None):
@@ -36,3 +35,27 @@ def write_files(files_spec, containing_dir=None):
 
     atexit.register(remove_if_exists, containing_dir)
     return containing_dir
+
+
+def _write_files_to_dir(directory_path, file_dict):
+    """
+    Convenience method for writing a tree of files to a given directory.
+
+    (primarily indended for use in tests)
+
+    :type directory_path: str
+    :type file_dict: dict
+    """
+    for filename, contents in file_dict.items():
+        path = os.path.join(directory_path, filename)
+        if isinstance(contents, dict):
+            os.mkdir(path)
+            _write_files_to_dir(path, contents)
+        else:
+            with open(path, 'w') as f:
+                if isinstance(contents, list):
+                    f.writelines(contents)
+                elif isinstance(contents, str):
+                    f.write(contents)
+                else:
+                    raise Exception('Unexpected file contents: %s' % type(contents))

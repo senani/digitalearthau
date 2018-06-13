@@ -1,9 +1,9 @@
-import tests.utils
 from digitalearthau import paths
+from .utils import write_files
 
 
 def test_list_file_paths():
-    d = tests.utils.write_files({
+    d = write_files({
         "file1.txt": 'test',
         'dir1': {
             'file2.txt': 'test'
@@ -19,7 +19,7 @@ def test_list_file_paths():
 
 
 def test_get_data_paths_package():
-    packaged_dataset = tests.utils.write_files({
+    packaged_dataset = write_files({
         'ga-metadata.yaml': '',
         'package': {
             'file1.txt': ''
@@ -38,7 +38,7 @@ def test_get_data_paths_package():
 
 
 def test_get_data_paths_netcdf():
-    d = tests.utils.write_files({
+    d = write_files({
         'LS7_SOMETHING.nc': '',
     })
 
@@ -54,7 +54,7 @@ def test_get_data_paths_netcdf():
 
 
 def test_get_data_paths_sibling():
-    sibling_dataset = tests.utils.write_files({
+    sibling_dataset = write_files({
         'LS7_SOMETHING.tif': '',
         'LS7_SOMETHING.tif.ga-md.yaml': '',
 

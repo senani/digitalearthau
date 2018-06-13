@@ -1,11 +1,11 @@
-import datetime
 import os
-import uuid
-from pathlib import Path
-from typing import List, Iterable, Union, Tuple
-
 import pathlib
+from pathlib import Path
+
+import datetime
 import structlog
+import uuid
+from typing import List, Iterable, Union, Tuple
 
 from datacube.utils import is_supported_document_type, read_documents, InvalidDocException, uri_to_local_path
 
@@ -118,30 +118,6 @@ def split_path_from_base(file_path):
             return Path(root_location), dir_offset
 
     raise ValueError("Unknown location: can't calculate base directory: " + str(file_path))
-
-
-def _write_files_to_dir(directory_path, file_dict):
-    """
-    Convenience method for writing a tree of files to a given directory.
-
-    (primarily indended for use in tests)
-
-    :type directory_path: str
-    :type file_dict: dict
-    """
-    for filename, contents in file_dict.items():
-        path = os.path.join(directory_path, filename)
-        if isinstance(contents, dict):
-            os.mkdir(path)
-            _write_files_to_dir(path, contents)
-        else:
-            with open(path, 'w') as f:
-                if isinstance(contents, list):
-                    f.writelines(contents)
-                elif isinstance(contents, str):
-                    f.write(contents)
-                else:
-                    raise Exception('Unexpected file contents: %s' % type(contents))
 
 
 def list_file_paths(path):

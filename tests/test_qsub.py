@@ -1,26 +1,20 @@
-import json
-from io import StringIO
-from uuid import UUID
-
 import os
+from io import StringIO
 
+import celery.events.state as celery_state
 import pytest
 from boltons.jsonutils import JSONLIterator
 from datetime import datetime
-
 from dateutil import tz
 from mock import mock
 from typing import List
+from uuid import UUID
 
+from datacube import _celery_runner as cr
+from digitalearthau import qsub
 from digitalearthau.events import TaskEvent, NodeMessage, Status
 from digitalearthau.runners import model
 from digitalearthau.runners.celery_environment import _celery_event_to_task
-from digitalearthau import qsub
-
-import celery.events.state as celery_state
-import sys
-
-from datacube import _celery_runner as cr
 
 
 def test_parse_args():

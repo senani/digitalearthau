@@ -1,13 +1,12 @@
 import pathlib
+from pathlib import Path
 
 import datetime
-import pytest
 from typing import NamedTuple, List
 
 from digitalearthau import serialise
 from digitalearthau.events import Status
 from digitalearthau.runners.model import TaskDescription, DefaultJobParameters, TaskAppState
-from pathlib import Path
 
 
 def test_roundtrip():

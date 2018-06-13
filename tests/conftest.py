@@ -9,7 +9,6 @@ import pytest
 import shutil
 import structlog
 import uuid
-import yaml
 from datetime import datetime
 from sqlalchemy import and_
 from typing import Iterable
@@ -17,7 +16,6 @@ from typing import Tuple, NamedTuple, Optional, Mapping
 
 import digitalearthau
 import digitalearthau.system
-import tests.utils
 from datacube.config import LocalConfig
 from datacube.drivers.postgres import PostgresDb
 from datacube.drivers.postgres import _api
@@ -30,6 +28,7 @@ from digitalearthau.collections import Collection
 from digitalearthau.index import DatasetLite, add_dataset
 from digitalearthau.paths import register_base_directory
 from digitalearthau.utils import CleanConsoleRenderer
+from .utils import write_files
 
 try:
     from yaml import CSafeLoader as SafeLoader
@@ -70,11 +69,6 @@ def configure_log_output(request):
         context_class=dict,
         cache_logger_on_first_use=True,
     )
-
-
-def load_yaml_file(path):
-    with path.open() as f:
-        return list(yaml.load_all(f, Loader=SafeLoader))
 
 
 @pytest.fixture(autouse=True)
@@ -225,7 +219,7 @@ def other_dataset(integration_test_data: Path, test_dataset: DatasetForTests) ->
     """
 
     ds_id = uuid.UUID("5294efa6-348d-11e7-a079-185e0f80a5c0")
-    tests.utils.write_files(
+    write_files(
         {
             'LS8_INDEXED_ALREADY': {
                 'ga-metadata.yaml':
