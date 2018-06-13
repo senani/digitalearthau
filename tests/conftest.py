@@ -73,6 +73,7 @@ def configure_log_output(request):
 
 @pytest.fixture(autouse=True)
 def work_path(tmpdir):
+    """Redirect the NCI Work Directory into a temporary directory for testing."""
     paths.NCI_WORK_ROOT = Path(tmpdir) / 'work'
     paths.NCI_WORK_ROOT.mkdir()
     # The default use of timestamp will collide when run quickly, as in unit tests.
@@ -82,6 +83,7 @@ def work_path(tmpdir):
 
 @pytest.fixture
 def integration_test_data(tmpdir):
+    """A Path pointing to a copy of the `integration_data` directory."""
     temp_data_dir = Path(tmpdir) / 'integration_data'
     shutil.copytree(INTEGRATION_TEST_DATA, temp_data_dir)
     return temp_data_dir
