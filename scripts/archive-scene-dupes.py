@@ -12,7 +12,7 @@ from typing import List, Tuple, Set, Iterable
 from datacube import Datacube
 from datacube.index._api import Index
 from datacube.model import Dataset
-from digitalearthau.uiutil import init_logging
+from digitalearthau.utils import init_logging
 
 _LOG = structlog.getLogger()
 

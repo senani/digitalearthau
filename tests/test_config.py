@@ -1,6 +1,9 @@
+import pytest
+
 from datacube.index import Index
 
 
+@pytest.mark.integration
 def test_dea_config(dea_index: Index):
     """
     Check that all the product definitions are valid enough to be added, and that they are added.
@@ -77,6 +80,7 @@ def test_dea_config(dea_index: Index):
     }
 
 
+@pytest.mark.integration
 def test_metadata_type(dea_index):
     # this came from a bug in the ingestion script
     # where the metadata_type specified in the ingest config

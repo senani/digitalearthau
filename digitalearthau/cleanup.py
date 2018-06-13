@@ -14,11 +14,12 @@ import structlog
 from click import echo, style
 from sqlalchemy import select, and_
 
+import digitalearthau.utils
 from datacube.index import Index
 from datacube.drivers.postgres import _api as pgapi
 from datacube.ui import click as ui
 from datacube.utils import uri_to_local_path
-from digitalearthau import paths, uiutil
+from digitalearthau import paths
 from dateutil import tz
 
 
@@ -57,7 +58,7 @@ def archived(index: Index,
 
     # TODO: Get defined collections for path?
     work_path = paths.get_product_work_directory('all', task_type='clean')
-    uiutil.init_logging(work_path.joinpath('log.jsonl').open('a'))
+    digitalearthau.utils.init_logging(work_path.joinpath('log.jsonl').open('a'))
     log = structlog.getLogger("cleanup-archived")
 
     log.info("cleanup.start", dry_run=dry_run, input_paths=files, min_trash_age_hours=min_trash_age_hours)

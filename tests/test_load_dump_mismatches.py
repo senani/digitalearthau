@@ -1,7 +1,7 @@
 from uuid import UUID
 
 from digitalearthau.index import DatasetLite
-from digitalearthau.paths import write_files
+from tests.utils import write_files
 from digitalearthau.sync.differences import DatasetNotIndexed, Mismatch, ArchivedDatasetOnDisk, UnreadableDataset, \
     mismatches_from_file
 

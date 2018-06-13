@@ -12,6 +12,7 @@ from tests.conftest import DatasetForTests
 A_LONG_TIME_AGO = datetime.utcnow() - timedelta(days=4)
 
 
+@pytest.mark.integration
 def test_cleanup_archived(run_cleanup,
                           test_dataset: DatasetForTests,
                           other_dataset: DatasetForTests):
@@ -38,6 +39,7 @@ def test_cleanup_archived(run_cleanup,
     assert all_indexed_uris == {test_dataset.uri}, "Only one uri should remain. The other was trashed."
 
 
+@pytest.mark.integration
 def test_dont_cleanup(run_cleanup,
                       test_dataset: DatasetForTests,
                       other_dataset: DatasetForTests):
@@ -62,6 +64,7 @@ def test_dont_cleanup(run_cleanup,
     assert all_indexed_uris == {test_dataset.uri}
 
 
+@pytest.mark.integration
 def test_keep_stacks(run_cleanup,
                      test_dataset: DatasetForTests,
                      other_dataset: DatasetForTests):
@@ -95,6 +98,7 @@ def test_keep_stacks(run_cleanup,
     assert not test_dataset.path.exists(), "Stack should be cleaned up when all references are archived."
 
 
+@pytest.mark.integration
 def test_only_clean_up_matching_uuids(run_cleanup,
                                       test_dataset: DatasetForTests,
                                       other_dataset: DatasetForTests):

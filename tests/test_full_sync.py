@@ -1,14 +1,14 @@
 import logging
 import os
-import shutil
-import uuid
-from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Iterable, Mapping, Tuple
 
 import pytest
+import shutil
 import structlog
+import uuid
+from datetime import datetime, timedelta
 from dateutil import tz
+from typing import Iterable, Mapping
 
 from datacube.index import Index
 from datacube.utils import uri_to_local_path

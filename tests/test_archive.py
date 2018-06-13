@@ -1,4 +1,4 @@
-from digitalearthau.paths import write_files
+from tests.utils import write_files
 
 
 def do_an_archive():

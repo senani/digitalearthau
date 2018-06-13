@@ -1,10 +1,10 @@
 import click
 import structlog
 
+import digitalearthau.utils
 from datacube import Datacube
 from datacube.model import Dataset
 from datacube.ui import click as ui
-from digitalearthau import uiutil
 
 _LOG = structlog.getLogger('archive-locationless')
 
@@ -44,7 +44,7 @@ def main(expressions, archive_locationless, debug, check_locationless, check_anc
     TODO: This could be merged into it as a post-processing step, although it's less safe than sync if
     the index is being updated concurrently by another)
     """
-    uiutil.init_logging()
+    digitalearthau.utils.init_logging()
     with Datacube() as dc:
         _LOG.info('query', query=expressions)
         count = 0

@@ -12,9 +12,9 @@ import click
 import structlog
 
 import digitalearthau.collections as cs
+import digitalearthau.utils
 from datacube.index import Index
 from datacube.ui import click as ui
-from digitalearthau import uiutil
 from digitalearthau.sync import scan
 from . import fixes, differences
 from .differences import Mismatch
@@ -72,7 +72,7 @@ def cli(index: Index,
 
     This will update locations, trash or index new datasets, depending on the chosen options.
     """
-    uiutil.init_logging()
+    digitalearthau.utils.init_logging()
 
     if fix_settings['index_missing'] and fix_settings['trash_missing']:
         click.echo('Can either index missing datasets (--index-missing) , or trash them (--trash-missing), '
