@@ -10,7 +10,7 @@ from digitalearthau.harvest import iso19115
 
 @pytest.fixture
 def mapping_yaml():
-    return os.path.join(os.path.split(os.path.realpath(__file__))[0], 'mapping.yaml')
+    return os.path.join(os.path.split(os.path.realpath(iso19115.__file__))[0], 'mapping.yaml')
 
 
 @pytest.fixture
