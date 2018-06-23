@@ -120,7 +120,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="README.html">Image Classification</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Random forest classification</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#Import-modules-and-define-functions">Import modules and define functions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#Functions-used-to-import-training-and-analysis-data">Functions used to import training and analysis data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Function-used-to-import-training-and-analysis-data">Function used to import training and analysis data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Set-up-analysis">Set up analysis</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Import-training-data-and-fit-model">Import training data and fit model</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Import-analysis-data-and-classify">Import analysis data and classify</a></li>
@@ -413,17 +413,17 @@ div.nboutput div.output_area.stderr {
 <div class="section" id="Random-forest-classification">
 <h1>Random forest classification<a class="headerlink" href="#Random-forest-classification" title="Permalink to this headline">¶</a></h1>
 <p><strong>What does this notebook do?</strong> This notebook classifies remote sensing
-data using a random forest classifier model. Key features include being
-able to efficiently import training data from a set of point, line or
-polygon shapefiles (i.e. data is extracted from each shapefile
+data using a <code class="docutils literal notranslate"><span class="pre">random</span> <span class="pre">forest</span></code> classifier model. Key features include
+being able to efficiently import training data from a set of point, line
+or polygon shapefiles (i.e. data is extracted from each shapefile
 separately to avoid slow <code class="docutils literal notranslate"><span class="pre">dc.load</span></code> on large areas), and allow flexible
 and consistent selection of training and analysis data using import
 functions (i.e. ensuring training data is consistent with analysis
 data). The notebook exports geotiff classification outputs and a series
 of evaluation figures to help fine-tune the classifier.</p>
-<p><strong>Date:</strong> April 2018</p>
+<p><strong>Date:</strong> June 2018</p>
 <p><strong>Author:</strong> Robbi Bishop-Taylor</p>
-<p>“<strong>Tags</strong>: <span class="target" id="index-0"></span>image_classification, <span class="target" id="index-1"></span>machine_learning, <span class="target" id="index-2"></span>random_forest, <span class="target" id="index-3"></span>Landsat8, <span class="target" id="index-4"></span>mangroves, <span class="target" id="index-5"></span>tasseled_cap</p>
+<p><strong>Tags</strong>: <span class="target" id="index-0"></span>image_classification, <span class="target" id="index-1"></span>machine_learning, <span class="target" id="index-2"></span>random_forest, <span class="target" id="index-3"></span>Landsat8, <span class="target" id="index-4"></span>mangroves, <span class="target" id="index-5"></span>tasseled_cap</p>
 <div class="section" id="Import-modules-and-define-functions">
 <h2>Import modules and define functions<a class="headerlink" href="#Import-modules-and-define-functions" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
@@ -453,7 +453,6 @@ of evaluation figures to help fine-tune the classifier.</p>
 <span class="kn">from</span> <span class="nn">ClassificationTools</span> <span class="k">import</span> <span class="n">randomforest_train</span>
 <span class="kn">from</span> <span class="nn">ClassificationTools</span> <span class="k">import</span> <span class="n">randomforest_classify</span>
 <span class="kn">from</span> <span class="nn">ClassificationTools</span> <span class="k">import</span> <span class="n">randomforest_eval</span>
-<span class="kn">from</span> <span class="nn">DEADataHandling</span> <span class="k">import</span> <span class="n">tasseled_cap</span>
 <span class="kn">from</span> <span class="nn">DEADataHandling</span> <span class="k">import</span> <span class="n">load_nbarx</span>
 
 <span class="c1"># For nicer notebook plotting, hide warnings (comment out for real analysis)</span>
@@ -474,71 +473,24 @@ Failed to resolve driver datacube.plugins.index::s3aio_index
 </pre></div></div>
 </div>
 </div>
-<div class="section" id="Functions-used-to-import-training-and-analysis-data">
-<h2>Functions used to import training and analysis data<a class="headerlink" href="#Functions-used-to-import-training-and-analysis-data" title="Permalink to this headline">¶</a></h2>
-<p>These functions import datacube data using a query, and return an xarray
-dataset with one time-step, multiple bands/variables and <code class="docutils literal notranslate"><span class="pre">crs</span></code> and
-<code class="docutils literal notranslate"><span class="pre">affine</span></code> attributes. This format is required as an input to both
+<div class="section" id="Function-used-to-import-training-and-analysis-data">
+<h2>Function used to import training and analysis data<a class="headerlink" href="#Function-used-to-import-training-and-analysis-data" title="Permalink to this headline">¶</a></h2>
+<p>This function imports datacube data using a query, and return an xarray
+dataset with one single time-step, multiple bands/variables and <code class="docutils literal notranslate"><span class="pre">crs</span></code>
+and <code class="docutils literal notranslate"><span class="pre">affine</span></code> attributes. This format is required as an input to both
 <code class="docutils literal notranslate"><span class="pre">randomforest_train</span></code> and <code class="docutils literal notranslate"><span class="pre">randomforest_classify</span></code> to ensure that both
-training and analysis data are consistent.</p>
+training and analysis data are consistent. This function can be replaced
+with a custom function of your creation, as long as it returns data in
+the same format (one time-step, multiple bands, <code class="docutils literal notranslate"><span class="pre">crs</span></code> and <code class="docutils literal notranslate"><span class="pre">affine</span></code>
+attributes).</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [9]:
+<span></span>In [2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">def</span> <span class="nf">hltc_import</span><span class="p">(</span><span class="n">query</span><span class="p">):</span>
 
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Imports high and low composite data for a given spatial query, and</span>
-<span class="sd">    return an xarray dataset with &#39;crs&#39; and &#39;affine&#39; attributes</span>
-
-<span class="sd">    :attr query: spatial query for datacube.load()</span>
-<span class="sd">    :returns: xarray dataset with &#39;crs&#39; and &#39;affine&#39; attributes</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="c1"># Import data</span>
-    <span class="n">low_tide</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">product</span> <span class="o">=</span> <span class="s1">&#39;low_tide_comp_20p&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">query</span><span class="p">)</span>
-    <span class="n">high_tide</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">product</span> <span class="o">=</span> <span class="s1">&#39;high_tide_comp_20p&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">query</span><span class="p">)</span>
-
-    <span class="c1"># Rename variables in each high/low composite so datasets can be merged</span>
-    <span class="n">data_vars</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">low_tide</span><span class="o">.</span><span class="n">data_vars</span><span class="p">)</span>
-    <span class="n">low_tide</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="n">var</span><span class="p">:</span> <span class="s2">&quot;lt_&quot;</span> <span class="o">+</span> <span class="n">var</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">data_vars</span><span class="p">},</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-    <span class="n">high_tide</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="n">var</span><span class="p">:</span> <span class="s2">&quot;ht_&quot;</span> <span class="o">+</span> <span class="n">var</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">data_vars</span><span class="p">},</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-
-    <span class="c1"># Combine into one dataset</span>
-    <span class="n">output_xarray</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">auto_combine</span><span class="p">([</span><span class="n">low_tide</span><span class="p">,</span> <span class="n">high_tide</span><span class="p">])</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
-
-    <span class="c1"># Set attributes</span>
-    <span class="n">output_xarray</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;crs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">low_tide</span><span class="o">.</span><span class="n">crs</span>
-    <span class="n">output_xarray</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;affine&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">low_tide</span><span class="o">.</span><span class="n">affine</span>
-
-    <span class="k">return</span> <span class="n">output_xarray</span>
-
-
-<span class="k">def</span> <span class="nf">tc_import</span><span class="p">(</span><span class="n">query</span><span class="p">):</span>
-
-    <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Wrapper around load_nbarx and tasseled_cap to return an xarray dataset with</span>
-<span class="sd">    &#39;crs&#39; and &#39;affine&#39; attributes</span>
-
-<span class="sd">    :attr query: query for datacube call; for training, supply only</span>
-<span class="sd">    non-spatial queries as spatial are generated from training data</span>
-<span class="sd">    :returns: xarray dataset with &#39;crs&#39; and &#39;affine&#39; attributes</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-
-    <span class="c1"># Import cleaned Landsat bands data</span>
-    <span class="n">nbart_data</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_nbarx</span><span class="p">(</span><span class="n">dc</span><span class="p">,</span> <span class="s2">&quot;ls8&quot;</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span>
-
-    <span class="c1"># Compute tasseled cap indices and take median of multiple timesteps</span>
-    <span class="n">output_xarray</span> <span class="o">=</span> <span class="n">tasseled_cap</span><span class="p">(</span><span class="n">sensor_data</span> <span class="o">=</span> <span class="n">nbart_data</span><span class="p">,</span>
-                                 <span class="n">sensor</span> <span class="o">=</span> <span class="s1">&#39;ls8&#39;</span><span class="p">,</span>
-                                 <span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">keep_attrs</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">output_xarray</span>
-
-
-<span class="k">def</span> <span class="nf">nbart_import</span><span class="p">(</span><span class="n">query</span><span class="p">):</span>
+<span></span><span class="k">def</span> <span class="nf">nbart_import</span><span class="p">(</span><span class="n">query</span><span class="p">):</span>
 
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Takes median of a set of nbart Landsat data; could be replaced with geomedian or any other</span>
@@ -550,7 +502,8 @@ training and analysis data are consistent.</p>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="c1"># Import cleaned Landsat bands data</span>
-    <span class="n">nbart_data</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_nbarx</span><span class="p">(</span><span class="n">dc</span><span class="p">,</span> <span class="s2">&quot;ls8&quot;</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span>
+    <span class="n">nbart_data</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_nbarx</span><span class="p">(</span><span class="n">dc</span><span class="p">,</span> <span class="n">sensor</span><span class="o">=</span><span class="s2">&quot;ls8&quot;</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span>
+                                  <span class="n">bands_of_interest</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;nir&#39;</span><span class="p">,</span> <span class="s1">&#39;swir1&#39;</span><span class="p">,</span> <span class="s1">&#39;swir2&#39;</span><span class="p">])</span>
 
     <span class="c1"># Combine into one temporally aggregated layer</span>
     <span class="n">aggregated_data</span> <span class="o">=</span> <span class="n">nbart_data</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">dim</span> <span class="o">=</span> <span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">keep_attrs</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
@@ -563,120 +516,34 @@ training and analysis data are consistent.</p>
 </div>
 <div class="section" id="Set-up-analysis">
 <h2>Set up analysis<a class="headerlink" href="#Set-up-analysis" title="Permalink to this headline">¶</a></h2>
-<p>Defines parameters used for analysis. This notebook contains example
-analyses for three classification tasks: classifying mangroves using
-high-low tide composites (HLTC), tasseled cap classification and
-classification of water vs non-water using median Landsat nbart data.
-Run one of the cells below to select the desired analysis.</p>
+<p>Defines parameters used for analysis. This notebook demonstrates the
+classification of water vs non-water using median Landsat nbart data.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1">###########################################</span>
-<span class="c1"># For HLTC-based mangrove classification: #</span>
-<span class="c1">###########################################</span>
-
-<span class="c1"># Working directory</span>
-<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">&quot;/g/data/r78/rt1527/random_forest&quot;</span><span class="p">)</span>
+<span></span><span class="c1"># Working directory</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;/g/data/r78/rt1527/random_forest&#39;</span><span class="p">)</span>
 
 <span class="c1"># List of training files to import. Shapefiles can be either points, lines or polygons,</span>
 <span class="c1"># but must be in the same projection system as the remote sensing dataset being analysed.</span>
 <span class="c1"># Each file should cover a small enough spatial area so as to not slow dc.load function</span>
-<span class="c1"># excessively (e.g. 100 x 100km max)</span>
-<span class="n">train_shps</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;raw_data/train/training_data_mangrove.shp&quot;</span><span class="p">,</span>
-              <span class="s2">&quot;raw_data/train/training_data_mangrove1.shp&quot;</span><span class="p">,</span>
-              <span class="s2">&quot;raw_data/train/training_data_mangrove2.shp&quot;</span><span class="p">,</span>
-              <span class="s2">&quot;raw_data/train/training_data_mangrove3.shp&quot;</span><span class="p">]</span>
+<span class="c1"># excessively (e.g. 100 x 100km max). The class of each feature should be given in a shapefile</span>
+<span class="c1"># column (e.g. `class`), and specified in `randomforest_train` (i.e. `train_field = &#39;class&#39;`).</span>
+<span class="n">train_shps</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;raw_data/train/training_data_waternonwater.shp&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;raw_data/train/training_data_waternonwater2.shp&#39;</span><span class="p">]</span>
 
 <span class="c1"># Output path for classified geotiff</span>
-<span class="n">classification_output</span> <span class="o">=</span> <span class="s2">&quot;output_data/classification_dc_mangrove.tif&quot;</span>
+<span class="n">classification_output</span> <span class="o">=</span> <span class="s1">&#39;output_data/classification_dc_waternonwater.tif&#39;</span>
 
 <span class="c1"># Optional dict to re-map training shapefile classes; useful for combining classes</span>
-<span class="c1"># (&#39;3:2&#39; re-maps class 3 to class 2)</span>
-<span class="c1"># train_reclass = {1:1, 2:2, 3:2, 4:2}</span>
+<span class="c1"># (e.g. `train_reclass = {3:2}` re-maps class 3 to class 2)</span>
 <span class="n">train_reclass</span> <span class="o">=</span> <span class="kc">None</span>
 
 <span class="c1"># Names of output classification classes</span>
-<span class="c1"># classification_names = [&quot;mangrove&quot;, &quot;other&quot;]</span>
-<span class="n">classification_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;mangrove&quot;</span><span class="p">,</span> <span class="s2">&quot;water&quot;</span><span class="p">,</span> <span class="s2">&quot;veg&quot;</span><span class="p">,</span> <span class="s2">&quot;other&quot;</span><span class="p">]</span>
-
-<span class="c1"># Set data function used to import data and optional parameters (e.g. time for temporal data).</span>
-<span class="c1"># For example, &#39;tc_import&#39; needs an additional &#39;time&#39; query as it draws on Landsat time-series</span>
-<span class="c1"># data, while &#39;hltc_import&#39; uses high-low tide composites that have no temporal dimension</span>
-<span class="n">data_func</span> <span class="o">=</span> <span class="n">hltc_import</span>
-<span class="n">data_func_params</span> <span class="o">=</span> <span class="p">{}</span>
-
-</pre></div>
-</div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [36]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1">##########################################</span>
-<span class="c1"># For Tasseled cap-based classification: #</span>
-<span class="c1">##########################################</span>
-
-<span class="c1"># Working directory</span>
-<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">&quot;/g/data/r78/rt1527/random_forest&quot;</span><span class="p">)</span>
-
-<span class="c1"># List of training files to import. Shapefiles can be either points, lines or polygons,</span>
-<span class="c1"># but must be in the same projection system as the remote sensing dataset being analysed.</span>
-<span class="c1"># Each file should cover a small enough spatial area so as to not slow dc.load function</span>
-<span class="c1"># excessively (e.g. 100 x 100km max)</span>
-<span class="n">train_shps</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;raw_data/train/training_data_tasseledcap.shp&quot;</span><span class="p">]</span>
-
-<span class="c1"># Output path for classified geotiff</span>
-<span class="n">classification_output</span> <span class="o">=</span> <span class="s2">&quot;output_data/classification_dc_tasseledcap.tif&quot;</span>
-
-<span class="c1"># Optional dict to re-map training shapefile classes; useful for combining classes</span>
-<span class="c1"># (&#39;3:2&#39; re-maps class 3 to class 2)</span>
-<span class="n">train_reclass</span> <span class="o">=</span> <span class="kc">None</span>
-
-<span class="c1"># Names of output classification classes</span>
-<span class="n">classification_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;wetland&quot;</span><span class="p">,</span> <span class="s2">&quot;escarpment&quot;</span><span class="p">,</span> <span class="s2">&quot;plateau&quot;</span><span class="p">,</span> <span class="s2">&quot;other_wetland&quot;</span><span class="p">]</span>
-
-<span class="c1"># Set data function used to import data and optional parameters (e.g. time for temporal data).</span>
-<span class="c1"># For example, &#39;tc_import&#39; needs an additional &#39;time&#39; query as it draws on Landsat time-series</span>
-<span class="c1"># data, while &#39;hltc_import&#39; uses high-low tide composites that have no temporal dimension</span>
-<span class="n">data_func</span> <span class="o">=</span> <span class="n">tc_import</span>
-<span class="n">data_func_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;2017-03-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2017-06-28&#39;</span><span class="p">)}</span>
-
-</pre></div>
-</div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [4]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1">#####################################################</span>
-<span class="c1"># For water/non water classification using Landsat: #</span>
-<span class="c1">#####################################################</span>
-
-<span class="c1"># Working directory</span>
-<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">&quot;/g/data/r78/rt1527/random_forest&quot;</span><span class="p">)</span>
-
-<span class="c1"># List of training files to import. Shapefiles can be either points, lines or polygons,</span>
-<span class="c1"># but must be in the same projection system as the remote sensing dataset being analysed.</span>
-<span class="c1"># Each file should cover a small enough spatial area so as to not slow dc.load function</span>
-<span class="c1"># excessively (e.g. 100 x 100km max)</span>
-<span class="n">train_shps</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;raw_data/train/training_data_waternonwater.shp&quot;</span><span class="p">]</span>
-
-<span class="c1"># Output path for classified geotiff</span>
-<span class="n">classification_output</span> <span class="o">=</span> <span class="s2">&quot;output_data/classification_dc_waternonwater.tif&quot;</span>
-
-<span class="c1"># Optional dict to re-map training shapefile classes; useful for combining classes</span>
-<span class="c1"># (&#39;3:2&#39; re-maps class 3 to class 2)</span>
-<span class="n">train_reclass</span> <span class="o">=</span> <span class="kc">None</span>
-
-<span class="c1"># Names of output classification classes</span>
-<span class="n">classification_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;water&quot;</span><span class="p">,</span> <span class="s2">&quot;nonwater&quot;</span><span class="p">]</span>
+<span class="n">classification_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;water&#39;</span><span class="p">,</span> <span class="s1">&#39;nonwater&#39;</span><span class="p">]</span>
 
 <span class="c1"># Set data function used to import data and optional parameters (e.g. time for temporal data).</span>
 <span class="c1"># For example, &#39;tc_import&#39; needs an additional &#39;time&#39; query as it draws on Landsat time-series</span>
@@ -695,20 +562,20 @@ multiple training shapefiles, and returns a trained classifier (and
 optionally, training label and training sample arrays)</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [5]:
+<span></span>In [4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># Dict of classifier parameters</span>
 <span class="n">classifier_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;n_jobs&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
                      <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
-                     <span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+                     <span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="s1">&#39;auto&#39;</span><span class="p">,</span>
                      <span class="s1">&#39;min_samples_leaf&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
                      <span class="s1">&#39;oob_score&#39;</span><span class="p">:</span> <span class="kc">True</span> <span class="p">}</span>
 
 <span class="c1"># Extract training data for each training shapefile and train classifier</span>
 <span class="n">classifier</span><span class="p">,</span> <span class="n">train_lab</span><span class="p">,</span> <span class="n">train_samp</span> <span class="o">=</span> <span class="n">randomforest_train</span><span class="p">(</span><span class="n">train_shps</span> <span class="o">=</span> <span class="n">train_shps</span><span class="p">,</span>
-                                                       <span class="n">train_field</span> <span class="o">=</span> <span class="s2">&quot;class&quot;</span><span class="p">,</span>
+                                                       <span class="n">train_field</span> <span class="o">=</span> <span class="s1">&#39;class&#39;</span><span class="p">,</span>
                                                        <span class="n">data_func</span> <span class="o">=</span> <span class="n">data_func</span><span class="p">,</span>
                                                        <span class="n">data_func_params</span> <span class="o">=</span> <span class="n">data_func_params</span><span class="p">,</span>
                                                        <span class="n">classifier_params</span> <span class="o">=</span> <span class="n">classifier_params</span><span class="p">,</span>
@@ -717,20 +584,40 @@ optionally, training label and training sample arrays)</p>
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
+<div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Importing training data from raw_data/train/training_data_waternonwater.shp:
-{&#39;x&#39;: (-104200.12797711749, -132981.8946159188), &#39;y&#39;: (-1278352.9282547852, -1325088.9074965029), &#39;crs&#39;: &#39;EPSG:3577&#39;, &#39;time&#39;: (&#39;2017-03-01&#39;, &#39;2017-06-28&#39;)}
+{&#39;x&#39;: (-104200.12797711749, -132981.8946159188), &#39;y&#39;: (-1302880.571524795, -1325088.9074965029), &#39;crs&#39;: &#39;EPSG:3577&#39;, &#39;time&#39;: (&#39;2017-03-01&#39;, &#39;2017-06-28&#39;)}
+Loading ls8_nbart_albers
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="stderr output_area docutils container">
+<div class="highlight"><pre>
+Failed to resolve driver datacube.plugins.io.read::s3aio
+Failed to resolve driver datacube.plugins.io.read::s3aio_test
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Loaded ls8_nbart_albers
+Generating mask ls8_pq_albers
+Importing training data from raw_data/train/training_data_waternonwater2.shp:
+{&#39;x&#39;: (-139053.5091922571, -167876.9325124413), &#39;y&#39;: (-1285673.093797538, -1317058.734541306), &#39;crs&#39;: &#39;EPSG:3577&#39;, &#39;time&#39;: (&#39;2017-03-01&#39;, &#39;2017-06-28&#39;)}
 Loading ls8_nbart_albers
 Loaded ls8_nbart_albers
 Generating mask ls8_pq_albers
-Masked ls8_nbart_albers with ls8_pq_albers and filtered terrain
 
 Training random forest classifier...
-Model trained on 7 bands and 178222 training samples
+Model trained on 6 bands and 179160 training samples
 </pre></div></div>
 </div>
 </div>
@@ -740,19 +627,17 @@ Model trained on 7 bands and 178222 training samples
 random forest classifier, provided this dataset has the same number of
 bands/variables as the data used to train the classifier. Using the same
 data function used to train the classifier (e.g. <code class="docutils literal notranslate"><span class="pre">data_func</span></code>
-previously defined as either <code class="docutils literal notranslate"><span class="pre">tc_import</span></code>, <code class="docutils literal notranslate"><span class="pre">hltc_import</span></code> or
-<code class="docutils literal notranslate"><span class="pre">nbart_import</span></code>) will ensure this is the case. By setting
-<code class="docutils literal notranslate"><span class="pre">class_prob</span> <span class="pre">=</span> <span class="pre">True</span></code>, you can optionally export a geotiff of predicted
-class probabilities in addition to the classification output.</p>
+previously defined as <code class="docutils literal notranslate"><span class="pre">nbart_import</span></code>) will ensure this is the case. By
+setting <code class="docutils literal notranslate"><span class="pre">class_prob</span> <span class="pre">=</span> <span class="pre">True</span></code>, you can optionally export a geotiff of
+predicted class probabilities in addition to the classification output.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [6]:
+<span></span>In [5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># Set up analysis data query</span>
 <span class="n">lat_point</span><span class="p">,</span> <span class="n">lon_point</span><span class="p">,</span> <span class="n">buffer</span> <span class="o">=</span> <span class="o">-</span><span class="mf">12.5798399926</span><span class="p">,</span> <span class="mf">130.782907919</span><span class="p">,</span> <span class="mi">30000</span>
-<span class="c1"># lat_point, lon_point, buffer = -12.5693189393, 135.033955268, 20000</span>
 <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">point</span><span class="p">(</span><span class="n">lon_point</span><span class="p">,</span> <span class="n">lat_point</span><span class="p">,</span> <span class="n">CRS</span><span class="p">(</span><span class="s1">&#39;WGS84&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">CRS</span><span class="p">(</span><span class="s1">&#39;EPSG:3577&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">query</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">buffer</span><span class="p">),</span>
          <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">buffer</span><span class="p">),</span>
@@ -768,12 +653,11 @@ class probabilities in addition to the classification output.</p>
                                                 <span class="n">classification_output</span> <span class="o">=</span> <span class="n">classification_output</span><span class="p">,</span>
                                                 <span class="n">class_prob</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 
-
 <span class="c1"># Plot output classification</span>
 <span class="n">class_xarray</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">class_array</span><span class="p">,</span>
                    <span class="n">coords</span> <span class="o">=</span> <span class="p">[</span><span class="n">analysis_xarray</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">analysis_xarray</span><span class="o">.</span><span class="n">x</span><span class="p">],</span>
                    <span class="n">dims</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">],</span>
-                   <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Classification output&quot;</span><span class="p">)</span>
+                   <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Classification output&#39;</span><span class="p">)</span>
 <span class="n">class_xarray</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">levels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">class_array</span><span class="p">))</span> <span class="o">+</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">class_array</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span>
                   <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 
@@ -782,8 +666,8 @@ class probabilities in addition to the classification output.</p>
 <span class="n">prob_xarray</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">prob_array</span><span class="p">,</span>
                            <span class="n">coords</span> <span class="o">=</span> <span class="p">[</span><span class="n">analysis_xarray</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">analysis_xarray</span><span class="o">.</span><span class="n">x</span><span class="p">],</span>
                            <span class="n">dims</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">],</span>
-                           <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Predicted class probability&quot;</span><span class="p">)</span>
-<span class="n">prob_xarray</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;plasma_r&quot;</span><span class="p">,</span>
+                           <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Predicted class probability&#39;</span><span class="p">)</span>
+<span class="n">prob_xarray</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;plasma_r&#39;</span><span class="p">,</span>
                  <span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">prob_array</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
                  <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">prob_array</span><span class="p">,</span> <span class="mi">97</span><span class="p">),</span>
                  <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
@@ -799,11 +683,10 @@ class probabilities in addition to the classification output.</p>
 Loading ls8_nbart_albers
 Loaded ls8_nbart_albers
 Generating mask ls8_pq_albers
-Masked ls8_nbart_albers with ls8_pq_albers and filtered terrain
 Data to classify:
   Rows: 2401
   Columns: 2401
-  Bands: 7
+  Bands: 6
 
 Classification processing...
   9467 nodata cells removed
@@ -815,11 +698,11 @@ Class probability processing...
 </div>
 <div class="nboutput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[6]:
+<span></span>Out[5]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.collections.QuadMesh at 0x7f6e999469b0&gt;
+<span></span>&lt;matplotlib.collections.QuadMesh at 0x7f75d56ac780&gt;
 </pre></div>
 </div>
 </div>
@@ -827,14 +710,14 @@ Class probability processing...
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_Image_classification_RandomForestClassification_13_2.png" src="../../_images/notebooks_Image_classification_RandomForestClassification_13_2.png" />
+<img alt="../../_images/notebooks_Image_classification_RandomForestClassification_11_2.png" src="../../_images/notebooks_Image_classification_RandomForestClassification_11_2.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_Image_classification_RandomForestClassification_13_3.png" src="../../_images/notebooks_Image_classification_RandomForestClassification_13_3.png" />
+<img alt="../../_images/notebooks_Image_classification_RandomForestClassification_11_3.png" src="../../_images/notebooks_Image_classification_RandomForestClassification_11_3.png" />
 </div>
 </div>
 </div>
@@ -846,7 +729,7 @@ selecting a subset of input bands/variables for model
 training/classification (i.e. optimising feature space)</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [7]:
+<span></span>In [6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -892,32 +775,28 @@ training/classification (i.e. optimising feature space)</p>
   </thead>
   <tbody>
     <tr>
-      <th>coastal_aerosol</th>
-      <td>0.080512</td>
-    </tr>
-    <tr>
-      <th>blue</th>
-      <td>0.078327</td>
+      <th>red</th>
+      <td>0.022764</td>
     </tr>
     <tr>
       <th>green</th>
-      <td>0.005600</td>
+      <td>0.038957</td>
     </tr>
     <tr>
-      <th>red</th>
-      <td>0.037381</td>
+      <th>blue</th>
+      <td>0.117613</td>
     </tr>
     <tr>
       <th>nir</th>
-      <td>0.291750</td>
+      <td>0.303298</td>
     </tr>
     <tr>
       <th>swir1</th>
-      <td>0.298890</td>
+      <td>0.335609</td>
     </tr>
     <tr>
       <th>swir2</th>
-      <td>0.207540</td>
+      <td>0.181758</td>
     </tr>
   </tbody>
 </table>
@@ -927,7 +806,7 @@ training/classification (i.e. optimising feature space)</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_Image_classification_RandomForestClassification_15_1.png" src="../../_images/notebooks_Image_classification_RandomForestClassification_15_1.png" />
+<img alt="../../_images/notebooks_Image_classification_RandomForestClassification_13_1.png" src="../../_images/notebooks_Image_classification_RandomForestClassification_13_1.png" />
 </div>
 </div>
 </div>
@@ -938,6 +817,8 @@ strongly affect the performance of the model. This section evaluates the
 effect of these parameters by plotting out-of-bag (OOB) error for a set
 of classifier parameter scenarios, and exports the resulting plots to
 file.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">max_estimators</span> <span class="pre">=</span> <span class="pre">300</span></code> is usually a good starting point, but this
+may be slow for large training sets.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [7]:
@@ -1048,11 +929,12 @@ file.</p>
                                          <span class="n">classifier_scenario5</span><span class="p">]):</span>
 
     <span class="c1"># Plot OOB error by classifier scenario</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Processing: &#39;</span> <span class="o">+</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">classifier_scenario</span><span class="p">]))</span>
     <span class="n">randomforest_eval</span><span class="p">(</span><span class="n">training_labels</span> <span class="o">=</span> <span class="n">train_lab</span><span class="p">,</span>
                       <span class="n">training_samples</span> <span class="o">=</span> <span class="n">train_samp</span><span class="p">,</span>
                       <span class="n">classifier_scenario</span> <span class="o">=</span> <span class="n">classifier_scenario</span><span class="p">,</span>
                       <span class="n">output_path</span> <span class="o">=</span> <span class="s2">&quot;figures/random_forest_params_</span><span class="si">{}</span><span class="s2">.png&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span>
-                      <span class="n">max_estimators</span> <span class="o">=</span> <span class="mi">200</span><span class="p">)</span>
+                      <span class="n">max_estimators</span> <span class="o">=</span> <span class="mi">50</span><span class="p">)</span>
 
 </pre></div>
 </div>
@@ -1061,35 +943,75 @@ file.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_Image_classification_RandomForestClassification_17_0.png" src="../../_images/notebooks_Image_classification_RandomForestClassification_17_0.png" />
+<div class="highlight"><pre>
+Processing: max_features = &#39;sqrt&#39;, max_features = &#39;log2&#39;, max_features = &#39;0.1&#39;, max_features = &#39;0.5&#39;, max_features = None
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/notebooks_Image_classification_RandomForestClassification_15_1.png" src="../../_images/notebooks_Image_classification_RandomForestClassification_15_1.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_Image_classification_RandomForestClassification_17_1.png" src="../../_images/notebooks_Image_classification_RandomForestClassification_17_1.png" />
+<div class="highlight"><pre>
+Processing: Leaf = 1, Leaf = 10, Leaf = 20, Leaf = 40
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/notebooks_Image_classification_RandomForestClassification_15_3.png" src="../../_images/notebooks_Image_classification_RandomForestClassification_15_3.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_Image_classification_RandomForestClassification_17_2.png" src="../../_images/notebooks_Image_classification_RandomForestClassification_17_2.png" />
+<div class="highlight"><pre>
+Processing: Max depth = 1, Max depth = 2, Max depth = 5, Max depth = 10
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/notebooks_Image_classification_RandomForestClassification_15_5.png" src="../../_images/notebooks_Image_classification_RandomForestClassification_15_5.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_Image_classification_RandomForestClassification_17_3.png" src="../../_images/notebooks_Image_classification_RandomForestClassification_17_3.png" />
+<div class="highlight"><pre>
+Processing: Max leaf node = 5, Max leaf node = 10, Max leaf node = 20, Max leaf node = 40
+</pre></div></div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/notebooks_Image_classification_RandomForestClassification_15_7.png" src="../../_images/notebooks_Image_classification_RandomForestClassification_15_7.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Processing: Min samples split = 5, Min samples split = 10, Min samples split = 20, Min samples split = 40
+</pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_Image_classification_RandomForestClassification_17_4.png" src="../../_images/notebooks_Image_classification_RandomForestClassification_17_4.png" />
+<img alt="../../_images/notebooks_Image_classification_RandomForestClassification_15_9.png" src="../../_images/notebooks_Image_classification_RandomForestClassification_15_9.png" />
 </div>
 </div>
 </div>
@@ -1100,7 +1022,7 @@ Useful for inspecting the splits used by the classifier to classify the
 data.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [33]:
+<span></span>In [8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1121,7 +1043,7 @@ data.</p>
 
 <span class="c1"># Plot first resulting tree</span>
 <span class="n">img</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;figures/tree_graphs/tree1.png&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">interpolation</span> <span class="o">=</span> <span class="s2">&quot;bilinear&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
@@ -1132,7 +1054,7 @@ data.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_Image_classification_RandomForestClassification_19_0.png" src="../../_images/notebooks_Image_classification_RandomForestClassification_19_0.png" />
+<img alt="../../_images/notebooks_Image_classification_RandomForestClassification_17_0.png" src="../../_images/notebooks_Image_classification_RandomForestClassification_17_0.png" />
 </div>
 </div>
 </div>
